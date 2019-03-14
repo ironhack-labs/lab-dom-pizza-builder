@@ -35,11 +35,11 @@ You should push every file needed to execute the exercise
 
 ## Instructions
 
-We will only work with the `pizza.js` file. As you will see, the file contains some code. The file is architectured to have a seperation of concerns and make the code scalable. This architecture is very close to what you will use with React.
+We will only work with the `pizza.js` file. As you will see, the file contains some code. The file is architectured to have a [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) and make the code scalable. This architecture is very close to what you will use with React.
 
-There is a variable `state` with different values, such as `state.pepperonni` that is initially `true`. When the user clicks on it, the value will be changed to the opposite (example: `false`).
+In this architecture, there is a variable `state` with different values, such as `state.pepperonni` initially set to `true`. When the user clicks on it, the value will be changed to the opposite (example: `false`).
 
-There is a function `renderEverything` that render the pizza, the buttons and the price based on the state. For example, if `state.pepperonni` is `true`, the function will:
+In this architecture, there is also a function `renderEverything` that renders the pizza, the buttons and the price based on the state. This function everytime the state is changed, because the pizza, the buttons and the price must be changed. To give an example, when `state.pepperonni` is `true`, the function will:
 - Make the pepperonni on the pizza visible
 - Add a class active to the "Pepperonni" button
 - Update the price panel
