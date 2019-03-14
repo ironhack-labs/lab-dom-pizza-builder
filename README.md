@@ -10,6 +10,8 @@ We've got the munchies for a nice, fresh pie of pizza. Of course, we want to ord
 
 There's only one problem: our local pizzeria's pizza builder **isn't working**. This time, the local pizzeria is in luck because their customer today is a Web developer. We always hear about how developers should give back to their community. I can't think of a more meaningful contribution than helping the community get pizza more easily.
 
+**You can find a demo of the finished version by clicking [here](https://ironhack-labs.github.io/lab-dom-pizza-builder/solution-code/)**.
+
 ## Requirements
 
 - [Fork this repo](https://guides.github.com/activities/forking/)
