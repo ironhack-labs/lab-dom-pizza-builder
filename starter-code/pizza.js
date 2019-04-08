@@ -27,13 +27,16 @@ function renderEverything() {
   renderPrice()
 }
 function renderPepperonni() {
-  document.querySelectorAll('.pep ').forEach(function($pep){
+  document.querySelectorAll('.pep').forEach(function($pep){
     if (state.pepperonni) {
       $pep.style.visibility = "visible";
 
     }
     else {
       $pep.style.visibility = "hidden";
+      $(`.pep-price`).hide()
+      //.pep-price is a unique class just assigned to the li
+
     }
   })
 }
@@ -62,7 +65,7 @@ function renderGreenPeppers() {
 }
 
 function renderWhiteSauce() {
-if (state.whiteSauce) {
+if (!state.whiteSauce) {
 $(".sauce").removeClass("sauce-white");
 } else {
   $(".sauce").addClass("sauce-white");
@@ -73,7 +76,7 @@ $(".sauce").removeClass("sauce-white");
 function renderGlutenFreeCrust() {
 
   //if ($(".crust").hasClass("crust-gluten-free")) {
-        if (state.glutenFreeCrust) {
+        if (!state.glutenFreeCrust) {
     $(".crust").removeClass("crust-gluten-free");
     } else  {
       $(".crust").addClass("crust-gluten-free");
@@ -91,8 +94,20 @@ function renderButtons() {
 
 // function getTotal(){
   function renderPrice() {
+// let panel = <ul>
+// <li class="pep-price">$1 pepperonni</li>
+// <li class="mush-price">$1 mushrooms</li>
+// <li class="green-price">$1 green peppers</li>
+// <li class="sauce-price">$3 white sauce</li>
+// <li class="crust-price">$5 gluten-free crust</li>
+// </ul>
+// <strong class="total-price">$21</strong>
+      
+
+
   let sum=basePrice;
   let prices = ''
+  let panel = ""
   for(let key in state){
     if (state[key]){
       //console.log('key',key, 'state[key]',state[key])
@@ -101,32 +116,14 @@ function renderButtons() {
       console.log(ingredients[key].price)
       prices+=`<li>${ingredients[key].name}</li>`
       sum+=ingredients[key].price
+      panel+=`<li>$([i].price</li>`
+      //Niko's version
     }
     document.querySelectorAll(".total-price")[0].innerHTML = "$" + sum;
     console.log("Sum is "+sum)
   }}
 
-  // ==== Kenneths Function ====
-  // function renderPrice() {
-
-  //   let total = 10;
-  //   $(`aside li:visible`).each(function() {
-  //     // let price = Number($(this).text().split(' ‘)[0].replace(‘$’, ‘’) )
-  //     let price = Number(this.innerText[1]);
-  //     total += price;
-  //   });
-  //   $(`strong`)[0].innerText = `$` + total;
-  //   }
-
-
-  // $("aside li:visible").each(function())
-  // $(`strong`)[0].innerText=`$` + sum;
-  // console.log("Sum is " +sum)
-
-
-//$(`aside)
-  // Iteration 4: change the HTML of `<aside class="panel price">`
-// }
+ 
 renderEverything()
 renderButtons()
 
