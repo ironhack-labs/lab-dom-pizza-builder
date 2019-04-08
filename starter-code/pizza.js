@@ -34,7 +34,7 @@ function renderPepperonni() {
     }
     else {
       $pep.style.visibility = "hidden";
-      $(`.pep-price`).hide()
+      // $(`.pep-price`).hide()
       //.pep-price is a unique class just assigned to the li
 
     }
