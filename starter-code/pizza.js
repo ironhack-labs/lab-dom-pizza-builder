@@ -41,21 +41,14 @@ const renderGreenPeppers = _ =>
   );
 
 // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-const renderWhiteSauce = _ => {
-  state.whiteSauce ? $(".sauce").addClass("sauce-white") : $(".sauce").removeClass("sauce-white");
-};
+const renderWhiteSauce = _ => $(".sauce")[state.whiteSauce ? "addClass" : "removeClass"]("sauce-white");
 
 // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
 const renderGlutenFreeCrust = _ => {
-  state.glutenFreeCrust ? $(".crust").addClass("crust-gluten-free") : $(".crust").removeClass("crust-gluten-free");
+  $(".crust")[state.glutenFreeCrust ? "addClass" : "removeClass"]("crust-gluten-free");
 };
 
 // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-const renderButtons = _ => {
-  $(".btn").click(_ => {
-    $(this).toggleClass("active");
-  });
-};
 const renderButtons = _ => $(".btn").click(e => $(e.target).toggleClass("active"));
 
 // Iteration 4: change the HTML of `<aside class="panel price">`

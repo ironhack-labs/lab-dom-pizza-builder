@@ -17,3 +17,24 @@ In this case:
 callback inside of click() is the handler
 e is the event
 e.target is the DOM node that the event is happening on
+
+
+
+//Old code
+const renderWhiteSauce = _ => {
+  state.whiteSauce ? $(".sauce").addClass("sauce-white") : $(".sauce").removeClass("sauce-white");
+};
+
+const renderGlutenFreeCrust = _ => {
+  state.glutenFreeCrust ? $(".crust").addClass("crust-gluten-free") : $(".crust").removeClass("crust-gluten-free");
+};
+
+
+//New code - cleaner/more dynamic
+const renderWhiteSauce = _ => $(".sauce")[state.whiteSauce ? "addClass" : "removeClass"]("sauce-white");
+
+const renderGlutenFreeCrust = _ => {
+  $(".crust")[state.glutenFreeCrust ? "addClass" : "removeClass"]("crust-gluten-free");
+};
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors
