@@ -56,6 +56,7 @@ const renderButtons = _ => {
     $(this).toggleClass("active");
   });
 };
+const renderButtons = _ => $(".btn").click(e => $(e.target).toggleClass("active"));
 
 // Iteration 4: change the HTML of `<aside class="panel price">`
 const renderPrice = _ => {

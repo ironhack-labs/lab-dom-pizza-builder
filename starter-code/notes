@@ -1,0 +1,19 @@
+//Old code
+const renderButtons = _ => {
+  $(".btn").click(_ => {
+    $(this).toggleClass("active");
+  });
+};
+
+//Cleaner code 
+const renderButtons = _ => $(".btn").click(e => $(e.target).toggleClass("active"));
+
+--> Event listener (onClick, onSUbmit, onDrag, onScroll, etc)
+
+When the event is handled, the window will implicitly pass an event object to the event handler function 
+
+In this case:
+.click() is the listener
+callback inside of click() is the handler
+e is the event
+e.target is the DOM node that the event is happening on
