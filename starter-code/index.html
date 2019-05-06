@@ -41,13 +41,13 @@
 
       <b>$10 cheese pizza</b>
       <ul>
-        <li>$1 pepperonni</li>
-        <li>$1 mushrooms</li>
-        <li>$1 green peppers</li>
-        <li>$3 white sauce</li>
-        <li>$5 gluten-free crust</li>
+        <li class="pepPrice">$1 pepperonni</li>
+        <li class="mushPrice">$1 mushrooms</li>
+        <li class="pepperPrice">$1 green peppers</li>
+        <li class="saucePrice">$3 white sauce</li>
+        <li class="crustPrice">$5 gluten-free crust</li>
       </ul>
-      <strong>$21</strong>
+      <strong>$<span class="total">21</span></strong>
     </aside>
     <!-- End Price -->
 
@@ -270,7 +270,7 @@
 
       <section class="crust crust-gluten-free">
         <section class="cheese"></section>
-        <section class="sauce sauce-white"></section>
+        <section id="sauce" class="sauce sauce-white"></section>
       </section>
     </div>
     <!-- End Pizza -->
@@ -288,7 +288,7 @@
       </p>
     </footer>
     <!-- Footer -->
-
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="pizza.js"></script>
   </body>
 </html>
