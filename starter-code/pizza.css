@@ -1,12 +1,65 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, sub, sup, tt, var,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-header, section, footer, article, details {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+header,
+section,
+footer,
+article,
+details {
   margin: 0;
   padding: 0;
   border: 0;
@@ -17,7 +70,7 @@ header, section, footer, article, details {
   font-family: inherit;
   vertical-align: baseline;
 }
-/* remember to define focus styles! */
+
 :focus {
   outline: 0;
 }
@@ -28,44 +81,67 @@ body {
   background: white;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
-/* tables still need 'cellspacing="0"' in the markup */
+
 table {
   border-collapse: separate;
   border-spacing: 0;
 }
 
-caption, th, td {
+caption,
+th,
+td {
   text-align: left;
   font-weight: normal;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   content: "";
 }
 
-blockquote, q {
+blockquote,
+q {
   quotes: "" "";
 }
 
-/*--- HTML5 -----*/
-header, nav, details, section, aside, footer {
+header,
+nav,
+details,
+section,
+aside,
+footer {
   display: block;
 }
 
 body {
-  font-family: 'Courier', 'Courier New', Serif;
+  font-family: "Courier", "Courier New", Serif;
   max-width: 750px;
   margin: 0 auto;
 }
 
-/*
- * Buttons from:
- * http://codepen.io/TeshaR/pen/cdugG?editors=110
- */
+.redButton {
+  height: 60px;
+  width: 200px;
+  margin-left: 250px;
+  background-color: #ffa8a8;
+  font-style: italic;
+  color: black;
+  font-family: inherit;
+  font-size: 20px;
+  border-radius: 10px;
+  border: 5px solid #337219;
+}
+
+.redButton:hover {
+  background-color: #ff4c4c;
+}
+
 .btn {
   float: left;
   position: relative;
@@ -77,16 +153,13 @@ body {
   padding: 0 20px;
   text-align: center;
 
-  /* Smoothing out hover using css3 transitions, if not, the pressed button effect looks a bit hard */
   transition: all 0.2s ease;
 
-  /* Size */
   line-height: 45px;
   width: 100%;
   height: 45px;
   font-size: 120%;
 
-  /* Colors */
   background: #f7f7f7;
   box-shadow: 0 6px rgba(0, 0, 0, 0.2);
   color: #888;
@@ -98,13 +171,11 @@ body {
   color: #888;
 }
 
-/* Imitate a pressed effect for buttons */
 .btn:active {
   top: 5px;
   box-shadow: none;
 }
 
-/*------ Header -----*/
 header {
   text-align: center;
 }
@@ -112,7 +183,7 @@ header {
 h1 {
   font-size: 70px;
   color: #444;
-  margin-bottom: 10px
+  margin-bottom: 10px;
 }
 
 p.description {
@@ -131,8 +202,6 @@ p.description {
   position: relative;
 }
 
-/*------ Panels -----*/
-
 .panel {
   position: absolute;
   top: 100px;
@@ -142,8 +211,6 @@ p.description {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
-
-/*------ Controls -----*/
 .controls {
   left: 0;
 }
@@ -283,7 +350,6 @@ p.description {
   box-shadow: none;
 }
 
-/*------ Price -----*/
 .price {
   right: 0;
 }
@@ -296,7 +362,7 @@ p.description {
 }
 
 .price h2:after {
-  content: ':';
+  content: ":";
 }
 
 .price b {
@@ -310,7 +376,7 @@ p.description {
 }
 
 .price li:before {
-  content: '+ ';
+  content: "+ ";
   color: #e2311a;
 }
 
@@ -328,6 +394,7 @@ p.description {
   background: #ab5f2b;
   box-shadow: inset 0 0 40px #e5a53b;
   border: 1px solid #ab5f2b;
+  visibility: visible;
 }
 
 .crust-gluten-free {
@@ -343,6 +410,8 @@ p.description {
   background: #640d15;
   margin: 40px 0 0 40px;
   box-shadow: inset 0 0 10px #dd2f25;
+  visibility: visible;
+  z-index: 3;
 }
 
 .sauce-white {
@@ -358,8 +427,8 @@ p.description {
   margin: 50px 0 0 50px;
   z-index: 10;
   box-shadow: inset 0 0 200px #d88e24;
+  visibility: hidden;
 }
-
 
 /*--- Pepperoni ---*/
 #pepperoni section:nth-child(7) {
@@ -383,7 +452,9 @@ p.description {
   border: 2px solid #871b15;
   text-indent: -9999px;
   color: #fff;
+  visibility: hidden;
 }
+
 /*.pep:hover{
   -moz-transform: scale(1.3);
   -webkit-transform: scale(1.3);
@@ -526,6 +597,7 @@ p.description {
   z-index: 20;
   margin: 200px 0 0 200px;
   text-indent: -9999px;
+  visibility: hidden;
 }
 
 .cap {
@@ -802,16 +874,16 @@ p.description {
   transform: rotate(67deg);
 }
 
-
 /*--- Green Peppers ---*/
 .green-pepper {
   position: absolute;
   width: 20px;
   height: 45px;
   background: #2f5e20;
-  box-shadow: 2px 2px 2px rgba(66, 132, 45, .9);
+  box-shadow: 2px 2px 2px rgba(66, 132, 45, 0.9);
   margin: 250px 0 0 400px;
   z-index: 30;
+  visibility: hidden;
 }
 
 .green-pepper.one {
@@ -1001,11 +1073,10 @@ footer a:hover {
 
 #crumbs {
   opacity: 0;
-  -webkit-transition: all .3s linear;
+  -webkit-transition: all 0.3s linear;
 }
 
 @media screen and (max-width: 720px) {
-
   body {
     padding: 25px 0;
   }
