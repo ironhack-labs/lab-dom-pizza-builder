@@ -17,7 +17,7 @@ var state = {
   mushrooms: true,
   greenPeppers: true,
   whiteSauce: false,
-  glutenFreeCrust: true,
+  glutenFreeCrust:false,
 }
 
 // This function takes care of rendering the pizza based on the state
@@ -90,13 +90,14 @@ function renderGlutenFreeCrust() {
   var element = document.querySelector(".crust");
   if (state.glutenFreeCrust)
   {
-    element.classList.add("crust-gluten-free");
+    element.classList.add("crust-gluten-free"); 
+    //state.glutenFreeCrust!=state.glutenFreeCrust
   }
   else
   {
     element.classList.remove("crust-gluten-free");
+    //state.glutenFreeCrust!=state.glutenFreeCrust
   }
-
 }
 
 
@@ -107,7 +108,7 @@ function renderButtons() {
       mush=document.querySelector(".btn-mushrooms")
       green=document.querySelector(".btn-green-peppers")
       sauce=document.querySelector(".btn.btn-sauce")
-      crust=document.querySelector(".btn-crust")
+      crust=document.querySelector(".btn.btn-crust")
 
   if (state.pepperonni){pep.classList.add('active')}
   else{pep.classList.remove('active')}
@@ -121,8 +122,8 @@ function renderButtons() {
   if (state.whiteSauce){sauce.classList.add('active')}
   else{sauce.classList.remove('active')}
 
-  if (state.glutenFreeCrust){sauce.classList.add('active')}
-  else{sauce.classList.remove('active')}
+  if (state.glutenFreeCrust){crust.classList.add('active')}
+  else{crust.classList.remove('active')}
 
 }
 
@@ -171,13 +172,13 @@ document.querySelector('.btn.btn-green-peppers').onclick=function() {
 
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
-document.querySelector(".btn.btn-sauce").onclick=function(){
+document.querySelector(".btn.btn-sauce.sauce-white").onclick=function(){
   state.whiteSauce!=state.whiteSauce
   renderEverything()
 }
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
-document.querySelector(".btn.btn-crust").onclick=function(){
+document.querySelector(".btn.btn-crust.crust-gluten-free").onclick=function(){
   state.glutenFreeCrust!=state.glutenFreeCrust
   renderEverything()
 }
