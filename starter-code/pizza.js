@@ -114,19 +114,18 @@ function renderButtons() {
 ////// Display the list of all items selected
 ////// Display the total price
   // Iteration 4: change the HTML of `<aside class="panel price">`
-function renderPrice() {
+// function renderPrice() {
 
-  // document.querySelector(".price strong").innerHTML = ""
-  // var totalPrice = 0;
+//   var totalPrice = 0;
 
-  // for (let i=0; i <= ingredients.length; i++) {
-  //   totalPrice += ingredients[i]["price"];
-  // };
-  // // console.log(typeof totalPrice);
-  // console.log(totalPrice);
-  // document.querySelector(".price strong").innerHTML = `$${totalPrice}`;
+//   for (let i=0; i <= ingredients.length; i++) {
+//     totalPrice += ingredients[i]["price"];
+//   };
+//   // console.log(typeof totalPrice);
+//   console.log(totalPrice);
+//   document.querySelector(".price strong").innerHTML = `$${totalPrice}`;
 
-}
+// }
 
 renderEverything();
 
