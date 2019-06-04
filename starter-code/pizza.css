@@ -148,83 +148,83 @@ p.description {
   left: 0;
 }
 
-.btn-pepperonni {
+.btn-pep {
   background: #e8103b;
   box-shadow: 0 6px #890923;
   color: #fff;
 }
 
-.btn-pepperonni:hover {
+.btn-pep:hover {
   background: #c80e33;
   box-shadow: 0 5px #69071b;
   color: #fff;
 }
 
-.btn-pepperonni.active {
+.btn-pep.active {
   top: 2px;
   box-shadow: 0 2px #890923;
 }
 
-.btn-pepperonni.active:hover {
+.btn-pep.active:hover {
   box-shadow: 0 2px #69071b;
 }
 
-.btn-pepperonni:active,
-.btn-pepperonni.active:active {
+.btn-pep:active,
+.btn-pep.active:active {
   top: 5px;
   box-shadow: none;
 }
 
-.btn-mushrooms {
+.btn-mushroom {
   background: #b49989;
   box-shadow: 0 6px #644d40;
   color: #fff;
 }
 
-.btn-mushrooms:hover {
+.btn-mushroom:hover {
   background: #a78774;
   box-shadow: 0 5px #503d33;
   color: #fff;
 }
 
-.btn-mushrooms.active {
+.btn-mushroom.active {
   top: 2px;
   box-shadow: 0 2px #644d40;
 }
 
-.btn-mushrooms.active:hover {
+.btn-mushroom.active:hover {
   box-shadow: 0 2px #503d33;
 }
 
-.btn-mushrooms:active,
-.btn-mushrooms.active:active {
+.btn-mushroom:active,
+.btn-mushroom.active:active {
   top: 5px;
   box-shadow: none;
 }
 
-.btn-green-peppers {
+.btn-green-pepper {
   background: #129306;
   box-shadow: 0 6px #0a5203;
   color: #fff;
 }
 
-.btn-green-peppers:hover {
+.btn-green-pepper:hover {
   background: #0e7205;
   box-shadow: 0 5px #063102;
   color: #fff;
 }
 
-.btn-green-peppers.active {
+.btn-green-pepper.active {
   top: 2px;
   box-shadow: 0 2px #0a5203;
 }
 
-.btn-green-peppers.active:hover {
+.btn-green-pepper.active:hover {
   box-shadow: 0 2px #063102;
 }
 
-.btn-green-peppers:active,
-.btn-green-peppers.active:active {
+.btn-green-pepper:active,
+.btn-green-pepper.active:active {
   top: 5px;
   box-shadow: none;
 }

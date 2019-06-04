@@ -3,11 +3,11 @@
 // Constants 
 var basePrice = 10
 var ingredients = {
-  pepperonni: { name: 'Pepperonni', price: 1 },
-  mushrooms: { name: 'Mushrooms', price: 1 },
-  greenPeppers: { name: 'Green Peppers', price: 1 },
-  whiteSauce: { name: 'White sauce', price: 3000 },
-  glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
+  pepperonni: { name: 'Pepperonni', price: 1, id: "pep" },
+  mushrooms: { name: 'Mushrooms', price: 1, id: "mushroom" },
+  greenPeppers: { name: 'Green Peppers', price: 1, id: "green-pepper" },
+  whiteSauce: { name: 'White sauce', price: 3000, id: "sauce" },
+  glutenFreeCrust: { name: 'Gluten-free crust', price: 5, id: "crust" }
 }
 
 // Initial value of the state (the state values can change over time)
@@ -23,46 +23,26 @@ var state = {
 // This function is triggered once at the begining and everytime the state is changed
 function renderEverything() {
 
-  renderPepperonni()
-  renderMushrooms()
-  renderGreenPeppers()
+  renderIngredient("pepperonni");
+  renderIngredient("mushrooms");
+  renderIngredient("greenPeppers")
+
   renderWhiteSauce()
   renderGlutenFreeCrust()
+
   renderButtons()
-  renderPrice2()
+  renderPrice()
 }
 
-function renderPepperonni() {
-  document.querySelectorAll('.pep').forEach(function ($pep) {
-    if (state.pepperonni) {
-      $pep.style.visibility = "visible";
-    }
-    else {
-      $pep.style.visibility = "hidden";
-    }
-  })
-}
+addEventListeners();
+renderEverything()
 
-function renderMushrooms() {
-  document.querySelectorAll('.mushroom').forEach(function ($mushroom) {
-    if (state.mushrooms) {
-      $mushroom.style.visibility = "visible";
-    }
-    else {
-      $mushroom.style.visibility = "hidden";
-    }
-  })
-}
+// All functions we need are below //
 
-function renderGreenPeppers() {
-  document.querySelectorAll('.green-pepper').forEach(function ($greenPepper) {
-    if (state.greenPeppers) {
-      $greenPepper.style.visibility = "visible";
-    }
-    else {
-      $greenPepper.style.visibility = "hidden";
-    }
-  })
+function renderIngredient(ingredient) {
+
+  document.querySelectorAll("." + ingredients[ingredient].id).forEach($iterator => state[ingredient] ? $iterator.style.visibility = "visible" : $iterator.style.visibility = "hidden");
+
 }
 
 function renderWhiteSauce() {
@@ -92,7 +72,7 @@ function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 }
 
-function renderPrice2() {
+function renderPrice() {
 
   document.getElementById("ingredients").innerHTML = "";
   amount = 10;
@@ -123,44 +103,18 @@ function addChildToIngredients(child) {
 
 }
 
-renderEverything()
 
-// Iteration 1: Example of a click event listener on `<button class="btn btn-pepperonni">`
-document.querySelector('.btn.btn-pepperonni').onclick = function (e) {
+function addEventListeners() {
 
-  e.target.classList.toggle("active");
-  state.pepperonni = !state.pepperonni
-  renderEverything()
-}
+  for (item in state) {
+    console.log(item)
+    document.querySelector('.btn.btn-' + ingredients[item].id).onclick = actionOnButton.bind(item)
+  }
 
-// Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
+  function actionOnButton(e) {
 
-document.querySelector('.btn.btn-mushrooms').onclick = function (e) {
-  e.target.classList.toggle("active");
-  state.mushrooms = !state.mushrooms
-  renderEverything()
-}
-
-// Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-
-document.querySelector('.btn.btn-green-peppers').onclick = function (e) {
-  e.target.classList.toggle("active");
-  state.greenPeppers = !state.greenPeppers
-  renderEverything()
-}
-
-// Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
-
-document.querySelector('.btn.btn-sauce').onclick = function (e) {
-  e.target.classList.toggle("active");
-  state.whiteSauce = !state.whiteSauce
-  renderEverything()
-}
-
-// Iteration 2: Add click event listener on `<button class="btn btn-crust">`
-
-document.querySelector('.btn.btn-crust').onclick = function (e) {
-  e.target.classList.toggle("active");
-  state.glutenFreeCrust = !state.glutenFreeCrust
-  renderEverything()
+    e.target.classList.toggle("active");
+    state[this] = !state[this]
+    renderEverything()
+  }
 }
