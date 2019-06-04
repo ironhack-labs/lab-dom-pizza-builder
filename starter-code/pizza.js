@@ -135,14 +135,25 @@
 
   function renderPrice() {
     // Iteration 4: change the HTML of `<aside class="panel price">`
+    var pepPrice = 0,
+      mushrPrice = 0,
+      greenPepPrice = 0,
+      saucePrice = 0,
+      crustPrice = 0,
+      sum = 0;
 
-    // const pepe =
+    var baseCost = document.querySelector(".baseCost"); // variable selected but empty for now
+    baseCost.innerHTML = "$" + basePrice + " cheese pizza"; // we attribure a "dynamique" value
+
+    var total = document.querySelector(".total");
+
+    // REMOVE PRICE INGREDIENTS HTML
     if (
       document.querySelector(".btn-pepperonni").classList.contains("active")
     ) {
-      document.querySelector(".pep-price").innerHTML = "$1 pepperonni";
+      document.querySelector(".pep-price").style.visibility = "visible";
     } else {
-      document.querySelector(".pep-price").innerHTML = " ";
+      document.querySelector(".pep-price").style.visibility = "hidden";
     }
     if (document.querySelector(".btn-mushrooms").classList.contains("active")) {
       document.querySelector(".mush-price").style.visibility = "visible";
@@ -166,6 +177,41 @@
     } else {
       document.querySelector(".crust-price").style.visibility = "hidden";
     }
+
+    // TOTAL PRICE
+    if (state.pepperonni) {
+      pepPrice += ingredients.pepperonni.price;
+    } else {
+      pepPrice;
+    }
+    if (state.mushrooms) {
+      mushrPrice += ingredients.mushrooms.price;
+    } else {
+      mushrPrice;
+    }
+    if (state.greenPeppers) {
+      greenPepPrice += ingredients.greenPeppers.price;
+    } else {
+      greenPepPrice;
+    }
+    if (state.whiteSauce === false) {
+      saucePrice;
+    } else {
+      saucePrice += ingredients.whiteSauce.price;
+    }
+    if (state.glutenFreeCrust === false) {
+      crustPrice;
+    } else {
+      crustPrice += ingredients.glutenFreeCrust.price;
+    }
+    sum +=
+      basePrice +
+      pepPrice +
+      mushrPrice +
+      greenPepPrice +
+      saucePrice +
+      crustPrice;
+    return (total.innerHTML = "$" + sum);
   }
 
   renderEverything();
