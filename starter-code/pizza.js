@@ -9,14 +9,13 @@ var ingredients = {
   whiteSauce: {name: 'White sauce', price: 3},
   glutenFreeCrust: {name: 'Gluten-free crust', price: 5}
 }
-
 // Initial value of the state (the state values can change over time)
 var state = {
   pepperonni: true,
   mushrooms: true,
   greenPeppers: true,
-  whiteSauce: true,
-  glutenFreeCrust: true
+  whiteSauce: false,
+  glutenFreeCrust: false
 }
 
 // This function takes care of rendering the pizza based on the state
@@ -112,20 +111,23 @@ function renderButtons() {
 
   //Write the function renderPrice that:
 ////// Display the list of all items selected
-////// Display the total price
-  // Iteration 4: change the HTML of `<aside class="panel price">`
-// function renderPrice() {
+////// Display the total price  
 
-//   var totalPrice = 0;
+function renderPrice() {
+  var totalPrice = basePrice;
+  console.log(totalPrice);
+  const ingredientList = document.getElementById("ingredient-list");
+  ingredientList.innerHTML = "";
 
-//   for (let i=0; i <= ingredients.length; i++) {
-//     totalPrice += ingredients[i]["price"];
-//   };
-//   // console.log(typeof totalPrice);
-//   console.log(totalPrice);
-//   document.querySelector(".price strong").innerHTML = `$${totalPrice}`;
-
-// }
+  for (ingredient in ingredients) {
+    if (state[ingredient]) { //loop works thus far
+      ingredientList.innerHTML += `<li>$${ingredients[ingredient].price} ${ingredients[ingredient].name}</li>`;
+      totalPrice += ingredients[ingredient].price;
+      console.log("in loop" ,state[ingredient], ingredient);
+    };
+  };
+  document.getElementById("total-price").textContent = `$${totalPrice}`;
+}
 
 renderEverything();
 
