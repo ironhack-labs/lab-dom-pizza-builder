@@ -12,7 +12,7 @@ var ingredients = {
 
 // Initial value of the state (the state values can change over time)
 var state = {
-  pepperonni: false,
+  pepperonni: true,
   mushrooms: false,
   greenPeppers: false,
   whiteSauce: false,
@@ -27,7 +27,6 @@ function renderEverything() {
   renderGreenPeppers()
   renderWhiteSauce()
   renderGlutenFreeCrust()
-
   renderButtons()
   renderPrice()
 }
@@ -93,13 +92,18 @@ function renderGlutenFreeCrust() {
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
   const btn = document.querySelectorAll(".btn");
-  Array.from(btn).forEach(x => x.classList.remove("active"));
-
+  for (let i = 0; i < Object.keys(ingredients).length; i++) {
+    // if true -> active
+    if (state[Object.keys(state)[i]] === true) {
+      btn[i].classList.add('active');
+    } else {
+      btn[i].classList.remove('active');
+    }
+  }
 }
 
 function renderPrice() {
   let total = 10;
-
   const newPriceList = document.querySelectorAll(".price li");
   for (let i = 0; i < newPriceList.length; i++) {
     if (state[Object.keys(state)[i]] === true) {
@@ -109,8 +113,7 @@ function renderPrice() {
       newPriceList[i].style.display = 'none';
     }
   }
-  console.log(total)
-
+  // console.log(total)
   document.querySelector('strong').innerHTML = `$${total}`;
 }
 
@@ -141,9 +144,5 @@ document.querySelector('.btn.btn-sauce').onclick = function () {
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
 document.querySelector('.btn.btn-crust').onclick = function () {
   state.glutenFreeCrust = !state.glutenFreeCrust
-  // if (state.glutenFreeCrust === false) {
-  //   alert("wtf man")
-  //   state.glutenFreeCrust = !state.glutenFreeCrust
-  // }
   renderEverything()
 }
