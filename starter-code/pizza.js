@@ -81,10 +81,11 @@ function renderWhiteSauce() {
 function renderGlutenFreeCrust() {
   document.querySelectorAll('.crust').forEach(function ($glutenFreeCrust) {
     if (state.glutenFreeCrust) {
-      $glutenFreeCrust.style.visibility = "visible";
+      $glutenFreeCrust.classList.add("sauce-white");
     }
     else {
-      $glutenFreeCrust.style.visibility = "hidden";
+      $glutenFreeCrust.classList.remove("sauce-white");
+
     }
   })
 }
@@ -104,16 +105,16 @@ function renderButtons() {
 
 function renderPrice() {
   let total = 10;
-  const newPriceList = document.querySelectorAll(".price li");
-  for (let i = 0; i < newPriceList.length; i++) {
-    if (state[Object.keys(state)[i]] === true) {
-      total += ingredients[Object.keys(state)[i]].price;
-      newPriceList[i].style.display = 'block';
-    } else {
-      newPriceList[i].style.display = 'none';
+  let newHTML = " ";
+  let panel = document.querySelector(".price ul")
+  for (let keys in ingredients) {
+    if (state[keys]) {
+
+      total += ingredients[keys].price;
+      newHTML += `<li>${ingredients[keys].name}: ${ingredients[keys].price}</li>`
     }
   }
-  // console.log(total)
+  panel.innerHTML = newHTML
   document.querySelector('strong').innerHTML = `$${total}`;
 }
 
