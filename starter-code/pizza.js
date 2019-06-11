@@ -125,9 +125,9 @@ function renderPrice() {
     
     if(statesArrVal[i]) {
       totalPrice = totalPrice + ingredientsArr[i].price
-      selected[0].style.visibility = 'visible'
+      selected[0].style.display = 'block'
     }  else  {
-      selected[0].style.visibility = 'hidden'
+      selected[0].style.display = 'none'
     }
   }
   $totalPrice.innerHTML = "$" + totalPrice
