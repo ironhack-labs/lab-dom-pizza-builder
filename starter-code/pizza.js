@@ -115,19 +115,21 @@ function renderPrice() {
   let $totalPrice = document.querySelector('.total-price')
   let totalPrice = 0 + basePrice
   let statesArrVal = Object.values(state)
-  let statesArrKey = Object.keys(state)
+  // console.log(statesArrVal)
+  // let statesArrKey = Object.keys(state)
   let ingredientsArr = Object.values(ingredients)
+  // console.log(ingredientsArr)
   
   for( let i = 0; i < statesArrVal.length; i++ ) {
-    let selector = 'price-' + statesArrKey[i].toLowerCase()
-    let selected = document.getElementsByClassName(selector)
-    console.log(selected)
+    // let selector = 'price-' + statesArrKey[i].toLowerCase()
+    let $asideLis = document.querySelectorAll('aside.panel>ul>li')
+    //console.log(selected)
     
     if(statesArrVal[i]) {
       totalPrice = totalPrice + ingredientsArr[i].price
-      selected[0].style.display = 'block'
+      $asideLis[i].style.display = 'block'
     }  else  {
-      selected[0].style.display = 'none'
+      $asideLis[i].style.display = 'none'
     }
   }
   $totalPrice.innerHTML = "$" + totalPrice
