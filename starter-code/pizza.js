@@ -43,7 +43,7 @@ function renderEverything() {
   renderWhiteSauce()
   renderGlutenFreeCrust()
 
-  renderButtons()
+ // renderButtons()
   renderPrice()
 }
 
