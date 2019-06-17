@@ -73,7 +73,7 @@ function renderGreenPeppers() {
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
   document.querySelectorAll('.sauce').forEach(element => {
-    if(!state.whiteSauce) {
+    if(state.whiteSauce) {
       element.classList.add('sauce-white')
     } else {
       element.classList.remove('sauce-white')
@@ -84,7 +84,7 @@ function renderWhiteSauce() {
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
   document.querySelectorAll('.crust').forEach(element => {
-    if(!state.glutenFreeCrust) {
+    if(state.glutenFreeCrust) {
       element.classList.add('crust-gluten-free')
     } else {
       element.classList.remove('crust-gluten-free')
@@ -94,10 +94,10 @@ function renderGlutenFreeCrust() {
 
 function renderButtons(e) {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-
+  //it works lite a toggle function now.
+  
 if(e) {
   let element = e.target
-  
   if(element.className.includes('active')) {
     element.classList.remove('active')
   } else {
@@ -137,27 +137,25 @@ function renderPrice() {
   //   glutenFreeCrust: false
   // }
 
-//does work on a single item
-  let initialHTML = priceUl.innerHTML;
-  if(state.pepperonni && !priceUl.innerHTML.includes('<li>$1 pepperonni</li>')) {
-    priceUl.innerHTML += '<li>$1 pepperonni</li>'
-  } else if(!state.pepperonni) {
-    priceUl.innerHTML = initialHTML.split('<li>$1 pepperonni</li>').join('')
+  let sum = basePrice;
+  priceUl.innerHTML = "";
+
+  for(let key in state) {
+    if(state[key]) {
+      let newLi = document.createElement('li');
+      newLi.innerText = `$${ingredients[key].price} ${ingredients[key].name}`;
+      priceUl.appendChild(newLi);
+
+      sum += ingredients[key].price;
+      priceTotal.innerHTML = `$${sum}`
+    } else {
+      //if nothing is selected then previous condition will never be true
+      //so it will never have a chance to rerender the price 
+      //if we remove the last item 
+      priceTotal.innerHTML = `$${sum}`
+
+    }
   }
-
-//NOT working on a larger scale
-
-  // for(key in state) {
-  //   let currentItem = `<li>$${ingredients[key].price} ${ingredients[key].name}</li>`;
-  //   if (state[key] && !priceUl.innerHTML.includes(currentItem)) {
-  //     console.log(`Adding ${ingredients[key].name} => ${currentItem}`);
-  //     priceUl.innerHTML += currentItem
-  //   } else if (!state[key]) {
-  //     console.log(`Removing ${ingredients[key].name} => ${currentItem}`);
-  //     priceUl.innerHTML = initialHTML.split(currentItem).join('')
-  //   }
-
-  // }
 
 
 }
