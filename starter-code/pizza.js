@@ -1,13 +1,15 @@
 // Write your Pizza Builder JavaScript in this file.
 
+
+
 // Constants 
 var basePrice = 10
 var ingredients = {
-  pepperonni: {name: 'Pepperonni', price: 1},
-  mushrooms: {name: 'Mushrooms', price: 1},
-  greenPeppers: {name: 'Green Peppers', price: 1},
-  whiteSauce: {name: 'White sauce', price: 3},
-  glutenFreeCrust: {name: 'Gluten-free crust', price: 5}
+  pepperonni: { name: 'Pepperonni', price: 1 },
+  mushrooms: { name: 'Mushrooms', price: 1 },
+  greenPeppers: { name: 'Green Peppers', price: 1 },
+  whiteSauce: { name: 'White sauce', price: 3 },
+  glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
 }
 
 // Initial value of the state (the state values can change over time)
@@ -32,32 +34,27 @@ function renderEverything() {
   renderPrice()
 }
 
-function renderPepperonni() {
-  document.querySelectorAll('.pep').forEach(function($pep){
-    if (state.pepperonni) {
-      $pep.style.visibility = "visible";
-    }
-    else {
-      $pep.style.visibility = "hidden";
-    }
-  })
-}
+// When btn-pepperonni clicked, toggle ("matched elements will be revealed or hidden immediately, with no animation, by changing the CSS display property")
+$('.btn-pepperonni').click(function () {
+  $('.pep').toggle();
+})
 
-function renderMushrooms() {
-  // Iteration 1: set the visibility of `<section class="mushroom">`
-}
+$('.btn-mushrooms').click(function () {
+  $('.mushroom').toggle();
+})
 
-function renderGreenPeppers() {
-  // Iteration 1: set the visibility of `<section class="green-pepper">`
-}
+$('.btn-green-peppers').click(function () {
+  $('.green-pepper').toggle();
+})
 
-function renderWhiteSauce() {
-  // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-}
+$('.btn-sauce').click(function () {
+  $('.sauce-white').toggle();
+})
 
-function renderGlutenFreeCrust() {
-  // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-}
+$('.btn-crust').click(function () {
+  $('.crust').toggleClass("crust-gluten-free");
+})
+
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
@@ -70,16 +67,9 @@ function renderPrice() {
 
 renderEverything()
 
-// Iteration 1: Example of a click event listener on `<button class="btn btn-pepperonni">`
-document.querySelector('.btn.btn-pepperonni').onclick = function() {
-  state.pepperonni = !state.pepperonni
-  renderEverything()
-}
-
-// Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
-
-// Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-
-// Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
-
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+//   javascript
+document.querySelector('.btn.btn-crust').onclick = function () {
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+}
