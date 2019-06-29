@@ -32,6 +32,8 @@ $('.btn-pepperonni').click(function () {
   // toggle if the pepporonnis on pizza are showing
   $('.pep').toggle();
 
+   // CODE FOR TOTALING COST 
+  
   // find out if its visible or not
   let visiblity = $("#addPep").css("visibility");
   console.log(visiblity);
@@ -60,6 +62,9 @@ $('.btn-pepperonni').click(function () {
 $('.btn-mushrooms').click(function () {
   // toggle if the pepporonnis on pizza are showing
   $('.mushroom').toggle();
+
+ // CODE FOR TOTALING COST 
+  
 
   // find out if its visible or not
   let visiblity = $("#addMushrooms").css("visibility");
@@ -90,6 +95,8 @@ $('.btn-green-peppers').click(function () {
   // toggle if the pepporonnis on pizza are showing
   $('.green-pepper').toggle();
 
+   // CODE FOR TOTALING COST 
+  
   // find out if its visible or not
   let visiblity = $("#addPeppers").css("visibility");
   console.log(visiblity);
@@ -120,6 +127,8 @@ $('.btn-sauce').click(function () {
   // toggle if the pepporonnis on pizza are showing
   $('.sauce-white').toggle();
 
+   // CODE FOR TOTALING COST 
+  
   // find out if its visible or not
   let visiblity = $("#addSauce").css("visibility");
   console.log(visiblity);
@@ -154,6 +163,9 @@ $('.btn-crust').click(function () {
     $("#addGluten-Free").css("visiblity", "visible");
   });
 
+
+  // CODE FOR TOTALING COST 
+  
   // find out if its visible or not
   let visiblity = $("#addGluten-Free").css("visibility");
   console.log(visiblity);
@@ -161,7 +173,7 @@ $('.btn-crust').click(function () {
   // if its visible
   if (visiblity === "visible") {
     // if it is showing, the click will hide it and remove cost
-    total -= 3;
+    total -= 5;
     $("#addGluten-Free").css("visibility", "hidden");
 
     visiblity = $("#addGluten-Free").css("visibility");
@@ -169,7 +181,7 @@ $('.btn-crust').click(function () {
   }
   else if (visiblity === "hidden") {
     // if it is not showing, click will show it and add cost
-    total += 3;
+    total += 5;
     $("#addGluten-Free").css("visibility", "visible");
 
     visiblity = $("#addGluten-Free").css("visibility");
