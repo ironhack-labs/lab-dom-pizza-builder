@@ -3,6 +3,8 @@
   <head>
     <title>Pizza Builder</title>
     <link rel="stylesheet" href="pizza.css">
+    <script  src="https://code.jquery.com/jquery-3.4.1.min.js"  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
+    <script src="pizza.js"></script>
   </head>
 
   <body>
@@ -40,14 +42,14 @@
       <h2>Your pizza's price</h2>
 
       <b>$10 cheese pizza</b>
-      <ul>
-        <li>$1 pepperonni</li>
-        <li>$1 mushrooms</li>
-        <li>$1 green peppers</li>
-        <li>$3 white sauce</li>
-        <li>$5 gluten-free crust</li>
+      <ul>   
+          <li id="pep-price">$1 pepperonni</li>
+          <li id="mush-price">$1 mushrooms</li>
+          <li id="green-price">$1 green peppers</li>
+          <li id="sauce-price">$3 white sauce</li>
+          <li id="gluten-price">$5 gluten-free crust</li>         
       </ul>
-      <strong>$21</strong>
+      <strong>$<span id="final-price">21</span></strong>
     </aside>
     <!-- End Price -->
 
@@ -287,8 +289,8 @@
         <a href="http://ironhack.com" target="_blank">Ironhack</a>.
       </p>
     </footer>
-    <!-- Footer -->
-
-    <script src="pizza.js"></script>
+    <!-- Footer -->    
+    
+    
   </body>
 </html>
