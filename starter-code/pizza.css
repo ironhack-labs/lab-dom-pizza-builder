@@ -385,12 +385,12 @@ p.description {
   text-indent: -9999px;
   color: #fff;
 }
-.pep:hover{
+/*.pep:hover{
   -moz-transform: scale(1.3);
   -webkit-transform: scale(1.3);
   -o-transform: scale(1.3);
   transform: scale(1.3);
-  } 
+  } */
   
 .pep.one {
   margin: 60px 0 0 305px;
