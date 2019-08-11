@@ -142,17 +142,20 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  let result = basePrice;
-   let list = document.querySelector('aside.panel.price ul');
-
-   for(let i = 0; i < ingredients.length; i++) {
-     if (state[i]) {
-       result += ingredients[i].price;
-       list.innerHTML += `<li> $${ingrdients[i].price} ${ingredients[i].name}</li>`
-
-     }
-   }
-   document.querySelector('strong').innerHTML = '$' + result;
+  let list = [...document.querySelectorAll('.panel.price ul li')];
+  let totalPrice = document.querySelector('strong');
+  let pricePizzaCheese = basePrice;
+  for (i in ingredients) {
+    let name = ingredients[i].name.toLowerCase();
+    let remove = list.filter(item => item.innerHTML.includes(name));
+    if (state[i]) {
+      pricePizzaCheese += ingredients[i].price;
+      remove[0].style.visibility = 'visible';
+    } else {
+      remove[0].style.visibility = 'hidden';
+    }
+  }
+  totalPrice.innerHTML = `$${pricePizzaCheese}`; 
 }
 
 
