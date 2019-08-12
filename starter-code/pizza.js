@@ -15,8 +15,8 @@ var state = {
   pepperonni: true,
   mushrooms: true,
   greenPeppers: true,
-  whiteSauce: false,
-  glutenFreeCrust: false
+  whiteSauce: true,
+  glutenFreeCrust: false,
 }
 
 // This function takes care of rendering the pizza based on the state
@@ -76,7 +76,7 @@ function renderGreenPeppers() {
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
   document.querySelectorAll(".sauce.sauce-white").forEach((sauce) =>{
-    if(state.whiteSauce){
+    if(!state.whiteSauce){
       sauce.style.visibility = "visible";
       document.querySelector('#price-sauce').style.visibility = "visible";
     }
@@ -117,7 +117,7 @@ function renderPrice() {
     if(!state.greenPeppers){
       sum -= 1;
     }
-    if(state.whiteSauce){
+    if(!state.whiteSauce){
       sum += 3;
     }
     if(state.glutenFreeCrust){
@@ -154,14 +154,14 @@ document.querySelector(".btn.btn-green-peppers").onclick = function() {
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 document.querySelector(".btn.btn-sauce").onclick = function(){
-  state.whiteSauce = !state.whiteSauce;
   document.querySelector('.btn.btn-sauce').classList.toggle("active");
+  state.whiteSauce = !state.whiteSauce;
   renderEverything();
 }
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
 document.querySelector(".btn.btn-crust").onclick = function() {
-  state.glutenFreeCrust = !state.glutenFreeCrust;
   document.querySelector('.btn.btn-crust').classList.toggle("active");
+  state.glutenFreeCrust = !state.glutenFreeCrust;
   renderEverything();
 }
