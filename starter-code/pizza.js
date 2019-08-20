@@ -95,10 +95,10 @@ function renderWhiteSauce() {
       document.querySelector(".btn.btn-sauce").classList.add("active");
 
     }
-    else  
+    else if(state.whiteSauce===false){
     document.querySelector(".btn.btn-sauce").classList.remove("active");
-    whiteSalsa.classList.remove("sauce-white");
-
+    whiteSalsa.classList.remove("sauce-white");}
+    
 
   })
 
@@ -111,8 +111,9 @@ function renderGlutenFreeCrust() {
       crusto.classList.add("crust-gluten-free");
       document.querySelector(".btn.btn-crust").classList.add("active");
     }
-    else document.querySelector(".btn.btn-crust").classList.remove("active");
-    crusto.classList.remove("crust-gluten-free");
+    else if(state.glutenFreeCrust===false){
+      document.querySelector(".btn.btn-crust").classList.remove("active");
+    crusto.classList.remove("crust-gluten-free");}
   })
 
 }
