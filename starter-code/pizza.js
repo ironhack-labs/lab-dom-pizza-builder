@@ -66,9 +66,9 @@ function renderGreenPeppers() {
 function renderWhiteSauce() {
   document.querySelectorAll(".sauce").forEach(function($sauce) {
     if (state.whiteSauce) {
-      $sauce.style.visibility = "visible";
+      document.querySelector(".sauce").classList.add("sauce-white");
     } else {
-      $sauce.style.visibility = "hidden";
+      document.querySelector(".sauce").classList.remove("sauce-white");
     }
   });
 }
@@ -76,9 +76,9 @@ function renderWhiteSauce() {
 function renderGlutenFreeCrust() {
   document.querySelectorAll(".crust").forEach(function($crust) {
     if (state.glutenFreeCrust) {
-      $crust.style.visibility = "visible";
+      document.querySelector(".crust").classList.add("crust-gluten-free");
     } else {
-      $crust.style.visibility = "hidden";
+      document.querySelector(".crust").classList.remove("crust-gluten-free");
     }
   });
 }
