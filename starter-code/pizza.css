@@ -1,12 +1,65 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, sub, sup, tt, var,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-header, section, footer, article, details {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+header,
+section,
+footer,
+article,
+details {
   margin: 0;
   padding: 0;
   border: 0;
@@ -28,7 +81,8 @@ body {
   background: white;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 /* tables still need 'cellspacing="0"' in the markup */
@@ -37,27 +91,37 @@ table {
   border-spacing: 0;
 }
 
-caption, th, td {
+caption,
+th,
+td {
   text-align: left;
   font-weight: normal;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   content: "";
 }
 
-blockquote, q {
+blockquote,
+q {
   quotes: "" "";
 }
 
 /*--- HTML5 -----*/
-header, nav, details, section, aside, footer {
+header,
+nav,
+details,
+section,
+aside,
+footer {
   display: block;
 }
 
 body {
-  font-family: 'Courier', 'Courier New', Serif;
+  font-family: "Courier", "Courier New", Serif;
   max-width: 750px;
   margin: 0 auto;
 }
@@ -112,7 +176,7 @@ header {
 h1 {
   font-size: 70px;
   color: #444;
-  margin-bottom: 10px
+  margin-bottom: 10px;
 }
 
 p.description {
@@ -141,7 +205,6 @@ p.description {
   border-radius: 3px;
   background-color: rgba(255, 255, 255, 0.8);
 }
-
 
 /*------ Controls -----*/
 .controls {
@@ -202,29 +265,29 @@ p.description {
   box-shadow: none;
 }
 
-.btn-green-peppers {
+.btn-greenpeppers {
   background: #129306;
   box-shadow: 0 6px #0a5203;
   color: #fff;
 }
 
-.btn-green-peppers:hover {
+.btn-greenpeppers:hover {
   background: #0e7205;
   box-shadow: 0 5px #063102;
   color: #fff;
 }
 
-.btn-green-peppers.active {
+.btn-greenpeppers.active {
   top: 2px;
   box-shadow: 0 2px #0a5203;
 }
 
-.btn-green-peppers.active:hover {
+.btn-greenpeppers.active:hover {
   box-shadow: 0 2px #063102;
 }
 
-.btn-green-peppers:active,
-.btn-green-peppers.active:active {
+.btn-greenpeppers:active,
+.btn-greenpeppers.active:active {
   top: 5px;
   box-shadow: none;
 }
@@ -296,7 +359,7 @@ p.description {
 }
 
 .price h2:after {
-  content: ':';
+  content: ":";
 }
 
 .price b {
@@ -310,7 +373,7 @@ p.description {
 }
 
 .price li:before {
-  content: '+ ';
+  content: "+ ";
   color: #e2311a;
 }
 
@@ -359,7 +422,6 @@ p.description {
   z-index: 10;
   box-shadow: inset 0 0 200px #d88e24;
 }
-
 
 /*--- Pepperoni ---*/
 #pepperoni section:nth-child(7) {
@@ -802,19 +864,18 @@ p.description {
   transform: rotate(67deg);
 }
 
-
 /*--- Green Peppers ---*/
-.green-pepper {
+.greenpepper {
   position: absolute;
   width: 20px;
   height: 45px;
   background: #2f5e20;
-  box-shadow: 2px 2px 2px rgba(66, 132, 45, .9);
+  box-shadow: 2px 2px 2px rgba(66, 132, 45, 0.9);
   margin: 250px 0 0 400px;
   z-index: 30;
 }
 
-.green-pepper.one {
+.greenpepper.one {
   margin: 200px 0 0 100px;
   -webkit-transform: rotate(22deg);
   -moz-transform: rotate(22deg);
@@ -822,7 +883,7 @@ p.description {
   transform: rotate(22deg);
 }
 
-.green-pepper.two {
+.greenpepper.two {
   margin: 450px 0 0 500px;
   -webkit-transform: rotate(-47deg);
   -moz-transform: rotate(-47deg);
@@ -830,7 +891,7 @@ p.description {
   transform: rotate(-47deg);
 }
 
-.green-pepper.three {
+.greenpepper.three {
   margin: 195px 0 0 200px;
   -webkit-transform: rotate(115deg);
   -moz-transform: rotate(115deg);
@@ -838,7 +899,7 @@ p.description {
   transform: rotate(115deg);
 }
 
-.green-pepper.four {
+.greenpepper.four {
   margin: 90px 0 0 300px;
   -webkit-transform: rotate(67deg);
   -moz-transform: rotate(67deg);
@@ -846,7 +907,7 @@ p.description {
   transform: rotate(67deg);
 }
 
-.green-pepper.five {
+.greenpepper.five {
   margin: 500px 0 0 300px;
   -webkit-transform: rotate(-86deg);
   -moz-transform: rotate(-86deg);
@@ -854,7 +915,7 @@ p.description {
   transform: rotate(-86deg);
 }
 
-.green-pepper.six {
+.greenpepper.six {
   margin: 300px 0 0 200px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -862,7 +923,7 @@ p.description {
   transform: rotate(0deg);
 }
 
-.green-pepper.seven {
+.greenpepper.seven {
   margin: 340px 0 0 295px;
   -webkit-transform: rotate(-47deg);
   -moz-transform: rotate(-47deg);
@@ -870,7 +931,7 @@ p.description {
   transform: rotate(-47deg);
 }
 
-.green-pepper.eight {
+.greenpepper.eight {
   margin: 500px 0 0 150px;
   -webkit-transform: rotate(115deg);
   -moz-transform: rotate(115deg);
@@ -878,7 +939,7 @@ p.description {
   transform: rotate(115deg);
 }
 
-.green-pepper.nine {
+.greenpepper.nine {
   margin: 300px 0 0 100px;
   -webkit-transform: rotate(67deg);
   -moz-transform: rotate(67deg);
@@ -886,7 +947,7 @@ p.description {
   transform: rotate(67deg);
 }
 
-.green-pepper.ten {
+.greenpepper.ten {
   margin: 400px 0 0 200px;
   -webkit-transform: rotate(289deg);
   -moz-transform: rotate(289deg);
@@ -894,7 +955,7 @@ p.description {
   transform: rotate(289deg);
 }
 
-.green-pepper.eleven {
+.greenpepper.eleven {
   margin: 300px 0 0 200px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -902,7 +963,7 @@ p.description {
   transform: rotate(0deg);
 }
 
-.green-pepper.twelve {
+.greenpepper.twelve {
   margin: 300px 0 0 200px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -910,7 +971,7 @@ p.description {
   transform: rotate(0deg);
 }
 
-.green-pepper.thirteen {
+.greenpepper.thirteen {
   margin: 300px 0 0 200px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -918,7 +979,7 @@ p.description {
   transform: rotate(0deg);
 }
 
-.green-pepper.fourteen {
+.greenpepper.fourteen {
   margin: 210px 0 0 300px;
   -webkit-transform: rotate(10deg);
   -moz-transform: rotate(10deg);
@@ -926,7 +987,7 @@ p.description {
   transform: rotate(10deg);
 }
 
-.green-pepper.fifteen {
+.greenpepper.fifteen {
   margin: 420px 0 0 290px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -934,7 +995,7 @@ p.description {
   transform: rotate(0deg);
 }
 
-.green-pepper.sixteen {
+.greenpepper.sixteen {
   margin: 150px 0 0 410px;
   -webkit-transform: rotate(50deg);
   -moz-transform: rotate(50deg);
@@ -942,7 +1003,7 @@ p.description {
   transform: rotate(50deg);
 }
 
-.green-pepper.seventeen {
+.greenpepper.seventeen {
   margin: 260px 0 0 510px;
   -webkit-transform: rotate(80deg);
   -moz-transform: rotate(80deg);
@@ -950,7 +1011,7 @@ p.description {
   transform: rotate(80deg);
 }
 
-.green-pepper.eightteen {
+.greenpepper.eightteen {
   margin: 400px 0 0 410px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -958,7 +1019,7 @@ p.description {
   transform: rotate(0deg);
 }
 
-.green-pepper.nineteen {
+.greenpepper.nineteen {
   margin: 280px 0 0 390px;
   -webkit-transform: rotate(150deg);
   -moz-transform: rotate(150deg);
@@ -966,7 +1027,7 @@ p.description {
   transform: rotate(150deg);
 }
 
-.green-pepper.twenty {
+.greenpepper.twenty {
   margin: 530px 0 0 420px;
   -webkit-transform: rotate(-100deg);
   -moz-transform: rotate(-100deg);
@@ -974,7 +1035,7 @@ p.description {
   transform: rotate(-100deg);
 }
 
-.green-pepper.twenty-one {
+.greenpepper.twenty-one {
   margin: 360px 0 0 540px;
   -webkit-transform: rotate(69deg);
   -moz-transform: rotate(69deg);
@@ -1001,11 +1062,10 @@ footer a:hover {
 
 #crumbs {
   opacity: 0;
-  -webkit-transition: all .3s linear;
+  -webkit-transition: all 0.3s linear;
 }
 
 @media screen and (max-width: 720px) {
-
   body {
     padding: 25px 0;
   }
