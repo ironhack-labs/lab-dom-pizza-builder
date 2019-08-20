@@ -19,7 +19,7 @@ header, section, footer, article, details {
 }
 /* remember to define focus styles! */
 :focus {
-  outline: 0;
+  outline: 0; 
 }
 
 body {
