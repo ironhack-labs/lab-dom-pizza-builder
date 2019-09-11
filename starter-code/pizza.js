@@ -119,15 +119,35 @@ function renderButtons() {
     document.querySelector('.btn.btn-crust').classList.add("active");
   } else {
     document.querySelector('.btn.btn-crust').classList.remove("active");
-  }
+  } 
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  // if(document.querySelectorAll('painel controls').
-  // contains('active')){
-
-  // }
+  let page = ''; 
+  let total = 10;
+  if(document.querySelector('.btn-pepperonni').classList.contains("active")){
+    page += "<li>$1 pepperonni</li>";          
+    total += 1;
+  }
+  if(document.querySelector('.btn.btn-mushrooms').classList.contains("active")){
+    page += "<li>$1 mushrooms</li>";
+    total += 1;
+  }
+  if(document.querySelector('.btn.btn-green-peppers').classList.contains("active")){
+    page += "<li>$1 green peppers</li>";
+    total += 1;
+  }
+  if(document.querySelector('.btn.btn-sauce').classList.contains("active")){
+    page += "<li>$3 white sauce</li>";
+    total += 3;
+  } 
+  if(document.querySelector('.btn.btn-crust').classList.contains("active")){
+    page += "<li>$5 gluten-free crust</li>";
+    total += 5;
+   }
+    document.querySelector('.panel.price>ul').innerHTML = page;          
+    document.querySelector('.panel.price>strong').innerHTML = '$'+ total;          
 }
 
 
