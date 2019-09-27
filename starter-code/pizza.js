@@ -120,21 +120,17 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  const lis = Array.from(document.querySelectorAll('aside.panel.price li'))
+  const ul = document.querySelector('aside.panel.price ul')
   const price = document.querySelector('aside.panel.price strong')
   let finalPrice = 10
+  ul.innerHTML = ''
 
-  state.pepperonni ? lis[0].style.display = "block" : lis[0].style.display = "none"
-  state.mushrooms ? lis[1].style.display = "block" : lis[1].style.display = "none"
-  state.greenPeppers ? lis[2].style.display = "block" : lis[2].style.display = "none"
-  state.whiteSauce ? lis[3].style.display = "block" : lis[3].style.display = "none"
-  state.glutenFreeCrust ? lis[4].style.display = "block" : lis[4].style.display = "none"
-
-  if (state.pepperonni) { finalPrice +=1 }
-  if (state.mushrooms) { finalPrice +=1 }
-  if (state.greenPeppers) { finalPrice +=1 }
-  if (state.whiteSauce) { finalPrice +=3 }
-  if (state.glutenFreeCrust) { finalPrice +=5 }
+  for (let ingr in ingredients) {
+    if (state[ingr]) {
+      ul.innerHTML += `<li>+ $${ingredients[ingr].price} ${ingr} </li>`
+      finalPrice += ingredients[ingr].price
+    } 
+  }
 
   price.innerText = `$${finalPrice}`
   
