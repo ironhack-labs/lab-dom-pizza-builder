@@ -94,18 +94,15 @@ function renderGlutenFreeCrust() {
     }
 }
 
-
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  // document.querySelectorAll('.btn').forEach(function($btn){
-  //   $btn.onclick = function(){$btn.classList.toggle('active');}
-    
-  // })
-  // allBtn = document.querySelectorAll('.btn');
-
-  // allBtn.onclick = function() {
-  //   btn.classList.toggle('active');
-  // }  
+  document.querySelectorAll(".btn").forEach(function(item, index) {
+    if(Object.values(state)[index]) {
+      item.classList.add("active")
+    } else {
+      item.classList.remove("active")
+    }
+  })
 }
 
 function renderPrice() {
@@ -121,7 +118,6 @@ function renderPrice() {
       finalPrice += ingredients[ingreKey].price;
     }
   }
-
   total.innerHTML = "$" + finalPrice;
 }
 
