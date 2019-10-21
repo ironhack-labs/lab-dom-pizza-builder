@@ -164,15 +164,22 @@ function renderPrice() {
   let finalPrice = basePrice;
 
   let ingredientsKeys = Object.keys(ingredients);
-  console.log(ingredientsKeys);
 
-  for (element of ingredientsKeys) {
+  ingredientsKeys.forEach((element, index) => {
     if (state[element]) {
-      finalPrice += ingredients[element].price
-    }
-  }
 
-  let shownPrice = document.querySelector(".panel strong");
+      finalPrice += ingredients[element].price;
+      const singlePrice = document.querySelector(".price ul :nth-child(" + (index + 1).toString() + ")");
+      singlePrice.style.position = "relative";
+      singlePrice.style.visibility = "visible";
+    } else {
+      const singlePrice = document.querySelector(".price ul :nth-child(" + (index + 1).toString() + ")");
+      singlePrice.style.position = "absolute";
+      singlePrice.style.visibility = "hidden";
+    }
+  })
+
+  let shownPrice = document.querySelector(".price strong");
   shownPrice.innerHTML = "$" + finalPrice
 }
 
