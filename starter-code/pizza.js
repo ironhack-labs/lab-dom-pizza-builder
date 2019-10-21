@@ -27,7 +27,6 @@ function renderEverything() {
   renderGreenPeppers()
   renderWhiteSauce()
   renderGlutenFreeCrust()
-
   renderButtons()
   renderPrice()
 }
