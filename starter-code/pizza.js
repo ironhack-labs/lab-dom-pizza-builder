@@ -12,9 +12,9 @@ var ingredients = {
 
 // Initial value of the state (the state values can change over time)s
 var state = {
-  pepperonni: true,
-  mushrooms: true,
-  greenPeppers: true,
+  pepperonni: false,
+  mushrooms: false,
+  greenPeppers: false,
   whiteSauce: false,
   glutenFreeCrust: false,
 }
@@ -105,10 +105,28 @@ function renderButtons() {
   state.glutenFreeCrust ? document.querySelector(".btn-crust").classList.add("active") : document.querySelector(".btn-crust").classList.remove("active");
 }
 
+// Iteration 4: change the HTML of `<aside class="panel price">`
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
-}
+  const pepPrice = document.querySelectorAll("aside ul li")[0];
+  const mushPrice = document.querySelectorAll("aside ul li")[1];
+  const greenPeppersPrice = document.querySelectorAll("aside ul li")[2];
+  const whiteSaucePrice = document.querySelectorAll("aside ul li")[3];
+  const glutenFreeCrustPrice = document.querySelectorAll("aside ul li")[4];
 
+  state.pepperonni ? pepPrice.style.display = "block" : pepPrice.style.display = "none";
+
+  state.mushrooms ? mushPrice.style.display = "block" : mushPrice.style.display = "none";
+
+  state.greenPeppers ? greenPeppersPrice.style.display = "block" : greenPeppersPrice.style.display = "none";
+
+  state.whiteSauce ? whiteSaucePrice.style.display = "block" : whiteSaucePrice.style.display = "none";
+
+  state.glutenFreeCrust ? glutenFreeCrustPrice.style.display = "block" : glutenFreeCrustPrice.style.display = "none";
+
+  let result = basePrice + state.pepperonni + state.mushrooms + state.greenPeppers + (state.whiteSauce * 3) + (state.glutenFreeCrust * 5);
+
+  document.querySelector("strong").innerHTML = `$${result}`;
+}
 
 renderEverything()
 
