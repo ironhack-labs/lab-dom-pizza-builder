@@ -331,7 +331,7 @@ p.description {
 }
 
 .crust-gluten-free {
-  background-color: #e0d5cf;
+  background-color: #e0d5cf !important;
   box-shadow: inset 0 0 40px #d3c3bb;
 }
 
