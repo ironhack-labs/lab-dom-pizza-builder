@@ -16,7 +16,7 @@ var state = {
   mushrooms: true,
   greenPeppers: true,
   whiteSauce: false,
-  glutenFreeCrust: false
+  glutenFreeCrust: false,
 }
 
 // This function takes care of rendering the pizza based on the state
@@ -92,8 +92,17 @@ function renderGlutenFreeCrust() {
   })
 }
 
+// Iteration 3: add/remove the class "active" of each `<button class="btn">`
 function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  state.pepperonni ? document.querySelector(".btn-pepperonni").classList.add("active") : document.querySelector(".btn-pepperonni").classList.remove("active");
+
+  state.mushrooms ? document.querySelector(".btn-mushrooms").classList.add("active") : document.querySelector(".btn-mushrooms").classList.remove("active");
+
+  state.greenPeppers ? document.querySelector(".btn-green-peppers").classList.add("active") : document.querySelector(".btn-green-peppers").classList.remove("active");
+
+  state.whiteSauce ? document.querySelector(".btn-sauce").classList.add("active") : document.querySelector(".btn-sauce").classList.remove("active");
+
+  state.glutenFreeCrust ? document.querySelector(".btn-crust").classList.add("active") : document.querySelector(".btn-crust").classList.remove("active");
 }
 
 function renderPrice() {
