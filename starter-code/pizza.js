@@ -108,37 +108,53 @@ function renderPrice() {
   }
   if (state.mushrooms) {
     basePrice += 1;
-    document.querySelector(".price :nth-child(2)").style.visibility = "visible";
-    document.querySelector(".price :nth-child(2)").style.position = "relative";
-  } else {
-    document.querySelector(".price :nth-child(2)").style.visibility = "hidden";
-    document.querySelector(".price :nth-child(2)").style.position = "absolute";
+    //   document.querySelector(".price ul:nth-child(2)").style.visibility =
+    //     "visible";
+    //   document.querySelector(".price ul:nth-child(2)").style.position =
+    //     "relative";
+    // } else {
+    //   document.querySelector(".price ul:nth-child(2)").style.visibility =
+    //     "hidden";
+    //   document.querySelector(".price ul:nth-child(2)").style.position =
+    //     "absolute";
   }
   if (state.greenPeppers) {
     basePrice += 1;
-    document.querySelector(".price :nth-child(3)").style.visibility = "visible";
-    document.querySelector(".price :nth-child(3)").style.position = "relative";
-  } else {
-    document.querySelector(".price :nth-child(3)").style.visibility = "hidden";
-    document.querySelector(".price :nth-child(3)").style.position = "absolute";
+    //   document.querySelector(".price ul:nth-child(3)").style.visibility =
+    //     "visible";
+    //   document.querySelector(".price ul:nth-child(3)").style.position =
+    //     "relative";
+    // } else {
+    //   document.querySelector(".price ul:nth-child(3)").style.visibility =
+    //     "hidden";
+    //   document.querySelector(".price ul:nth-child(3)").style.position =
+    //     "absolute";
   }
 
   if (state.whiteSauce) {
     basePrice += 3;
-    document.querySelector(".price :nth-child(4)").style.visibility = "visible";
-    document.querySelector(".price :nth-child(4)").style.position = "relative";
-  } else {
-    document.querySelector(".price :nth-child(4)").style.visibility = "hidden";
-    document.querySelector(".price :nth-child(4)").style.position = "absolute";
+    //   document.querySelector(".price ul:nth-child(4)").style.visibility =
+    //     "visible";
+    //   document.querySelector(".price ul:nth-child(4)").style.position =
+    //     "relative";
+    // } else {
+    //   document.querySelector(".price ul:nth-child(4)").style.visibility =
+    //     "hidden";
+    //   document.querySelector(".price ul:nth-child(4)").style.position =
+    //     "absolute";
   }
 
   if (state.glutenFreeCrust) {
     basePrice += 5;
-    document.querySelector(".price :nth-child(5)").style.visibility = "visible";
-    document.querySelector(".price :nth-child(5)").style.position = "relative";
-  } else {
-    document.querySelector(".price :nth-child(5)").style.visibility = "hidden";
-    document.querySelector(".price :nth-child(5)").style.position = "absolute";
+    //   document.querySelector(".price ul:nth-child(5)").style.visibility =
+    //     "visible";
+    //   document.querySelector(".price ul:nth-child(5)").style.position =
+    //     "relative";
+    // } else {
+    //   document.querySelector(".price ul:nth-child(5)").style.visibility =
+    //     "hidden";
+    //   document.querySelector(".price ul:nth-child(5)").style.position =
+    //     "absolute";
   }
 
   document.querySelector(".price strong").innerText = `$${basePrice}`;
