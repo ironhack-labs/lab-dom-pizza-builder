@@ -73,32 +73,52 @@ function renderWhiteSauce() {
     document.querySelector(".sauce").classList.remove("sauce-white");
   }
 }
-
+// console.log("yes");
 // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
 function renderGlutenFreeCrust() {
+  console.log("yo");
   if (state.glutenFreeCrust) {
+    console.log("ici", state.glutenFreeCrust);
     document.querySelector(".crust").classList.add("crust-gluten-free");
   } else {
+    console.log("la");
     document.querySelector(".crust").classList.remove("crust-gluten-free");
   }
 }
+
 // Iteration 3: add/remove the class "active" of each `<button class="btn">
 function renderButtons() {
   if (state.pepperonni) {
-    document.querySelector(".btn.btn-pepperonni").classList.add("active");
+    document.querySelector(".btn-pepperonni").classList.add("active");
   } else {
-    document.querySelector(".btn.btn-pepperonni").classList.remove("active");
+    document.querySelector(".btn-pepperonni").classList.remove("active");
   }
   if (state.mushrooms) {
-    document.querySelector(".btn.btn-mushrooms").classList.add("active");
+    document.querySelector(".btn-mushrooms").classList.add("active");
   } else {
-    document.querySelector(".btn.btn-mushrooms").classList.remove("active");
+    document.querySelector(".btn-mushrooms").classList.remove("active");
+  }
+  if (state.greenPeppers) {
+    document.querySelector(".btn-green-peppers").classList.add("active");
+  } else {
+    document.querySelector(".btn-green-peppers").classList.remove("active");
+  }
+  if (state.whiteSauce) {
+    document.querySelector(".btn-sauce").classList.add("active");
+  } else {
+    document.querySelector(".btn-sauce").classList.remove("active");
+  }
+  if (state.glutenFreeCrust) {
+    document.querySelector(".btn-crust").classList.add("active");
+  } else {
+    document.querySelector(".btn-crust").classList.remove("active");
   }
 }
 
-function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
-}
+// Iteration 4: change the HTML of `<aside class="panel price">`
+
+renderEverything();
+function renderPrice() {}
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperonni">`
 document.querySelector(".btn.btn-pepperonni").onclick = function() {
