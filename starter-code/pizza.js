@@ -118,15 +118,15 @@ function renderButtons() {
 
 // Iteration 4: change the HTML of `<aside class="panel price">`
 function renderPrice() {
-  for (let item in state){
-    if (state[item]){
-      basePrice = basePrice + ingredients.pepperonni.price;
-      return basePrice;
-    }
-    else{
-      return basePrice;
-    }
-  }
+  // for (let item in state){
+  //   if (state[item]){
+  //     basePrice = basePrice + ingredients.pepperonni.price;
+  //     return basePrice;
+  //   }
+  //   else{
+  //     return basePrice;
+  //   }
+  // }
 }
 
 renderEverything();
