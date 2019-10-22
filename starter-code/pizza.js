@@ -98,34 +98,39 @@ function renderButtons() {
     whiteSauce: 'btn-sauce',
     glutenFreeCrust: 'btn-crust',
   };
+  console.log(state);
   for (let button of Object.keys(state)) {
     if (state[button]) {
       document
         .querySelector(`.${stateToBtnClass[button]}`)
         .classList.add('active');
     } else {
+      console.log(document.querySelector(`.${stateToBtnClass[button]}`));
       document
         .querySelector(`.${stateToBtnClass[button]}`)
         .classList.remove('active');
     }
   }
+  console.log('------');
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  document.querySelector('.price ul').innerHTML = '';
-  let newText = '';
+  const priceUl = document.querySelector('.price ul');
+  priceUl.innerHTML = '';
   let sum = 10;
-  for (const ingredient in state) {
+  for (const ingredient of Object.keys(state)) {
     if (state[ingredient]) {
       sum += ingredients[ingredient].price;
-      newText += `<li>$${ingredients[ingredient].price} ${ingredients[ingredient].name}`;
+      // newText += `<li>$${ingredients[ingredient].price} ${ingredients[ingredient].name}`;
+      const li = document.createElement('li');
+      li.innerText = `$${ingredients[ingredient].price} ${ingredients[ingredient].name}`;
+      priceUl.appendChild(li);
     }
-    document.querySelector('strong').innerText = `$${sum}`;
-    document.querySelector('.price ul').innerHTML = newText;
+    // document.querySelector('.price ul').innerHTML = newText;
   }
+  document.querySelector('strong').innerText = `$${sum}`;
 }
-
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperonni">`
@@ -151,7 +156,7 @@ document.querySelector('.btn.btn-green-peppers').onclick = function() {
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 
 document.querySelector('.btn.btn-sauce').onclick = function() {
-  state.sauce = !state.sauce;
+  state.whiteSauce = !state.whiteSauce;
   renderEverything();
 };
 
