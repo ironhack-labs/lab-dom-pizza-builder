@@ -76,10 +76,8 @@ function renderGlutenFreeCrust() {
   document.querySelectorAll(".crust").forEach(function($gfc) {
     if (state.glutenFreeCrust) {
       $gfc.classList.add("crust-gluten-free");
-      // $gfc.style.visibility = "visible";
     } else {
       $gfc.classList.remove("crust-gluten-free");
-      // $gfc.style.visibility = "hidden";
     }
   });
 }
@@ -126,46 +124,41 @@ function renderPrice() {
   let sum = 10;
   document.querySelectorAll(".btn-pepperonni").forEach(function(price) {
     if (state.pepperonni) {
-      sum += 1;
+      sum += ingredients.pepperonni.price;
     }
   });
   document.querySelectorAll(".btn-mushrooms").forEach(function(price) {
     if (state.mushrooms) {
-      sum += 1;
+      sum += ingredients.mushrooms.price;
     }
-    // document.querySelectorAll(".price li")[1].style.display = "none";
   });
   document.querySelectorAll(".btn-green-peppers").forEach(function(price) {
     if (state.greenPeppers) {
-      sum += 1;
+      sum += ingredients.greenPeppers.price;
     }
   });
   document.querySelectorAll(".btn-sauce").forEach(function(price) {
     if (state.whiteSauce) {
-      sum += 3;
+      sum += ingredients.whiteSauce.price;
     }
   });
   document.querySelectorAll(".btn-crust").forEach(function(price) {
     if (state.glutenFreeCrust) {
-      sum += 5;
+      sum += ingredients.glutenFreeCrust.price;
     }
   });
   console.log(sum);
 
   // Iteration 4: change the HTML of `<aside class="panel price">`
   document.querySelector(".panel strong").innerHTML = "$" + sum;
-  // priceText = "400";
 
   const priceItems = document.querySelectorAll(".price li");
   console.log(priceItems[0]);
   Object.keys(state).map(function(key, index) {
     if (state[key]) {
       priceItems[index].style.display = "block";
-      // console.log(document.querySelectorAll(".price li").hidden);
       return priceItems[index];
     }
-    // console.log(state[key]);
-    // console.log(document.querySelectorAll(".price li").hidden);
     priceItems[index].style.display = "none";
     return priceItems[index];
   });
