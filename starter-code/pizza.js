@@ -139,8 +139,7 @@ function renderPrice() {
       ul.appendChild(li);
     }
   };
-  document.getElementsByTagName("strong")[0];
-  innnerText = "$" + totalPrice;
+  document.getElementsByTagName("strong")[0].innerText = "$" + totalPrice;
 }
 
 
