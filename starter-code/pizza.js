@@ -67,10 +67,10 @@ function renderGreenPeppers() {
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
   document.querySelectorAll('.sauce').forEach(function($sauce) {
-    if (state.sauce) {
-      $sauce.style.visibility = 'visible';
+    if (state.whiteSauce) {
+      $sauce.classList.add('sauce-white');
     } else {
-      $sauce.style.visibility = 'hidden';
+      $sauce.classList.remove('sauce-white');
     }
   });
 }
