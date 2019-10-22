@@ -115,29 +115,35 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  const ul = document.querySelector('.price ul');
 
-  const newPrice = document.querySelector("aside b");
-  newPrice.innerText = "$20 cheese pizza";
+  ul.innerHTML = "";
 
-  const pep = document.querySelector("aside > ul :nth-child(1)");
-  pep.innerText = "$2 pepperonni";
+  // ***DOES THE SAME AS THE ABOVE STATEMENT***
+  // document.querySelectorAll('.price li').forEach(function (item) {
+  //   ul.removeChild(item);
+  // })
 
-  const mush = document.querySelector("aside > ul :nth-child(2)");
-  mush.innerText = "$2 mushrooms";
+  let totalPrice = basePrice;
 
-  const gpep = document.querySelector("aside > ul :nth-child(3)");
-  gpep.innerText = "$2 green peppers";
+  for (const key in ingredients) {
+    if (state[key] === true) {
 
-  const wsauce = document.querySelector("aside > ul :nth-child(4)");
-  wsauce.innerText = "$6 white sauce";
+      const ingredientPrice = ingredients[key].price;
 
-  const funFree = document.querySelector("aside > ul :nth-child(5)");
-  funFree.innerText = "$10 gluten-free crust";
+      totalPrice += ingredientPrice;
 
-  const total = document.querySelector("aside > strong");
-  total.innerText = "$42";
+      const li = document.createElement('li');
+      li.innerText = '$' + ingredientPrice + " " + ingredients[key].name.toLowerCase();
 
+      ul.appendChild(li);
+    }
+  };
+  document.getElementsByTagName("strong")[0];
+  innnerText = "$" + totalPrice;
 }
+
+
 
 
 renderEverything()
