@@ -12,9 +12,9 @@ var ingredients = {
 
 // Initial value of the state (the state values can change over time)
 var state = {
-  pepperonni: true,
-  mushrooms: true,
-  greenPeppers: true,
+  pepperonni: false,
+  mushrooms: false,
+  greenPeppers: false,
   whiteSauce: false,
   glutenFreeCrust: false
 };
@@ -43,8 +43,7 @@ function renderPepperonni() {
 
 // Iteration 1: set the visibility of `<section class="mushroom">
 function renderMushrooms() {
-  document.querySelectorAll(".mushroom").forEach(function($mushroom) {
-    //$Lié à un élément HTML
+  document.querySelectorAll(".mushroom").forEach($mushroom => {
     if (state.mushrooms) {
       $mushroom.style.visibility = "visible";
     } else {
@@ -55,12 +54,11 @@ function renderMushrooms() {
 
 // Iteration 1: set the visibility of `<section class="green-pepper">`
 function renderGreenPeppers() {
-  document.querySelectorAll(".green-pepper").forEach(function($greenPepper) {
-    //$Lié à un élément HTML
+  document.querySelectorAll(".green-pepper").forEach($greenPep => {
     if (state.greenPeppers) {
-      $greenPepper.style.visibility = "visible";
+      $greenPep.style.visibility = "visible";
     } else {
-      $greenPepper.style.visibility = "hidden";
+      $greenPep.style.visibility = "hidden";
     }
   });
 }
@@ -73,15 +71,12 @@ function renderWhiteSauce() {
     document.querySelector(".sauce").classList.remove("sauce-white");
   }
 }
-// console.log("yes");
+
 // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
 function renderGlutenFreeCrust() {
-  console.log("yo");
   if (state.glutenFreeCrust) {
-    console.log("ici", state.glutenFreeCrust);
     document.querySelector(".crust").classList.add("crust-gluten-free");
   } else {
-    console.log("la");
     document.querySelector(".crust").classList.remove("crust-gluten-free");
   }
 }
@@ -118,7 +113,23 @@ function renderButtons() {
 // Iteration 4: change the HTML of `<aside class="panel price">`
 
 renderEverything();
-function renderPrice() {}
+
+function renderPrice() {
+  // Get the elements in panel
+  let panelPrice = document.querySelector(".panel.price");
+  // Get the Final Price
+  let finalPrice = panelPrice.querySelector("strong");
+  listItems = "";
+  // Loop through the properties and considering their state add/remove the list of selected product & update or remove the price
+  for (let key in ingredients) {
+    if (state[key] === true) {
+      listItems += `<li>$ ${ingredients[key].price} ${ingredients[key].name}<li>`;
+      basePrice += ingredients[key].price;
+    }
+  }
+  panelPrice.querySelector("ul").innerHTML = listItems;
+  finalPrice.textContent = `$${basePrice}`;
+}
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperonni">`
 document.querySelector(".btn.btn-pepperonni").onclick = function() {
