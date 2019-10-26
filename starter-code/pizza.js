@@ -58,7 +58,7 @@ function renderPepperonni() {
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
   document.querySelectorAll(".mushroom").forEach(function ($mush) {
-    if (state.mushroom) {
+    if (state.mushrooms) {
       $mush.style.visibility = "visible";
     } else {
       $mush.style.visibility = "hidden";
@@ -69,7 +69,7 @@ function renderMushrooms() {
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
   document.querySelectorAll(".green-pepper").forEach(function ($green) {
-    if (state.greenPepper) {
+    if (state.greenPeppers) {
       $green.style.visibility = "visible";
       // console.log("visible")
     } else {
@@ -80,7 +80,7 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   document.querySelectorAll(".sauce").forEach(function (sauce) {
-    if (state.sauceWhite) {
+    if (state.whiteSauce) {
       sauce.classList.add("sauce-white");
     } else {
       sauce.classList.remove("sauce-white");
@@ -91,7 +91,7 @@ function renderWhiteSauce() {
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
   document.querySelectorAll(".crust").forEach(function ($crust) {
-    if (state.crustGlutenFree) {
+    if (state.glutenFreeCrust) {
       $crust.classList.add("crust-gluten-free");
     } else {
       $crust.classList.remove("crust-gluten-free");
@@ -100,15 +100,45 @@ function renderGlutenFreeCrust() {
 }
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
-  var li = document.querySelectorAll("ul li")
-  li.forEach(function (li) {
-    if (!state.pepperonni) {
-      return
-    }
-  })
-}
+  // on récupère le block aside .price
+  let content = document.querySelector(".price");
 
+  // on recupere la balise strong qui est dans l'element "content"
+  // créé au dessus
+  let sum = content.querySelector("strong");
+
+  // on récupère l'element ul de la variable "content"
+  let tagContent = content.querySelector("ul");
+
+  // on initialise tagContent vide à chaque appel de la fonction
+  tagContent.innerHTML = "";
+  sum.innerHTML = basePrice;
+  let newPrice = basePrice;
+
+  if (state.pepperonni) {
+    // si state pepperonni true on ajoute li dans le tagcontent
+    tagContent.innerHTML = "<li>$1 pepperonni</li>";
+    newPrice = newPrice + ingredients.pepperonni.price;
+  }
+  if (state.mushrooms) {
+    tagContent.innerHTML += "<li>$1 mushrooms</li>";
+    newPrice = newPrice + ingredients.mushrooms.price;
+  }
+  if (state.greenPeppers) {
+    tagContent.innerHTML += "<li>$1 green peppers</li>";
+    newPrice = newPrice + ingredients.greenPeppers.price;
+  }
+  if (state.whiteSauce) {
+    tagContent.innerHTML += "<li>$3 white sauce</li>";
+    newPrice = newPrice + ingredients.whiteSauce.price;
+  }
+  if (state.glutenFreeCrust) {
+    tagContent.innerHTML += "<li>$5 gluten-free crust</li>";
+    newPrice = newPrice + ingredients.glutenFreeCrust.price;
+  }
+
+  sum.innerHTML = "$" + newPrice;
+}
 renderEverything();
 
 
@@ -127,13 +157,13 @@ pepButton.onclick = function () {
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
 
 mushButton.onclick = function () {
-  state.mushroom = !state.mushroom;
+  state.mushrooms = !state.mushrooms;
   renderEverything();
   mushButton.classList.toggle("active");
 };
 
 greenButton.onclick = function () {
-  state.greenPepper = !state.greenPepper;
+  state.greenPeppers = !state.greenPeppers;
   renderEverything();
   greenButton.classList.toggle("active");
 };
@@ -143,7 +173,7 @@ greenButton.onclick = function () {
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 
 sauceButton.onclick = function () {
-  state.sauceWhite = !state.sauceWhite;
+  state.whiteSauce = !state.whiteSauce;
   renderEverything();
   sauceButton.classList.toggle("active");
 };
@@ -151,7 +181,7 @@ sauceButton.onclick = function () {
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
 
 gfreeButton.onclick = function () {
-  state.crustGlutenFree = !state.crustGlutenFree;
+  state.glutenFreeCrust = !state.glutenFreeCrust;
   renderEverything();
   gfreeButton.classList.toggle("active");
 };
