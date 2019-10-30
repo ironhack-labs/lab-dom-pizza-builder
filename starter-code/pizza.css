@@ -202,29 +202,29 @@ p.description {
   box-shadow: none;
 }
 
-.btn-green-peppers {
+.btn-greenPeppers {
   background: #129306;
   box-shadow: 0 6px #0a5203;
   color: #fff;
 }
 
-.btn-green-peppers:hover {
+.btn-greenPeppers:hover {
   background: #0e7205;
   box-shadow: 0 5px #063102;
   color: #fff;
 }
 
-.btn-green-peppers.active {
+.btn-greenPeppers.active {
   top: 2px;
   box-shadow: 0 2px #0a5203;
 }
 
-.btn-green-peppers.active:hover {
+.btn-greenPeppers.active:hover {
   box-shadow: 0 2px #063102;
 }
 
-.btn-green-peppers:active,
-.btn-green-peppers.active:active {
+.btn-greenPeppers:active,
+.btn-greenPeppers.active:active {
   top: 5px;
   box-shadow: none;
 }
@@ -804,7 +804,7 @@ p.description {
 
 
 /*--- Green Peppers ---*/
-.green-pepper {
+.greenPepper {
   position: absolute;
   width: 20px;
   height: 45px;
@@ -814,7 +814,7 @@ p.description {
   z-index: 30;
 }
 
-.green-pepper.one {
+.greenPepper.one {
   margin: 200px 0 0 100px;
   -webkit-transform: rotate(22deg);
   -moz-transform: rotate(22deg);
@@ -822,7 +822,7 @@ p.description {
   transform: rotate(22deg);
 }
 
-.green-pepper.two {
+.greenPepper.two {
   margin: 450px 0 0 500px;
   -webkit-transform: rotate(-47deg);
   -moz-transform: rotate(-47deg);
@@ -830,7 +830,7 @@ p.description {
   transform: rotate(-47deg);
 }
 
-.green-pepper.three {
+.greenPepper.three {
   margin: 195px 0 0 200px;
   -webkit-transform: rotate(115deg);
   -moz-transform: rotate(115deg);
@@ -838,7 +838,7 @@ p.description {
   transform: rotate(115deg);
 }
 
-.green-pepper.four {
+.greenPepper.four {
   margin: 90px 0 0 300px;
   -webkit-transform: rotate(67deg);
   -moz-transform: rotate(67deg);
@@ -846,7 +846,7 @@ p.description {
   transform: rotate(67deg);
 }
 
-.green-pepper.five {
+.greenPepper.five {
   margin: 500px 0 0 300px;
   -webkit-transform: rotate(-86deg);
   -moz-transform: rotate(-86deg);
@@ -854,7 +854,7 @@ p.description {
   transform: rotate(-86deg);
 }
 
-.green-pepper.six {
+.greenPepper.six {
   margin: 300px 0 0 200px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -862,7 +862,7 @@ p.description {
   transform: rotate(0deg);
 }
 
-.green-pepper.seven {
+.greenPepper.seven {
   margin: 340px 0 0 295px;
   -webkit-transform: rotate(-47deg);
   -moz-transform: rotate(-47deg);
@@ -870,7 +870,7 @@ p.description {
   transform: rotate(-47deg);
 }
 
-.green-pepper.eight {
+.greenPepper.eight {
   margin: 500px 0 0 150px;
   -webkit-transform: rotate(115deg);
   -moz-transform: rotate(115deg);
@@ -878,7 +878,7 @@ p.description {
   transform: rotate(115deg);
 }
 
-.green-pepper.nine {
+.greenPepper.nine {
   margin: 300px 0 0 100px;
   -webkit-transform: rotate(67deg);
   -moz-transform: rotate(67deg);
@@ -886,7 +886,7 @@ p.description {
   transform: rotate(67deg);
 }
 
-.green-pepper.ten {
+.greenPepper.ten {
   margin: 400px 0 0 200px;
   -webkit-transform: rotate(289deg);
   -moz-transform: rotate(289deg);
@@ -894,7 +894,7 @@ p.description {
   transform: rotate(289deg);
 }
 
-.green-pepper.eleven {
+.greenPepper.eleven {
   margin: 300px 0 0 200px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -902,7 +902,7 @@ p.description {
   transform: rotate(0deg);
 }
 
-.green-pepper.twelve {
+.greenPepper.twelve {
   margin: 300px 0 0 200px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -910,7 +910,7 @@ p.description {
   transform: rotate(0deg);
 }
 
-.green-pepper.thirteen {
+.greenPepper.thirteen {
   margin: 300px 0 0 200px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -918,7 +918,7 @@ p.description {
   transform: rotate(0deg);
 }
 
-.green-pepper.fourteen {
+.greenPepper.fourteen {
   margin: 210px 0 0 300px;
   -webkit-transform: rotate(10deg);
   -moz-transform: rotate(10deg);
@@ -926,7 +926,7 @@ p.description {
   transform: rotate(10deg);
 }
 
-.green-pepper.fifteen {
+.greenPepper.fifteen {
   margin: 420px 0 0 290px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -934,7 +934,7 @@ p.description {
   transform: rotate(0deg);
 }
 
-.green-pepper.sixteen {
+.greenPepper.sixteen {
   margin: 150px 0 0 410px;
   -webkit-transform: rotate(50deg);
   -moz-transform: rotate(50deg);
@@ -942,7 +942,7 @@ p.description {
   transform: rotate(50deg);
 }
 
-.green-pepper.seventeen {
+.greenPepper.seventeen {
   margin: 260px 0 0 510px;
   -webkit-transform: rotate(80deg);
   -moz-transform: rotate(80deg);
@@ -950,7 +950,7 @@ p.description {
   transform: rotate(80deg);
 }
 
-.green-pepper.eightteen {
+.greenPepper.eightteen {
   margin: 400px 0 0 410px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -958,7 +958,7 @@ p.description {
   transform: rotate(0deg);
 }
 
-.green-pepper.nineteen {
+.greenPepper.nineteen {
   margin: 280px 0 0 390px;
   -webkit-transform: rotate(150deg);
   -moz-transform: rotate(150deg);
@@ -966,7 +966,7 @@ p.description {
   transform: rotate(150deg);
 }
 
-.green-pepper.twenty {
+.greenPepper.twenty {
   margin: 530px 0 0 420px;
   -webkit-transform: rotate(-100deg);
   -moz-transform: rotate(-100deg);
@@ -974,7 +974,7 @@ p.description {
   transform: rotate(-100deg);
 }
 
-.green-pepper.twenty-one {
+.greenPepper.twenty-one {
   margin: 360px 0 0 540px;
   -webkit-transform: rotate(69deg);
   -moz-transform: rotate(69deg);

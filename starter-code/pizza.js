@@ -58,6 +58,20 @@ function renderMushrooms() {
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+
+  let greenPeppers = document.querySelectorAll('.greenPepper')
+
+  console.log(greenPeppers)
+  for (let i = 0; i < greenPeppers.length; i++) {
+    if(state.greenPeppers[i]){
+      greenPeppers[i].style.visibility = 'visible'
+    }
+    else{
+      greenPeppers[i].style.visibility = 'hidden'
+    }
+    
+  }
+
 }
 
 function renderWhiteSauce() {
@@ -90,9 +104,13 @@ document.querySelector('.btn.btn-pepperonni').onclick = function() {
     state.mushroom = !state.mushroom
     renderEverything()
   }
-
-// Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-
+  
+  // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+  document.querySelector('.btn.btn-greenPeppers').onclick = function() {
+    state.greenPeppers = !state.greenPeppers
+    renderEverything()
+  }
+  
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
