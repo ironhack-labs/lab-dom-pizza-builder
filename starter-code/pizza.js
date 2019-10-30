@@ -126,7 +126,7 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  
+  /* cómo????s */
 }
 
 
