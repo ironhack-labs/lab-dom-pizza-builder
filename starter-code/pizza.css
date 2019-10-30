@@ -370,6 +370,7 @@ p.description {
 }
 
 .pep {
+
   position: absolute;
   width: 80px;
   height: 70px;
@@ -519,6 +520,7 @@ p.description {
 }
 
 /*--- Mushrooms ---*/
+
 .mushroom {
   position: absolute;
   width: 70px;
