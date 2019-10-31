@@ -1,12 +1,65 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, sub, sup, tt, var,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-header, section, footer, article, details {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+header,
+section,
+footer,
+article,
+details {
   margin: 0;
   padding: 0;
   border: 0;
@@ -17,6 +70,7 @@ header, section, footer, article, details {
   font-family: inherit;
   vertical-align: baseline;
 }
+
 /* remember to define focus styles! */
 :focus {
   outline: 0;
@@ -28,31 +82,43 @@ body {
   background: white;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
+
 /* tables still need 'cellspacing="0"' in the markup */
 table {
   border-collapse: separate;
   border-spacing: 0;
 }
 
-caption, th, td {
+caption,
+th,
+td {
   text-align: left;
   font-weight: normal;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   content: "";
 }
 
-blockquote, q {
-  quotes: "" "";
+blockquote,
+q {
+  quotes: """";
 }
 
 /*--- HTML5 -----*/
-header, nav, details, section, aside, footer {
+header,
+nav,
+details,
+section,
+aside,
+footer {
   display: block;
 }
 
@@ -202,29 +268,29 @@ p.description {
   box-shadow: none;
 }
 
-.btn-greenPeppers {
+.btn-green-peppers {
   background: #129306;
   box-shadow: 0 6px #0a5203;
   color: #fff;
 }
 
-.btn-greenPeppers:hover {
+.btn-green-peppers:hover {
   background: #0e7205;
   box-shadow: 0 5px #063102;
   color: #fff;
 }
 
-.btn-greenPeppers.active {
+.btn-green-peppers.active {
   top: 2px;
   box-shadow: 0 2px #0a5203;
 }
 
-.btn-greenPeppers.active:hover {
+.btn-green-peppers.active:hover {
   box-shadow: 0 2px #063102;
 }
 
-.btn-greenPeppers:active,
-.btn-greenPeppers.active:active {
+.btn-green-peppers:active,
+.btn-green-peppers.active:active {
   top: 5px;
   box-shadow: none;
 }
@@ -384,6 +450,7 @@ p.description {
   text-indent: -9999px;
   color: #fff;
 }
+
 /*.pep:hover{
   -moz-transform: scale(1.3);
   -webkit-transform: scale(1.3);
@@ -804,7 +871,7 @@ p.description {
 
 
 /*--- Green Peppers ---*/
-.greenPepper {
+.green-pepper {
   position: absolute;
   width: 20px;
   height: 45px;
@@ -814,7 +881,7 @@ p.description {
   z-index: 30;
 }
 
-.greenPepper.one {
+.green-pepper.one {
   margin: 200px 0 0 100px;
   -webkit-transform: rotate(22deg);
   -moz-transform: rotate(22deg);
@@ -822,7 +889,7 @@ p.description {
   transform: rotate(22deg);
 }
 
-.greenPepper.two {
+.green-pepper.two {
   margin: 450px 0 0 500px;
   -webkit-transform: rotate(-47deg);
   -moz-transform: rotate(-47deg);
@@ -830,7 +897,7 @@ p.description {
   transform: rotate(-47deg);
 }
 
-.greenPepper.three {
+.green-pepper.three {
   margin: 195px 0 0 200px;
   -webkit-transform: rotate(115deg);
   -moz-transform: rotate(115deg);
@@ -838,7 +905,7 @@ p.description {
   transform: rotate(115deg);
 }
 
-.greenPepper.four {
+.green-pepper.four {
   margin: 90px 0 0 300px;
   -webkit-transform: rotate(67deg);
   -moz-transform: rotate(67deg);
@@ -846,7 +913,7 @@ p.description {
   transform: rotate(67deg);
 }
 
-.greenPepper.five {
+.green-pepper.five {
   margin: 500px 0 0 300px;
   -webkit-transform: rotate(-86deg);
   -moz-transform: rotate(-86deg);
@@ -854,7 +921,7 @@ p.description {
   transform: rotate(-86deg);
 }
 
-.greenPepper.six {
+.green-pepper.six {
   margin: 300px 0 0 200px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -862,7 +929,7 @@ p.description {
   transform: rotate(0deg);
 }
 
-.greenPepper.seven {
+.green-pepper.seven {
   margin: 340px 0 0 295px;
   -webkit-transform: rotate(-47deg);
   -moz-transform: rotate(-47deg);
@@ -870,7 +937,7 @@ p.description {
   transform: rotate(-47deg);
 }
 
-.greenPepper.eight {
+.green-pepper.eight {
   margin: 500px 0 0 150px;
   -webkit-transform: rotate(115deg);
   -moz-transform: rotate(115deg);
@@ -878,7 +945,7 @@ p.description {
   transform: rotate(115deg);
 }
 
-.greenPepper.nine {
+.green-pepper.nine {
   margin: 300px 0 0 100px;
   -webkit-transform: rotate(67deg);
   -moz-transform: rotate(67deg);
@@ -886,7 +953,7 @@ p.description {
   transform: rotate(67deg);
 }
 
-.greenPepper.ten {
+.green-pepper.ten {
   margin: 400px 0 0 200px;
   -webkit-transform: rotate(289deg);
   -moz-transform: rotate(289deg);
@@ -894,7 +961,7 @@ p.description {
   transform: rotate(289deg);
 }
 
-.greenPepper.eleven {
+.green-pepper.eleven {
   margin: 300px 0 0 200px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -902,7 +969,7 @@ p.description {
   transform: rotate(0deg);
 }
 
-.greenPepper.twelve {
+.green-pepper.twelve {
   margin: 300px 0 0 200px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -910,7 +977,7 @@ p.description {
   transform: rotate(0deg);
 }
 
-.greenPepper.thirteen {
+.green-pepper.thirteen {
   margin: 300px 0 0 200px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -918,7 +985,7 @@ p.description {
   transform: rotate(0deg);
 }
 
-.greenPepper.fourteen {
+.green-pepper.fourteen {
   margin: 210px 0 0 300px;
   -webkit-transform: rotate(10deg);
   -moz-transform: rotate(10deg);
@@ -926,7 +993,7 @@ p.description {
   transform: rotate(10deg);
 }
 
-.greenPepper.fifteen {
+.green-pepper.fifteen {
   margin: 420px 0 0 290px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -934,7 +1001,7 @@ p.description {
   transform: rotate(0deg);
 }
 
-.greenPepper.sixteen {
+.green-pepper.sixteen {
   margin: 150px 0 0 410px;
   -webkit-transform: rotate(50deg);
   -moz-transform: rotate(50deg);
@@ -942,7 +1009,7 @@ p.description {
   transform: rotate(50deg);
 }
 
-.greenPepper.seventeen {
+.green-pepper.seventeen {
   margin: 260px 0 0 510px;
   -webkit-transform: rotate(80deg);
   -moz-transform: rotate(80deg);
@@ -950,7 +1017,7 @@ p.description {
   transform: rotate(80deg);
 }
 
-.greenPepper.eightteen {
+.green-pepper.eightteen {
   margin: 400px 0 0 410px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -958,7 +1025,7 @@ p.description {
   transform: rotate(0deg);
 }
 
-.greenPepper.nineteen {
+.green-pepper.nineteen {
   margin: 280px 0 0 390px;
   -webkit-transform: rotate(150deg);
   -moz-transform: rotate(150deg);
@@ -966,7 +1033,7 @@ p.description {
   transform: rotate(150deg);
 }
 
-.greenPepper.twenty {
+.green-pepper.twenty {
   margin: 530px 0 0 420px;
   -webkit-transform: rotate(-100deg);
   -moz-transform: rotate(-100deg);
@@ -974,7 +1041,7 @@ p.description {
   transform: rotate(-100deg);
 }
 
-.greenPepper.twenty-one {
+.green-pepper.twenty-one {
   margin: 360px 0 0 540px;
   -webkit-transform: rotate(69deg);
   -moz-transform: rotate(69deg);
