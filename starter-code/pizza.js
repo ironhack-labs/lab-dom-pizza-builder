@@ -70,7 +70,7 @@ function renderGreenPeppers() {
     
   }
   
-  function renderWhiteSauce() {
+function renderWhiteSauce() {
     // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
     
     if (state.whiteSauce) {
@@ -90,13 +90,55 @@ function renderGlutenFreeCrust() {
 }
 
 function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+// Iteration 3: Make the buttons active or not
+  // Write some JavaScript that will remove and add the buttons' active class appropriately, by writing code in the function renderButtons.
+  if (state.pepperonni) {
+    document.querySelector('.btn.btn-pepperonni').classList.add('active')
+  } else {
+    document.querySelector('.btn.btn-pepperonni').classList.remove('active')
+  }
+  if (state.mushrooms) {
+    document.querySelector('.btn.btn-mushrooms').classList.add('active')
+  } else {
+    document.querySelector('.btn.btn-mushrooms').classList.remove('active')
+  }
+  if (state.greenPeppers) {
+    document.querySelector('.btn.btn-greenPeppers').classList.add('active')
+  } else {
+    document.querySelector('.btn.btn-greenPeppers').classList.remove('active')
+  }
+  if (state.whiteSauce) {
+    document.querySelector('.btn.btn-sauce').classList.add('active')
+  } else {
+    document.querySelector('.btn.btn-sauce').classList.remove('active')
+  }
+  if (state.glutenFreeCrust) {
+    document.querySelector('.btn.btn-crust').classList.add('active')
+  } else {
+    document.querySelector('.btn.btn-crust').classList.remove('active')
+  }
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-}
+  // Display the list of all items selected
+  // Display the total price
+  let totalPrice = basePrice
+  // get the target element to display the list of items
+  let $list = document.querySelector("body > aside > ul")
+  $list.innerHTML = ''
 
+  // loop through each property the in ingredients object
+  for (let eachProperty in ingredients){
+    if(state[eachProperty]){
+      // add each price to the totalPrice
+      totalPrice += ingredients[eachProperty].price
+      // add price and name of the each property to the target element
+      $list.innerHTML += `<li>$${ingredients[eachProperty].price} ${ingredients[eachProperty].name.toLowerCase()}</li>`
+    }
+  }
+  document.querySelector("body > aside > strong").innerHTML = `$ ${totalPrice}`
+}
 
 renderEverything()
 
@@ -130,7 +172,3 @@ document.querySelector('.btn.btn-pepperonni').onclick = function() {
     state.glutenFreeCrust = !state.glutenFreeCrust
     renderEverything()
   }
-  
-  
-
-
