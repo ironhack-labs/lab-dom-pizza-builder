@@ -40,7 +40,7 @@ function renderPepperonni() {
     else {
       $pep.style.visibility = "hidden";
     }
-  })
+  });
 }
 
 function renderMushrooms() {
@@ -68,36 +68,104 @@ function renderGreenPeppers() {
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
   let sauce = document.querySelector('.sauce');
-  console.log(sauce);
-  sauce.classList.toggle('sauce-white');
+  
+  if(state.whiteSauce){
+    sauce.className += (' sauce-white');
+  } else {
+    sauce.classList.remove('sauce-white')
+  }
+  
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
   let crust = document.querySelector('.crust');
-  console.log(crust);
-  crust.classList.toggle('crust-gluten-free');
+
+  if(state.glutenFreeCrust) {
+    crust.className += (' crust-gluten-free');
+  } else {
+    crust.classList.remove('crust-gluten-free');
+  }
+  
 
 }
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  let btn = document.querySelector('.btn');
-  console.log(btn);
-  btn.classList.toggle('active');
+  if(state.pepperonni){
+    document.querySelector('.btn.btn-pepperonni').className += ' active';
+  } else {
+    document.querySelector('.btn.btn-pepperonni').classList.remove('active');
+  }
+
+  if(state.mushrooms){
+    document.querySelector('.btn.btn-mushrooms').className += ' active';
+  } else {
+    document.querySelector('.btn.btn-mushrooms').classList.remove('active');
+  }
+  
+  if(state.greenPeppers){
+    document.querySelector('.btn.btn-green-peppers').className += ' active';
+  } else {
+    document.querySelector('.btn.btn-green-peppers').classList.remove('active');
+  }
+
+  if(state.whiteSauce){
+    document.querySelector('.btn.btn-sauce').className += ' active';
+  } else {
+    document.querySelector('.btn.btn-sauce').classList.remove('active');
+  }
+
+  if(state.glutenFreeCrust){
+    document.querySelector('.btn.btn-crust').className += ' active';
+  } else {
+    document.querySelector('.btn.btn-crust').classList.remove('active');
+  }
 
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  // document.querySelector('.panel.price').forEach(function(active){
-  //   if (active) {
-  //     li.style.visibility = 'visible';
-  //   } else {
-  //     li.style.visibility = 'hidden';
-  //   }
-  // });
-  // console.log(price);
+  let price = 10;
+  
+  if (state.pepperonni) {
+    document.querySelector('#pepe').style.visibility = 'visible';
+    price += 1;
+  } else {
+    document.querySelector('#pepe').style.visibility = 'hidden';
+  };
+
+  if (state.mushrooms) {
+    document.querySelector('#mush').style.visibility = 'visible';
+    price += 1;
+  } else {
+    document.querySelector('#mush').style.visibility = 'hidden';
+  };
+
+  if (state.greenPeppers) {
+    document.querySelector('#green').style.visibility = 'visible';
+    price += 1;
+  } else {
+    document.querySelector('#green').style.visibility = 'hidden';
+  };
+
+  if (state.whiteSauce) {
+    document.querySelector('#white').style.visibility = 'visible';
+    price += 3;
+  } else {
+    document.querySelector('#white').style.visibility = 'hidden';
+  };
+
+  if (state.glutenFreeCrust) {
+    document.querySelector('#glut').style.visibility = 'visible';
+    price += 5;
+  } else {
+    document.querySelector('#glut').style.visibility = 'hidden';
+  };
+
+  document.querySelector('strong').innerText = `$${price} total`;
+
+  
 }
 
 
@@ -121,11 +189,11 @@ document.querySelector('.btn.btn-green-peppers').onclick = () => {
 }
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 document.querySelector('.btn.btn-sauce').onclick = () => {
-
+  state.whiteSauce = !state.whiteSauce
   renderEverything();
 }
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
 document.querySelector('.btn.btn-crust').onclick = () => {
-  
+  state.glutenFreeCrust = !state.glutenFreeCrust;
   renderEverything();
 }
