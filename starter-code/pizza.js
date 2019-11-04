@@ -93,7 +93,7 @@ function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
   //trate de hacerlo con un operador ternario pero no me salio, 
 
-  state.pepperonni ? document.querySelector('.btn.btn-pepperonni').classList.add('active') : document.querySelector('.btn.btn-pepperonni').classList.add('active');
+  state.pepperonni ? document.querySelector('.btn.btn-pepperonni').classList.add('active') : document.querySelector('.btn.btn-pepperonni').classList.remove('active');
   state.mushrooms ?  document.querySelector('.btn.btn-mushrooms').classList.add('active') : document.querySelector('.btn.btn-mushrooms').classList.remove('active');
   state.greenPeppers ? document.querySelector('.btn.btn-green-peppers').classList.add('active') :  document.querySelector('.btn.btn-green-peppers').classList.remove('active');
   state.whiteSauce ? document.querySelector('.btn.btn-sauce').classList.add('active') : document.querySelector('.btn.btn-sauce').classList.remove('active');
