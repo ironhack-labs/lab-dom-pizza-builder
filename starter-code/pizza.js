@@ -45,10 +45,26 @@ function renderPepperonni() {
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll('.mushroom').forEach(function($mus){
+    if (state.mushrooms) {
+      $mus.style.visibility = "visible";
+    }
+    else {
+      $mus.style.visibility = "hidden";
+    }
+  })
 }
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll('.green-pepper').forEach(function($pep){
+    if (state.greenPeppers) {
+      $pep.style.visibility = "visible";
+    }
+    else {
+      $pep.style.visibility = "hidden";
+    }
+  })
 }
 
 function renderWhiteSauce() {
@@ -77,8 +93,16 @@ document.querySelector('.btn.btn-pepperonni').onclick = function() {
 }
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
+document.querySelector('.btn.btn-mushrooms').onclick = function() {
+  state.mushrooms = !state.mushrooms
+  renderEverything()
+}
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+document.querySelector('.btn.btn-green-peppers').onclick = function() {
+  state.greenPeppers = !state.greenPeppers
+  renderEverything()
+}
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 
