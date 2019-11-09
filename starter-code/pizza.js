@@ -139,7 +139,52 @@ function renderButtons() {
 }
 
 function renderPrice() {
+  let total = basePrice
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let prices = document.querySelectorAll('li.price')
+  prices.forEach((price) => {
+    if(price.classList.contains('pepperonni')){
+      if(state.pepperonni){
+        price.style.visibility = 'visible'
+        total += +price.querySelector('span').innerText
+      } else {
+        price.style.visibility = 'hidden'
+      }
+    }
+    if(price.classList.contains('mushrooms')){
+      if(state.mushrooms){
+        price.style.visibility = 'visible'
+        total += +price.querySelector('span').innerText
+      } else {
+        price.style.visibility = 'hidden'
+      }
+    }
+    if(price.classList.contains('green-peppers')){
+      if(state.greenPeppers){
+        price.style.visibility = 'visible'
+        total += +price.querySelector('span').innerText
+      } else {
+        price.style.visibility = 'hidden'
+      }
+    }
+    if(price.classList.contains('white-sauce')){
+      if(state.whiteSauce){
+        price.style.visibility = 'visible'
+        total += +price.querySelector('span').innerText
+      } else {
+        price.style.visibility = 'hidden'
+      }
+    }
+    if(price.classList.contains('gluten-free-crust')){
+      if(state.glutenFreeCrust){
+        price.style.visibility = 'visible'
+        total += +price.querySelector('span').innerText
+      } else {
+        price.style.visibility = 'hidden'
+      }
+    }
+  })
+  document.querySelector('#total').innerText = total
 }
 
 
