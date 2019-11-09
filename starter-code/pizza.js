@@ -92,6 +92,50 @@ function renderButtons() {
   } else {
     document.querySelector(".crust").classList.remove("crust-gluten-free")
   }
+  let botones = document.querySelectorAll('.btn')
+  botones.forEach((boton) => {
+    if(boton.classList.contains('btn-pepperonni')){
+      if(state.pepperonni){
+        boton.classList.add('active')
+      } else {
+        boton.classList.remove('active')
+      }
+    }
+
+    if(boton.classList.contains('btn-mushrooms')){
+      if(state.mushrooms){
+        boton.classList.add('active')
+      } else {
+        boton.classList.remove('active')
+      }
+    }
+
+    if(boton.classList.contains('btn-green-peppers')){
+      if(state.greenPeppers){
+        boton.classList.add('active')
+      } else {
+        boton.classList.remove('active')
+      }
+    }
+
+    if(boton.classList.contains('btn-sauce')){
+      if(state.whiteSauce){
+        boton.classList.add('active')
+      } else {
+        boton.classList.remove('active')
+      }
+    }
+
+    if(boton.classList.contains('btn-crust')){
+      if(state.glutenFreeCrust){
+        boton.classList.add('active')
+      } else {
+        boton.classList.remove('active')
+      }
+    }
+    
+    
+  })
 }
 
 function renderPrice() {
