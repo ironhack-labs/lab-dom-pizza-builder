@@ -90,29 +90,15 @@ function renderButtons() {
 
 let sum = 13;
 let totalPrice = document.querySelector('.price strong');
-
 let priceList = document.querySelectorAll('.price ul li');
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  for (let i = 0; i < priceList.length; i++) {
-    let currentPrice = priceList[i].innerHTML.substr(1, 1);
-    console.log('Output for: renderPrice -> currentPrice', currentPrice);
-  }
+  // for (let i = 0; i < priceList.length; i++) {
+  //   let currentPrice = priceList[i].innerHTML.substr(1, 1);
+  // }
 }
 renderPrice();
 let buttons = document.querySelectorAll('.btn');
-// let crustDiv = document.querySelector('#pizza .crust');
-// let ifClassExists = crustDiv.innerHTML.includes('crust-gluten-free');
-// let glutenClasses = crustDiv.classList;
-// if (glutenClasses.contains('crust-gluten-free')) {
-//   glutenClasses.remove('crust-gluten-free');
-// } else {
-//   glutenClasses.add('crust-gluten-free');
-// }
-// let currentList;
-// for (let i = 0; i < priceList.length; i++) {
-//   currentList = priceList[i];
-// }
 
 buttons.forEach((button, i) => {
   // let elemClasses = button.getAttribute('class');
@@ -130,7 +116,6 @@ buttons.forEach((button, i) => {
       totalPrice.innerHTML = sum;
     } else {
       sum += Number(currentPrice);
-      console.log('Output for: sum', sum);
       totalPrice.innerHTML = sum;
     }
 
@@ -171,11 +156,11 @@ buttons.forEach((button, i) => {
           let sauceClasses = sauceSection.classList;
           if (!state.whiteSauce && !sauceClasses.contains('sauce-white')) {
             sauceClasses.add('sauce-white');
-            console.log('add: sauceClasses', sauceClasses);
+
             el.style.visibility = 'visible';
           } else {
             sauceClasses.remove('sauce-white');
-            console.log('remove: sauceClasses', sauceClasses);
+
             el.style.visibility = 'hidden';
           }
         } else if (
@@ -223,8 +208,6 @@ buttons.forEach((button, i) => {
 // }
 // callPrice();
 // // ---------------------------------------------
-
-// renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperonni">`
 document.querySelector('.btn.btn-pepperonni').onclick = function() {
