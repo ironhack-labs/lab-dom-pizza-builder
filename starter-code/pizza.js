@@ -90,11 +90,12 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  var stateArray = Object.values(state);
   document.querySelectorAll('.btn').forEach(function($rb, i){
   if($rb.className.includes("active")){
-    if (((state.pepperonni == false) && (i == 0)) || ((state.mushrooms == false) && (i == 1)) || ((state.greenPeppers == false) && (i == 2)) || ((state.whiteSauce == false) && (i == 3)) || ((state.glutenFreeCrust == false) && (i == 4)))
+    if ((stateArray[i] == false))
     $rb.classList.remove("active");
-  } else if (((state.pepperonni == true) && (i == 0)) || ((state.mushrooms == true) && (i == 1)) || ((state.greenPeppers == true) && (i == 2)) || ((state.whiteSauce == true) && (i == 3)) || ((state.glutenFreeCrust == true) && (i == 4))) {
+  } else if ((stateArray[i] == true)){
     $rb.classList.add("active");
   }
   })
