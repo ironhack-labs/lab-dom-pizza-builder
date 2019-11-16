@@ -101,18 +101,17 @@ function renderButtons() {
   })
 }
 
-var ingredientArray = Object.values(ingredients);
-
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  var ingredientArray = Object.values(ingredients);
   var stateArray = Object.values(state);
   let totalPrice = 0;
   document.querySelectorAll('.price ul li').forEach(function($pr, i){
           if (stateArray[i] == false) {
-            document.querySelectorAll('.price ul li')[i].style.display = "none";
+            $pr.style.display = "none";
           }
           else { 
-            document.querySelectorAll('.price ul li')[i].style.display = "block";
+            $pr.style.display = "block";
             totalPrice += ingredientArray[i].price;
           }
     })
