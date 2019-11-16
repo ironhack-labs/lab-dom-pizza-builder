@@ -87,30 +87,29 @@ function renderGlutenFreeCrust() {
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 }
-
-let sum = 13;
-let totalPrice = document.querySelector('.price strong');
-let priceList = document.querySelectorAll('.price ul li');
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   // for (let i = 0; i < priceList.length; i++) {
   //   let currentPrice = priceList[i].innerHTML.substr(1, 1);
   // }
 }
-renderPrice();
+
+let sum = 13;
+let totalPrice = document.querySelector('.price strong');
+let priceList = document.querySelectorAll('.price ul li');
 let buttons = document.querySelectorAll('.btn');
 
 buttons.forEach((button, i) => {
-  // let elemClasses = button.getAttribute('class');
-  // let checkIfButtonActive = elemClasses.includes('active');
-
+  // let elemClasses = button.getAttribute('class'); //works
+  // let checkIfButtonActive = elemClasses.includes('active');//works
   let oneButton = buttons[i].getAttribute('class').includes('active');
   if (!oneButton) priceList[i].style.visibility = 'hidden';
   let currentPrice = priceList[i].innerHTML.substr(1, 1);
 
   button.addEventListener('click', e => {
     let buttonsClassList = e.target.classList;
-
+    // check for active button and calculate the total with every click.
+    //sum[0]=13; because 3 buttons active + $1 each active button
     if (buttonsClassList.contains('active')) {
       sum -= Number(currentPrice);
       totalPrice.innerHTML = sum;
@@ -118,12 +117,15 @@ buttons.forEach((button, i) => {
       sum += Number(currentPrice);
       totalPrice.innerHTML = sum;
     }
-
+    // check for clicked button if active, if exists remove else add 'active' class.
     if (buttonsClassList.contains('active')) {
       buttonsClassList.remove('active');
     } else {
       buttonsClassList.add('active');
     }
+
+    // iterate through each clicked button class, if 'active' class exists
+    //make price visible else hide.
     for (let i = 0; i < buttonsClassList.length; i++) {
       let currentClass = buttonsClassList[i];
 
