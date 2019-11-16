@@ -17,7 +17,6 @@ var state = {
   greenPeppers: true,
   whiteSauce: false,
   glutenFreeCrust: false,
-  buttonActive: true,
 };
 
 // This function takes care of rendering the pizza based on the state
@@ -89,12 +88,16 @@ function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 }
 
+let sum = 13;
+let totalPrice = document.querySelector('.price strong');
+
 let priceList = document.querySelectorAll('.price ul li');
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  // for (let i = 0; i < priceList.length; i++) {
-  //   let currentList = priceList[i];
-  // }
+  for (let i = 0; i < priceList.length; i++) {
+    let currentPrice = priceList[i].innerHTML.substr(1, 1);
+    console.log('Output for: renderPrice -> currentPrice', currentPrice);
+  }
 }
 renderPrice();
 let buttons = document.querySelectorAll('.btn');
@@ -106,18 +109,30 @@ let buttons = document.querySelectorAll('.btn');
 // } else {
 //   glutenClasses.add('crust-gluten-free');
 // }
+// let currentList;
+// for (let i = 0; i < priceList.length; i++) {
+//   currentList = priceList[i];
+// }
 
-buttons.forEach(button => {
+buttons.forEach((button, i) => {
   // let elemClasses = button.getAttribute('class');
   // let checkIfButtonActive = elemClasses.includes('active');
 
-  // for (let property in state) {
-  //   if (!state[property] && !checkIfButtonActive) {
-  //   }
-  // }
+  let oneButton = buttons[i].getAttribute('class').includes('active');
+  if (!oneButton) priceList[i].style.visibility = 'hidden';
+  let currentPrice = priceList[i].innerHTML.substr(1, 1);
 
   button.addEventListener('click', e => {
     let buttonsClassList = e.target.classList;
+
+    if (buttonsClassList.contains('active')) {
+      sum -= Number(currentPrice);
+      totalPrice.innerHTML = sum;
+    } else {
+      sum += Number(currentPrice);
+      console.log('Output for: sum', sum);
+      totalPrice.innerHTML = sum;
+    }
 
     if (buttonsClassList.contains('active')) {
       buttonsClassList.remove('active');
@@ -184,6 +199,7 @@ buttons.forEach(button => {
     }
   });
 });
+
 // // -------my methods library--------------------
 // for (let i = 0; i < buttons.length; i++) {
 //   let currentList = buttons[i];
