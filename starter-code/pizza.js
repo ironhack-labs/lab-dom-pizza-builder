@@ -170,14 +170,14 @@ buttons.forEach(button => {
           let crustSection = document.querySelector('#pizza .crust');
           let glutenClasses = crustSection.classList;
           if (
-            state.glutenFreeCrust &&
-            glutenClasses.contains('crust-gluten-free')
+            !state.glutenFreeCrust &&
+            !glutenClasses.contains('crust-gluten-free')
           ) {
-            el.style.visibility = 'visible';
-            glutenClasses.remove('crust-gluten-free');
-          } else {
-            el.style.visibility = 'hidden';
             glutenClasses.add('crust-gluten-free');
+            el.style.visibility = 'visible';
+          } else {
+            glutenClasses.remove('crust-gluten-free');
+            el.style.visibility = 'hidden';
           }
         }
       });
