@@ -1,8 +1,8 @@
 // Write your Pizza Builder JavaScript in this file.
 
 // Constants 
-var basePrice = 10
-var ingredients = {
+const basePrice = 10
+const ingredients = {
   pepperonni: {name: 'Pepperonni', price: 1},
   mushrooms: {name: 'Mushrooms', price: 1},
   greenPeppers: {name: 'Green Peppers', price: 1},
@@ -98,7 +98,7 @@ function renderPrice() {
     function(pricesofar,toppingattributename){
       if(!state[toppingattributename])return pricesofar;
       return pricesofar+ingredients[toppingattributename].price;
-    },10);
+    },basePrice);
   console.log("Total price: ",price);
   document.querySelector("aside.panel.price strong").innerHTML="$"+String(price);
   // only show the selected items
