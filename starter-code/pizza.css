@@ -149,24 +149,24 @@ p.description {
 }
 
 .btn-pepperonni {
-  background: #e8103b;
-  box-shadow: 0 6px #890923;
+  background: #ee113d;
+  box-shadow: 0 6px #8f0a25;
   color: #fff;
 }
 
 .btn-pepperonni:hover {
-  background: #c80e33;
-  box-shadow: 0 5px #69071b;
+  background: #bf0d31;
+  box-shadow: 0 5px #5f0718;
   color: #fff;
 }
 
 .btn-pepperonni.active {
   top: 2px;
-  box-shadow: 0 2px #890923;
+  box-shadow: 0 2px #8f0a25;
 }
 
 .btn-pepperonni.active:hover {
-  box-shadow: 0 2px #69071b;
+  box-shadow: 0 2px #5f0718;
 }
 
 .btn-pepperonni:active,
@@ -177,23 +177,23 @@ p.description {
 
 .btn-mushrooms {
   background: #b49989;
-  box-shadow: 0 6px #644d40;
+  box-shadow: 0 6px #8c6c5a;
   color: #fff;
 }
 
 .btn-mushrooms:hover {
-  background: #a78774;
-  box-shadow: 0 5px #503d33;
+  background: #a58673;
+  box-shadow: 0 5px #6d5446;
   color: #fff;
 }
 
 .btn-mushrooms.active {
   top: 2px;
-  box-shadow: 0 2px #644d40;
+  box-shadow: 0 2px #8c6c5a;
 }
 
 .btn-mushrooms.active:hover {
-  box-shadow: 0 2px #503d33;
+  box-shadow: 0 2px #6d5446;
 }
 
 .btn-mushrooms:active,
@@ -203,20 +203,20 @@ p.description {
 }
 
 .btn-green-peppers {
-  background: #129306;
-  box-shadow: 0 6px #0a5203;
+  background: #18c408;
+  box-shadow: 0 6px #0c6204;
   color: #fff;
 }
 
 .btn-green-peppers:hover {
-  background: #0e7205;
+  background: #129306;
   box-shadow: 0 5px #063102;
   color: #fff;
 }
 
 .btn-green-peppers.active {
   top: 2px;
-  box-shadow: 0 2px #0a5203;
+  box-shadow: 0 2px #0c6204;
 }
 
 .btn-green-peppers.active:hover {
@@ -225,6 +225,60 @@ p.description {
 
 .btn-green-peppers:active,
 .btn-green-peppers.active:active {
+  top: 5px;
+  box-shadow: none;
+}
+
+.btn-extra-cheese {
+  background: #b3b00c;
+  box-shadow: 0 6px #644d40;
+  color: #fff;
+}
+
+.btn-extra-cheese:hover {
+  background: #888617;
+  box-shadow: 0 5px #503d33;
+  color: #fff;
+}
+
+.btn-extra-cheese.active {
+  top: 2px;
+  box-shadow: 0 2px #644d40;
+}
+
+.btn-extra-cheese.active:hover {
+  box-shadow: 0 2px #503d33;
+}
+
+.btn-extra-cheese:active,
+.btn-extra-cheese.active:active {
+  top: 5px;
+  box-shadow: none;
+}
+
+.btn-extra-cut {
+  background: #b3b3b3;
+  box-shadow: 0 6px #808080;
+  color: #fff;
+}
+
+.btn-extra-cut:hover {
+  background: #999999;
+  box-shadow: 0 5px #666666;
+  color: #fff;
+}
+
+.btn-extra-cut.active {
+  top: 2px;
+  box-shadow: 0 2px #808080;
+}
+
+.btn-extra-cut.active:hover {
+  box-shadow: 0 2px #666666;
+}
+
+.btn-extra-cut:active,
+.btn-extra-cut.active:active {
   top: 5px;
   box-shadow: none;
 }
@@ -980,6 +1034,25 @@ p.description {
   -moz-transform: rotate(69deg);
   -o-transform: rotate(69deg);
   transform: rotate(69deg);
+}
+
+.extra-cheese {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  margin: 50px 0 0 50px;
+  z-index: 50;  
+  background: url(./img/extra-cheese.png);
+}
+
+.extra-cut {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  margin: 50px 0 0 50px;
+  z-index: 60;  
+  background: url(./img/extra-cut.png);
+  background-size: contain;
 }
 
 /*------ Footer -----*/
