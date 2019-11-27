@@ -127,22 +127,23 @@ const priceList = document.getElementById('bill')
 let billElem = "";
 priceList.innerHTML = billElem;
   if(state.pepperonni){
-    billElem += "<li>$1 pepperonni</li>"
+    billElem +=`<li>$ ${ingredients.pepperonni.price} ${ingredients.pepperonni.name}</li>` 
   }
   if(state.mushrooms){
-    billElem += "<li>$1 mushrooms</li>"
+    billElem +=`<li>$ ${ingredients.mushrooms.price} ${ingredients.mushrooms.name}</li>` 
   }
 
   if(state.greenPeppers){
-    billElem += "<li>$1 green peppers</li>"
+    billElem += `<li>$ ${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name}</li>` 
   }
 
   if(state.whiteSauce){
-    billElem +=  "<li>$3 white sauce</li>"
+    billElem +=  `<li>$ ${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name}</li>` 
   }
   
   if(state.glutenFreeCrust){
-    billElem +=  "<li>$5 gluten-free crust</li>"
+    //billElem +=  "<li>$5 gluten-free crust</li>"
+    billElem+= `<li>$ ${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name}</li>` 
   }
   priceList.innerHTML = billElem;
   
