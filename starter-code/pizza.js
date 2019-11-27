@@ -102,13 +102,15 @@ function renderButtons() {
       $mushrooms.classList.remove("active");
     }
   });
-  document.querySelectorAll(".btn-green-peppers").forEach(function($greenPeppers) {
-    if (state.greenPeppers) {
-      $greenPeppers.classList.add("active");
-    } else {
-      $greenPeppers.classList.remove("active");
-    }
-  });
+  document
+    .querySelectorAll(".btn-green-peppers")
+    .forEach(function($greenPeppers) {
+      if (state.greenPeppers) {
+        $greenPeppers.classList.add("active");
+      } else {
+        $greenPeppers.classList.remove("active");
+      }
+    });
   document.querySelectorAll(".btn-sauce").forEach(function($whiteSauce) {
     if (state.whiteSauce) {
       $whiteSauce.classList.add("active");
@@ -127,6 +129,37 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  const priceList = document.querySelector(".panel.price ul");
+  const totalPrice = document.querySelector(".panel.price strong");
+  let list = "";
+  let totalValue = basePrice;
+
+  if (state.pepperonni) {
+    list += `<li>$${ingredients.pepperonni.price} ${ingredients.pepperonni.name}</li>`;
+    totalValue += ingredients.pepperonni.price;
+  }
+  priceList.innerHTML = list;
+  if (state.mushrooms) {
+    list += `<li>$${ingredients.mushrooms.price} ${ingredients.mushrooms.name}</li>`;
+    totalValue += ingredients.mushrooms.price;
+  }
+  priceList.innerHTML = list;
+  if (state.greenPeppers) {
+    list += `<li>$${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name}</li>`;
+    totalValue += ingredients.greenPeppers.price;
+  }
+  priceList.innerHTML = list;
+  if (state.whiteSauce) {
+    list += `<li>$${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name}</li>`;
+    totalValue += ingredients.whiteSauce.price;
+  }
+  priceList.innerHTML = list;
+  if (state.glutenFreeCrust) {
+    list += `<li>$${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name}</li>`;
+    totalValue += ingredients.glutenFreeCrust.price;
+  }
+  priceList.innerHTML = list;
+  totalPrice.innerText = `$${totalValue}`;
 }
 
 renderEverything();
