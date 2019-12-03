@@ -139,7 +139,20 @@ function renderButtons() {
 
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+  // let listItens = document.querySelector('.price ul').innerHTML = '';
+  // let insertItens = document.querySelector('.price ul').innerHTML = '<li>$1 pepperonni</li>';
+  // if (state.pepperonni) {
+  //   resultItens;
+  // }
+
+  // if (state.mushrooms) {
+  //   listItens += `<li>Mushrooms</li>`
+  // }
+
+
+  // if (state.greenPeppers){
+  //   listItens += `<li>Green Peppers</li>`
+  // }
 
 }
 
