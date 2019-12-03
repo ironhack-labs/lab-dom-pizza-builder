@@ -62,20 +62,51 @@ function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
 
   
-  let totalPrice = 10;
-  (state.pepperonni) ? totalPrice += ingredients.pepperonni.price : totalPrice;
-  (state.mushrooms) ? totalPrice += ingredients.mushrooms.price : totalPrice; 
-  (state.greenPeppers) ? totalPrice += ingredients.greenPeppers.price : totalPrice;
-  (state.whiteSauce) ? totalPrice += ingredients.whiteSauce.price : totalPrice;
-  (state.glutenFreeCrust) ? totalPrice += ingredients.glutenFreeCrust.price : totalPrice; 
+  let totalPrice = basePrice;
+  let listPrices = document.querySelector(".panel.price > ul");
+  listPrices.innerHTML = "";
+  let totalListPrices = listPrices.innerHTML;
+  console.log(totalListPrices);
+
+  if (state.pepperonni) {
+    totalPrice += ingredients.pepperonni.price ;
+    totalListPrices += "<li>" + ingredients.pepperonni.price.toString() + " - " + ingredients.pepperonni.name + "</li>";
+  }
+  console.log(totalListPrices);
+  if (state.mushrooms) {
+    totalPrice += ingredients.mushrooms.price;
+    totalListPrices += listPrices.innerHTML = "<li>" + ingredients.mushrooms.price.toString() + " - " + ingredients.mushrooms.name + "</li>";
+  }
   
+  // if (state.greenPeppers) {
+  //   totalPrice += ingredients.greenPeppers.price;
+  //   totalListPrices += listPrices.innerHTML = "<li>" + ingredients.greenPeppers.price + " - " + ingredients.greenPeppers.price + "</li>";
+  // }
+
+  // if (state.whiteSauce) {
+  //   totalPrice += ingredients.whiteSauce.price;
+  //   totalListPrices += listPrices.innerHTML = "<li>" + ingredients.whiteSauce.price + " - " + ingredients.whiteSauce.price + "</li>";
+  // }
+
+  // if (state.glutenFreeCrust) {
+  //   totalPrice += ingredients.glutenFreeCrust.price;
+  //   totalListPrices += listPrices.innerHTML = "<li>" + ingredients.glutenFreeCrust.price + " - " + ingredients.glutenFreeCrust.price + "</li>";
+  // }
+  listPrices.innerHTML = totalListPrices;
   console.log(totalPrice);
-  console.log(state.pepperonni);
+  console.log(totalListPrices);
+
+  // (state.pepperonni) ? totalPrice += ingredients.pepperonni.price : totalPrice;
+  // (state.mushrooms) ? totalPrice += ingredients.mushrooms.price : totalPrice; 
+  // (state.greenPeppers) ? totalPrice += ingredients.greenPeppers.price : totalPrice;
+  // (state.whiteSauce) ? totalPrice += ingredients.whiteSauce.price : totalPrice;
+  // (state.glutenFreeCrust) ? totalPrice += ingredients.glutenFreeCrust.price : totalPrice; 
+  
   // return totalPrice;
 
-  let listPrices = document.querySelectorAll(">aside");
-  console.log(listPrices.innerHTML);
-  // listPrices.innerHTML = "";
+  // let listPrices = document.querySelector(".panel.price > ul");
+  // console.log(listPrices.innerHTML);
+  // listPrices.innerHTML = "<li>Qualquer texto</li><li>Qualquer texto</li><li>Qualquer texto</li><li>Qualquer texto</li>" ;
 
 
 }
