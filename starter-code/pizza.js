@@ -93,17 +93,50 @@ function renderGlutenFreeCrust() {
 
 
 function renderButtons() {
-  if (state.pepperonni === true) {
-    document.querySelector('.btn-pepperonni.active').add
+  if (state.pepperonni) {
+    document.querySelector('.btn-pepperonni').classList.add('active')
+  } else {
+    document.querySelector('.btn-pepperonni').classList.remove('active')
   }
+
+  if (state.mushrooms) {
+    document.querySelector('.btn-mushrooms').classList.add('active')
+  } else {
+    document.querySelector('.btn-mushrooms').classList.remove('active')
+  }
+
+
+
+  if (state.greenPeppers) {
+    document.querySelector('.btn-green-peppers').classList.add('active')
+  } else {
+    document.querySelector('.btn-green-peppers').classList.remove('active')
+  }
+
+
+
+  if (state.sauceWhite) {
+    document.querySelector('.btn-sauce').classList.add('active')
+  } else {
+    console.log("Estou iniciando em false")
+    document.querySelector('.btn-sauce').classList.remove('active')
+  }
+
+
+
+  if (state.glutenFreeCrust) {
+    document.querySelector('.btn-crust').classList.add('active')
+  } else {
+    document.querySelector('.btn-crust').classList.remove('active')
+  }
+
 }
-  //   .btn btn-pepperonni active
-//   if (se o botao for clicado){
-//     chamar a "classe btn btn-pepperonni active" que vai ativar o css
-//   }else {
-//     retire a classe btn btn-pepperonni active
-//   }
-// }
+
+
+
+
+
+
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
