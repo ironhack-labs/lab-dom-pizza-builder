@@ -20,18 +20,6 @@ const state = {
 }
 
 
-
-// const renderPepperonni = () =>  {
-//   document.querySelectorAll('.pep').forEach($pep => {
-//     if (state.pepperonni) {
-//       $pep.style.visibility = "visible";
-//     }
-//     else {
-//       $pep.style.visibility = "hidden";
-//     }
-//   })
-// }
-
 const renderPepperonni = () =>  document.querySelectorAll('.pep').forEach($pep =>  (state.pepperonni) ?  $pep.style.visibility = "visible"  :  $pep.style.visibility = "hidden");
 
 const renderMushrooms = () => {
@@ -46,20 +34,20 @@ const renderGreenPeppers = () => document.querySelectorAll('.green-pepper').forE
 });
 
 
+// Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
 const renderWhiteSauce = () => document.querySelectorAll('.sauce').forEach($sauce => (state.whiteSauce) ? $sauce.classList.add ("sauce-white") : $sauce.classList.remove("sauce-white") );
-  // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
 
 
+// Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
 const renderGlutenFreeCrust = () => document.querySelectorAll(".crust").forEach ($crust => state.glutenFreeCrust ? $crust.classList.add ("crust-gluten-free") : $crust.classList.remove("crust-gluten-free"))
-  // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
 
 
+// Iteration 3: add/remove the class "active" of each `<button class="btn">`
 function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 }
 
+// Iteration 4: change the HTML of `<aside class="panel price">`
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
 
   
   let totalPrice = basePrice;
@@ -72,6 +60,7 @@ function renderPrice() {
     totalPrice += ingredients.pepperonni.price ;
     totalListPrices += "<li>" + ingredients.pepperonni.price.toString() + " - " + ingredients.pepperonni.name + "</li>";
   }
+
   // console.log(totalListPrices);
   if (state.mushrooms) {
     totalPrice += ingredients.mushrooms.price;
@@ -95,9 +84,11 @@ function renderPrice() {
 
   listPrices.innerHTML = totalListPrices;
   let totalPane = document.querySelector(".panel.price > strong");
+ 
+  // return totalPrice;
   totalPane.innerHTML = "<strong> $" + totalPrice + "</strong>";
-  // console.log(totalPrice);
-  // console.log(totalListPrices);
+
+
 
   // (state.pepperonni) ? totalPrice += ingredients.pepperonni.price : totalPrice;
   // (state.mushrooms) ? totalPrice += ingredients.mushrooms.price : totalPrice; 
@@ -105,7 +96,6 @@ function renderPrice() {
   // (state.whiteSauce) ? totalPrice += ingredients.whiteSauce.price : totalPrice;
   // (state.glutenFreeCrust) ? totalPrice += ingredients.glutenFreeCrust.price : totalPrice; 
   
-  // return totalPrice;
 
   // let listPrices = document.querySelector(".panel.price > ul");
   // console.log(listPrices.innerHTML);
