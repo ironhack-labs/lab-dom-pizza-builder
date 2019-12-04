@@ -72,29 +72,32 @@ function renderPrice() {
     totalPrice += ingredients.pepperonni.price ;
     totalListPrices += "<li>" + ingredients.pepperonni.price.toString() + " - " + ingredients.pepperonni.name + "</li>";
   }
-  console.log(totalListPrices);
+  // console.log(totalListPrices);
   if (state.mushrooms) {
     totalPrice += ingredients.mushrooms.price;
     totalListPrices += listPrices.innerHTML = "<li>" + ingredients.mushrooms.price.toString() + " - " + ingredients.mushrooms.name + "</li>";
   }
   
-  // if (state.greenPeppers) {
-  //   totalPrice += ingredients.greenPeppers.price;
-  //   totalListPrices += listPrices.innerHTML = "<li>" + ingredients.greenPeppers.price + " - " + ingredients.greenPeppers.price + "</li>";
-  // }
+  if (state.greenPeppers) {
+    totalPrice += ingredients.greenPeppers.price;
+    totalListPrices += listPrices.innerHTML = "<li>" + ingredients.greenPeppers.price.toString() + " - " + ingredients.greenPeppers.name + "</li>";
+  }
 
-  // if (state.whiteSauce) {
-  //   totalPrice += ingredients.whiteSauce.price;
-  //   totalListPrices += listPrices.innerHTML = "<li>" + ingredients.whiteSauce.price + " - " + ingredients.whiteSauce.price + "</li>";
-  // }
+  if (state.whiteSauce) {
+    totalPrice += ingredients.whiteSauce.price;
+    totalListPrices += listPrices.innerHTML = "<li>" + ingredients.whiteSauce.price.toString() + " - " + ingredients.whiteSauce.name + "</li>";
+  }
 
-  // if (state.glutenFreeCrust) {
-  //   totalPrice += ingredients.glutenFreeCrust.price;
-  //   totalListPrices += listPrices.innerHTML = "<li>" + ingredients.glutenFreeCrust.price + " - " + ingredients.glutenFreeCrust.price + "</li>";
-  // }
+  if (state.glutenFreeCrust) {
+    totalPrice += ingredients.glutenFreeCrust.price;
+    totalListPrices += listPrices.innerHTML = "<li>" + ingredients.glutenFreeCrust.price.toString() + " - " + ingredients.glutenFreeCrust.name + "</li>";
+  }
+
   listPrices.innerHTML = totalListPrices;
-  console.log(totalPrice);
-  console.log(totalListPrices);
+  let totalPane = document.querySelector(".panel.price > strong");
+  totalPane.innerHTML = "<strong> $" + totalPrice + "</strong>";
+  // console.log(totalPrice);
+  // console.log(totalListPrices);
 
   // (state.pepperonni) ? totalPrice += ingredients.pepperonni.price : totalPrice;
   // (state.mushrooms) ? totalPrice += ingredients.mushrooms.price : totalPrice; 
@@ -130,7 +133,7 @@ renderEverything()
 let btn1 = document.querySelector('.btn.btn-pepperonni')
   btn1.onclick = function() {
   state.pepperonni = !state.pepperonni;
-  (state.pepperonni) ? btn1.classList.remove("active"): btn1.classList.add("active");
+  (state.pepperonni) ? btn1.classList.add("active"): btn1.classList.remove("active");
   renderEverything();
 }
 
@@ -138,7 +141,7 @@ let btn1 = document.querySelector('.btn.btn-pepperonni')
 let btn2 = document.querySelector(".btn.btn-mushrooms")
 btn2.onclick = function() {
   state.mushrooms = !state.mushrooms;
-  (state.mushrooms) ? btn2.classList.remove("active") : btn2.classList.add("active");
+  (state.mushrooms) ? btn2.classList.add("active") : btn2.classList.remove("active");
   renderEverything();
 }
 
@@ -147,7 +150,7 @@ btn2.onclick = function() {
 let btn3 = document.querySelector('.btn.btn-green-peppers')
 btn3.onclick = function() {
   state.greenPeppers = !state.greenPeppers;
-  (state.greenPeppers) ? btn3.classList.remove("active") : btn3.classList.add("active");
+  (state.greenPeppers) ? btn3.classList.add("active") : btn3.classList.remove("active");
   renderEverything();
 }
 
@@ -156,7 +159,7 @@ btn3.onclick = function() {
 let btn4 = document.querySelector('.btn.btn-sauce')
 btn4.onclick = function() {
   state.whiteSauce = !state.whiteSauce;
-  (state.whiteSauce) ? btn4.classList.remove("active") : btn4.classList.add("active");
+  (state.whiteSauce) ? btn4.classList.add("active") : btn4.classList.remove("active");
   renderEverything();
 }
 
@@ -164,6 +167,6 @@ btn4.onclick = function() {
 let btn5 = document.querySelector(".btn.btn-crust")
 btn5.onclick  = function () {
   state.glutenFreeCrust = !state.glutenFreeCrust;
-  (state.glutenFreeCrust) ? btn5.classList.remove("active") : btn5.classList.add("active");
+  (state.glutenFreeCrust) ? btn5.classList.add("active") : btn5.classList.remove("active");
   renderEverything();
 }
