@@ -43,8 +43,10 @@ function renderPepperonni() {
     }
   })
 }
-
 function renderMushrooms() {
+  
+  
+  
   // Iteration 1: set the visibility of `<section class="mushroom">`
   document.querySelectorAll('.mushroom').forEach(function($mushroom){
     if (state.mushrooms) {
@@ -55,8 +57,10 @@ function renderMushrooms() {
     }
   })
 }
-
 function renderGreenPeppers() {
+  
+  
+  
   // Iteration 1: set the visibility of `<section class="green-pepper">`
   document.querySelectorAll('.green-pepper').forEach(function($greenPeper){
     if (state.greenPeppers) {
@@ -67,8 +71,10 @@ function renderGreenPeppers() {
     }
   })
 }
-
 function renderWhiteSauce() {
+  
+  
+  
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
   document.querySelectorAll('.sauce').forEach(function($sauceWhite){
     if (state.sauceWhite) {
@@ -118,7 +124,6 @@ function renderButtons() {
   if (state.sauceWhite) {
     document.querySelector('.btn-sauce').classList.add('active')
   } else {
-    console.log("Estou iniciando em false")
     document.querySelector('.btn-sauce').classList.remove('active')
   }
 
@@ -134,26 +139,18 @@ function renderButtons() {
 
 
 
-
-
-
-
 function renderPrice() {
-  // let listItens = document.querySelector('.price ul').innerHTML = '';
-  // let insertItens = document.querySelector('.price ul').innerHTML = '<li>$1 pepperonni</li>';
-  // if (state.pepperonni) {
-  //   resultItens;
-  // }
+  var totalPrice = basePrice
+  var $list = document.querySelector('aside.panel.price ul')
+  $list.innerHTML = ""
 
-  // if (state.mushrooms) {
-  //   listItens += `<li>Mushrooms</li>`
-  // }
-
-
-  // if (state.greenPeppers){
-  //   listItens += `<li>Green Peppers</li>`
-  // }
-
+  for (var ingredientKey in ingredients) {
+    if (state[ingredientKey]) {
+      totalPrice += ingredients[ingredientKey].price
+      $list.innerHTML += `<li>$${ingredients[ingredientKey].price} ${ingredients[ingredientKey].name.toLowerCase()}</li>`
+    }
+  }
+  document.querySelector('aside.panel.price strong').innerHTML = "$" + totalPrice
 }
 
 
