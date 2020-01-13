@@ -62,6 +62,10 @@ body {
   margin: 0 auto;
 }
 
+  
+
+
+
 /*
  * Buttons from:
  * http://codepen.io/TeshaR/pen/cdugG?editors=110
@@ -318,6 +322,10 @@ p.description {
   font-size: 30px;
   display: block;
   margin-top: 6px;
+}
+
+.price li.priceActive {
+      display:none;
 }
 
 /*--- Crust & Sauce ---*/
@@ -1036,4 +1044,7 @@ footer a:hover {
   footer {
     margin: 70px 0 10px 0;
   }
+
+  
+  
 }
