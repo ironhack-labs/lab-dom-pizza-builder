@@ -119,7 +119,7 @@ function renderPrice() {
   let keyArr = Object.keys(state); // ["pepperonni", "mushrooms","greenPeppers", "whiteSauce", "glutenFreeCrust"]
 
   // console.log(document.querySelectorAll('.btn'));
-  return document.querySelectorAll('.btn').forEach(function(element, index) {
+  document.querySelectorAll('.btn').forEach(function(element, index) {
     if (state[keyArr[index]]) {
       console.log(ingredients[keyArr[index]].price);
       let li = document.createElement('li');
