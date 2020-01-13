@@ -17,19 +17,19 @@
     <div class="panel controls">
       <ul>
         <li>
-          <button class="btn btn-pepperonni active">Pepperonni</button>
+          <button id="btn-pepperonni" class="btn btn-pepperonni active">Pepperonni</button>
         </li>
         <li>
-          <button class="btn btn-mushrooms active">Mushrooms</button>
+          <button id="btn-mushrooms" class="btn btn-mushrooms active">Mushrooms</button>
         </li>
         <li>
-          <button class="btn btn-green-peppers active">Green peppers</button>
+          <button id="btn-greenPeppers" class="btn btn-green-peppers active">Green peppers</button>
         </li>
         <li>
-          <button class="btn btn-sauce active">White sauce</button>
+          <button id="btn-whiteSauce" class="btn btn-sauce active">White sauce</button>
         </li>
         <li>
-          <button class="btn btn-crust active">Gluten-free crust</button>
+          <button id="btn-glutenFreeCrust" class="btn btn-crust active">Gluten-free crust</button>
         </li>
       </ul>
     </div>
@@ -41,13 +41,13 @@
 
       <b>$10 cheese pizza</b>
       <ul>
-        <li>$1 pepperonni</li>
-        <li>$1 mushrooms</li>
-        <li>$1 green peppers</li>
-        <li>$3 white sauce</li>
-        <li>$5 gluten-free crust</li>
+        <li id="price-pepperonni">$1 pepperonni</li>
+        <li id="price-mushrooms">$1 mushrooms</li>
+        <li id="price-greenPeppers">$1 green peppers</li>
+        <li id="price-whiteSauce">$3 white sauce</li>
+        <li id="price-glutenFreeCrust">$5 gluten-free crust</li>
       </ul>
-      <strong>$21</strong>
+      <strong id="price-total"></strong>
     </aside>
     <!-- End Price -->
 
@@ -268,9 +268,9 @@
       <section class="pep thirty-one">31</section>
       <section class="pep thirty-three">33</section>
 
-      <section class="crust crust-gluten-free">
+      <section class="crust">
         <section class="cheese"></section>
-        <section class="sauce sauce-white"></section>
+        <section class="sauce"></section>
       </section>
     </div>
     <!-- End Pizza -->

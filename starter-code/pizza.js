@@ -1,85 +1,78 @@
 // Write your Pizza Builder JavaScript in this file.
 
-// Constants 
+// Constants
 var basePrice = 10
 var ingredients = {
-  pepperonni: {name: 'Pepperonni', price: 1},
-  mushrooms: {name: 'Mushrooms', price: 1},
-  greenPeppers: {name: 'Green Peppers', price: 1},
-  whiteSauce: {name: 'White sauce', price: 3},
-  glutenFreeCrust: {name: 'Gluten-free crust', price: 5}
-}
-
-// Initial value of the state (the state values can change over time)
-var state = {
-  pepperonni: true,
-  mushrooms: true,
-  greenPeppers: true,
-  whiteSauce: false,
-  glutenFreeCrust: false
+  pepperonni: {name: 'Pepperonni', className: 'pep', price: 1, state:true},
+  mushrooms: {name: 'Mushrooms', className: 'mushroom', price: 1, state:true},
+  greenPeppers: {name: 'Green Peppers', className: 'green-pepper', price: 1, state:true},
+  whiteSauce: {name: 'White sauce', className: 'sauce', price: 3, state:false},
+  glutenFreeCrust: {name: 'Gluten-free crust', className: 'crust', price: 5, state:false}
 }
 
 // This function takes care of rendering the pizza based on the state
 // This function is triggered once at the begining and everytime the state is changed
 function renderEverything() {
-  renderPepperonni()
-  renderMushrooms()
-  renderGreenPeppers()
-  renderWhiteSauce()
-  renderGlutenFreeCrust()
-
+  renderProducts(['pepperonni','mushrooms','greenPeppers'])
+  renderSpecials(['whiteSauce','glutenFreeCrust'])
   renderButtons()
   renderPrice()
 }
 
-function renderPepperonni() {
-  document.querySelectorAll('.pep').forEach(function($pep){
-    if (state.pepperonni) {
-      $pep.style.visibility = "visible";
-    }
-    else {
-      $pep.style.visibility = "hidden";
-    }
+function renderProducts(products) {
+  products.forEach((prod) => {
+    document.querySelectorAll('.' + ingredients[prod].className).forEach(function(el){
+      el.style.visibility = !!ingredients[prod].state ? "visible" : "hidden";
+    })
   })
 }
 
-function renderMushrooms() {
-  // Iteration 1: set the visibility of `<section class="mushroom">`
+function renderSpecials(specials) {
+  specials.forEach((special) => {
+    let el = document.querySelector('.' + ingredients[special].className )
+    if (!!ingredients[special].state) { el.classList.add("special") }
+    else { el.classList.remove("special") }
+  })
 }
 
-function renderGreenPeppers() {
-  // Iteration 1: set the visibility of `<section class="green-pepper">`
-}
-
-function renderWhiteSauce() {
-  // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-}
-
-function renderGlutenFreeCrust() {
-  // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-}
-
+// Render buttons mirroring the ingredients object
 function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  for (ingredient in ingredients) {
+    let btn = document.getElementById('btn-' + ingredient);
+    if ( !!ingredients[ingredient].state ) { btn.classList.remove('active') } else { btn.classList.add('active') }
+  }
 }
 
+// Render price list based on active elements in the ingredients object
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+
+  let total = basePrice;
+
+  for (ingredient in ingredients) {
+
+    let li = document.getElementById('price-' + ingredient);
+    let product = ingredients[ingredient];
+
+    if ( !!product.state ) {
+      li.style.display = "block";
+      total += product.price
+    } else {
+      li.style.display = "none";
+    }
+
+  }
+
+  document.getElementById('price-total').innerHTML = '$' + total;
+
 }
 
+// Event listener on top level panel control
+document.querySelector('.panel.controls').onclick = function(e) {
+  if ( e.target.tagName !== "BUTTON" ) { return } // only interested in <button>
+  let ingredientName = e.target.id.split("-")[1]; // ie: btn-(pepperonni) <- ingredient name
+  ingredients[ingredientName].state = !ingredients[ingredientName].state;
+  renderEverything();
+}
 
+// Initial Call
 renderEverything()
-
-// Iteration 1: Example of a click event listener on `<button class="btn btn-pepperonni">`
-document.querySelector('.btn.btn-pepperonni').onclick = function() {
-  state.pepperonni = !state.pepperonni
-  renderEverything()
-}
-
-// Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
-
-// Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-
-// Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
-
-// Iteration 2: Add click event listener on `<button class="btn btn-crust">`
