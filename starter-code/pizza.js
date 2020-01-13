@@ -92,15 +92,25 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  state.forEach((elem, i) => {
-    if (elem) {
-      document.querySelectorAll(".panel price > ul")[i].style.visibility =
-        "visible";
-    } else {
-      document.querySelectorAll(".panel price > ul")[i].style.visibility =
-        "hidden";
+  /* state.forEach((elem, i) => {
+      if (elem) {
+        document.querySelectorAll(".panel price > ul")[i].style.visibility =
+          "visible";
+      } else {
+        document.querySelectorAll(".panel price > ul")[i].style.visibility =
+          "hidden";
+      }
+    }); */
+  let newSum = "";
+  let sum = basePrice;
+  for (const element in state) {
+    if (state[element]) {
+      sum += ingredients[element].price;
+      newSum += `<li>${ingredients[element].price} ${ingredients[element].name}</li>`;
     }
-  });
+  }
+  document.querySelector("strong").innerText = `$${sum}`;
+  document.querySelector(".price ul").innerHTML = newSum;
 }
 
 renderEverything();
