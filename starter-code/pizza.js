@@ -136,8 +136,15 @@ function renderPrice() {
 
 	if (state.pepperonni) {
 		price = price + 1;
-		//let element = document.querySelector(".price >ul >li");
-		//element.removeChild(element.childNodes[0]);
+
+		//let element = document.querySelector(".price >ul >li ");
+
+		//const newListItem = document.createElement("li");
+
+		//document.querySelector(".price >ul >li ")[0].innerHTML = " test";
+
+		console.log(document.querySelector(".price >ul li ").innerHTML);
+
 		//console.log(element);
 	}
 
