@@ -1,12 +1,65 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, sub, sup, tt, var,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-header, section, footer, article, details {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+header,
+section,
+footer,
+article,
+details {
   margin: 0;
   padding: 0;
   border: 0;
@@ -17,6 +70,7 @@ header, section, footer, article, details {
   font-family: inherit;
   vertical-align: baseline;
 }
+
 /* remember to define focus styles! */
 :focus {
   outline: 0;
@@ -28,31 +82,43 @@ body {
   background: white;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
+
 /* tables still need 'cellspacing="0"' in the markup */
 table {
   border-collapse: separate;
   border-spacing: 0;
 }
 
-caption, th, td {
+caption,
+th,
+td {
   text-align: left;
   font-weight: normal;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   content: "";
 }
 
-blockquote, q {
-  quotes: "" "";
+blockquote,
+q {
+  quotes: """";
 }
 
 /*--- HTML5 -----*/
-header, nav, details, section, aside, footer {
+header,
+nav,
+details,
+section,
+aside,
+footer {
   display: block;
 }
 
@@ -202,83 +268,83 @@ p.description {
   box-shadow: none;
 }
 
-.btn-green-peppers {
+.btn-greenPeppers {
   background: #129306;
   box-shadow: 0 6px #0a5203;
   color: #fff;
 }
 
-.btn-green-peppers:hover {
+.btn-greenPeppers:hover {
   background: #0e7205;
   box-shadow: 0 5px #063102;
   color: #fff;
 }
 
-.btn-green-peppers.active {
+.btn-greenPeppers.active {
   top: 2px;
   box-shadow: 0 2px #0a5203;
 }
 
-.btn-green-peppers.active:hover {
+.btn-greenPeppers.active:hover {
   box-shadow: 0 2px #063102;
 }
 
-.btn-green-peppers:active,
-.btn-green-peppers.active:active {
+.btn-greenPeppers:active,
+.btn-greenPeppers.active:active {
   top: 5px;
   box-shadow: none;
 }
 
-.btn-sauce {
+.btn-whiteSauce {
   background: #fff4aa;
   box-shadow: 0 6px #998500;
   color: #555;
 }
 
-.btn-sauce:hover {
+.btn-whiteSauce:hover {
   background: #fff088;
   box-shadow: 0 5px #776800;
   color: #555;
 }
 
-.btn-sauce.active {
+.btn-whiteSauce.active {
   top: 2px;
   box-shadow: 0 2px #998500;
 }
 
-.btn-sauce.active:hover {
+.btn-whiteSauce.active:hover {
   box-shadow: 0 2px #776800;
 }
 
-.btn-sauce:active,
-.btn-sauce.active:active {
+.btn-whiteSauce:active,
+.btn-whiteSauce.active:active {
   top: 5px;
   box-shadow: none;
 }
 
-.btn-crust {
+.btn-glutenFreeCrust {
   background: #e0d5cf;
   box-shadow: 0 6px #957160;
   color: #555;
 }
 
-.btn-crust:hover {
+.btn-glutenFreeCrust:hover {
   background: #d3c3bb;
   box-shadow: 0 5px #816253;
   color: #555;
 }
 
-.btn-crust.active {
+.btn-glutenFreeCrust.active {
   top: 2px;
   box-shadow: 0 2px #957160;
 }
 
-.btn-crust.active:hover {
+.btn-glutenFreeCrust.active:hover {
   box-shadow: 0 2px #816253;
 }
 
-.btn-crust:active,
-.btn-crust.active:active {
+.btn-glutenFreeCrust:active,
+.btn-glutenFreeCrust.active:active {
   top: 5px;
   box-shadow: none;
 }
@@ -384,6 +450,7 @@ p.description {
   text-indent: -9999px;
   color: #fff;
 }
+
 /*.pep:hover{
   -moz-transform: scale(1.3);
   -webkit-transform: scale(1.3);
