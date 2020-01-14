@@ -76,7 +76,6 @@ function renderPrice() {
 
   let basePrice = 10;
   let localPrice = 0;
-  console.log(state);
   if (state.pepperonni) {
       localPrice += ingredients.pepperonni.price;
       document.getElementById("priceP").classList.remove("priceActive");
