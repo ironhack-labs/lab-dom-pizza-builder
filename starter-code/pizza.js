@@ -61,7 +61,7 @@ function renderMushrooms() {
 // Iteration 1: set the visibility of `<section class="green-pepper">`
 function renderGreenPeppers() {
   document.querySelectorAll('.green-pepper').forEach(($greenPepper) => {
-    $greenPepper.style.visibility = state.greenPeppers = ? "visible" : "hidden"
+    $greenPepper.style.visibility = state.greenPeppers ? "visible" : "hidden"
   })
 }
 // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
@@ -95,8 +95,18 @@ function renderButtons() {
     document.querySelector('.btn.btn-crust').classList.remove('active');
 }
 // Iteration 4: change the HTML of `<aside class="panel price">`
-function renderPrice() {}
-
+function renderPrice() {
+  let total = basePrice,
+    lista = document.querySelector('aside.panel.price ul');
+  lista.innerHTML = ""
+  for (let ingredient in ingredients) {
+    if (state[ingredient]) {
+      total += ingredients[ingredient].price
+      lista.innerHTML += `<li>$${ingredients[ingredient].price} ${ingredients[ingredient].name.toLowerCase()}</li>`
+    }
+  }
+  document.querySelector('aside.panel.price strong').innerHTML = "$" + total
+}
 
 renderEverything()
 
