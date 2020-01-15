@@ -45,12 +45,12 @@ function renderPepperonni() {
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
-  document.querySelectorAll('.mushroom').forEach(function($cap){
+  document.querySelectorAll('.mushroom').forEach(function($champi){
     if (state.mushrooms) {
-      $cap.style.visibility = "visible";
+      $champi.style.visibility = "visible";
     }
     else {
-      $cap.style.visibility = "hidden";
+      $champi.style.visibility = "hidden";
     }
   })
 }
@@ -124,7 +124,7 @@ function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
 let total=basePrice
 
-let precioTotal =document.querySelector('aside.panel.price ul')
+let precioTotal =document.querySelector('.panel.price ul')
 precioTotal.innerHTML = ""
 
   for (let items in ingredients) {
@@ -133,7 +133,7 @@ precioTotal.innerHTML = ""
       precioTotal.innerHTML += `<li>$${ingredients[items].price} ${ingredients[items].name.toLowerCase()}</li>`
     }
   }
-  document.querySelector('aside.panel.price strong').innerHTML = "$" + total
+  document.querySelector('.panel.price strong').innerHTML = "$" + total
 }
 
 
