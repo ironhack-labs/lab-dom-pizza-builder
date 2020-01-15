@@ -139,63 +139,84 @@ const lis = document.querySelectorAll('.price>ul')
   lis.forEach((li)=>li.remove()) 
 
   */
-  /* Probando para llegar al elemento del precio final...
+  /* Probando para llegar al elemento del precio final en la iteracion 4...
   let price = document.querySelector('.price>strong')
   let arr=price.textContent
   arr=arr.shift()
   console.log(arr      )
 */
 
-
 function renderPrice() {
-const ul=document.querySelector('.price>ul')
-    
-ul.innerHTML=''
+// Iteration 4: change the HTML of `<aside class="panel price">`
+ const ul=document.querySelector('.price>ul')    
+ let suma=basePrice //precio base
+ let index=0;
 
-if(state.pepperonni){
-  const node = document.createElement('li')
-  node.innerText=`$${ingredients.pepperonni.price} `+ingredients.pepperonni.name
-  ul.appendChild(node)
-}
-  
-  else{
-   // ul.removeChild(ul.firstChild);
+//borra toda la lista por deafult
+  ul.innerHTML=''
+
+//imprime solo los elementos activos en la lista 
+
+//version 2.0 mejorada 
+Object.values(state).forEach(element=>{
+  if (element){
+    let precio=Object.values(Object.values(ingredients))[index].price;
+    let name=Object.values(Object.values(ingredients))[index].name;
+
+    const node = document.createElement('li')
+    node.innerText=`$${precio} `+name.toLowerCase()
+    ul.appendChild(node)
+
+    suma+=Object.values(Object.values(ingredients))[index].price;  
   }
+  index++;
+})
 
+/*
+ Version 1.0 mucho codigo!!!!!! pero tambien funciona
+
+  if(state.pepperonni){
+  const node = document.createElement('li')
+  node.innerText=`$${ingredients.pepperonni.price} `+ingredients.pepperonni.name.toLowerCase()
+  ul.appendChild(node)
+  suma+=ingredients.pepperonni.price
+  }
+  */
+
+  /*
   if(state.mushrooms){
   const node = document.createElement('li')
-  node.innerText=`$${ingredients.mushrooms.price} `+ingredients.mushrooms.name
+  node.innerText=`$${ingredients.mushrooms.price} `+ingredients.mushrooms.name.toLowerCase()
   ul.appendChild(node)
+  suma+=ingredients.mushrooms.price
   }
-  else{
-  //  ul.removeChild(ul.firstChild);
-  }
-
-
   
   if(state.greenPeppers){
-    const node = document.createElement('li')
-  node.innerText=`$${ingredients.greenPeppers.price} `+ingredients.greenPeppers.name
+  const node = document.createElement('li')
+  node.innerText=`$${ingredients.greenPeppers.price} `+ingredients.greenPeppers.name.toLowerCase()
   ul.appendChild(node)
+  suma+=ingredients.greenPeppers.price
   }
   
   if(state.whiteSauce){
-    const node = document.createElement('li')
-  node.innerText=`$${ingredients.whiteSauce.price} `+ingredients.whiteSauce.name
+  const node = document.createElement('li')
+  node.innerText=`$${ingredients.whiteSauce.price} `+ingredients.whiteSauce.name.toLowerCase()
   ul.appendChild(node)
+  suma+=ingredients.whiteSauce.price
   }
-
 
   if(state.glutenFreeCrust){
-    const node = document.createElement('li')
-  node.innerText=`$${ingredients.glutenFreeCrust.price} `+ingredients.glutenFreeCrust.name
+  const node = document.createElement('li')
+  node.innerText=`$${ingredients.glutenFreeCrust.price} `+ingredients.glutenFreeCrust.name.toLowerCase()
   ul.appendChild(node)
+  suma+=ingredients.glutenFreeCrust.price
   }
+ */
 
-
-
-
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+  //Para imprimir el precio final...
+  let price = document.querySelector('.price>strong')
+  price.innerText=`$${suma}`
+  
 }
 
 
