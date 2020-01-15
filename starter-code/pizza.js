@@ -53,7 +53,7 @@ function renderPepperonni() {
 //
 
 
-
+//El operador ternario nos ayudaba a que evitaramos hacer un if  diciendo que si el estado de mush era true se actavara si era false que se ocuktara
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
@@ -62,6 +62,8 @@ function renderMushrooms() {
   })
 }
 
+//El operador ternario nos ayudaba a que evitaramos hacer un if  diciendo que si el estado de mush era true se actavara si era false que se ocuktara aqui igual cambiando los nombres solamente, interesante el
+//el operador ternario pero me sigue costando trabajo entenderlo
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
   document.querySelectorAll('.green-pepper').forEach(function($greenPepper){
@@ -91,6 +93,9 @@ function renderGlutenFreeCrust() {
   }
 
 }
+
+
+//La funccion renderbuton retorna el estado del button si esta en true o false y base esa decicion el botton lucia presionado o no
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
@@ -130,11 +135,11 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  var totalPrice = basePrice
-  var $list = document.querySelector('aside.panel.price ul')
+  let totalPrice = basePrice
+  let $list = document.querySelector('aside.panel.price ul')
   $list.innerHTML = ""
 
-  for (var ingredientKey in ingredients) {
+  for (let ingredientKey in ingredients) {
     if (state[ingredientKey]) {
       totalPrice += ingredients[ingredientKey].price
       $list.innerHTML += `<li>$${ingredients[ingredientKey].price} ${ingredients[ingredientKey].name.toLowerCase()}</li>`
