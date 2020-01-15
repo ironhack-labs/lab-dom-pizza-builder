@@ -122,9 +122,10 @@ function renderButtons() {
   btnCrust.add('active')
   else
   btnCrust.remove('active')
-  
+}
 
 /*
+Aqui buscando manera de reducir el codigo de arriba. En proceso...
   const btns = document.querySelectorAll('.btn')
   let btnList=[]
   btns.forEach((b)=>{
@@ -132,9 +133,68 @@ function renderButtons() {
   })
  console.log( btnList[0].classList)
 */
-}
+
+/*
+const lis = document.querySelectorAll('.price>ul')
+  lis.forEach((li)=>li.remove()) 
+
+  */
+  /* Probando para llegar al elemento del precio final...
+  let price = document.querySelector('.price>strong')
+  let arr=price.textContent
+  arr=arr.shift()
+  console.log(arr      )
+*/
+
 
 function renderPrice() {
+const ul=document.querySelector('.price>ul')
+    
+ul.innerHTML=''
+
+if(state.pepperonni){
+  const node = document.createElement('li')
+  node.innerText=`$${ingredients.pepperonni.price} `+ingredients.pepperonni.name
+  ul.appendChild(node)
+}
+  
+  else{
+   // ul.removeChild(ul.firstChild);
+  }
+
+  if(state.mushrooms){
+  const node = document.createElement('li')
+  node.innerText=`$${ingredients.mushrooms.price} `+ingredients.mushrooms.name
+  ul.appendChild(node)
+  }
+  else{
+  //  ul.removeChild(ul.firstChild);
+  }
+
+
+  
+  if(state.greenPeppers){
+    const node = document.createElement('li')
+  node.innerText=`$${ingredients.greenPeppers.price} `+ingredients.greenPeppers.name
+  ul.appendChild(node)
+  }
+  
+  if(state.whiteSauce){
+    const node = document.createElement('li')
+  node.innerText=`$${ingredients.whiteSauce.price} `+ingredients.whiteSauce.name
+  ul.appendChild(node)
+  }
+
+
+  if(state.glutenFreeCrust){
+    const node = document.createElement('li')
+  node.innerText=`$${ingredients.glutenFreeCrust.price} `+ingredients.glutenFreeCrust.name
+  ul.appendChild(node)
+  }
+
+
+
+
   // Iteration 4: change the HTML of `<aside class="panel price">`
 }
 
