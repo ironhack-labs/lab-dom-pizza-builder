@@ -61,7 +61,7 @@ function renderMushrooms() {
 // Iteration 1: set the visibility of `<section class="green-pepper">`
 function renderGreenPeppers() {
   document.querySelectorAll('.green-pepper').forEach(($greenPepper) => {
-    $greenPepper.style.visibility = state.greenPeppers ? "visible" : "hidden"
+    $greenPepper.style.visibility = state.greenPeppers = ? "visible" : "hidden"
   })
 }
 // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
