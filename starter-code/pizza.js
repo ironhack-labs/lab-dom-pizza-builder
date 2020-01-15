@@ -3,11 +3,26 @@
 // Constants 
 var basePrice = 10
 var ingredients = {
-  pepperonni: {name: 'Pepperonni', price: 1},
-  mushrooms: {name: 'Mushrooms', price: 1},
-  greenPeppers: {name: 'Green Peppers', price: 1},
-  whiteSauce: {name: 'White sauce', price: 3},
-  glutenFreeCrust: {name: 'Gluten-free crust', price: 5}
+  pepperonni: {
+    name: 'Pepperonni',
+    price: 1
+  },
+  mushrooms: {
+    name: 'Mushrooms',
+    price: 1
+  },
+  greenPeppers: {
+    name: 'Green Peppers',
+    price: 1
+  },
+  whiteSauce: {
+    name: 'White sauce',
+    price: 3
+  },
+  glutenFreeCrust: {
+    name: 'Gluten-free crust',
+    price: 5
+  }
 }
 
 // Initial value of the state (the state values can change over time)
@@ -33,22 +48,21 @@ function renderEverything() {
 }
 
 function renderPepperonni() {
-  document.querySelectorAll('.pep').forEach(function($pep){
-    if (state.pepperonni) {
-      $pep.style.visibility = "visible";
-    }
-    else {
-      $pep.style.visibility = "hidden";
-    }
+  document.querySelectorAll('.pep').forEach(($pep) => {
+    $pep.style.visibility = state.pepperonni ? "visible" : "hidden"
   })
 }
-
+// Iteration 1: set the visibility of `<section class="mushroom">`
 function renderMushrooms() {
-  // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll('.mushroom').forEach(($mushroom) => {
+    $mushroom.style.visibility = state.mushrooms ? "visible" : "hidden"
+  })
 }
-
+// Iteration 1: set the visibility of `<section class="green-pepper">`
 function renderGreenPeppers() {
-  // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll('.green-pepper').forEach(($greenPepper) => {
+    $greenPepper.style.visibility = state.greenPeppers ? "visible" : "hidden"
+  })
 }
 
 function renderWhiteSauce() {
@@ -71,15 +85,20 @@ function renderPrice() {
 renderEverything()
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperonni">`
-document.querySelector('.btn.btn-pepperonni').onclick = function() {
+document.querySelector('.btn.btn-pepperonni').onclick = () => {
   state.pepperonni = !state.pepperonni
   renderEverything()
 }
-
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
-
+document.querySelector('.btn.btn-mushrooms').onclick = () => {
+  state.mushrooms = !state.mushrooms
+  renderEverything()
+}
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-
+document.querySelector('.btn.btn-green-peppers').onclick = () => {
+  state.greenPeppers = !state.greenPeppers
+  renderEverything()
+}
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
