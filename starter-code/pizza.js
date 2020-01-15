@@ -15,8 +15,8 @@ var state = {
   pepperonni: true,
   mushrooms: true,
   greenPeppers: true,
-  whiteSauce: false,
-  glutenFreeCrust: false
+  whiteSauce: true,
+  glutenFreeCrust: true
 }
 
 // This function takes care of rendering the pizza based on the state
@@ -81,14 +81,43 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+    const entries = Object.entries(state)
+    let buttonClass = ''
+    entries.forEach((key, index) => {
+      if(key[1]===false){
+        switch (index){
+          case 0:
+            buttonClass = '.btn-pepperonni'
+          break
+          case 1:
+            buttonClass = '.btn-mushrooms'
+          break
+          case 2:
+            buttonClass = '.btn-green-peppers'
+          break
+          case 3:
+            buttonClass = '.btn-sauce'
+          break
+          case 4:
+            buttonClass = '.btn-crust'
+          break
+          default:
+            return
+          }
+          document.querySelector(buttonClass).classList.remove('active')
+        } //else { //no se como desactivarlo intente con el else pero pues como nunca se guarda la clase en buttonClass pues ahi me quede.
+        //   document.querySelector(buttonClass).classList.add('active')
+        // }
+    })
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+
 }
 
 
-renderEverything()
+// renderEverything()
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperonni">`
 document.querySelector('.btn.btn-pepperonni').onclick = function() {
@@ -106,7 +135,8 @@ document.querySelector('.btn-mushrooms').addEventListener('click', () => {
 document.querySelector('.btn-green-peppers').addEventListener('click', () => {
     state.greenPeppers = !state.greenPeppers
     renderEverything()
-  })
+})
+
   // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
   document.querySelector('.btn-sauce').addEventListener('click', () => {
     state.whiteSauce = !state.whiteSauce
