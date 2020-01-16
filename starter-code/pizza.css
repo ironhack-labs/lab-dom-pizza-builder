@@ -320,6 +320,10 @@ p.description {
   margin-top: 6px;
 }
 
+.hide {
+  display: none;
+}
+
 /*--- Crust & Sauce ---*/
 .crust {
   width: 700px;
