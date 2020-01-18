@@ -69,10 +69,33 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+  const elementWhiteSauce = document.querySelector('.sauce')
+  function trueWhiteSauce(){
+    if(state.whiteSauce) {
+      if (!elementWhiteSauce.className.includes("sauce-white")){
+        elementWhiteSauce.classList.add("sauce-white")
+      }
+    }
+    else {
+        elementWhiteSauce.classList.remove("sauce-white")
+    }
+  }
+  trueWhiteSauce();
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+    const elementCrust = document.querySelector('.crust')
+    function trueCrust() {
+      if (state.glutenFreeCrust) {
+        if (!elementCrust.className.includes("crust-gluten-free")) {
+          elementCrust.classList.add("crust-gluten-free")
+        }
+      } else {
+        elementCrust.classList.remove("crust-gluten-free")
+      }
+    }
+    trueCrust();
 }
 
 function renderButtons() {
@@ -98,10 +121,18 @@ document.querySelector('.btn.btn-pepperonni').onclick = function() {
     renderMushrooms()
   }
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-document.querySelector('.btn.btn-green-peppers').onclick = function() {
-  state.greenPeppers = !state.greenPeppers
-  renderGreenPeppers()
-}
+  document.querySelector('.btn.btn-green-peppers').onclick = function() {
+    state.greenPeppers = !state.greenPeppers
+    renderGreenPeppers()
+  }
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
+  document.querySelector('.btn.btn-sauce').onclick = function() {
+    state.whiteSauce = !state.whiteSauce
+    renderWhiteSauce()
+  }
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+    document.querySelector('.btn.btn-crust').onclick = function () {
+      state.glutenFreeCrust = !state.glutenFreeCrust
+      renderGlutenFreeCrust()
+    }
