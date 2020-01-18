@@ -17,19 +17,19 @@
     <div class="panel controls">
       <ul>
         <li>
-          <button class="btn btn-pepperonni active">Pepperonni</button>
+          <button data-state-target="pepperonni" class="btn btn-pepperonni active">Pepperonni</button>
         </li>
         <li>
-          <button class="btn btn-mushrooms active">Mushrooms</button>
+          <button data-state-target="mushrooms" class="btn btn-mushrooms active">Mushrooms</button>
         </li>
         <li>
-          <button class="btn btn-green-peppers active">Green peppers</button>
+          <button data-state-target="greenPeppers" class="btn btn-green-peppers active">Green peppers</button>
         </li>
         <li>
-          <button class="btn btn-sauce active">White sauce</button>
+          <button data-state-target="whiteSauce" class="btn btn-sauce active">White sauce</button>
         </li>
         <li>
-          <button class="btn btn-crust active">Gluten-free crust</button>
+          <button data-state-target="glutenFreeCrust" class="btn btn-crust active">Gluten-free crust</button>
         </li>
       </ul>
     </div>
@@ -41,13 +41,13 @@
 
       <b>$10 cheese pizza</b>
       <ul>
-        <li>$1 pepperonni</li>
-        <li>$1 mushrooms</li>
-        <li>$1 green peppers</li>
-        <li>$3 white sauce</li>
-        <li>$5 gluten-free crust</li>
+        <li data-state-target="pepperonni">$1 pepperonni</li>
+        <li data-state-target="mushrooms">$1 mushrooms</li>
+        <li data-state-target="greenPeppers">$1 green peppers</li>
+        <li data-state-target="whiteSauce">$3 white sauce</li>
+        <li data-state-target="glutenFreeCrust">$5 gluten-free crust</li>
       </ul>
-      <strong>$21</strong>
+      <strong id="price">$21</strong>
     </aside>
     <!-- End Price -->
 
