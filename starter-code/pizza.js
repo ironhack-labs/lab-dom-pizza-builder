@@ -57,7 +57,7 @@ function renderMushrooms() {
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
   document.querySelectorAll(".green-pepper").forEach(function($greenPep){
-    if(state.green-pepper){
+    if(state.greenPeppers){
       $greenPep.style.visibility = "visible";
     } else{
       $greenPep.style.visibility = "hidden";
@@ -67,10 +67,20 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+  document.querySelectorAll(".sauce-white").forEach(function($sauceWhite){
+    if(!state.whiteSauce){
+      $sauceWhite.classList.remove(".sauce-white");
+    }
+  })
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  document.querySelectorAll(".crust").forEach(function($freeCrust){
+    if(!state.glutenFreeCrust){
+      $freeCrust.classList.remove(".crust");
+    }
+  })
 }
 
 function renderButtons() {
@@ -82,28 +92,36 @@ function renderPrice() {
 }
 
 
-renderEverything()
+//renderEverything()    por defecto creo que esto venía activado(tenerlo en cuenta!!!)
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperonni">`
 document.querySelector('.btn.btn-pepperonni').onclick = function() {
   state.pepperonni = !state.pepperonni;
-  renderEverything()
+  renderEverything();
 }
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
 
-document.querySelector(".btn.btn-mushrooms").onclick = function{
+document.querySelector(".btn.btn-mushrooms").onclick = function(){
   state.mushrooms = !state.mushrooms;
-  renderEverything()
+  renderEverything();
 }
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
 
-document.querySelector(".btn.btn-green.peepers").onclick = function{
+document.querySelector(".btn.btn-green-peppers").onclick = function(){
   state.greenPeppers = !state.greenPeppers;
-  renderEverything()
+  renderEverything();
 }
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
+document.querySelector(".btn.btn-sauce").onclick = function(){
+  state.whiteSauce = !state.whiteSauce;
+  renderEverything();
+}
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector(".btn.btn-crust").onclick = function (){
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+}
