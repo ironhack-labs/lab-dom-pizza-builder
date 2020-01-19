@@ -135,7 +135,40 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let price = basePrice;
+  let list = document.querySelector(".price > ul");
+  let totalPrice = document.querySelector("strong");
 
+
+  list.innerHTML = "";
+
+  if (state.pepperonni){
+    list.innerHTML += `<li>$1 pepperonni</li>`;
+    price += 1;
+  }
+
+  if (state.mushrooms){
+    list.innerHTML += `<li>$1 mushrooms</li>`;
+    price += 1;
+  }
+
+  if (state.greenPeppers){
+    list.innerHTML += `<li>$1 green peppers</li>`;
+    price += 1;
+  }
+
+  if (state.whiteSauce){
+    list.innerHTML += `<li>$3 white sauce</li>`;
+    price += 3;
+  }
+
+  if (state.glutenFreeCrust){
+    list.innerHTML += `<li>$5 gluten-free crust</li>`;
+    price += 5;
+  }
+
+  totalPrice.innerHTML = `$ ${price}`;
+  
 }
 
 
