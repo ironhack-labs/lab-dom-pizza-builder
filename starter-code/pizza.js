@@ -67,28 +67,81 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  document.querySelectorAll(".sauce-white").forEach(function($sauceWhite){
-    if(!state.whiteSauce){
-      $sauceWhite.classList.remove(".sauce-white");
-    }
-  })
+  const lookingForSauce = document.querySelector(".sauce");
+    if(state.whiteSauce) {
+      lookingForSauce.classList.add("sauce-white");
+    } else {
+      lookingForSauce.classList.remove("sauce-white");
+    } 
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  document.querySelectorAll(".crust").forEach(function($freeCrust){
-    if(!state.glutenFreeCrust){
-      $freeCrust.classList.remove(".crust");
+  const lookingForCrust = document.querySelector(".crust");
+    if(state.glutenFreeCrust){
+      lookingForCrust.classList.add("crust-gluten-free");
+    } else{
+      lookingForCrust.classList.remove("crust-gluten-free");
     }
-  })
 }
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  
+  /*
+  let buttons = document.querySelectorAll(".btn")
+  if (state.buttons) {
+        btn.classlist.add("active");
+  } else {
+      btn.classList.remove("active");
+    }
+  */
+  const activePepperoni = document.querySelector(".btn-pepperonni");
+  if(state.pepperonni){
+    //document.querySelector('.btn.btn-pepperonni').classList.add(' active')
+    activePepperoni.classList.add("active")
+  } else{
+    //document.querySelector('.btn.btn-pepperonni').classList.remove(' active')
+    activePepperoni.classList.remove("active")
+  }
+
+  const activeMushrooms = document.querySelector(".btn-mushrooms");
+  if(state.mushrooms){
+    //document.querySelector('.btn.btn-mushrooms').classList.add(' active')
+    activeMushrooms.classList.add(".active")
+  } else{
+    //document.querySelector('.btn.btn-mushrooms').classList.remove(' active')
+    activeMushrooms.classList.remove(".active")
+  }
+
+  const activeGreenPeppers = document.querySelector(".btn-green-peppers");
+  if(state.greenPeppers){
+    activeGreenPeppers.classList.add(".active")
+  } else{
+    activeGreenPeppers.classList.remove(".active")
+  }
+
+  const activeWhiteSauce = document.querySelector(".btn-sauce");
+  if(state.WhiteSauce){
+    activeWhiteSauce.classList.add(".active")
+  } else{
+    activeWhiteSauce.classList.remove(".active")
+  }
+
+  const activeGlutenFreeCrust = document.querySelector(".btn-crust");
+  if(state.GlutenFreeCrust){
+    activeGlutenFreeCrust.classList.add(".active")
+  } else{
+    activeGlutenFreeCrust.classList.remove(".active")
+  }
+
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  
+  //const finalPrice = document.querySelector("strong");
+  //finalPrice.innerHTML = '$25'
 }
 
 
