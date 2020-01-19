@@ -56,11 +56,11 @@ function renderMushrooms() {
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
-  document.querySelectorAll(".green-pepper").forEach(function($green-pep){
+  document.querySelectorAll(".green-pepper").forEach(function($greenPep){
     if(state.green-pepper){
-      $green-pep.style.visibility = "visible";
+      $greenPep.style.visibility = "visible";
     } else{
-      $green-pep.style.visibility = "hidden";
+      $greenPep.style.visibility = "hidden";
     }
   })
 }
