@@ -45,7 +45,7 @@ function renderPepperonni() {
 
 function renderMushrooms() {
   document.querySelectorAll('.mushroom').forEach(function($mushroom){
-    if (state.mushroom) {
+    if (state.mushrooms) {
       $mushroom.style.visibility = "visible";
     }
     else {
@@ -87,17 +87,40 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  let buttonP = document.getElementsByClassName("btn-pepperonni")[0]; //hay que hacerlo para todos los btns!
-  
-  if (state.pepperonni) {
-    buttonP.classList.add("active");
-  } else {
-    buttonP.classList.remove("active");
-  }
+  let buttonCollection = document.getElementsByClassName("btn");
+  let arrayOfBtn = [...buttonCollection];
+
+  arrayOfBtn.forEach(function(element) {
+    function modifyClass() {
+      element.classList.toggle("active");
+    } 
+   element.addEventListener("click", modifyClass);
+  })
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let ulPrice = document.getElementsByClassName("panel price")[0].children[2].children;
+  console.log(ulPrice);
+
+  // ulPrice.forEach(function(element) {
+  //   if (state.ulPrice === true) {
+
+  //   } else {
+      
+  //   }
+  // })
+
+  for (let property in state) {
+    if (state.propery === true) {
+      
+    } else {
+
+    }
+  }
+
+
+
 }
 
 
@@ -112,7 +135,7 @@ document.querySelector('.btn.btn-pepperonni').onclick = function() {
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
 
 document.querySelector('.btn.btn-mushrooms').onclick = function() {
-  state.mushroom = !state.mushroom
+  state.mushrooms = !state.mushrooms
   renderEverything()
 }
 
