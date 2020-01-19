@@ -99,40 +99,40 @@ function renderButtons() {
   const activePepperoni = document.querySelector(".btn-pepperonni");
   if(state.pepperonni){
     //document.querySelector('.btn.btn-pepperonni').classList.add(' active')
-    activePepperoni.classList.add("active")
+    activePepperoni.classList.add("active");
   } else{
     //document.querySelector('.btn.btn-pepperonni').classList.remove(' active')
-    activePepperoni.classList.remove("active")
+    activePepperoni.classList.remove("active");
   }
 
   const activeMushrooms = document.querySelector(".btn-mushrooms");
   if(state.mushrooms){
     //document.querySelector('.btn.btn-mushrooms').classList.add(' active')
-    activeMushrooms.classList.add(".active")
+    activeMushrooms.classList.add("active")
   } else{
     //document.querySelector('.btn.btn-mushrooms').classList.remove(' active')
-    activeMushrooms.classList.remove(".active")
+    activeMushrooms.classList.remove("active")
   }
 
   const activeGreenPeppers = document.querySelector(".btn-green-peppers");
   if(state.greenPeppers){
-    activeGreenPeppers.classList.add(".active")
+    activeGreenPeppers.classList.add("active")
   } else{
-    activeGreenPeppers.classList.remove(".active")
+    activeGreenPeppers.classList.remove("active")
   }
 
   const activeWhiteSauce = document.querySelector(".btn-sauce");
-  if(state.WhiteSauce){
-    activeWhiteSauce.classList.add(".active")
+  if(state.whiteSauce){
+    activeWhiteSauce.classList.add("active")
   } else{
-    activeWhiteSauce.classList.remove(".active")
+    activeWhiteSauce.classList.remove("active")
   }
 
   const activeGlutenFreeCrust = document.querySelector(".btn-crust");
-  if(state.GlutenFreeCrust){
-    activeGlutenFreeCrust.classList.add(".active")
+  if(state.glutenFreeCrust){
+    activeGlutenFreeCrust.classList.add("active")
   } else{
-    activeGlutenFreeCrust.classList.remove(".active")
+    activeGlutenFreeCrust.classList.remove("active")
   }
 
 }
@@ -145,7 +145,7 @@ function renderPrice() {
 }
 
 
-//renderEverything()    por defecto creo que esto venía activado(tenerlo en cuenta!!!)
+renderEverything()    //por defecto creo que esto venía activado(tenerlo en cuenta!!!)
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperonni">`
 document.querySelector('.btn.btn-pepperonni').onclick = function() {
