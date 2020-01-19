@@ -144,34 +144,45 @@ function renderButtons() {
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
  const priceList = document.querySelector('.price').children[2].children  ;
- const totalPrice = 10;
+  const priceResult = document.querySelector('.price').children[3];
+ let totalPrice = 10;
   if(state.pepperonni){
-    document.querySelector('.price').children[2].children[0].style.display = "block";
+    priceList[0].style.display = "block";
+    pricePepperoni=parseInt(priceList[0].innerHTML.slice(1,2));
+    totalPrice += pricePepperoni;
   } else{
-    document.querySelector('.price').children[2].children[0].style.display = "none";
+    priceList[0].style.display = "none";
   }
   if (state.mushrooms) {
-    document.querySelector('.price').children[2].children[1].style.display = "block";
+    priceList[1].style.display = "block";
+    priceMushrooms = parseInt(priceList[1].innerHTML.slice(1, 2));
+    totalPrice += priceMushrooms;
   } else{
-    document.querySelector('.price').children[2].children[1].style.display = "none";
+    priceList[1].style.display = "none";
   }
   if (state.greenPeppers) {
-    document.querySelector('.price').children[2].children[2].style.display = "block";
+    priceList[2].style.display = "block";
+    priceGreenPeppers = parseInt(priceList[2].innerHTML.slice(1, 2));
+    totalPrice += priceGreenPeppers;
   } else {
-    document.querySelector('.price').children[2].children[2].style.display = "none";
+    priceList[2].style.display = "none";
   }
   if (state.whiteSauce) {
-    document.querySelector('.price').children[2].children[3].style.display = "block";
+    priceList[3].style.display = "block";
+    priceWhiteSauce = parseInt(priceList[3].innerHTML.slice(1, 2));
+    totalPrice += priceWhiteSauce;
+
   } else {
-    document.querySelector('.price').children[2].children[3].style.display = "none";
+    priceList[3].style.display = "none";
   }
   if (state.glutenFreeCrust) {
-    document.querySelector('.price').children[2].children[4].style.display = "block";
+    priceList[4].style.display = "block";
+    priceGlutenFreeCrust = parseInt(priceList[4].innerHTML.slice(1, 2));
+    totalPrice += priceGlutenFreeCrust;
   } else {
-    document.querySelector('.price').children[2].children[4].style.display = "none";
+    priceList[4].style.display = "none";
   }
-  
-
+  priceResult.innerText = `$${totalPrice}`;
 }
 
 
