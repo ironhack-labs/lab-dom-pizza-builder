@@ -45,10 +45,24 @@ function renderPepperonni() {
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll(".mushroom").forEach(function($mush){
+    if (state.mushrooms) {
+      $mush.style.visibility = "visible";
+    } else{
+      $mush.style.visibility = "hidden";
+    }
+  })
 }
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll(".green-pepper").forEach(function($green-pep){
+    if(state.green-pepper){
+      $green-pep.style.visibility = "visible";
+    } else{
+      $green-pep.style.visibility = "hidden";
+    }
+  })
 }
 
 function renderWhiteSauce() {
@@ -72,13 +86,23 @@ renderEverything()
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperonni">`
 document.querySelector('.btn.btn-pepperonni').onclick = function() {
-  state.pepperonni = !state.pepperonni
+  state.pepperonni = !state.pepperonni;
   renderEverything()
 }
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
 
+document.querySelector(".btn.btn-mushrooms").onclick = function{
+  state.mushrooms = !state.mushrooms;
+  renderEverything()
+}
+
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+
+document.querySelector(".btn.btn-green.peepers").onclick = function{
+  state.greenPeppers = !state.greenPeppers;
+  renderEverything()
+}
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 
