@@ -21,7 +21,7 @@ var state = {
 
 // This function takes care of rendering the pizza based on the state
 // This function is triggered once at the begining and everytime the state is changed
-function renderEverything() {
+function renderEverything(stateName, className, innerTextString, priceAmount) {
   renderPepperonni()
   renderMushrooms()
   renderGreenPeppers()
@@ -29,7 +29,7 @@ function renderEverything() {
   renderGlutenFreeCrust()
 
   renderButtons()
-  renderPrice()
+  renderPrice(stateName, className, innerTextString, priceAmount)
 }
 
 function renderPepperonni() {
@@ -99,8 +99,40 @@ function renderButtons() {
   } 
 }
 
-function renderPrice() {
+function renderPrice(className, innerTextString, stateName, priceAmount) {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  if (innerTextString){
+    //if innerTextString we know user is updating
+    //update list of ingredients
+    const $parent = document.querySelector('.price ul');
+    if (state[stateName]) {
+      const $ingredient = document.createElement('li');
+      $ingredient.classList.add(className);
+      $ingredient.innerHTML =`$${priceAmount} ${innerTextString}`;
+      $parent.appendChild($ingredient);
+    } else if (!state[stateName] && document.querySelector(`.price ul li.${className}`)){
+      $parent.removeChild(document.querySelector(`.price ul li.${className}`));
+    }
+    //update total price
+    let totalPrice = 10;
+    const entries = Object.entries(state);
+    for (const [ingredient, bool] of entries) {
+      if (
+        (bool === true) && (
+        ingredient === 'pepperonni' ||
+        ingredient === 'mushrooms' || 
+        ingredient ==='greenPeppers')){
+        totalPrice +=1;
+      }
+      if ((bool === true) && (ingredient === 'whiteSauce')){
+        totalPrice +=3;
+      }
+      if ((bool === true) && (ingredient === 'glutenFreeCrust')){
+        totalPrice +=5;
+      }
+    }
+    document.querySelector('.price strong').innerHTML=`$${totalPrice}`;
+  }
 }
 
 
@@ -109,29 +141,29 @@ renderEverything()
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperonni">`
 document.querySelector('.btn.btn-pepperonni').onclick = function() {
   state.pepperonni = !state.pepperonni
-  renderEverything()
+  renderEverything('pepperonni','pepperonni','pepperonni',1)
 }
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
 document.querySelector('.btn.btn-mushrooms').onclick = function() {
   state.mushrooms = !state.mushrooms
-  renderEverything()
+  renderEverything('mushrooms', 'mushrooms', 'mushrooms', 1)
 }
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
 document.querySelector('.btn.btn-green-peppers').onclick = function() {
   state.greenPeppers = !state.greenPeppers
-  renderEverything()
+  renderEverything('green-peppers', 'green peppers','greenPeppers', 1)
 }
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 document.querySelector('.btn.btn-sauce').onclick = function() {
   state.whiteSauce = !state.whiteSauce
-  renderEverything()
+  renderEverything('white-sauce', 'white sauce', 'whiteSauce',3)
 }
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
 document.querySelector('.btn.btn-crust').onclick = function() {
   state.glutenFreeCrust = !state.glutenFreeCrust
-  renderEverything()
+  renderEverything('gluten-free-crust', 'gluten-free-crust','glutenFreeCrust', 5)
 }
