@@ -69,26 +69,35 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  let element = document.querySelector("section.sauce");
+  let element = document.querySelector("section.sauce")
   if (!state.whiteSauce){
-    element.classList.remove("sauce-white");
+    element.classList.remove("sauce-white")
   } else{
-    element.classList.add("sauce-white");
+    element.classList.add("sauce-white")
   }
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  let element = document.querySelector("section.crust");
+  let element = document.querySelector("section.crust")
   if (!state.glutenFreeCrust){
-    element.classList.remove("crust-gluten-free");
+    element.classList.remove("crust-gluten-free")
   } else{
-    element.classList.add("crust-gluten-free");
+    element.classList.add("crust-gluten-free")
   }
 }
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  Object.keys(state).forEach(key => {
+    btn = document.querySelector(`.controls [data-state-target=${key}`);
+    if(!state[key]){
+      btn.classList.remove("active");
+    }  else {
+      btn.classList.add("active");
+    }
+  });
+
 }
 
 function renderPrice() {
