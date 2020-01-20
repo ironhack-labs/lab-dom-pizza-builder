@@ -68,7 +68,7 @@ function renderGreenPeppers() {
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
   let sauceYorN = document.querySelector('.sauce');
-  if (sauceYorN.classList.contains('sauce-white')) {
+  if (state.whiteSauce) {
     sauceYorN.classList.remove('sauce-white');
   } else {
     sauceYorN.classList.add('sauce-white');
@@ -78,7 +78,7 @@ function renderWhiteSauce() {
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
   let crustYorN = document.querySelector('.crust');
-  if (crustYorN.classList.contains('crust-gluten-free')) {
+  if (state.glutenFreeCrust) {
     crustYorN.classList.remove('crust-gluten-free');
   } else {
     crustYorN.classList.add('crust-gluten-free');
@@ -100,27 +100,25 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  let ulPrice = document.getElementsByClassName("panel price")[0].children[2].children;
-  console.log(ulPrice);
 
-  // ulPrice.forEach(function(element) {
-  //   if (state.ulPrice === true) {
 
-  //   } else {
-      
-  //   }
-  // })
 
-  for (let property in state) {
-    if (state.propery === true) {
-      
-    } else {
 
-    }
+  let priceList = document.querySelector(".price > ul");
+  let totalPrice = document.querySelector("strong");
+
+  console.log(totalPrice);
+
+  if (state.pepperonni) {
+    priceList.firstElementChild.style.visibility = "visible";
+  }
+  else {
+    priceList.firstElementChild.style.visibility = "hidden";
   }
 
+  
 
-
+ 
 }
 
 
