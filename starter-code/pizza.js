@@ -88,14 +88,6 @@ function renderGlutenFreeCrust() {
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
   
-  /*
-  let buttons = document.querySelectorAll(".btn")
-  if (state.buttons) {
-        btn.classlist.add("active");
-  } else {
-      btn.classList.remove("active");
-    }
-  */
   const activePepperoni = document.querySelector(".btn-pepperonni");
   if(state.pepperonni){
     //document.querySelector('.btn.btn-pepperonni').classList.add(' active')
@@ -139,9 +131,35 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let sumOfIngredients = 10; //the base of cheese
+  const ingredientsList = document.querySelector(".panel.price ul");
+  ingredientsList.innerHTML = "";
+
+  if(state.pepperonni){
+    ingredientsList.innerHTML += `<li>${ingredients.pepperonni.price} ${ingredients.pepperonni.name}</li>`; //IMPORTANT put the special comas `` for entry into the variables
+    sumOfIngredients = sumOfIngredients + ingredients.pepperonni.price;
+  }
+  if(state.mushrooms){
+    ingredientsList.innerHTML += `<li>${ingredients.mushrooms.price} ${ingredients.mushrooms.name}</li>`; 
+    sumOfIngredients = sumOfIngredients + ingredients.mushrooms.price;
+  }
+  if(state.greenPeppers){
+    ingredientsList.innerHTML += `<li>${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name}</li>`; 
+    sumOfIngredients = sumOfIngredients + ingredients.greenPeppers.price;
+  }
+  if(state.whiteSauce){
+    ingredientsList.innerHTML += `<li>${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name}</li>`; 
+    sumOfIngredients = sumOfIngredients + ingredients.whiteSauce.price;
+  }
+  if(state.glutenFreeCrust){
+    ingredientsList.innerHTML += `<li>${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name}</li>`; 
+    sumOfIngredients = sumOfIngredients + ingredients.glutenFreeCrust.price;
+  }
   
-  //const finalPrice = document.querySelector("strong");
-  //finalPrice.innerHTML = '$25'
+
+  const finalPrice = document.querySelector("strong");
+  finalPrice.innerHTML = `${sumOfIngredients}` //the total suma of the differents ingredients
+
 }
 
 
