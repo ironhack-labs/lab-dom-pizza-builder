@@ -100,31 +100,25 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-
-
-
-
   let priceList = document.querySelector(".price > ul");
   let totalPrice = document.querySelector("strong");
+  let priceUpdated = basePrice;
+  priceList.innerHTML = "";
 
-  console.log(totalPrice);
-
-  if (state.pepperonni) {
-    priceList.firstElementChild.style.visibility = "visible";
+  for (let singleIngredient in ingredients) {
+    if (state[singleIngredient]) {
+      priceUpdated += ingredients[singleIngredient].price;
+      priceList.innerHTML += `<li>$ ${ingredients[singleIngredient].price} + ${ingredients[singleIngredient].name}</li>`;
+    } 
+    totalPrice.innerHTML = `<strong>$ ${priceUpdated}</strong>`;
   }
-  else {
-    priceList.firstElementChild.style.visibility = "hidden";
-  }
-
-  
-
- 
 }
 
 
 renderEverything()
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperonni">`
+
 document.querySelector('.btn.btn-pepperonni').onclick = function() {
   state.pepperonni = !state.pepperonni
   renderEverything()
