@@ -11,6 +11,13 @@ var ingredients = {
   whiteSauce: {name: 'White sauce', price: 3},
   glutenFreeCrust: {name: 'Gluten-free crust', price: 5}
 };
+var buttonClasses = [
+  "btn-pepperonni",
+  "btn-mushrooms",
+  "btn-green-peppers",
+  "btn-sauce",
+  "btn-crust"
+];
 
 // Initial value of the state (the state values can change over time)
 var state = {
@@ -104,25 +111,12 @@ function toggleButton($button, ingredient, buttonClass) {
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
   document.querySelectorAll('.btn').forEach(function($button){
-    if ($button.classList.contains("btn-pepperonni")) {
-      toggleButton($button, "pepperonni", "btn-pepperonni");
-    }
-
-    if ($button.classList.contains("btn-mushrooms")) {
-      toggleButton($button, "mushrooms", "btn-mushrooms");
-    }
-
-    if ($button.classList.contains("btn-green-peppers")) {
-      toggleButton($button, "greenPeppers", "btn-green-peppers");
-    }
-
-    if ($button.classList.contains("btn-sauce")) {
-      toggleButton($button, "whiteSauce", "btn-sauce");
-    }
-
-    if ($button.classList.contains("btn-crust")) {
-      toggleButton($button, "glutenFreeCrust", "btn-crust");
-    }
+    buttonClasses.forEach(function(buttonClass, index) {
+      if ($button.classList.contains(buttonClass)) {
+        let ingredient = Object.keys(state)[index];
+        toggleButton($button, ingredient, buttonClass);
+      }
+    });
   });
 }
 
