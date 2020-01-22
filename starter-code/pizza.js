@@ -91,27 +91,39 @@ function renderGlutenFreeCrust() {
   });
 }
 
-// function toggle($button, ingredient, buttonClass) {
-//   if ($button.classList.contains(buttonClass)) {
-//     if (state.ingredient && !$button.classList.contains("active")) {
-//       $button.classList.add("active");
-//     } else if (!state.ingredient && $button.classList.contains("active")) {
-//       $button.classList.remove("active");
-//     }
-//   }
-// }
+function toggleButton($button, ingredient, buttonClass) {
+  if ($button.classList.contains(buttonClass)) {
+    if (state[ingredient] && !$button.classList.contains("active")) {
+      $button.classList.add("active");
+    } else if (!state[ingredient] && $button.classList.contains("active")) {
+      $button.classList.remove("active");
+    }
+  }
+}
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  // document.querySelectorAll('.btn').forEach(function($button){
-  //   if ($button.classList.contains("btn-pepperonni")) {
-  //     if (state.pepperonni && !$button.classList.contains("active")) {
-  //       $button.classList.add("active");
-  //     } else if (!state.pepperonni && $button.classList.contains("active")) {
-  //       $button.classList.remove("active");
-  //     }
-  //   }
-  // });
+  document.querySelectorAll('.btn').forEach(function($button){
+    if ($button.classList.contains("btn-pepperonni")) {
+      toggleButton($button, "pepperonni", "btn-pepperonni");
+    }
+
+    if ($button.classList.contains("btn-mushrooms")) {
+      toggleButton($button, "mushrooms", "btn-mushrooms");
+    }
+
+    if ($button.classList.contains("btn-green-peppers")) {
+      toggleButton($button, "greenPeppers", "btn-green-peppers");
+    }
+
+    if ($button.classList.contains("btn-sauce")) {
+      toggleButton($button, "whiteSauce", "btn-sauce");
+    }
+
+    if ($button.classList.contains("btn-crust")) {
+      toggleButton($button, "glutenFreeCrust", "btn-crust");
+    }
+  });
 }
 
 function renderPrice() {
