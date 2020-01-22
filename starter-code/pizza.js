@@ -123,36 +123,33 @@ function renderButtons() {
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   const priceList = document.querySelector('aside ul');
+  let price = 10;     // cheese pizza base cost
 
   for (let ingredient in ingredients) {
-    console.log(`for loop ingredient ${ingredient}`);
-
     let foundIngredient = false;
-
     let ingredientName = ingredients[ingredient].name.toLowerCase();
     let ingredientPrice = ingredients[ingredient].price;
 
     for (let listItem of priceList.children) {
-
       if (listItem.textContent.includes(ingredientName)) {
         foundIngredient = true;
         if (!state[ingredient]) {
           priceList.removeChild(listItem);
-          console.log(`REMOVED ${ingredient}`);
+        } else {
+          price += ingredientPrice;
         }
       }
     }
     
-    console.log(`state[ingredient] ${state[ingredient]} foundIngredient ${foundIngredient}`);
-
     if (state[ingredient] && !foundIngredient) {
-      let insertIngredient = document.createElement('li');
-      insertIngredient.textContent = `$${ingredientPrice} ${ingredientName}`;
-      priceList.appendChild(insertIngredient);
+      let newIngredient = document.createElement('li');
+      newIngredient.textContent = "$" + `${ingredientPrice} ${ingredientName}`;
+      priceList.appendChild(newIngredient);
+      price += ingredientPrice;
     }
   }
+  document.querySelector('aside strong').textContent = "$" + price;
 }
-
 
 renderEverything();
 
