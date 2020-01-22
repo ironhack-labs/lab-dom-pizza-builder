@@ -113,7 +113,7 @@ function renderButtons() {
   document.querySelectorAll('.btn').forEach(function($button){
     buttonClasses.forEach(function(buttonClass, index) {
       if ($button.classList.contains(buttonClass)) {
-        let ingredient = Object.keys(state)[index];
+        let ingredient = Object.keys(ingredients)[index];
         toggleButton($button, ingredient, buttonClass);
       }
     });
@@ -122,6 +122,35 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  const priceList = document.querySelector('aside ul');
+
+  for (let ingredient in ingredients) {
+    console.log(`for loop ingredient ${ingredient}`);
+
+    let foundIngredient = false;
+
+    let ingredientName = ingredients[ingredient].name.toLowerCase();
+    let ingredientPrice = ingredients[ingredient].price;
+
+    for (let listItem of priceList.children) {
+
+      if (listItem.textContent.includes(ingredientName)) {
+        foundIngredient = true;
+        if (!state[ingredient]) {
+          priceList.removeChild(listItem);
+          console.log(`REMOVED ${ingredient}`);
+        }
+      }
+    }
+    
+    console.log(`state[ingredient] ${state[ingredient]} foundIngredient ${foundIngredient}`);
+
+    if (state[ingredient] && !foundIngredient) {
+      let insertIngredient = document.createElement('li');
+      insertIngredient.textContent = `$${ingredientPrice} ${ingredientName}`;
+      priceList.appendChild(insertIngredient);
+    }
+  }
 }
 
 
