@@ -66,11 +66,11 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  const sauceSauce = document.querySelector('.sauce');
-  if (sauceSauce.classList.contains('sauce-white')) {
-    sauceSauce.classList.remove('sauce-white');
-  }else {
-    sauceSauce.classList.add('sauce-white');
+  const whiteSauceOption = document.querySelector('.sauce');
+  if(state.whiteSauce){
+    whiteSauceOption.classList.add('sauce-white');
+  }else{
+    whiteSauceOption.classList.remove('sauce-white')
   }
 }
 
@@ -118,6 +118,7 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  // no me sale joder
 }
 
 
@@ -141,7 +142,7 @@ document.querySelector('.btn.btn-green-peppers').onclick = function() {
 }
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 document.querySelector('.btn.btn-sauce').onclick = function() {
-  state.sauceSauce= !state.sauceSauce
+  state.whiteSauce= !state.whiteSauce
   renderEverything()
 }
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
