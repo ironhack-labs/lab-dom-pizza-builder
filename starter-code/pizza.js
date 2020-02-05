@@ -121,19 +121,66 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  //panelList.innerText
-  let panelUl = document
-    .querySelectorAll(".price")[0]
-    .getElementsByTagName("ul");
-  let panelList = document
-    .querySelectorAll(".price")[0]
-    .getElementsByTagName("li");
-  console.log(panelList);
-  if (!state.whiteSauce) {
-    panelList[3].remove();
+ 
+  let panelUl = document.querySelectorAll("#price--list")[0];
+  let total = Number(document.querySelectorAll("#final--price")[0].innerText.split("$")[1]);
+  let pepperonniPrice = document.createElement("li");
+  let mushroomsPrice = document.createElement("li");
+  let greenPeppersPrice = document.createElement("li");
+  let whiteSaucePrice = document.createElement("li");
+  let glutenFreeCrustPrice = document.createElement("li");
+ 
+  total = basePrice;
+
+  panelUl.innerText = ""; 
+  if (state.pepperonni) {
+    pepperonniPrice.innerText = `$1 pepperonni`;
+    panelUl.appendChild(pepperonniPrice);
+    total = total + ingredients.pepperonni.price;
   } else {
-    panelUl.appendChild(panelList);
+    pepperonniPrice.innerText = "";
+    total = total;
   }
+
+  if (state.mushrooms) {
+    mushroomsPrice.innerText = `$1 mushrooms`;
+    panelUl.appendChild(mushroomsPrice);
+    total = total + ingredients.mushrooms.price;
+  } else {
+    mushroomsPrice.innerText = "";
+    total = total;
+  } 
+
+  if (state.greenPeppers) {
+    greenPeppersPrice.innerText= `$1 green peppers`;
+    panelUl.appendChild(greenPeppersPrice);
+    total = total + ingredients.greenPeppers.price;
+  }  else {
+    greenPeppersPrice.innerText = "";
+    total = total;
+  }
+
+  if (state.whiteSauce) {
+    whiteSaucePrice.innerText= `$3 white sauce`;
+    panelUl.appendChild(whiteSaucePrice);
+    total = total + ingredients.whiteSauce.price;
+  }  else {
+    whiteSaucePrice.innerText = "";
+    total = total;
+  }
+  
+  if (state.glutenFreeCrust) {
+    glutenFreeCrustPrice.innerText= `$5 gluten-free crust`;
+    panelUl.appendChild(glutenFreeCrustPrice);
+    total = total + ingredients.glutenFreeCrust.price;
+  }  else {
+    glutenFreeCrustPrice.innerText = "";
+    total=total;
+  }
+
+  let totalText = document.querySelectorAll("#final--price")[0]
+  totalText.innerText = `$ ${total}`;
+  console.log(total);
 }
 
 renderEverything();
