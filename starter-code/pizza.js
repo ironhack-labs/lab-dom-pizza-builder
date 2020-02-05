@@ -71,7 +71,9 @@ function renderGreenPeppers() {
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
   if(state.whiteSauce){
-    document.querySelector('.sauce').classList.toggle('sauce-white');
+    document.querySelector('.sauce').classList.add('sauce-white');
+  } else {document.querySelector('.sauce').classList.remove('sauce-white');
+
   }
   
   
@@ -82,8 +84,8 @@ function renderGlutenFreeCrust() {
   // let button = document.querySelectorAll('.green-pepper').forEach(function($green){
   
     if(state.glutenFreeCrust){
-  document.querySelector('.crust').classList.toggle('crust-gluten-free');
-  } 
+  document.querySelector('.crust').classList.add('crust-gluten-free');
+  } else { document.querySelector('.crust').classList.remove('crust-gluten-free');}
 }
 
 function renderButtons() {
@@ -97,7 +99,32 @@ function renderButtons() {
       $button.classList.remove('active');
      } else {$button.classList.add('active');}
    }
-  });
+  
+  if(item==='mushrooms'){
+    if(!state.mushrooms){
+     $button.classList.remove('active');
+    } else {$button.classList.add('active');}
+  }
+
+  if(item==='green peppers'){
+    if(!state.greenPeppers){
+     $button.classList.remove('active');
+    } else {$button.classList.add('active');}
+  }
+
+  if(item==='white sauce'){
+    if(!state.whiteSauce){
+     $button.classList.remove('active');
+    } else {$button.classList.add('active');}
+  }
+
+  if(item==='gluten-free crust'){
+    if(!state.glutenFreeCrust){
+     $button.classList.remove('active');
+    } else {$button.classList.add('active');}
+  }
+ });
+
   
 
 }
