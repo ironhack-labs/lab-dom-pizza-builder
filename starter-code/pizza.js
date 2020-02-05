@@ -123,47 +123,52 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  // if(state.pepperonni){
-  //   document.querySelectorAll('.price li')[0].style.visibility = 'visible';
-  // } else {
-  //   document.querySelectorAll('.price li')[0].style.visibility = 'hidden' ;
-  // }
 
-  document.querySelectorAll('.price li').forEach(element => {
-    console.log(element);
-    if(element.innerText.includes('pepperoni')){
-      if(state.pepperonni){
-        element.
-        document.createElement('li');
-      } else {
-        element.remove();
-      }
-    }
-  });
+  document.querySelector('.price ul').innerHTML = '';
 
-  // if(state.mushrooms){
-  //   document.querySelector('.btn-mushrooms').classList.add('active');
-  // } else {
-  //   document.querySelector('.btn-mushrooms').classList.remove('active');
-  // }
+  const liPep = document.createElement('li');
+  const liMush = document.createElement('li');
+  const liGreen = document.createElement('li');
+  const liSauce = document.createElement('li');
+  const liCrust = document.createElement('li');
+  const ul = document.querySelector('.price ul');
+  
+  let priceTag = document.querySelector('.price strong');
 
-  // if(state.greenPeppers){
-  //   document.querySelector('.btn-green-peppers').classList.add('active');
-  // } else {
-  //   document.querySelector('.btn-green-peppers').classList.remove('active');
-  // }
+  let price = 10;
 
-  // if(state.whiteSauce){
-  //   document.querySelector('.btn-sauce').classList.add('active');
-  // } else {
-  //   document.querySelector('.btn-sauce').classList.remove('active');
-  // }
+  if (state.pepperonni) {
+    liPep.innerText = '$1 pepperoni';
+    ul.appendChild(liPep);
+    price += 1;
+  }
+  
+  if (state.mushrooms) {
+    liMush.innerHTML = '$1 mushrooms';
+    ul.appendChild(liMush);
+    price += 1;
+  }
 
-  // if(state.glutenFreeCrust){
-  //   document.querySelector('.btn-crust').classList.add('active');
-  // } else {
-  //   document.querySelector('.btn-crust').classList.remove('active');
-  // }
+  if (state.greenPeppers) {
+    liGreen.innerText = '$1 green pepper';
+    ul.appendChild(liGreen);
+    price += 1;
+  }
+  
+  if (state.whiteSauce) {
+    liSauce.innerHTML = '$3 white sauce';
+    ul.appendChild(liSauce);
+    price += 3;
+  }
+
+  if (state.glutenFreeCrust) {
+    liCrust.innerHTML = '$5 gluten-free crust';
+    ul.appendChild(liCrust);
+    price += 5;
+  }
+
+  priceTag.innerText = `$${price}`;
+
 }
 
 
