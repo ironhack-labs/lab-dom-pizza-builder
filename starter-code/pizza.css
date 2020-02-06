@@ -307,6 +307,7 @@ p.description {
 .price li {
   margin: 5px 20px 0;
   color: #666;
+  content: '+ ';
 }
 
 .price li:before {
@@ -1037,3 +1038,5 @@ footer a:hover {
     margin: 70px 0 10px 0;
   }
 }
+
+

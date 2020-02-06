@@ -60,10 +60,10 @@ function renderGreenPeppers() {
   document.querySelectorAll('.green-pepper').forEach(function($green){
     if(state.greenPeppers){
       $green.style.visibility = "visible";
-      console.log('visible');
+     
     } else {
       $green.style.visibility = "hidden";
-      console.log('hidden');
+      
     }
   });
 }
@@ -93,7 +93,7 @@ function renderButtons() {
   let item = '';
   let button = document.querySelectorAll('.btn').forEach(function($button){
   item = ($button.innerText).toLowerCase();
-   console.log(item);
+   
    if(item==='pepperonni'){
      if(!state.pepperonni){
       $button.classList.remove('active');
@@ -131,8 +131,52 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-}
+  let mainUl = document.querySelector('.priceUl');
+  let priceTag = document.querySelector('strong');
+  console.log(mainUl);
+  const li = document.createElement('li');
+  let price = 10;
+  
 
+  mainUl.innerHTML = '';
+  priceTag.innerText = '';
+
+  
+  
+  if(state.pepperonni){
+    
+    mainUl.innerHTML+='<li>$1 pepperonni</li>';  
+    price +=1;
+    
+  } 
+
+  if(state.mushrooms){
+    mainUl.innerHTML+='<li>$1 mushrooms</li>';
+    price+=1;
+    
+  } 
+
+  if(state.greenPeppers){
+    mainUl.innerHTML+='<li>$1 green peppers</li>';  
+    price+=1;
+  } 
+
+  if(state.whiteSauce){
+    mainUl.innerHTML+='<li>$3 White sauce</li>';
+    price+=3;  
+  } 
+
+  if(state.glutenFreeCrust){
+    mainUl.innerHTML+='<li>$5 Gluten-free crust</li>';
+    price+=5;
+    
+  } 
+
+  priceTag.innerText = `$${price}`;
+  
+
+  
+}
 
 renderEverything()
 
