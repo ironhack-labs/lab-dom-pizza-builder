@@ -138,33 +138,33 @@ function renderPrice() {
   let price = 10;
 
   if (state.pepperonni) {
-    liPep.innerText = '$1 pepperoni';
+    liPep.innerText = `$${ingredients.pepperonni.price} pepperoni`;
     ul.appendChild(liPep);
-    price += 1;
+    price += ingredients.pepperonni.price;
   }
   
   if (state.mushrooms) {
-    liMush.innerHTML = '$1 mushrooms';
+    liMush.innerHTML = `$${ingredients.mushrooms.price} mushrooms`;
     ul.appendChild(liMush);
-    price += 1;
+    price += ingredients.mushrooms.price;
   }
 
   if (state.greenPeppers) {
-    liGreen.innerText = '$1 green pepper';
+    liGreen.innerText = `$${ingredients.greenPeppers.price} green pepper`;
     ul.appendChild(liGreen);
-    price += 1;
+    price += ingredients.greenPeppers.price;
   }
   
   if (state.whiteSauce) {
-    liSauce.innerHTML = '$3 white sauce';
+    liSauce.innerHTML = `$${ingredients.whiteSauce.price} white sauce`;
     ul.appendChild(liSauce);
-    price += 3;
+    price += ingredients.whiteSauce.price;
   }
 
   if (state.glutenFreeCrust) {
-    liCrust.innerHTML = '$5 gluten-free crust';
+    liCrust.innerHTML = `$${ingredients.glutenFreeCrust.price} gluten-free crust`;
     ul.appendChild(liCrust);
-    price += 5;
+    price += ingredients.glutenFreeCrust.price;
   }
 
   priceTag.innerText = `$${price}`;
