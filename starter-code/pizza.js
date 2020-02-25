@@ -100,13 +100,6 @@ function renderGlutenFreeCrust() {
   }
 }
 
-// FOR EACH 
-// var numbers = [65, 44, 12, 4];
-// numbers.forEach(function(item, index, arr) {
-//   arr[index] = item * 10)
-// }
-
-
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
   let ingredient = "";
@@ -156,8 +149,27 @@ function renderButtons() {
   })
 }
 
+// FOR EACH 
+// var numbers = [65, 44, 12, 4];
+// numbers.forEach(function(item, index, arr) {
+//   arr[index] = item * 10)
+// }
+
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let total = 10;
+  let ul = document.querySelector('.priceList'); //ul
+  ul.innerHTML = ""
+
+  for (let item in state) {
+    if (state[item]) {
+      let priceItem = document.createElement("li") //li
+      priceItem.innerHtml = (`$ ${ingredients[item].price} ${ingredients[item].name}`)
+      ul.innerHTML += ul.innerHTML + priceItem.innerHTML
+      total = total + ingredients[item].price
+    }
+  }
+  document.querySelector('.Grand-Total').innerHTML = `$${total}`;
 }
 
 
