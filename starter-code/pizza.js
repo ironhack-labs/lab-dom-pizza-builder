@@ -171,12 +171,6 @@ function renderButtons() {
   })
 }
 
-// FOR EACH 
-// var numbers = [65, 44, 12, 4];
-// numbers.forEach(function(item, index, arr) {
-//   arr[index] = item * 10)
-// }
-
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   let total = basePrice;
