@@ -31,7 +31,7 @@ $ git push origin master
 
 ## Instructions
 
-We will only work with the `pizza.js` file. As you will see, the file contains some code. The file is built to have a [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) and make the code scalable. This architecture is very close to what you will use with React.
+We will only work with the `js/index.js` file. As you will see, the file contains some code. The file is built to have a [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) and make the code scalable. This architecture is very close to what you will use with React.
 
 In this architecture, there is a variable `state` with different values, such as `pepperoni` initially set to `true`. When the user clicks on it, the value will be changed to the opposite (example: `false`).
 
