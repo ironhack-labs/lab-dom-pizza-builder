@@ -86,10 +86,11 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  
-  document.querySelectorAll('button.btn.active').classList.remove('active')
+  //event.currentTarget needed to check if it's available
+  // event.target.classList.toggle('active')
+  //document.querySelectorAll('button.btn.active').classList.remove('active')
 
-  document.querySelectorAll('button.btn.active').classList.add('active')
+  //document.querySelectorAll('button.btn.active').classList.add('active')
 
 }
 
@@ -101,26 +102,31 @@ renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn.btn-pepperoni').onclick = () => {
+  event.target.classList.toggle('active')
   state.pepperoni = !state.pepperoni;
   renderEverything();
 };
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
 document.querySelector('.btn.btn-mushrooms').onclick = () => {
+  event.target.classList.toggle('active')
   state.mushroom = !state.mushroom;
   renderEverything();
 };
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
 document.querySelector('.btn.btn-green-peppers').onclick = () => {
+  event.target.classList.toggle('active')
   state.peppers = !state.peppers;
   renderEverything();
 };
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 document.querySelector('.btn.btn-sauce').onclick = () => {
+  event.target.classList.toggle('active')
   state.whiteSauce = !state.whiteSauce;
   renderEverything();
 };
 //Iteration 2: Add click event listener on `<button class="btn btn-crust">`
 document.querySelector('.btn.btn-crust').onclick = () => {
+  event.target.classList.toggle('active')
   state.glutenFreeCrust = !state.glutenFreeCrust;
   renderEverything();
 };
