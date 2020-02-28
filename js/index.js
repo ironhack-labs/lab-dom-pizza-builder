@@ -33,11 +33,11 @@ function renderEverything() {
 }
 
 function renderPepperoni() {
-  document.querySelectorAll('.pep').forEach($pep => {
+  document.querySelectorAll('.pep').forEach(onePep => {
     if (state.pepperoni) {
-      $pep.style.visibility = 'visible';
+      onePep.style.visibility = 'visible';
     } else {
-      $pep.style.visibility = 'hidden';
+      onePep.style.visibility = 'hidden';
     }
   });
 }
@@ -69,10 +69,10 @@ function renderPrice() {
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
-document.querySelector('.btn.btn-pepperoni').onclick = () => {
+document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
   state.pepperoni = !state.pepperoni;
   renderEverything();
-};
+});
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
 
