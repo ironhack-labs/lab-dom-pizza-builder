@@ -8,7 +8,7 @@
 
 We have got the munchies for a nice, fresh pie of pizza. Of course, we want to order online. After all, talking to a person will only delay the consumption of pizza.
 
-There's only one problem: our local pizzeria's pizza builder **is not working**. This time, the local pizzeria is in luck because their customer today is a Web developer. We always hear about how developers should give back to their community. I can't think of a more meaningful contribution than helping the community get pizza more easily.
+There is only one problem: our local pizzeria's pizza builder **is not working**. This time, the local pizzeria is in luck because their customer today is a Web developer. We always hear about how developers should give back to their community. I can't think of a more meaningful contribution than helping the community get pizza more easily.
 
 **You can find a demo of the finished version by clicking [here](https://lab-dom-pizza-builder.surge.sh)**.
 
@@ -49,7 +49,7 @@ Each individual topping has its own HTML element.
 
 ```html
 <!-- When this button is clicked -->
-<button class="btn btn-pepperoni active">pepperoni</button>
+<button class="btn btn-pepperoni active">Pepperoni</button>
 
 <!-- ... -->
 
@@ -92,20 +92,20 @@ Each individual topping has its own HTML element.
 **Create the code to hide/show those elements when the buttons are clicked.** For this, you will have to:
 
 - Add click event listener on `<button class="btn btn-mushrooms">` and `<button class="btn btn-green-peppers">` (pepperoni is already done)
-- Write the code of the functions `renderMushrooms` and `renderGreenPeppers`
+- Write the code for the functions `renderMushrooms()` and `renderGreenPeppers()`
 
 ### Iteration 2: Sauce and crust options
 
 In this iteration, your goal is to:
 
 - Add click event listener on `<button class="btn btn-sauce">` and change `state.whiteSauce`
-- Write the function `renderWhiteSauce`
+- Write the function `renderWhiteSauce()`
 - Add click event listener on `<button class="btn btn-crust">` and change `state.glutenFreeCrust`
-- Write the function `renderGlutenFreeCrust`
+- Write the function `renderGlutenFreeCrust()`
 
 As you can see, the initial value for `state.whiteSauce` and `state.glutenFreeCrust` is false. The reason is because, by default, we want a pizza with pepperoni, mushrooms, green peppers but no white sauce nor gluten-free crust.
 
-At this state, **don't worry about updating the price**.
+For now, **don't worry about updating the price**.
 
 ```html
 <!-- Example of a pizza with white-sauce and a gluten-free crust -->
@@ -123,21 +123,21 @@ At this state, **don't worry about updating the price**.
 
 ### Iteration 3: Make the buttons active or not
 
-Currently, our pizza builder's buttons look the same, no matter if the option is activated or not. If you notice, all the buttons have an `active` class.
+Currently, all buttons look the same, no matter if the option is activated or not. If you notice, all the buttons have an `active` class.
 
 ```html
 <button class="btn btn-pepperoni active">Pepperoni</button>
 ```
 
-**Write some JavaScript that will remove and add the buttons' `active` class appropriately, by writing code in the function `renderButtons`**.
+**Write the logic for removing and adding the buttons' `active` class appropriately. Write the code in the function `renderButtons()`**.
 
 ### Iteration 4: Ingredients and prices
 
 On the right side of the pizza builder, there is a price section.
 
-Write the function `renderPrice` that:
+Write the function `renderPrice()` that:
 
-- Display the list of all items selected
-- Display the total price.
+- Displays the list of all items selected
+- Displays the total price.
 
 **Happy coding!** :heart:
