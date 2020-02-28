@@ -112,8 +112,59 @@ function renderButtons() {
 
 }
 
+let pepPrice = document.querySelectorAll(".panel.price ul li")[0]
+let mushPrice = document.querySelectorAll(".panel.price ul li")[1]
+let gpPrice = document.querySelectorAll(".panel.price ul li")[2]
+let wsPrice = document.querySelectorAll(".panel.price ul li")[3]
+let gfcPrice = document.querySelectorAll(".panel.price ul li")[4]
+
+
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+
+     let priceNum = 10
+
+    if (!state.pepperoni) {
+      priceNum += 0
+
+      pepPrice.remove()
+    } else {
+      priceNum++
+      document.querySelector(".panel.price ul").appendChild(pepPrice)
+    }
+
+    if (!state.mushrooms) {
+      priceNum += 0
+      mushPrice.remove()
+    } else {
+      priceNum++
+      document.querySelector(".panel.price ul").appendChild(mushPrice)
+    }
+
+    if (!state.greenPeppers) {
+      priceNum += 0
+      gpPrice.remove()
+    } else {
+      priceNum++
+      document.querySelector(".panel.price ul").appendChild(gpPrice)
+    }
+
+    if (state.whiteSauce) {
+      priceNum += 3
+      document.querySelector(".panel.price ul").appendChild(wsPrice)
+    } else {
+      priceNum += 0
+      wsPrice.remove()
+    }
+
+    if (state.glutenFreeCrust) {
+      priceNum += 5
+      document.querySelector(".panel.price ul").appendChild(gfcPrice)
+    } else {
+      priceNum += 0
+      gfcPrice.remove()
+    }
+
+   document.querySelector(".panel.price strong").innerText = "$" + priceNum
 }
 
 renderEverything();
