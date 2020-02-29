@@ -3,11 +3,26 @@
 // Constants
 let basePrice = 10;
 let ingredients = {
-  pepperoni: { name: 'pepperoni', price: 1 },
-  mushrooms: { name: 'Mushrooms', price: 1 },
-  greenPeppers: { name: 'Green Peppers', price: 1 },
-  whiteSauce: { name: 'White sauce', price: 3 },
-  glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
+  pepperoni: {
+    name: 'pepperoni',
+    price: 1
+  },
+  mushrooms: {
+    name: 'Mushrooms',
+    price: 1
+  },
+  greenPeppers: {
+    name: 'Green Peppers',
+    price: 1
+  },
+  whiteSauce: {
+    name: 'White sauce',
+    price: 3
+  },
+  glutenFreeCrust: {
+    name: 'Gluten-free crust',
+    price: 5
+  }
 };
 
 // Initial value of the state (the state values can change over time)
@@ -59,7 +74,7 @@ function renderGreenPeppers() {
     if (state.greenPeppers) {
       $green.style.visibility = 'visible';
     } else {
-      $green.style.visibility = 'hidden';    
+      $green.style.visibility = 'hidden';
     }
   });
 }
@@ -67,11 +82,11 @@ function renderGreenPeppers() {
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
   let sauce = document.getElementsByClassName('sauce')[0].classList
-      if (state.whiteSauce) {
-      sauce.remove('sauce-white');
-    } else {
-      sauce.add('sauce-white');
-    }
+  if (state.whiteSauce) {
+    sauce.remove('sauce-white');
+  } else {
+    sauce.add('sauce-white');
+  }
 }
 
 function renderGlutenFreeCrust() {
@@ -125,13 +140,37 @@ if (document.querySelectorAll('.btn')[0].classList.contains('active') ) {
     buttons.add('.active')
   }
   */
+
+
+  // one solution Hendrick
+  if (state.pepperoni) {
+    document.querySelector('.btn-pepperoni').classList.add('active')
+  } else {
+    document.querySelector('.btn-pepperoni').classList.remove('active')
+  }
+
 }
+
+
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-//tafel
-//document.querySelectorAll('aside li').forEach(function($priceThing) { $priceThing.style.visibility = 'hidden '})
+  //tafel
+  //document.querySelectorAll('aside li').forEach(function($priceThing) { $priceThing.style.visibility = 'hidden '})
+
+
+  // one solution Hendrick
+  let priceList = document.querySelector('.panel.price ul')
+  priceList.innerHTML = ""
+  if (state.pepperoni) {
+    let listItem = document.createElement('li')
+    listItem.innerText = `$${ ingredients.pepperoni.price } Pepperoni`
+    priceList.appendChild(listItem)
+  }
 }
+
+
+
 
 renderEverything();
 
