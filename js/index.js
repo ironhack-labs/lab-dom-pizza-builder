@@ -33,14 +33,15 @@ function renderEverything() {
 }
 
 function renderPepperoni() {
-  let position = document.querySelectorAll(".price ul li")[0];
+  let $position = document.querySelectorAll(".price ul li")[0];
   document.querySelectorAll(".pep").forEach($pep => {
     if (state.pepperoni) {
       $pep.style.visibility = "visible";
-      position.style.display = "block";
+      $position.style.display = "block";
     } else {
       $pep.style.visibility = "hidden";
-      position.style.display = "none";
+      $position.style.display = "none";
+
     }
   });
 }
@@ -160,7 +161,7 @@ renderEverything();
 document.querySelector(".btn.btn-pepperoni").onclick = () => {
   state.pepperoni = !state.pepperoni;
   renderEverything();
-};
+});
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
 document.querySelector(".btn.btn-mushrooms").onclick = () => {
