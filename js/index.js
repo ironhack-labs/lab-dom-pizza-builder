@@ -88,6 +88,7 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  document.getElementsByClassName("btn").toggle("active");
 }
 
 function renderPrice() {
@@ -130,5 +131,5 @@ document.querySelector('.btn.btn-crust').addEventListener('click', () => {
 //Iteration 3: Make the buttons active or not 
 
 let btns = document.getElementsByClassName("btn").addEventListener("click", () => {
-  
+  renderButtons()
 })
