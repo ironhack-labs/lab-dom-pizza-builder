@@ -134,22 +134,6 @@ function renderPrice() {
   document.querySelector('aside.panel.price strong').innerHTML = "$" + totalPrice
 }
 
-// function renderPrice() {
-//   // Iteration 4: change the HTML of `<aside class="panel price">`
-
-//   var totalPrice = basePrice
-//   var $list = document.querySelector('aside.panel.price ul')
-//   $list.innerHTML = ""
-
-//   for (var ingredientKey in ingredients) {
-//     if (state[ingredientKey]) {
-//       totalPrice += ingredients[ingredientKey].price
-//       $list.innerHTML += `<li>$${ingredients[ingredientKey].price} ${ingredients[ingredientKey].name.toLowerCase()}</li>`
-//     }
-//   }
-//   document.querySelector('aside.panel.price strong').innerHTML = "$" + totalPrice
-// }
-
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
