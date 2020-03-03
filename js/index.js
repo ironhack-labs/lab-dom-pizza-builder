@@ -1,7 +1,7 @@
 // Write your Pizza Builder JavaScript in this file.
 
 // Constants
-let basePrice = 10;
+let basePrice = 13;
 let ingredients = {
   pepperoni: {
     name: 'pepperoni',
@@ -145,37 +145,56 @@ function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   let priceContainer = document.querySelectorAll('aside ul li');
   let priceArr = [...priceContainer];
+  let strong = document.querySelector("strong");
+
   
   priceArr.forEach( price => {
     switch (price.innerHTML) {
-      case "$1 pepperoni":
-        state.pepperoni ? 
-        price.style.display = "block":
-        price.style.display = "none"
+      case "$1 pepperoni": //true
+        if(state.pepperoni){
+        price.style.display = "block"
+        } else {
+          price.style.display = "none"
+        }
         break;
-      case "$1 mushrooms":
-        state.mushrooms ? 
-        price.style.display = "block":
-        price.style.display = "none"
+      case "$1 mushrooms": //true
+        if(state.mushrooms){
+        price.style.display = "block"
+        } else {
+          price.style.display = "none"
+        }
         break;
-      case "$1 green peppers":
-        state.greenPeppers ? 
-        price.style.display = "block":
-        price.style.display = "none"
+      case "$1 green peppers": //true
+
+        if(state.greenPeppers){
+        price.style.display = "block"
+        } else {
+          price.style.display = "none"
+        }
         break;
-      case "$3 white sauce":
-        state.sauce ? 
-        price.style.display = "block":
-        price.style.display = "none"
+      case "$3 white sauce": //false
+        if(state.sauce){
+          price.style.display = "block"
+        } else {
+          price.style.display = "none"
+        }
         break;
-      case "$5 gluten-free crust":
-        state.glutenFreeCrust ? 
-        price.style.display = "block":
-        price.style.display = "none"
+      case "$5 gluten-free crust": //false
+        if(state.crust){
+           basePrice += ingredients.glutenFreeCrust.price
+          price.style.display = "block"
+        } else {
+           
+          price.style.display = "none"
+        }
         break;
       default:
         break;
     }
+
+    
+
+    strong.innerHTML = `$${basePrice}`
   });
   
 }
@@ -187,30 +206,44 @@ let li = document.createElement('li');
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector( '.btn.btn-pepperoni' ).addEventListener( 'click', (e) => {
   state.pepperoni = !state.pepperoni
+  state.pepperoni ? 
+  basePrice += ingredients.pepperoni.price : 
+  basePrice -= ingredients.pepperoni.price
   renderEverything();
 } );
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
 document.querySelector( '.btn.btn-mushrooms' ).addEventListener( 'click', (e) => {
   state.mushrooms = !state.mushrooms;
+  state.mushrooms ? 
+  basePrice += ingredients.mushrooms.price : 
+  basePrice -= ingredients.mushrooms.price
   renderEverything();
 } );
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
 document.querySelector( '.btn.btn-green-peppers' ).addEventListener( 'click', (e) => {
   state.greenPeppers = !state.greenPeppers;
+  state.greenPeppers ? 
+  basePrice += ingredients.greenPeppers.price : 
+  basePrice -= ingredients.greenPeppers.price
   renderEverything();
 } );
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 document.querySelector( '.btn.btn-sauce' ).addEventListener( 'click', (e) => {
   state.sauce = !state.sauce;
+  state.sauce ? 
+  basePrice += ingredients.whiteSauce.price : 
+  basePrice -= ingredients.whiteSauce.price
   renderEverything();
 } );
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
 document.querySelector( '.btn.btn-crust' ).addEventListener( 'click', (e) => {
   state.glutenFreeCrust = !state.glutenFreeCrust;
-  console.log(e.currentTarget)
+  state.glutenFreeCrust ? 
+  basePrice += ingredients.glutenFreeCrust.price : 
+  basePrice -= ingredients.glutenFreeCrust.price
   renderEverything();
 } );
