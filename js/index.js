@@ -137,32 +137,99 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  const $list = document.getElementsByTagName("ul");
-  const $newClassUl = $list[1].classList.add("prices");
-  //console.log($list[1].childNodes[1]);
-  console.log($newClassUl);
 
-  // $list[1].forEach(liItem => {
-  //   if (state.pepperoni){
-  //     liItem.style.visibility = 'visible';
-  //   } else {
-  //     liItem.style.visibility = 'hidden';
-  //   }
-  // })
+  //-------- ACCESS UL CLASS ----------
+  //------- access <aside>
+  const $priceClass = document.getElementsByClassName("price");
+  //console.log($priceClass) //returns <aside> array with one element
 
-  // if(state.pepperoni){
-  //   $list[1].childNodes[1]
-  // }
+  //------- access <ul>
+  const $ulTag = $priceClass[0].children[2];
+  //console.log($ulTag) //returns <ul>
+
+  // PEPPERONI
+  if (state.pepperoni){
+    if($ulTag.innerHTML.includes("pepperoni")){
+      //do nothing
+    }else{
+      let item = document.createElement("li");
+      let textNode = document.createTextNode("$1 pepperoni");
   
+      item.appendChild(textNode);
+      $ulTag.insertBefore(item, $ulTag.childNodes[1]);
+    }
+  }else{
+    $ulTag.removeChild($ulTag.childNodes[1]);
+    //console.log("removed child li")
+  }
 
 
-  // document.querySelectorAll('.green-pepper').forEach(oneGreenPepper => {
-  //   if (state.greenPeppers) {
-  //     oneGreenPepper.style.visibility = 'visible';
-  //   } else {
-  //     oneGreenPepper.style.visibility = 'hidden';
+  // // MUSHROOMS
+  if (state.mushrooms){
+    if($ulTag.innerHTML.includes("mushrooms")){
+      //do nothing
+    }else{
+      let item = document.createElement("li");
+      let textNode = document.createTextNode("$1 mushrooms");
+  
+      item.appendChild(textNode);
+      $ulTag.insertBefore(item, $ulTag.childNodes[3]);
+    }
+  }else{
+    $ulTag.removeChild($ulTag.childNodes[3]);
+  }
+
+
+
+  // // GREEN PEPPERS
+  // if (state.greenPeppers){
+  //   if($ulTag.innerHTML.includes("green peppers")){
+  //     //do nothing
+  //   }else{
+  //     let item = document.createElement("li");
+  //     let textNode = document.createTextNode("$1 green peppers");
+  
+  //     item.appendChild(textNode);
+  //     $ulTag.insertBefore(item, $ulTag.childNodes[5]);
   //   }
-  // });
+  // }else{
+  //   $ulTag.removeChild($ulTag.childNodes[5]);
+  // }
+
+
+  
+  // // WHITE SAUCE
+  // if (state.whiteSauce){
+  //   if($ulTag.innerHTML.includes("white sauce")){
+  //     //do nothing
+  //   }else{
+  //     let item = document.createElement("li");
+  //     let textNode = document.createTextNode("$3 white sauce");
+  
+  //     item.appendChild(textNode);
+  //     $ulTag.insertBefore(item, $ulTag.childNodes[7]);
+  //   }
+  // }else{
+  //   $ulTag.removeChild($ulTag.childNodes[7]);
+  // }
+
+
+
+  // GLUTEN FREE CRUST
+  // if (state.glutenFreeCrust){
+  //   if($ulTag.innerHTML.includes("gluten-free crust")){
+  //     //do nothing
+  //   }else{
+  //     let item = document.createElement("li");
+  //     let textNode = document.createTextNode("$5 gluten-free crust");
+  
+  //     item.appendChild(textNode);
+  //     $ulTag.insertBefore(item, $ulTag.childNodes[8].nextSibling);
+  //   }
+  // }else{
+  //   $ulTag.removeChild($ulTag.childNodes[9]);
+  // }  
+ 
 }
 
 renderEverything();
