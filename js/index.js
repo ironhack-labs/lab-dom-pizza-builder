@@ -151,21 +151,6 @@ function renderPrice() {
     document.querySelector('aside.panel.price strong').innerHTML = `$` + totalPrice;
   }
 
-  // if(state.pepperoni)
-  // {
-  
-  //   const newTodo = document.createElement('li');
-  //   newTodo.textContent = '$1 pepperoni';
-  //   uls.prepend(newTodo);
-  // }
-  // else{
-  //   uls.removeChild(list[0]);
-  //   //list[0].style.visibility = 'hidden';
-  // }
-
-  //document.getElementById("myP").style.visibility = "hidden";
-}
-
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
