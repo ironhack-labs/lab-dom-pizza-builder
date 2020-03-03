@@ -132,16 +132,17 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  // let prices = document.querySelectorAll('aside.panel.price li');
-  // console.log(prices);
-  // console.log(prices);
-  // let sum = basePrice;
-  // let arr = [pepperoni, mushrooms, greenPeppers, whiteSauce, glutenFreeCrust];
-
-  // arr.forEach(n => {
-  //     n.style.display = 'block';
-  //     // n.style.display = 'none';
-  // });
+  let prices = document.querySelector('aside.panel.price ul');
+  prices.innerHTML = '';
+  console.log(prices);
+  let sum = basePrice;
+  for (let val in ingredients) {
+    if (state[val]) {
+      sum += ingredients[val].price;
+      prices.innerHTML += `<li> $ ${ingredients[val].price} ${ingredients[val].name} </li>`;
+    }
+  }
+  document.querySelector('aside.panel.price strong').innerHTML = `$` + sum;
 }
 
 renderEverything();
