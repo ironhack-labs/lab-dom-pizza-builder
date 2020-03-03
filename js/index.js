@@ -2,7 +2,7 @@
 
 // Constants
 let basePrice = 10;
-let ingredients = {
+let condiments = {
   pepperoni: { name: 'pepperoni', price: 1 },
   mushrooms: { name: 'Mushrooms', price: 1 },
   greenPeppers: { name: 'Green Peppers', price: 1 },
@@ -99,17 +99,21 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  let counter = 10;
+  let counter = basePrice;
 
-  // let h2Tag = document.createElement('h2');
-  // h2Tag.innerHTML = "Elephant";
+  let parent = document.querySelector("aside.panel.price ul");
   
+  parent.innerHTML = "";
 
-  let parent = document.querySelector(".panel.price");
-  let liPep = document.getElementsByTagName('li')[5];
-
-    parent.appendChild(liPep);
-    counter += 3;
+  for(let cond in condiments)
+  {
+    if(state[cond])
+    {
+      counter += condiments[cond].price;
+      parent.innerHTML += `<li> $ ${condiments[cond].price} ${condiments[cond].name} </li>`;
+    }
+    document.querySelector('aside.panel.price strong').innerHTML = `$` + counter;
+  }
 }
 
 renderEverything();
