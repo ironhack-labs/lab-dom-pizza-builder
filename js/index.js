@@ -138,7 +138,7 @@ function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   let count = 10;
   // if (state.pepperoni) {
-    
+
   // } else if (state.mushrooms) {
   //   count += ingredients.mushrooms.price;
   // } else if (state.greenPeppers) {
@@ -154,10 +154,19 @@ function renderPrice() {
   if (state.pepperoni) {
     count += ingredients.pepperoni.price;
     pepperoniPrice.innerHTML += '<li>$1 pepperoni</li>'
-  }
-   else if (state.mushrooms) {
+  } if (state.mushrooms) {
     count += ingredients.mushrooms.price;
     pepperoniPrice.innerHTML += '<li>$1 mushrooms</li>'
+  } if (state.greenPeppers) {
+    count += ingredients.greenPeppers.price;
+    pepperoniPrice.innerHTML += '<li>$1 green peppers</li>'
+  } if (state.whiteSauce) {
+    count += ingredients.whiteSauce.price;
+    pepperoniPrice.innerHTML += '<li>$3 white sauce</li>'
+  } if (state.glutenFreeCrust) {
+    count += ingredients.glutenFreeCrust.price;
+    pepperoniPrice.innerHTML += '<li>$5 gluten-free crust</li>'
+  }
 }
 
 
