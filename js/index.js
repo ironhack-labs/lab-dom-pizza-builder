@@ -68,9 +68,9 @@ function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
   document.querySelectorAll('.sauce').forEach(sauce => {
     if (state.whiteSauce) {
-      sauce.style.visibility = 'visible';
+      sauce.classList.add('sauce-white');
     } else {
-      sauce.style.visibility = 'hidden';
+      sauce.classList.remove('sauce-white');
     }
   });
 }
@@ -79,9 +79,9 @@ function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
   document.querySelectorAll('.crust').forEach(crust => {
     if (state.glutenFreeCrust) {
-      crust.style.visibility = 'visible';
+      crust.classList.add('crust-gluten-free');
     } else {
-      crust.style.visibility = 'hidden';
+      crust.classList.remove('crust-gluten-free');
     }
   });
 }
@@ -137,18 +137,6 @@ function renderButtons() {
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   let count = 10;
-  // if (state.pepperoni) {
-
-  // } else if (state.mushrooms) {
-  //   count += ingredients.mushrooms.price;
-  // } else if (state.greenPeppers) {
-  //   count += ingredients.greenPeppers.price;
-  // } else if (state.whiteSauce) {
-  //   count += ingredients.whiteSauce.price;
-  // } else if (state.glutenFreeCrust) {
-  //   count += ingredients.glutenFreeCrust.price;
-  // }
-
   let pepperoniPrice = document.querySelectorAll('ul')[1];
   pepperoniPrice.innerHTML = '';
   if (state.pepperoni) {
@@ -167,15 +155,13 @@ function renderPrice() {
     count += ingredients.glutenFreeCrust.price;
     pepperoniPrice.innerHTML += '<li>$5 gluten-free crust</li>'
   }
-
-  let totalPrice = document.querySelector('strong');
-totalPrice.innerHTML = count;
+    let totalPrice = document.querySelector('strong');
+    totalPrice.innerHTML = count;
 }
 
 
 
 renderEverything();
-
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
   state.pepperoni = !state.pepperoni;
