@@ -144,8 +144,6 @@ function renderPrice() {
   let totalPriceEl = document.querySelector(".panel.price strong");
   let totalPrice = 10;
 
-  totalPriceEl.innerHTML = "";
-
   //PEPPERONI
   if (state.pepperoni) {
     let listItem = document.createElement("li")
@@ -192,7 +190,7 @@ function renderPrice() {
     totalPrice += ingredients.glutenFreeCrust.price;
   }
 
-  totalPriceEl.innerHTML = `$${totalPrice}`;
+  totalPriceEl.innerText = `$${totalPrice}`;
   
 }
 
