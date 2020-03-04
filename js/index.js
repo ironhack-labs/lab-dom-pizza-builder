@@ -146,6 +146,7 @@ function renderPrice() {
 
   totalPriceEl.innerHTML = "";
 
+  //PEPPERONI
   if (state.pepperoni) {
     let listItem = document.createElement("li")
     listItem.innerText = `$${ingredients.pepperoni.price} pepperoni`
@@ -154,6 +155,8 @@ function renderPrice() {
     totalPrice += ingredients.pepperoni.price;
 
   }
+
+  //MUSHROOMS
   if(state.mushrooms){
     let listItem = document.createElement("li");
     listItem.innerText = `$${ingredients.mushrooms.price} mushrooms`
@@ -162,6 +165,7 @@ function renderPrice() {
     totalPrice += ingredients.mushrooms.price;
   }
 
+  //GREEN PEPPERS
   if(state.greenPeppers){
     let listItem = document.createElement("li");
     listItem.innerText = `$${ingredients.greenPeppers.price} green peppers`
@@ -170,6 +174,7 @@ function renderPrice() {
     totalPrice += ingredients.greenPeppers.price;
   }
 
+  //WHITE SAUCE
   if(state.whiteSauce){
     let listItem = document.createElement("li");
     listItem.innerText = `$${ingredients.whiteSauce.price} white sauce`
@@ -178,6 +183,7 @@ function renderPrice() {
     totalPrice += ingredients.whiteSauce.price;
   }
 
+  // GLUTEN-FREE CRUST
   if(state.glutenFreeCrust){
     let listItem = document.createElement("li");
     listItem.innerText = `$${ingredients.glutenFreeCrust.price} gluten-free crust`
