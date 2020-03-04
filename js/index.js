@@ -167,7 +167,11 @@ function renderPrice() {
     count += ingredients.glutenFreeCrust.price;
     pepperoniPrice.innerHTML += '<li>$5 gluten-free crust</li>'
   }
+
+  let totalPrice = document.querySelector('strong');
+totalPrice.innerHTML = count;
 }
+
 
 
 renderEverything();
