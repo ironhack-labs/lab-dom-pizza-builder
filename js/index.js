@@ -150,7 +150,7 @@ function renderPrice() {
     }
     document.querySelector('aside.panel.price strong').innerHTML = `$` + totalPrice;
   }
-
+}
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
