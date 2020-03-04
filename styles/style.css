@@ -70,6 +70,7 @@ details {
   font-family: inherit;
   vertical-align: baseline;
 }
+
 /* remember to define focus styles! */
 :focus {
   outline: 0;
@@ -85,6 +86,7 @@ ol,
 ul {
   list-style: none;
 }
+
 /* tables still need 'cellspacing="0"' in the markup */
 table {
   border-collapse: separate;
@@ -107,7 +109,7 @@ q:after {
 
 blockquote,
 q {
-  quotes: '' '';
+  quotes: '''';
 }
 
 /*--- HTML5 -----*/
@@ -446,6 +448,7 @@ p.description {
   text-indent: -9999px;
   color: #fff;
 }
+
 /*.pep:hover{
   -moz-transform: scale(1.3);
   -webkit-transform: scale(1.3);
