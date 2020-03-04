@@ -138,98 +138,56 @@ function renderButtons() {
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
 
-  //-------- ACCESS UL CLASS ----------
-  //------- access <aside>
-  const $priceClass = document.getElementsByClassName("price");
-  //console.log($priceClass) //returns <aside> array with one element
+  let pricelist = document.querySelector(".panel.price ul");
+  pricelist.innerHTML = "";
 
-  //------- access <ul>
-  const $ulTag = $priceClass[0].children[2];
-  //console.log($ulTag) //returns <ul>
+  let totalPriceEl = document.querySelector(".panel.price strong");
+  let totalPrice = 10;
 
-  // PEPPERONI
-  if (state.pepperoni){
-    if($ulTag.innerHTML.includes("pepperoni")){
-      //do nothing
-    }else{
-      let item = document.createElement("li");
-      let textNode = document.createTextNode("$1 pepperoni");
-  
-      item.appendChild(textNode);
-      $ulTag.insertBefore(item, $ulTag.childNodes[1]);
-    }
-  }else{
-    $ulTag.removeChild($ulTag.childNodes[1]);
-    //console.log("removed child li")
+  totalPriceEl.innerHTML = "";
+
+  if (state.pepperoni) {
+    let listItem = document.createElement("li")
+    listItem.innerText = `$${ingredients.pepperoni.price} pepperoni`
+    pricelist.appendChild(listItem)
+
+    totalPrice += ingredients.pepperoni.price;
+
+  }
+  if(state.mushrooms){
+    let listItem = document.createElement("li");
+    listItem.innerText = `$${ingredients.mushrooms.price} mushrooms`
+    pricelist.appendChild(listItem);
+
+    totalPrice += ingredients.mushrooms.price;
   }
 
+  if(state.greenPeppers){
+    let listItem = document.createElement("li");
+    listItem.innerText = `$${ingredients.greenPeppers.price} green peppers`
+    pricelist.appendChild(listItem);
 
-  // // MUSHROOMS
-  if (state.mushrooms){
-    if($ulTag.innerHTML.includes("mushrooms")){
-      //do nothing
-    }else{
-      let item = document.createElement("li");
-      let textNode = document.createTextNode("$1 mushrooms");
-  
-      item.appendChild(textNode);
-      $ulTag.insertBefore(item, $ulTag.childNodes[3]);
-    }
-  }else{
-    $ulTag.removeChild($ulTag.childNodes[3]);
+    totalPrice += ingredients.greenPeppers.price;
   }
 
+  if(state.whiteSauce){
+    let listItem = document.createElement("li");
+    listItem.innerText = `$${ingredients.whiteSauce.price} white sauce`
+    pricelist.appendChild(listItem);
 
+    totalPrice += ingredients.whiteSauce.price;
+  }
 
-  // // GREEN PEPPERS
-  // if (state.greenPeppers){
-  //   if($ulTag.innerHTML.includes("green peppers")){
-  //     //do nothing
-  //   }else{
-  //     let item = document.createElement("li");
-  //     let textNode = document.createTextNode("$1 green peppers");
+  if(state.glutenFreeCrust){
+    let listItem = document.createElement("li");
+    listItem.innerText = `$${ingredients.glutenFreeCrust.price} gluten-free crust`
+    pricelist.appendChild(listItem);
+
+    totalPrice += ingredients.glutenFreeCrust.price;
+  }
+
+  totalPriceEl.innerHTML = `$${totalPrice}`;
   
-  //     item.appendChild(textNode);
-  //     $ulTag.insertBefore(item, $ulTag.childNodes[5]);
-  //   }
-  // }else{
-  //   $ulTag.removeChild($ulTag.childNodes[5]);
-  // }
-
-
-  
-  // // WHITE SAUCE
-  // if (state.whiteSauce){
-  //   if($ulTag.innerHTML.includes("white sauce")){
-  //     //do nothing
-  //   }else{
-  //     let item = document.createElement("li");
-  //     let textNode = document.createTextNode("$3 white sauce");
-  
-  //     item.appendChild(textNode);
-  //     $ulTag.insertBefore(item, $ulTag.childNodes[7]);
-  //   }
-  // }else{
-  //   $ulTag.removeChild($ulTag.childNodes[7]);
-  // }
-
-
-
-  // GLUTEN FREE CRUST
-  // if (state.glutenFreeCrust){
-  //   if($ulTag.innerHTML.includes("gluten-free crust")){
-  //     //do nothing
-  //   }else{
-  //     let item = document.createElement("li");
-  //     let textNode = document.createTextNode("$5 gluten-free crust");
-  
-  //     item.appendChild(textNode);
-  //     $ulTag.insertBefore(item, $ulTag.childNodes[8].nextSibling);
-  //   }
-  // }else{
-  //   $ulTag.removeChild($ulTag.childNodes[9]);
-  // }  
- 
 }
 
 renderEverything();
