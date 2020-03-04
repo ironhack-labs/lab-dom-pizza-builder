@@ -84,9 +84,9 @@ function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
   document.querySelectorAll( '.sauce' ).forEach( item => {
     if ( state.sauce ) {
-      item.style.visibility = 'visible';
+      item.classList.remove("sauce-white");
     } else {
-      item.style.visibility = 'hidden';
+      item.classList.add("sauce-white");
     }
   } );
 }
