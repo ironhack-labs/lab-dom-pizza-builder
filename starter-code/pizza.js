@@ -110,9 +110,9 @@ function renderPrice() {
   document.querySelector('.price ul').innerHTML = ''
   for (var n in state){
     if (state[n]){
-      
+      let $price  = ingredients.n.price
       let $newingredient = document.createElement('li')
-      $newingredient.textContent = `+ $... ${n}` 
+      $newingredient.textContent = `+ ${price} ${n}` 
       document.querySelector('.price ul').appendChild($newingredient)
     
     }
