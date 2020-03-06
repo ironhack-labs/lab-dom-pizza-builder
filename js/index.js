@@ -76,21 +76,113 @@ function renderWhiteSauce() {
   else{
     getElementSauce.classList.value="sauce sauce-white";
   }
-  console.log(getElementSauce);
   //console.log(getElementSauce);
   //getElementSauce.removeChild(".sauce-white");
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+const getGlutenFreeCrust = document.querySelector(".crust");
+if(state.glutenFreeCrust)
+getGlutenFreeCrust.className = "crust crust-gluten-free"
+else{
+  getGlutenFreeCrust.className = "crust"
+}
+
 }
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  const activeElements = document.getElementsByClassName("btn");
+  console.log(activeElements);
+    if(state.pepperoni===true){
+      activeElements[0].className= "btn btn-pepperoni active"
+    }
+    else{
+      activeElements[0].className= "btn btn-pepperoni"
+    }
+    if(state.mushrooms===true){
+      activeElements[1].className= "btn btn-mushrooms active"
+    }
+    else{
+      activeElements[1].className= "btn btn-mushrooms"
+    }
+    if(state.greenPeppers===true){
+      activeElements[2].className="btn btn-green-peppers active"
+    }
+    else{
+      activeElements[2].className="btn btn-green-peppers"
+    }
+    if(state.whiteSauce===true){
+      activeElements[3].className="btn btn-sauce active"
+    }
+    else{
+      activeElements[3].className="btn btn-sauce"
+    }
+    if(state.glutenFreeCrust===true){
+      activeElements[4].className="btn btn-crust active"
+    }
+    else{
+      activeElements[4].className="btn btn-crust"
+    }
+
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  /*    
+  <aside class="panel price">
+      <h2>Your pizza's price</h2>
+
+      <b>$10 cheese pizza</b>
+      <ul>
+        <li>$1 pepperoni</li>
+        <li>$1 mushrooms</li>
+        <li>$1 green peppers</li>
+        <li>$3 white sauce</li>
+        <li>$5 gluten-free crust</li>
+      </ul>
+      <strong>$21</strong>
+    </aside>
+    */ 
+   
+    const $pizzaPrice =document.querySelector(".panel.price");
+    $pizzaPrice.querySelector("ul").innerHTML = ""
+    $pizzaPrice.querySelector("strong").innerHTML = ""
+    let totalPrice=10;
+    console.log($pizzaPrice)
+    if(state.pepperoni){
+      let $pepPrice= document.createElement("li");
+      $pepPrice.innerHTML="$1 pepperoni";
+      $pizzaPrice.querySelector("ul").appendChild($pepPrice);
+      totalPrice+=1;
+    }
+    if(state.mushrooms){
+      let $mushPrice= document.createElement("li");
+      $mushPrice.innerHTML="$1 mushrooms";
+      $pizzaPrice.querySelector("ul").appendChild($mushPrice);
+      totalPrice+=1;
+    }
+    if(state.greenPeppers){
+      let $peppersPrice= document.createElement("li");
+      $peppersPrice.innerHTML="$1 greenPeppers";
+      $pizzaPrice.querySelector("ul").appendChild($peppersPrice);
+      totalPrice+=1;
+    }
+    if(state.whiteSauce){
+      let $saucePrice= document.createElement("li");
+      $saucePrice.innerHTML="$1 whiteSauce";
+      $pizzaPrice.querySelector("ul").appendChild($saucePrice);
+      totalPrice+=1;
+    }
+    if(state.glutenFreeCrust){
+      let $crustPrice= document.createElement("li");
+      $crustPrice.innerHTML="$1 glutenFreeCrust";
+      $pizzaPrice.querySelector("ul").appendChild($crustPrice);
+      totalPrice+=1;
+    }
+    $pizzaPrice.querySelector("strong").innerHTML = `$${totalPrice}`
+    
 }
 
 renderEverything();
