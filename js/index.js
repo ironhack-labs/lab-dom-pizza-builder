@@ -111,19 +111,62 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  const parent = document.querySelector("aside ul");
+  let child = parent.lastElementChild;
+  let totalPrice = basePrice;
+
+  //reset price panel, calculate total price anew
+  while(child){
+    parent.removeChild(child);
+    child = parent.lastElementChild;
+  }
+
+  if (state.pepperoni){
+    let newLiPep = document.createElement("li");
+    newLiPep.innerText = `$${ingredients.pepperoni.price} ${ingredients.pepperoni.name}`;
+    parent.appendChild(newLiPep);
+    totalPrice += ingredients.pepperoni.price;
+  } 
   
+  if(state.mushrooms){
+    let newLiShroom = document.createElement("li");
+    newLiShroom.innerText = `$${ingredients.mushrooms.price} ${ingredients.mushrooms.name}`;
+    parent.appendChild(newLiShroom);
+    totalPrice += ingredients.mushrooms.price;
+  }
+
+  if(state.greenPeppers){
+    let newLiGreenPep = document.createElement("li");
+    newLiGreenPep.innerText = `$${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name}`;
+    parent.appendChild(newLiGreenPep);
+    totalPrice += ingredients.greenPeppers.price;
+  }
+
+  if(state.whiteSauce){
+    let newLiSauce = document.createElement("li");
+    newLiSauce.innerText = `$${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name}`;
+    parent.appendChild(newLiSauce);
+    totalPrice += ingredients.whiteSauce.price;
+  }
+
+  if(state.glutenFreeCrust){
+    let newLiCrust = document.createElement("li");
+    newLiCrust.innerText = `$${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name}`;
+    parent.appendChild(newLiCrust);
+    totalPrice += ingredients.glutenFreeCrust.price;
+  }
+
+  document.querySelector("aside strong").innerText = `$${totalPrice}`;
 }
 
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector(".btn.btn-pepperoni").addEventListener("click", () => {
-  console.log("pepperoni clicked");
-  console.log(state.pepperoni);
   state.pepperoni = !state.pepperoni;
-  console.log(state.pepperoni);
   renderPepperoni();
   renderButtons();
+  renderPrice();
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
@@ -131,6 +174,7 @@ document.querySelector(".btn.btn-mushrooms").addEventListener("click", () => {
   state.mushrooms = !state.mushrooms;
   renderMushrooms();
   renderButtons();
+  renderPrice();
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
@@ -138,6 +182,7 @@ document.querySelector(".btn.btn-green-peppers").addEventListener("click", () =>
   state.greenPeppers = !state.greenPeppers;
   renderGreenPeppers();
   renderButtons();
+  renderPrice();
 });
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
@@ -145,6 +190,7 @@ document.querySelector(".btn.btn-sauce").addEventListener("click", () => {
   state.whiteSauce = !state.whiteSauce;
   renderWhiteSauce();
   renderButtons();
+  renderPrice();
 });
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
@@ -152,4 +198,5 @@ document.querySelector(".btn.btn-crust").addEventListener("click", () => {
   state.glutenFreeCrust = !state.glutenFreeCrust;
   renderGlutenFreeCrust();
   renderButtons();
+  renderPrice();
 });
