@@ -30,28 +30,26 @@ const renderEverything = () => {
   renderButtons();
   renderPrice();
 };
-const toggleVisibility = (visibility, state) =>
-  state ? (visibility = "visible") : (visibility = "hidden");
+const toggleVisibility = (style, state) =>
+  state ? (style.visibility = "visible") : (style.visibility = "hidden");
 
 const renderPepperoni = () =>
   document.querySelectorAll(".pep").forEach(onePep => {
-    toggleVisibility(onePep.style.visibility, state.pepperoni);
+    toggleVisibility(onePep.style, state.pepperoni);
   });
 
 const renderMushrooms = () =>
   // Iteration 1: set the visibility of `<section class="mushroom">`
   document
     .querySelectorAll(".mushroom")
-    .forEach(mushroom =>
-      toggleVisibility(mushroom.style.visibility, state.mushrooms)
-    );
+    .forEach(mushroom => toggleVisibility(mushroom.style, state.mushrooms));
 
 const renderGreenPeppers = () =>
   // Iteration 1: set the visibility of `<section class="green-pepper">`
   document
     .querySelectorAll(".green-pepper")
     .forEach(greenPepper =>
-      toggleVisibility(greenPepper.style.visibility, state.greenPeppers)
+      toggleVisibility(greenPepper.style, state.greenPeppers)
     );
 
 const renderWhiteSauce = () =>
@@ -71,17 +69,39 @@ const renderGlutenFreeCrust = () =>
       )
     );
 
+// Iteration 3: add/remove the class "active" of each `<button class="btn">`
+//Method 1: //Method 1 : using the state Object
 const toggleByClassName = (className, state) =>
   document
     .getElementsByClassName(className)[0]
     .classList.toggle("active", state);
 
-const renderButtons = () => {
+const renderButtons1 = () => {
   toggleByClassName("btn-pepperoni", state.pepperoni);
   toggleByClassName("btn-mushrooms", state.mushrooms);
   toggleByClassName("btn-green-peppers", state.greenPeppers);
   toggleByClassName("btn-sauce", state.whiteSauce);
   toggleByClassName("btn-crust", state.glutenFreeCrust);
+};
+//Method 2 : using the combined state/className Object
+const ClassNameByStatus = {
+  pepperoni: "pepperoni",
+  mushrooms: "mushrooms",
+  greenPeppers: "green-peppers",
+  whiteSauce: "sauce",
+  glutenFreeCrust: "crust"
+};
+const toggleByState = btnElement => {
+  Object.keys(state).forEach(stateKey => {
+    if (btnElement.className.includes(ClassNameByStatus[stateKey]))
+      btnElement.classList.toggle("active", state[stateKey]);
+  });
+};
+
+const renderButtons = () => {
+  document
+    .querySelectorAll(".panel.controls button")
+    .forEach(button => toggleByState(button));
 };
 
 const renderPrice = () => {
