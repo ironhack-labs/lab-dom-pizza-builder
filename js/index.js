@@ -104,25 +104,29 @@ const renderButtons = () => {
     .forEach(button => toggleByState(button));
 };
 
+const createIngredientElement = ingredient => {
+  const newIngredient = document.createElement("li");
+  newIngredient.innerHTML = `$${ingredient.price} ${ingredient.name}`;
+  return newIngredient;
+};
+
 const renderPrice = () => {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  const createIngredientElement = ingredient => {
-    const newIngredient = document.createElement("li");
-    newIngredient.innerHTML = `$${ingredient.price} ${ingredient.name}`;
-    return newIngredient;
-  };
+  let pizzaPrice = basePrice;
+  const finalPrice = document.querySelector(".panel.price strong");
+  const pricePanel = document.querySelector(".panel.price ul");
+  pricePanel.innerHTML = "";
+
   const addIngredient = ingredient =>
     pricePanel.appendChild(createIngredientElement(ingredient));
+
   const createIngredientAndAddPrice = (ingredient, state) => {
     if (state) {
       addIngredient(ingredient);
       pizzaPrice += ingredient.price;
     }
   };
-  const finalPrice = document.querySelector(".panel.price strong");
-  let pizzaPrice = basePrice;
-  const pricePanel = document.querySelector(".panel.price ul");
-  pricePanel.innerHTML = "";
+
   createIngredientAndAddPrice(ingredients.pepperoni, state.pepperoni);
   createIngredientAndAddPrice(ingredients.mushrooms, state.mushrooms);
   createIngredientAndAddPrice(ingredients.greenPeppers, state.greenPeppers);
