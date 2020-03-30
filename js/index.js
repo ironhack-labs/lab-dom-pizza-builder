@@ -103,39 +103,40 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  let pricelist = document.querySelector(".panel.price ul")
-  pricelist.innerHTML = ""
-
+  let list = document.querySelector(".panel.price ul")
+  //console.log(list)
+  list.innerHTML = ""
   let finalTotal = document.querySelector(".panel.price strong")
   let price = 10
+  
   if (state.pepperoni) {
     let ingredient = document.createElement("li");
     ingredient.innerText =`${ingredients.pepperoni.price} Pepperoni`
-    pricelist.appendChild(ingredient)
+    list.appendChild(ingredient)
     price += ingredients.pepperoni.price
   }
   if(state.mushroom){
     let ingredient = document.createElement("li");
     ingredient.innerText = `${ingredients.mushrooms.price} Mushrooms`
-    pricelist.appendChild(ingredient);
+    list.appendChild(ingredient);
     price += ingredients.mushrooms.price;
   }
   if(state.greenPeppers){
     let ingredient = document.createElement("li");
     ingredient.innerText = `${ingredients.greenPeppers.price} Green peppers`
-    pricelist.appendChild(ingredient);
+    list.appendChild(ingredient);
     price += ingredients.greenPeppers.price;
   }
   if(state.whiteSauce){
     let ingredient = document.createElement("li");
     ingredient.innerText = `${ingredients.whiteSauce.price} White Sauce`
-    pricelist.appendChild(ingredient);
+    list.appendChild(ingredient);
     price += ingredients.whiteSauce.price;
   }
   if(state.glutenFreeCrust){
     let ingredient = document.createElement("li");
     ingredient.innerText = `${ingredients.glutenFreeCrust.price} Gluten Free Crust`
-    pricelist.appendChild(ingredient);
+    list.appendChild(ingredient);
     price += ingredients.glutenFreeCrust.price;
   }
     return finalTotal.innerText = price
