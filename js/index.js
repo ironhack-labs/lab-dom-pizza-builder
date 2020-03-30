@@ -109,21 +109,6 @@ function renderButtons() {
   } else document.querySelector('.btn.btn-crust').classList.remove('active')
 }
 
-function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">
-
-  const parentElement = document.querySelector('.panel.price .ulList');
-
-// let's use javascript to remove the p tag
-const paragraph = document.getElementsByTagName('ul')[0];
-//parentElement.removeChild(paragraph);
-let ingredientsList = document.querySelector('aside.panel.price li')
-  ingredientsList.innerHTML = ""
-  let totalPrice = basePrice;
-  let list = document.querySelector('.ulList');
-}
-
-
   function renderPrice() {
     // Iteration 4: change the HTML of `<aside class="panel price">
     let totalPrice = basePrice;
@@ -142,9 +127,6 @@ let ingredientsList = document.querySelector('aside.panel.price li')
 
 
 renderEverything(); 
-
-
-
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
   state.pepperoni = !state.pepperoni;
