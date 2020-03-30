@@ -46,57 +46,35 @@ let ingredients = {
 // This function takes care of rendering the pizza based on the state
 // This function is triggered once at the beginning and every time the state is changed
 function renderEverything() {
-  renderPepperoni();
-  renderMushrooms();
-  renderGreenPeppers();
-  renderWhiteSauce();
-  renderGlutenFreeCrust();
+  renderIngredient(ingredients.pepperoni);
+  renderIngredient(ingredients.mushrooms);
+  renderIngredient(ingredients.greenPeppers);
+  fancyOptionToggle(ingredients.whiteSauce)
+  fancyOptionToggle(ingredients.glutenFreeCrust)
 
   renderButtons();
   renderPrice();
 }
 
-function renderPepperoni() {
-  document.querySelectorAll('.pep')
-  .forEach(onePep => {
-    onePep.style.visibility = ingredients.pepperoni.state ? 'visible' : 'hidden';
+// Iteration 1: set the visibility of `<section class="mushroom">`
+// Iteration 1: set the visibility of `<section class="green-pepper">`
+
+function renderIngredient(ingredient){
+  document.querySelectorAll(ingredient.querySelector)
+  .forEach(item => {
+    item.style.visibility = ingredient.state ? 'visible' : 'hidden';
   });
 }
 
-function renderMushrooms() {
-  // Iteration 1: set the visibility of `<section class="mushroom">`
-  document.querySelectorAll('.cap, .stem')
-  .forEach(oneMushroom => {
-    oneMushroom.style.visibility = ingredients.mushrooms.state ?  'visible' : 'hidden';
-  });
-}
-
-function renderGreenPeppers() {
-  // Iteration 1: set the visibility of `<section class="green-pepper">`
-  document.querySelectorAll('.green-pepper')
-  .forEach(onePepper => {
-    onePepper.style.visibility = ingredients.greenPeppers.state ?  'visible' : 'hidden';
-  });
-}
-
-  // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-
+// Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+// Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
 
 function fancyOptionToggle(ingredient){
   let ingredientHTML = document.querySelector(ingredient.querySelector);
   ingredient.state ? ingredientHTML.classList.add(ingredient.activeCSSClass) :  ingredientHTML.classList.remove(ingredient.activeCSSClass);
 }
 
-function renderWhiteSauce() {
-  fancyOptionToggle(ingredients.whiteSauce)
-}
-
-function renderGlutenFreeCrust() {
-  fancyOptionToggle(ingredients.glutenFreeCrust)
-}
-
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+// Iteration 3: add/remove the class "active" of each `<button class="btn">`
 
 function renderEachButton(ingredient){
   buttonHTML = document.querySelector(ingredient.buttonClass)
