@@ -126,8 +126,8 @@ function renderPrice() {
     ingredientsList += `<li>$${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name}</li>`
     sum += ingredients.glutenFreeCrust.price
   }
-  document.querySelector('.price ul').innerHTML = ingredientsList
-  document.querySelector('strong').textContent = `$${sum}`
+  document.querySelector('.panel.price ul').innerHTML = ingredientsList
+  document.querySelector('.panel.price strong').textContent = `$${sum}`
 }
 
 renderEverything()
@@ -158,14 +158,3 @@ document.querySelector('.btn-crust').addEventListener('click', () => {
   state.glutenFreeCrust = !state.glutenFreeCrust
   renderEverything()
 })
-
-// document.querySelector(".btn.btn-mushrooms").onClick = function() {
-//   state.mushrooms = !state.mushrooms
-//   renderEverything()
-// }
-
-// Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-
-// Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
-
-// Iteration 2: Add click event listener on `<button class="btn btn-crust">`
