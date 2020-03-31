@@ -114,6 +114,24 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let sumPrice = basePrice;
+  if (state.pepperoni) {
+    sumPrice += ingredients.pepperoni.price
+  }
+  if (state.mushrooms) {
+    sumPrice += ingredients.mushrooms.price
+  }
+  if (state.greenPeppers) {
+    sumPrice += ingredients.greenPeppers.price
+  }
+  if (state.whiteSauce) {
+    sumPrice += ingredients.whiteSauce.price
+  }
+  if (state.glutenFreeCrust) {
+    sumPrice += ingredients.glutenFreeCrust.price
+  }
+  // document.querySelector('.panel price strong').
+  // replace at <aside class="panel price"> -> <strong> with the return value of this function...
 }
 
 renderEverything();
