@@ -94,24 +94,7 @@ function renderButtons() {
 }
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
 
-
-/*   let totalPrice = basePrice;
-  let ingredientsList = document.querySelector("aside.panel.price ul");
-  ingredientsList.innerHTML = "";
-
-  for (let ingredient in ingredients) {
-      if (state[ingredient]) {
-          totalPrice += ingredients[ingredient].price;
-          ingredientsList.innerHTML += `<li>$${
-              ingredients[ingredient].price
-          } ${ingredients[ingredient].name.toLowerCase()}</li>`;
-      }
-  }
-  document.querySelector("aside.panel.price strong").innerHTML =
-      "$" + totalPrice;
-} */
 
   let totalPrice = basePrice
   let ingredientsList = document.querySelector('aside.panel.price ul')
