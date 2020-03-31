@@ -91,14 +91,14 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  let btnContainer =document.getElementsByClassName('controls');
-  let btns = btnContainer.getElementsByClassName('btn');
+  let btnContainer =document.getElementsByClassName('.controls');
+  let btns = btnContainer.getElementsByClassName('.btn');
 
   for (let i = 0; i < btns.length; i++) {
     btns[i].addEventListener('click', function() {
-      if (this.classList.contains('active')) {
-        this.classList.remove('active');
-      } else this.classList.add('active');
+      if (this.classList.contains('.active')) {
+        this.classList.remove('.active');
+      } else this.classList.add('.active');
     }); 
   }
 
