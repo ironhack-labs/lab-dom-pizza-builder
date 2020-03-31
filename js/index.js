@@ -91,10 +91,10 @@ function renderButtons() {
 
 function renderPrice(){
   let totalPrice  = basePrice;
-  let priceList   = `<h2>Your pizza's price</h2>\n\n<b>$10 cheese pizza</b>\n`
+  let priceList   = `<h2>Your pizza's price</h2>\n\n<b>$10 cheese pizza</b>\n<ul>`
   for(const oneIngredient in ingredients){
     ingredients[oneIngredient].state ? totalPrice += ingredients[oneIngredient].price : null;
-    ingredients[oneIngredient].state ? priceList += `<li>${ingredients[oneIngredient].price} ${ingredients[oneIngredient].name}</li>\n` : null;
+    ingredients[oneIngredient].state ? priceList += `<li>$${ingredients[oneIngredient].price} ${ingredients[oneIngredient].name}</li>\n` : null;
   }
   priceList += `</ul>\n<strong>$${totalPrice}</strong>`
   document.querySelector("aside").innerHTML = priceList;
