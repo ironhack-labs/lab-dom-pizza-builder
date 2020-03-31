@@ -3,7 +3,7 @@
 // Constants
 let basePrice = 10;
 let ingredients = {
-  pepperoni: { name: 'pepperoni', price: 1 },
+  pepperoni: { name: 'Pepperoni', price: 1 },
   mushrooms: { name: 'Mushrooms', price: 1 },
   greenPeppers: { name: 'Green Peppers', price: 1 },
   whiteSauce: { name: 'White sauce', price: 3 },
