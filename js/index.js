@@ -54,48 +54,82 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  if (state.whiteSauce) {
-    document.querySelector('.sauce').classList.remove('sauce-white');
-  } else {
-    document.querySelector('.sauce').classList.add('sauce-white');
-  }
+  const sauceElement = document.querySelector('.sauce');
+  state.whiteSauce
+    ? sauceElement.classList.add('sauce-white')
+    : sauceElement.classList.remove('sauce-white');
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  if (state.glutenFreeCrust) {
-    document.querySelector('.crust').classList.remove('crust-gluten-free');
-  } else {
-    document.querySelector('.crust').classList.add('crust-gluten-free');
-  }
+  const crustElement = document.querySelector('.crust');
+  state.glutenFreeCrust
+    ? crustElement.classList.add('crust-gluten-free')
+    : crustElement.classList.remove('crust-gluten-free');
 }
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-
-  document
-    .querySelectorAll('.controls .btn')
-    .forEach(item => item.classList.remove('active'));
-
-  // state.pepperoni
-  //   ? document.querySelector('.btn-pepperoni').classList.add('active')
-  //   : document.querySelector('.btn-pepperoni').classList.remove('active');
-  // state.mushrooms
-  //   ? document.querySelector('.btn-mushrooms').classList.add('active')
-  //   : document.querySelector('.btn-mushrooms').classList.remove('active');
-  // state.greenPeppers
-  //   ? document.querySelector('btn-green-peppers').classList.add('active')
-  //   : document.querySelector('.btn-green-peppers').classList.remove('active');
-  // state.whiteSauce
-  //   ? document.querySelector('.btn-sauce-white').classList.add('active')
-  //   : document.querySelector('.btn-sauce-white').classList.remove('active');
-  // state.glutenFreeCrust
-  //   ? document.querySelector('.btn-crust').classList.add('active')
-  //   : document.querySelector('.btn-crust').classList.remove('active');
+  document.querySelectorAll('.btn').forEach(item => {
+    if (item.className.includes('pepperoni')) {
+      state.pepperoni
+        ? item.classList.add('active')
+        : item.classList.remove('active');
+    } else if (item.className.includes('mushrooms')) {
+      state.mushrooms
+        ? item.classList.add('active')
+        : item.classList.remove('active');
+    } else if (item.className.includes('green-peppers')) {
+      state.greenPeppers
+        ? item.classList.add('active')
+        : item.classList.remove('active');
+    } else if (item.className.includes('sauce')) {
+      state.whiteSauce
+        ? item.classList.add('active')
+        : item.classList.remove('active');
+    } else if (item.className.includes('crust')) {
+      state.glutenFreeCrust
+        ? item.classList.add('active')
+        : item.classList.remove('active');
+    }
+  });
 }
+// ____-------_______--------_______--------__________-------
+// For iteration 3:
+// I don't understand why the iteration below doesn't work:
+// Same logic as the one above
+
+// state.pepperoni
+//   ? document.querySelector('.btn-pepperoni').classList.add('active')
+//   : document.querySelector('.btn-pepperoni').classList.remove('active');
+// state.mushrooms
+//   ? document.querySelector('.btn-mushrooms').classList.add('active')
+//   : document.querySelector('.btn-mushrooms').classList.remove('active');
+// state.greenPeppers
+//   ? document.querySelector('.btn-green-peppers').classList.add('active')
+//   : document.querySelector('.btn-green-peppers').classList.remove('active');
+// state.whiteSauce
+//   ? document.querySelector('.btn-sauce-white').classList.add('active')
+//   : document.querySelector('.btn-sauce-white').classList.remove('active');
+// state.glutenFreeCrust
+//   ? document.querySelector('.btn-crust').classList.add('active')
+//   : document.querySelector('.btn-crust').classList.remove('active');
+
+// ____-------_______--------_______--------__________-------
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let totalPrice = 10;
+  let ingredientsList = '';
+
+  for (let key in state) {
+    if (state[key]) {
+      ingredientsList += `<li>$${ingredients[key].price} ${ingredients[key].name}</li>`;
+      totalPrice += ingredients[key].price;
+    }
+  }
+  document.querySelector('.panel.price ul').innerHTML = ingredientsList;
+  document.querySelector('.panel.price strong').textContent = `$${totalPrice}`;
 }
 
 renderEverything();
