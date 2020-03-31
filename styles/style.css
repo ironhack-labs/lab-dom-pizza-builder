@@ -102,12 +102,12 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
 }
 
 blockquote,
 q {
-  quotes: '' '';
+  quotes: "" "";
 }
 
 /*--- HTML5 -----*/
@@ -121,7 +121,7 @@ footer {
 }
 
 body {
-  font-family: 'Courier', 'Courier New', Serif;
+  font-family: "Courier", "Courier New", Serif;
   max-width: 750px;
   margin: 0 auto;
 }
@@ -359,7 +359,7 @@ p.description {
 }
 
 .price h2:after {
-  content: ':';
+  content: ":";
 }
 
 .price b {
@@ -373,7 +373,7 @@ p.description {
 }
 
 .price li:before {
-  content: '+ ';
+  content: "+ ";
   color: #e2311a;
 }
 
