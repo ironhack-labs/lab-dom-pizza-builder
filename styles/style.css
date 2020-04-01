@@ -366,7 +366,7 @@ p.description {
   font-size: 20px;
   color: #e2311a;
 }
-
+//querySelector('.price li')
 .price li {
   margin: 5px 20px 0;
   color: #666;
