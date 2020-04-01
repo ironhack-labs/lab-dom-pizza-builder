@@ -130,26 +130,32 @@ function renderPrice() {
   let sum = basePrice
   let listIngredients = ''
   if (state.pepperoni) {
+    listIngredients += `<li>$${ingredients.pepperoni.price} ${ingredients.pepperoni.name}</li>`
     sum += ingredients.pepperoni.price
   }
 
   if (state.mushrooms) {
+    listIngredients += `<li>$${ingredients.mushrooms.price} ${ingredients.mushrooms.name}</li>`
     sum += ingredients.mushrooms.price
   }
 
   if (state.greenPeppers) {
+    listIngredients += `<li>$${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name}</li>`
     sum += ingredients.greenPeppers.price
   }
 
   if (state.whiteSauce) {
+    listIngredients += `<li>$${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name}</li>`
     sum += ingredients.whiteSauce.price
   }
 
   if (state.glutenFreeCrust) {
+    listIngredients += `<li>$${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name}</li>`
     sum += ingredients.glutenFreeCrust.price
   }
 
   document.querySelector('.panel.price strong').innerHTML = `$${sum}`
+  document.querySelector('.panel.price ul').innerHTML = listIngredients
 }
 
 renderEverything()
