@@ -1097,3 +1097,16 @@ footer a:hover {
     margin: 70px 0 10px 0;
   }
 }
+
+
+#pizza {
+  animation: rotation 6s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
