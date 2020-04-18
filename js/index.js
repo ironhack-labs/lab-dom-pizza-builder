@@ -47,32 +47,34 @@ function renderEverything() {
   renderPrice();
 }
 
-function render(_selec, _state) {
+function renderIngredients(_selec, _state) {
   document.querySelectorAll(_selec).forEach(oneElem => oneElem.style.visibility = _state ? 'visible' : 'hidden');
 }
 
 function renderPepperoni() {
-  render('.pep', state.pepperoni);
+  renderIngredients('.pep', state.pepperoni);
 }
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
-  render('.mushroom', state.mushrooms);
+  renderIngredients('.mushroom', state.mushrooms);
 }
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
-  render('.green-pepper', state.greenPeppers);
+  renderIngredients('.green-pepper', state.greenPeppers);
 }
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  render('.sauce', state.whiteSauce);
+  let souce = document.querySelector('.sauce');
+  souce.className = `sauce${state.whiteSauce ? ' sauce-white' : ''}`;
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  render('.crust', state.glutenFreeCrust);
+  let crust = document.querySelector('.crust');
+  crust.className = `crust${state.glutenFreeCrust ? ' crust-gluten-free' : ''}`;
 }
 
 function renderButtons() {
@@ -105,6 +107,9 @@ function renderButtons() {
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   let totalPrice = basePrice;
+  let baseItem = document.querySelector('.panel.price b');
+  baseItem.innerText = `$${basePrice} cheese pizza`;
+
   let ulItem = document.querySelector('.panel.price ul');
   let child = ulItem.lastElementChild;
   while (child) {
