@@ -4,7 +4,7 @@
 let basePrice = 10;
 let ingredients = {
   pepperoni: {
-    name: 'pepperoni',
+    name: 'Pepperoni',
     price: 1
   },
   mushrooms: {
@@ -16,11 +16,11 @@ let ingredients = {
     price: 1
   },
   whiteSauce: {
-    name: 'White sauce',
+    name: 'White Sauce',
     price: 3
   },
   glutenFreeCrust: {
-    name: 'Gluten-free crust',
+    name: 'Gluten-free Crust',
     price: 5
   }
 };
@@ -79,51 +79,81 @@ function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
   const btns = document.querySelectorAll('.btn');
   [...btns].forEach(btn => {
-    btn.className.replace('active', '');
-    switch (btn.className.split(' ')[1]) {
+    let classNames = btn.className.split(' ');
+    let activeClass = '';
+    switch (classNames[1]) {
       case 'btn-pepperoni':
-        btn.className += state.pepperoni ? 'active' : '';
+        activeClass = state.pepperoni ? ' active' : '';
         break;
       case 'btn-mushrooms':
-        btn.className += state.mushrooms ? 'active' : '';
+        activeClass = state.mushrooms ? 'active' : '';
         break;
       case 'btn-green-peppers':
-        btn.className += state.greenPeppers ? 'active' : '';
+        activeClass = state.greenPeppers ? 'active' : '';
         break;
       case 'btn-sauce':
-        btn.className += state.whiteSauce ? 'active' : '';
+        activeClass = state.whiteSauce ? 'active' : '';
         break;
       case 'btn-crust':
-        btn.className += state.glutenFreeCrust ? 'active' : '';
+        activeClass = state.glutenFreeCrust ? 'active' : '';
         break;
     }
+    btn.className = `${classNames[0]} ${classNames[1]} ${activeClass}`;
   });
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let totalPrice = basePrice;
+  let ulItem = document.querySelector('.panel.price ul');
+  let child = ulItem.lastElementChild;
+  while (child) {
+    ulItem.removeChild(child);
+    child = ulItem.lastElementChild;
+  }
+
+  let ingredientes = Object.keys(ingredients);
+  for (let i = 0; i < ingredientes.length; i++) {
+    if (state[ingredientes[i]]) {
+      let liItem = document.createElement('li');
+      liItem.innerHTML = `$${ingredients[ingredientes[i]].price} ${ingredients[ingredientes[i]].name}`;
+      ulItem.appendChild(liItem);
+      totalPrice += ingredients[ingredientes[i]].price;
+    }
+  }
+  let totalItem = document.querySelector('.panel.price strong');
+  totalItem.innerHTML = `$${totalPrice}`;
 }
 
 renderEverything();
 
-function addEvent(_selec, _state) {
-  document.querySelector(_selec).addEventListener('click', () => {
-    _state = !_state;
-    renderEverything();
-  });
-}
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
-addEvent('.btn-pepperoni', state.pepperoni);
+document.querySelector('.btn-pepperoni').addEventListener('click', () => {
+  state.pepperoni = !state.pepperoni;
+  renderEverything();
+});
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
-addEvent('.btn-mushrooms', state.mushrooms);
+document.querySelector('.btn-mushrooms').addEventListener('click', () => {
+  state.mushrooms = !state.mushrooms;
+  renderEverything();
+});
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-addEvent('.btn-green-peppers', state.greenPeppers);
+document.querySelector('.btn-green-peppers').addEventListener('click', () => {
+  state.greenPeppers = !state.greenPeppers;
+  renderEverything();
+});
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
-addEvent('.btn-sauce', state.whiteSauce);
+document.querySelector('.btn-sauce').addEventListener('click', () => {
+  state.whiteSauce = !state.whiteSauce;
+  renderEverything();
+});
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
-addEvent('.btn-crust', state.glutenFreeCrust);
+document.querySelector('.btn-crust').addEventListener('click', () => {
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+});
