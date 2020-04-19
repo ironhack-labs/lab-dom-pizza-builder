@@ -100,7 +100,7 @@ function renderPrice() {
   for (let key in ingredients) {
     state[key] ? (ingredientsList.innerHTML += `<li>$${ingredients[key].price} ${ingredients[key].name}</li>`, priceIndicator += ingredients[key].price) : null;
   }
-  document.querySelector('aside.panel.price strong').innerHTML = "$" + priceIndicator;
+  document.querySelector('.panel.price strong').innerHTML = `$${priceIndicator}`;
 }
 
 renderEverything();
