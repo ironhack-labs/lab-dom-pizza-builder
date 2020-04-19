@@ -96,6 +96,18 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  const keyStates = Object.keys(state);
+  document.querySelectorAll('.panel.price ul li').forEach((ing, i) => {
+    if (!state[keyStates[i]]) {
+      ing.style.display = 'none';
+    } else {
+      ing.style.display = 'block';
+    }
+  });
+  // set a price list and calculate the total cost of the pizza
+  const prices = [1,1,1,3,5];
+  const totalPrice = document.querySelector('.panel.price > strong');
+  totalPrice.innerHTML = "$" + prices.reduce((total, price, i) => state[keyStates[i]] ? total + price : total, 10);
 }
 
 renderEverything();
