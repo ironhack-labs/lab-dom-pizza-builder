@@ -1,8 +1,8 @@
 // Write your Pizza Builder JavaScript in this file.
 
 // Constants
-let basePrice = 10;
-let ingredients = {
+const basePrice = 10;
+const ingredients = {
   pepperoni: {
     name: 'pepperoni',
     price: 1
@@ -27,9 +27,9 @@ let ingredients = {
 
 // Initial value of the state (the state values can change over time)
 let state = {
-  pepperoni: true,
-  mushrooms: true,
-  greenPeppers: true,
+  pepperoni: false,
+  mushrooms: false,
+  greenPeppers: false,
   whiteSauce: false,
   glutenFreeCrust: false
 };
@@ -53,7 +53,7 @@ function renderPepperoni() {
       onePep.style.visibility = 'visible';
     } else {
       onePep.style.visibility = 'hidden';
-    }
+    }  
   });
 }
 
@@ -114,6 +114,18 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  const listaIngredientes = document.querySelectorAll('.panel.price ul li');
+  const price = document.querySelector(".price span");
+  price.innerHTML = basePrice;
+  const estadoIngr = Object.keys(state);
+  [...listaIngredientes].forEach((elem, i) => {
+    if (state[estadoIngr[i]]) {
+      elem.style.visibility = "visible";
+      price.innerHTML = parseInt(price.innerHTML) + ingredients[[estadoIngr[i]]].price;
+    } else {
+      elem.style.visibility = "hidden";
+    }
+  });
 }
 
 renderEverything();
