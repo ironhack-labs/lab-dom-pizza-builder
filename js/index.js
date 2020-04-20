@@ -35,6 +35,8 @@ let state = {
 };
 
 // This function takes care of rendering the pizza based on the state
+
+
 // This function is triggered once at the beginning and every time the state is changed
 function renderEverything() {
   renderPepperoni();
@@ -58,7 +60,7 @@ function renderPepperoni() {
 }
 
 function renderMushrooms() {
-  document.querySelectorAll('.mushrooms').forEach(oneMushroom => {
+  document.querySelectorAll('.mushroom').forEach(oneMushroom => {
     if (state.mushrooms) {
       oneMushroom.style.visibility = 'visible';
     } else {
@@ -96,6 +98,14 @@ function renderGlutenFreeCrust() {
 }
 
 function renderButtons() {
+  document.querySelectorAll('.btn').forEach((btn, i) => {
+    if (Object.values(state)[i]) {
+      btn.classList.remove('active');
+
+    } else {
+      btn.classList.add('active');
+    }
+  });
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 }
 
@@ -108,26 +118,33 @@ renderEverything();
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
   state.pepperoni = !state.pepperoni;
+  console.log("btn-pepperoni")
   renderEverything();
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
-document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', () => {
   state.mushrooms = !state.mushrooms;
+  console.log("btn-2")
+
   renderEverything();
 });
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
+document.querySelector('.btn.btn-green-peppers').addEventListener('click', () => {
   state.greenPeppers = !state.greenPeppers;
+  console.log("btn-2")
+
   renderEverything();
 });
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
-document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
+document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
   state.sauceType = !state.sauceType;
+  console.log("btn-2")
+
   renderEverything();
 });
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
-document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
+document.querySelector('.btn.btn-crust').addEventListener('click', (event) => {
   state.crustTipo = !state.crustTipo;
   renderEverything();
 });
