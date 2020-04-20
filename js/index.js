@@ -90,30 +90,23 @@ function renderButtons() {
   state.glutenFreeCrust ? allButtons[4].classList.add('active') : allButtons[4].classList.remove('active');
 }
 
-
-
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  let prices = document.querySelectorAll('.price ul li');
-  state.pepperoni ? prices[0].style.display = 'block' : prices[0].style.display = 'none';
-  state.mushrooms ? prices[1].style.display = 'block' : prices[1].style.display = 'none';
-  state.greenPeppers ? prices[2].style.display = 'block' : prices[2].style.display = 'none';
-  state.whiteSauce ? prices[3].style.display = 'block' : prices[3].style.display = 'none';
-  state.glutenFreeCrust ? prices[4].style.display = 'block' : prices[4].style.display = 'none';
 
-
-  let finalPrice = parseInt(document.querySelector('.price strong span').innerHTML);
-
-
-  for (key in prices) {
-
-  }
-
-  //!state.pepperoni ? finalPrice -= ingredients.pepperoni.price : finalPrice;
-  //state.mushrooms ? finalPrice.innerHTML = basePrice + ingredients.mushrooms.price : finalPrice.innerHTML
-  //state.greenPeppers ? finalPrice.innerHTML = basePrice + ingredients.greenPeppers.price : finalPrice
-  //state.whiteSauce ? finalPrice.innerHTML = basePrice + ingredients.whiteSauce.price : finalPrice
-  //state.glutenFreeCrust ? finalPrice.innerHTML = basePrice + ingredients.glutenFreeCrust.price : finalPrice
+  let ingredientsList = document.querySelectorAll(".price ul li");
+  let price = document.querySelector(".price strong");
+  price.innerHTML = basePrice;
+  let ingredientsInState = Object.keys(state);
+  ingredientsList.forEach((elem, i) => {
+    let currentIng = ingredientsInState[i]
+    if (state[currentIng]) {
+      elem.style.display = "block";
+      price.innerHTML =
+        parseInt(price.innerHTML) + ingredients[currentIng].price;
+    } else {
+      elem.style.display = "none";
+    }
+  });
 }
 
 renderEverything();
