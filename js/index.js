@@ -88,72 +88,52 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: remove active if not active
-  let a = document.querySelector('.btn-pepperoni')
-  state.pepperoni ? a.classList.add("active") :
-                    a.classList.remove("active")
-  let b = document.querySelector('.btn-mushrooms')
-  state.mushrooms ? b.classList.add("active") :
-                    b.classList.remove("active")
-  let c = document.querySelector('.btn-green-peppers')
-  state.greenPeppers ? c.classList.add("active") :
-                       c.classList.remove("active")
-  let d = document.querySelector('.btn-sauce')
-  state.whiteSauce ? d.classList.add("active") :
-                     d.classList.remove("active")
-  let e = document.querySelector('.btn-crust')
-  state.glutenFreeCrust ? e.classList.add("active") :
-                          e.classList.remove("active")
-  let f = document.querySelector('.btn-spicy')
-  state.spicySauce ? f.classList.add("active") :
-                     f.classList.remove("active")
+  function renderIngredientButton(button,ing) {
+    let a = document.querySelector(button)
+    ing ? a.classList.add('active') : a.classList.remove("active")
+  }
+
+  renderIngredientButton('.btn-pepperoni',state.pepperoni)
+  renderIngredientButton('.btn-mushrooms',state.mushrooms)
+  renderIngredientButton('.btn-green-peppers',state.greenPeppers)
+  renderIngredientButton('.btn-sauce',state.whiteSauce)
+  renderIngredientButton('.btn-crust',state.glutenFreeCrust)
+  renderIngredientButton('.btn-spicy',state.spicySauce)
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   let ingredt = document.querySelectorAll(".panel.price li");
   let chosenIngredients = [...ingredt]
-  base = document.querySelector(".panel.price b").innerText
-  total = parseInt(base[1]+base[2])
+  let total = basePrice
 
-  if (state.pepperoni) {
-    total += 1;
-    chosenIngredients[0].style.display = 'block'
-  } else {
-    chosenIngredients[0].style.display = 'none';
+  function findIngredient(innerTxtIngredient) {
+    let target = ""
+    chosenIngredients.forEach(listItem => {
+      if (listItem.innerText.includes(innerTxtIngredient)) {
+        target = listItem;
+      }
+    });
+    return target 
+  } 
+
+  function sumPrices(state,ingredient,innerTxtIngredient) {
+    if (state) {
+      total += ingredient.price;
+      findIngredient(innerTxtIngredient).style.display = 'block'
+    } else {
+      findIngredient(innerTxtIngredient).style.display = 'none'
+    }
   }
-  if (state.mushrooms) {
-    total += 1;
-    chosenIngredients[1].style.display = 'block'
-  } else {
-    chosenIngredients[1].style.display = 'none';
-  }
-  if (state.greenPeppers) {
-    total += 1;
-    chosenIngredients[2].style.display = 'block'
-  } else {
-    chosenIngredients[2].style.display = 'none';
-  }
-  if (state.whiteSauce) {
-    total += 3;
-    chosenIngredients[3].style.display = 'block'
-  } else {
-    chosenIngredients[3].style.display = 'none';
-  }
-  if (state.glutenFreeCrust) {
-    total += 5;
-    chosenIngredients[4].style.display = 'block'
-  } else {
-    chosenIngredients[4].style.display = 'none';
-  }
-  if (state.spicySauce) {
-    total += 0;
-    chosenIngredients[5].style.display = 'block'
-  } else {
-    chosenIngredients[5].style.display = 'none';
-  }
+
+  sumPrices(state.pepperoni,ingredients.pepperoni,'pepperoni')
+  sumPrices(state.mushrooms,ingredients.mushrooms,'mushrooms')
+  sumPrices(state.greenPeppers,ingredients.greenPeppers,'peppers')
+  sumPrices(state.whiteSauce,ingredients.whiteSauce,'white')
+  sumPrices(state.glutenFreeCrust,ingredients.glutenFreeCrust,'crust')
+  sumPrices(state.spicySauce,ingredients.spicySauce,'spicy')
 
   document.querySelector(".panel.price strong").innerText = `$${total}`
-
 }
 
 renderEverything();
