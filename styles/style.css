@@ -346,6 +346,33 @@ p.description {
   box-shadow: none;
 }
 
+.btn-spicy {
+  background: #e85410;
+  box-shadow: 0 6px #a53d0d;
+  color: #fff;
+}
+
+.btn-spicy:hover {
+  background: #c4470d;
+  box-shadow: 0 5px #8a330a;
+  color: #fff;
+}
+
+.btn-spicy.active {
+  top: 2px;
+  box-shadow: 0 2px #a53d0d;
+}
+
+.btn-spicy.active:hover {
+  box-shadow: 0 2px #8a330a;
+}
+
+.btn-spicy:active,
+.btn-spicy.active:active {
+  top: 5px;
+  box-shadow: none;
+}
+
 /*------ Price -----*/
 .price {
   right: 0;
