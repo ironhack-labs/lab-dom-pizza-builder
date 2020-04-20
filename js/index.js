@@ -3,7 +3,7 @@
 // Constants
 let basePrice = 10;
 let ingredients = {
-  pepperoni: { name: 'pepperoni', price: 1 },
+  pepperoni: { name: 'Pepperoni', price: 1 },
   mushrooms: { name: 'Mushrooms', price: 1 },
   greenPeppers: { name: 'Green Peppers', price: 1 },
   whiteSauce: { name: 'White sauce', price: 3 },
@@ -43,27 +43,111 @@ function renderPepperoni() {
 }
 
 function renderMushrooms() {
-  // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll('.mushroom').forEach(oneMush => {
+    if (state.mushrooms) {
+      oneMush.style.visibility = 'visible';
+    } else {
+      oneMush.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderGreenPeppers() {
-  // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll('.green-pepper').forEach(oneGreenP => {
+    if (state.greenPeppers) {
+      oneGreenP.style.visibility = 'visible';
+    } else {
+      oneGreenP.style.visibility = 'hidden';
+    }
+  });
 }
+
 
 function renderWhiteSauce() {
-  // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+    if (state.whiteSauce) {
+      document.querySelector('.sauce').classList.add('sauce-white');
+    } else {
+      document.querySelector('.sauce').classList.remove('sauce-white');;
+    };
 }
+ // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
 
 function renderGlutenFreeCrust() {
+  if (state.glutenFreeCrust) {
+    document.querySelector('.crust').classList.add('crust-gluten-free');
+  } else {
+    document.querySelector('.crust').classList.remove('crust-gluten-free');
+  };
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
 }
 
 function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  if (state.pepperoni){
+    document.querySelector('.btn.btn-pepperoni').classList.add('active');
+  }else {
+    document.querySelector('.btn.btn-pepperoni').classList.remove('active');
+  }
+  if (state.mushrooms){
+    document.querySelector('.btn.btn-mushrooms').classList.add('active');
+  }else {
+    document.querySelector('.btn.btn-mushrooms').classList.remove('active');
+  }
+  if (state.greenPeppers){
+    document.querySelector('.btn.btn-green-peppers').classList.add('active');
+  }else {
+    document.querySelector('.btn.btn-green-peppers').classList.remove('active');
+  }
+  if (state.whiteSauce){
+    document.querySelector('.btn.btn-sauce').classList.add('active');
+  }else {
+    document.querySelector('.btn.btn-sauce').classList.remove('active');
+  }
+  if (state.glutenFreeCrust){
+    document.querySelector('.btn.btn-crust').classList.add('active');
+  }else {
+    document.querySelector('.btn.btn-crust').classList.remove('active');
+  }
 }
 
 function renderPrice() {
+  let lista= document.querySelector('#listaCompleta');
+  lista.innerHTML="";
+  let sumatotal=basePrice
+  if (state.pepperoni){
+    let pepperoni= document.createElement('li');
+    lista.appendChild(pepperoni);
+    pepperoni.innerHTML="$" + ingredients.pepperoni.price + " " +ingredients.pepperoni.name;
+    sumatotal+=ingredients.pepperoni.price;
+  }
+  if (state.mushrooms){
+    let mushrooms= document.createElement('li');
+    lista.appendChild(mushrooms);
+    mushrooms.innerHTML="$" + ingredients.mushrooms.price + " " +ingredients.mushrooms.name;
+    sumatotal+=ingredients.mushrooms.price;
+  }
+  if (state.greenPeppers){
+    let greenPeppers= document.createElement('li');
+    lista.appendChild(greenPeppers);
+    greenPeppers.innerHTML="$" + ingredients.greenPeppers.price + " " +ingredients.greenPeppers.name;
+    sumatotal+=ingredients.greenPeppers.price;
+  }
+  if (state.whiteSauce){
+    let whiteSauce= document.createElement('li');
+    lista.appendChild(whiteSauce);
+    whiteSauce.innerHTML="$" + ingredients.whiteSauce.price + " " +ingredients.whiteSauce.name;
+    sumatotal+=ingredients.whiteSauce.price;
+  }
+  if (state.glutenFreeCrust){
+    let glutenFreeCrust= document.createElement('li');
+    lista.appendChild(glutenFreeCrust);
+    glutenFreeCrust.innerHTML="$" + ingredients.glutenFreeCrust.price + " " +ingredients.glutenFreeCrust.name;
+    sumatotal+=ingredients.glutenFreeCrust.price;
+  }
+
+
+  document.querySelector('#total').innerHTML= "$" + sumatotal
   // Iteration 4: change the HTML of `<aside class="panel price">`
+
 }
 
 renderEverything();
@@ -75,9 +159,27 @@ document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
+document.querySelector('.btn.btn-mushrooms').addEventListener('click',()=>{
+  state.mushrooms = !state.mushrooms;
+  renderEverything();
+})
+
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+document.querySelector('.btn.btn-green-peppers').addEventListener('click',()=>{
+  state.greenPeppers = !state.greenPeppers;
+  renderEverything();
+})
+
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
+document.querySelector('.btn.btn-sauce').addEventListener('click',()=>{
+  state.whiteSauce = !state.whiteSauce;
+  renderEverything();
+})
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector('.btn.btn-crust').addEventListener('click',()=>{
+  state.glutenFreeCrust= !state.glutenFreeCrust;
+  renderEverything();
+})
