@@ -78,25 +78,25 @@ function renderElements(ingredientClass, ingredientState) {
   document
     .querySelectorAll(ingredientClass)
     .forEach(ingredient =>
-      state[ingredientState]
-        ? (ingredient.style.visibility = "visible")
-        : (ingredient.style.visibility = "hidden")
+      state[ingredientState] ?
+      (ingredient.style.visibility = "visible") :
+      (ingredient.style.visibility = "hidden")
     );
 }
 
 function renderPizzaBase(ingredientClass, ingredient, changeElement) {
-  !state[ingredient]
-    ? document.querySelector(ingredientClass).classList.remove(changeElement)
-    : document.querySelector(ingredientClass).classList.add(changeElement);
+  !state[ingredient] ?
+    document.querySelector(ingredientClass).classList.remove(changeElement) :
+    document.querySelector(ingredientClass).classList.add(changeElement);
 }
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
   const buttonState = Object.keys(state);
   document.querySelectorAll(".btn").forEach((button, i) => {
-    !state[buttonState[i]]
-      ? button.classList.remove("active")
-      : button.classList.add("active");
+    !state[buttonState[i]] ?
+      button.classList.remove("active") :
+      button.classList.add("active");
   });
 }
 
@@ -104,9 +104,9 @@ function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   const ingredientsStates = Object.keys(state);
   document.querySelectorAll(".panel.price ul li").forEach((ingredient, i) => {
-    !state[ingredientsStates[i]]
-      ? (ingredient.style.display = "none")
-      : (ingredient.style.display = "block");
+    !state[ingredientsStates[i]] ?
+      (ingredient.style.display = "none") :
+      (ingredient.style.display = "block");
   });
   //extract prices
   const ingredientsArray = Object.values(ingredients);
@@ -120,7 +120,7 @@ function renderPrice() {
     "$" +
     prices.reduce(
       (total, price, i) =>
-        state[ingredientsStates[i]] ? total + price : total,
+      state[ingredientsStates[i]] ? total + price : total,
       10
     );
 }
@@ -132,22 +132,17 @@ function addNewEvent(selectClass, ingredientState) {
     ingredientState = !ingredientState;
     renderEverything();
   });
-}
-
+}​
 // Iteration 1: Example of a click event listener on `<button class='btn btn-pepperoni'>`
-addNewEvent("btn.btn-pepperoni", state.pepperoni);
-
+addNewEvent(".btn.btn-pepperoni", state.pepperoni);​
 // Iteration 1: Add click event listener on `<button class='btn btn-mushrooms'>`
-addNewEvent("btn.btn-mushroom", state.mushrooms);
-
+addNewEvent(".btn.btn-mushrooms", state.mushrooms);​
 // Iteration 1: Add click event listener on `<button class='btn btn-green-peppers'>`
-addNewEvent("btn.btn-green-peppers", state.greenPeppers);
-
+addNewEvent(".btn.btn-green-peppers", state.greenPeppers);​
 // Iteration 2: Add click event listener on `<button class='btn btn-sauce'>`
-addNewEvent("btn.btn-sauce", state.whiteSauce);
-
+addNewEvent(".btn.btn-sauce", state.whiteSauce);​
 // Iteration 2: Add click event listener on `<button class='btn btn-crust'>`
-addNewEvent("btn.btn-crust", state.glutenFreeCrust);
+addNewEvent(".btn.btn-crust", state.glutenFreeCrust);
 
 
 /*
