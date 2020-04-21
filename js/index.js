@@ -34,56 +34,37 @@ function renderEverything() {
   renderPrice();
 }
 
+function renderIngredient(ingredientClass,stateIng) {
+  let thisIngredient = document.querySelectorAll(ingredientClass)
+  if (ingredientClass === '.sauce') {
+    stateIng ? thisIngredient[0].classList.add("sauce-white") : thisIngredient[0].classList.remove("sauce-white");
+  } else if (ingredientClass === '.crust') {
+    stateIng ? thisIngredient[0].classList.add("crust-gluten-free") : thisIngredient[0].classList.remove("crust-gluten-free");
+  } else {
+    thisIngredient.forEach(ing => {
+      stateIng? ing.style.visibility = 'visible': ing.style.visibility = 'hidden';
+    });
+  }
+}
+
 function renderPepperoni() {
-  document.querySelectorAll('.pep').forEach(onePep => {
-    if (state.pepperoni) {
-      onePep.style.visibility = 'visible';
-    } else {
-      onePep.style.visibility = 'hidden';
-    }
-  });
+  renderIngredient('.pep',state.pepperoni)
 }
 
 function renderMushrooms() {
-  document.querySelectorAll('.mushroom').forEach(oneMushroom => {
-    if (state.mushrooms) {
-      oneMushroom.style.visibility = 'visible';
-    } else {
-      oneMushroom.style.visibility = 'hidden';
-    }
-  });
+  renderIngredient('.mushroom',state.mushrooms)
 }
 
 function renderGreenPeppers() {
-  document.querySelectorAll('.green-pepper').forEach(onePepper => {
-    if (state.greenPeppers) {
-      onePepper.style.visibility = 'visible';
-    } else {
-      onePepper.style.visibility = 'hidden';
-    }
-  });
+  renderIngredient('.green-pepper',state.greenPeppers)
 }
 
 function renderWhiteSauce() {
-  let salsa = document.querySelectorAll('.sauce')
-  if (state.whiteSauce) {
-    salsa[0].classList.add("sauce-white");
-    salsa[0].style.visibility = 'visible';
-  } else {
-    salsa[0].classList.remove("sauce-white");
-    salsa[0].style.visibility = 'visible';
-  }
+  renderIngredient('.sauce',state.whiteSauce)
 }
 
 function renderGlutenFreeCrust() {
-  let crusty = document.querySelectorAll('.crust')
-  if (state.glutenFreeCrust) {
-    crusty[0].classList.add("crust-gluten-free");
-    crusty[0].style.visibility = 'visible';
-  } else {
-    crusty[0].classList.remove("crust-gluten-free");
-    crusty[0].style.visibility = 'visible';
-  }
+  renderIngredient('.crust',state.glutenFreeCrust)
 }
 
 function renderButtons() {
@@ -173,4 +154,3 @@ document.querySelector('.btn-spicy').addEventListener('click', () => {
   state.spicySauce = !state.spicySauce;
   renderEverything();
 });
-
