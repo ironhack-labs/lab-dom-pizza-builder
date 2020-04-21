@@ -43,33 +43,13 @@ function renderEverything() {
 }
 
 function renderIngredients() {
-  renderPepperoni();
-  renderMushrooms();
-  renderGreenPeppers();
-  renderWhiteSauce();
-  renderGlutenFreeCrust();
-}
-
-function renderPepperoni() {
   renderElements(".pep", "pepperoni");
-}
-
-function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
   renderElements(".mushroom", "mushrooms");
-}
-
-function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
   renderElements(".green-pepper", "greenPeppers");
-}
-
-function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
   renderPizzaBase(".sauce", "whiteSauce", "sauce-white");
-}
-
-function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
   renderPizzaBase(".crust", "glutenFreeCrust", "crust-gluten-free");
 }
@@ -128,7 +108,7 @@ function renderPrice() {
 renderEverything();
 
 function addNewEvent(selectClass, ingredientState) {
-  document.querySelector(selectClass).addEventListener("click", () => {
+  document.querySelector(selectClass).addEventListener('click', () => {
     ingredientState = !ingredientState;
     renderEverything();
   });
