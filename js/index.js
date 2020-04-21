@@ -32,65 +32,39 @@ function renderEverything() {
 }
 
 //Refactor code to reduce lines
-// function renderElements(el) {
-// }
+function showIngredients(stateKey, el) {
+  document.querySelectorAll(el).forEach(item => {
+    item.style.visibility = stateKey ? 'visible' : 'hidden';
+});
+}
 
 function renderPepperoni() {
-  document.querySelectorAll('.pep').forEach(onePep => {
-    if (state.pepperoni) {
-      onePep.style.visibility = 'visible';
-    } else {
-      onePep.style.visibility = 'hidden';
-    }
-  });
+  showIngredients(state.pepperoni, '.pep');
 }
 
 function renderMushrooms() {
-  // Iteration 1: set the visibility of `<section class="mushroom">`
-  document.querySelectorAll('section.mushroom').forEach(oneMushroom => {
-    if (state.mushrooms) {
-      oneMushroom.style.visibility = 'visible';
-    } else {
-      oneMushroom.style.visibility = 'hidden';
-    }
-  });
+  showIngredients(state.mushrooms, '.mushroom');
 }
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
-  document.querySelectorAll('section.green-pepper').forEach(onePepper => {
-    if (state.greenPeppers) {
-      onePepper.style.visibility = 'visible';
-    } else {
-      onePepper.style.visibility = 'hidden';
-    }
-  });
+showIngredients(state.greenPeppers, 'section.green-pepper');
 }
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  document.querySelectorAll('section.sauce.sauce-white').forEach(item => {
-    if (state.whiteSauce) {
-      item.style.visibility = 'visible';
-    } else {
-      item.style.visibility = 'hidden';
-    }
-  });
-  }
+  showIngredients(state.whiteSauce, 'section.sauce.sauce-white');
+}
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-
-  // ?????
-  //UNA PREGUNTA. Porque no funciona el codigo si utiliso querySelectorAll ? Da error de referencia.
-
   let crust = document.querySelector('section.crust');
     if (state.glutenFreeCrust) {
       crust.classList.remove('crust-gluten-free');
     } else {
       crust.classList.add('crust-gluten-free');
     }
-  }
+}
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
@@ -107,8 +81,7 @@ function renderButtons() {
 }
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  const cart = document.querySelector('.panel.price ul');
-  cart.innerHTML = '';
+  const cart = document.querySelector('.panel.price ul').innerHTML;
   let total = 10;
 
   if (state.pepperoni) {
