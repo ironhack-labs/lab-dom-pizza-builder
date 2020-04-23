@@ -140,11 +140,23 @@ function renderButtons() {
 };
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
-  let totalPrice = 10;
-
-
-};
+  // Iteration 4: change the HTML of `<aside class=“panel price”>`
+  let ingredientsList = document.querySelectorAll('.price ul li');
+  let dolar = "$";
+  let price = document.querySelector('.price strong');
+  price.innerHTML = basePrice;
+  let ingredientsInState = Object.keys(state);
+  ingredientsList.forEach((elem, i) => {
+    let currentIng = ingredientsInState[i]
+    if (state[currentIng]) {
+      elem.style.display = 'block';
+      price.innerHTML =
+        parseInt(price.innerHTML) + ingredients[currentIng].price;
+    } else {
+      elem.style.display = 'none';
+    }
+  });
+}
 
 renderEverything();
 
