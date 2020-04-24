@@ -42,8 +42,8 @@ function renderPepperoni() {
 	});
 }
 
-function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
+function renderMushrooms() {
 	document.querySelectorAll('.mushroom').forEach(function(mushroom) {
 		if (state.mushrooms) {
 			mushroom.style.visibility = 'visible';
@@ -53,8 +53,8 @@ function renderMushrooms() {
 	});
 }
 
-function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+function renderGreenPeppers() {
 	document.querySelectorAll('.green-pepper').forEach(function(greenPepper) {
 		if (state.greenPeppers) {
       greenPepper.style.visibility = 'visible';}
@@ -64,8 +64,8 @@ function renderGreenPeppers() {
 	});
 }
 
-function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+function renderWhiteSauce() {
 const sauce =	document.querySelectorAll('.sauce').forEach(function(toggleSauce) {
 		if (state.whiteSauce) {
 			toggleSauce.classList.add('sauce-white');
@@ -75,8 +75,9 @@ const sauce =	document.querySelectorAll('.sauce').forEach(function(toggleSauce) 
 	});
 }
 
-function renderGlutenFreeCrust() {
+
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+function renderGlutenFreeCrust() {
   const pizzaCrust =	document.querySelectorAll('.crust').forEach(function(toggleCrust) {
 	if (state.glutenFreeCrust) {
       toggleCrust.classList.add('crust-gluten-free');
@@ -86,8 +87,8 @@ function renderGlutenFreeCrust() {
 	});
 }
 
-function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+function renderButtons() {
   if (state.pepperoni == true){
     document.querySelector('.btn.btn-pepperoni').classList.add('active')
   } else document.querySelector('.btn.btn-pepperoni').classList.remove('active')
@@ -109,8 +110,8 @@ function renderButtons() {
   } else document.querySelector('.btn.btn-crust').classList.remove('active')
 }
 
-  function renderPrice() {
     // Iteration 4: change the HTML of `<aside class="panel price">
+  function renderPrice() {
     let totalPrice = basePrice;
   
   const parent = document.querySelector('.panel.price ul');
