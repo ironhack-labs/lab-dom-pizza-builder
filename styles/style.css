@@ -168,6 +168,15 @@ body {
   box-shadow: none;
 }
 
+.price ul li.active {
+  visibility: visible;
+}
+
+.price ul li {
+  visibility: hidden;
+}
+
+
 /*------ Header -----*/
 header {
   text-align: center;
