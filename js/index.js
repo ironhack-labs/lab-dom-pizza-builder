@@ -1,13 +1,10 @@
-// Write your Pizza Builder JavaScript in this file.
-
-// Constants
 let basePrice = 10;
 let ingredients = {
-  pepperoni: { name: 'pepperoni', price: 1 },
-  mushrooms: { name: 'Mushrooms', price: 1 },
-  greenPeppers: { name: 'Green Peppers', price: 1 },
-  whiteSauce: { name: 'White sauce', price: 3 },
-  glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
+  pepperoni: { name: "pepperoni", price: 1 },
+  mushrooms: { name: "Mushrooms", price: 1 },
+  greenPeppers: { name: "Green Peppers", price: 1 },
+  whiteSauce: { name: "White sauce", price: 3 },
+  glutenFreeCrust: { name: "Gluten-free crust", price: 5 },
 };
 
 // Initial value of the state (the state values can change over time)
@@ -16,7 +13,7 @@ let state = {
   mushrooms: true,
   greenPeppers: true,
   whiteSauce: false,
-  glutenFreeCrust: false
+  glutenFreeCrust: false,
 };
 
 // This function takes care of rendering the pizza based on the state
@@ -29,55 +26,140 @@ function renderEverything() {
   renderGlutenFreeCrust();
 
   renderButtons();
-  renderPrice();
+  renderPrice(event);
 }
 
 function renderPepperoni() {
-  document.querySelectorAll('.pep').forEach(onePep => {
-    if (state.pepperoni) {
-      onePep.style.visibility = 'visible';
-    } else {
-      onePep.style.visibility = 'hidden';
-    }
+  document.querySelectorAll(".pep").forEach((onePep) => {
+    state.pepperoni
+      ? (onePep.style.visibility = "visible")
+      : (onePep.style.visibility = "hidden");
   });
 }
 
 function renderMushrooms() {
-  // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll(".mushroom").forEach((mush) => {
+    state.mushrooms
+      ? (mush.style.visibility = "visible")
+      : (mush.style.visibility = "hidden");
+  });
 }
 
 function renderGreenPeppers() {
-  // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll(".green-pepper").forEach((pepper) => {
+    state.greenPeppers
+      ? (pepper.style.visibility = "visible")
+      : (pepper.style.visibility = "hidden");
+  });
 }
 
 function renderWhiteSauce() {
-  // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+  let whiteSauceSection = document
+    .querySelector(".crust")
+    .querySelector(".sauce");
+
+  state.whiteSauce
+    ? whiteSauceSection.classList.remove("sauce-white")
+    : whiteSauceSection.classList.add("sauce-white");
 }
 
 function renderGlutenFreeCrust() {
-  // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  let crustSection = document.querySelector(".crust");
+
+  state.glutenFreeCrust
+    ? crustSection.classList.remove("crust-gluten-free")
+    : crustSection.classList.add("crust-gluten-free");
 }
 
 function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  let btnPepperoni = document.querySelector(".btn.btn-pepperoni");
+  state.pepperoni
+    ? btnPepperoni.classList.add("active")
+    : btnPepperoni.classList.remove("active");
+
+  let btnMushrooms = document.querySelector(".btn.btn-mushrooms");
+  state.mushrooms
+    ? btnMushrooms.classList.add("active")
+    : btnMushrooms.classList.remove("active");
+
+  let btnGreenPeppers = document.querySelector(".btn.btn-green-peppers");
+  state.greenPeppers
+    ? btnGreenPeppers.classList.add("active")
+    : btnGreenPeppers.classList.remove("active");
+
+  let btnSauce = document.querySelector(".btn.btn-sauce");
+  state.whiteSauce
+    ? btnSauce.classList.add("active")
+    : btnSauce.classList.remove("active");
+
+  let btnCrust = document.querySelector(".btn.btn-crust");
+  state.glutenFreeCrust
+    ? btnCrust.classList.add("active")
+    : btnCrust.classList.remove("active");
 }
 
-function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+function renderPrice(event) {
+  let asideElement = document.querySelector("aside");
+  let ulElement = asideElement.querySelector("ul");
+  ulElement.innerText = "";
+
+  let totalPrice = 10;
+
+  for (var prop in state) {
+    totalPrice += appendPriceHtml(prop, ulElement);
+  }
+
+  document.querySelector("aside").querySelector("strong").innerText =
+    "$" + totalPrice;
+}
+
+function appendPriceHtml(topping, ulElement) {
+  let liElement = document.createElement("li");
+  let totalPrice = 0;
+
+  if (state[topping]) {
+    totalPrice += ingredients[topping].price;
+    liElement.innerText = `$${ingredients[topping].price} ${topping}`;
+    ulElement.appendChild(liElement);
+  } else {
+    if (ulElement.contains(liElement)) {
+      ulElement.removeChild(liElement);
+      totalPrice -= ingredients[topping].price;
+    }
+  }
+
+  return totalPrice;
 }
 
 renderEverything();
 
-// Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
-document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
-  state.pepperoni = !state.pepperoni;
-  renderEverything();
+document
+  .querySelector(".btn.btn-pepperoni")
+  .addEventListener("click", (event) => {
+    state.pepperoni = !state.pepperoni;
+    renderEverything(event);
+  });
+
+document
+  .querySelector(".btn.btn-mushrooms")
+  .addEventListener("click", (event) => {
+    state.mushrooms = !state.mushrooms;
+    renderEverything(event);
+  });
+
+document
+  .querySelector(".btn.btn-green-peppers")
+  .addEventListener("click", (event) => {
+    state.greenPeppers = !state.greenPeppers;
+    renderEverything(event);
+  });
+
+document.querySelector(".btn.btn-sauce").addEventListener("click", (event) => {
+  state.whiteSauce = !state.whiteSauce;
+  renderEverything(event);
 });
 
-// Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
-
-// Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-
-// Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
-
-// Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector(".btn.btn-crust").addEventListener("click", (event) => {
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything(event);
+});
