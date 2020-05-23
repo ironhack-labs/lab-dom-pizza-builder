@@ -20,7 +20,7 @@ let state = {
 };
 
 const arrayState = {
-    pepperoni: '.btn-pepperoni', 
+    pepperoni: '.btn-pepperoni',
     mushrooms: '.btn-mushrooms',
     greenPeppers: '.btn-green-peppers',
     whiteSauce: '.btn-sauce',
@@ -94,18 +94,27 @@ function renderGlutenFreeCrust() {
 function renderButtons() {
     // Iteration 3: add/remove the class "active" of each `<button class="btn">`
     Object.entries(arrayState).forEach(element => {
-      if (state[element[0]]) {
-          document.querySelector(element[1]).classList.add('active')
-      } else {
-        document.querySelector(element[1]).classList.remove('active')
-      }
+        if (state[element[0]]) {
+            document.querySelector(element[1]).classList.add('active')
+        } else {
+            document.querySelector(element[1]).classList.remove('active')
+        }
 
     })
 }
 
 function renderPrice() {
     // Iteration 4: change the HTML of `<aside class="panel price">`
-    
+    const panelPrice = document.querySelector('.panel.price ul')
+    panelPrice.innerHTML = ''
+    Object.entries(state).forEach(el => {
+        if (el[1]) {
+            const elemLi = document.createElement('li')
+            elemLi.innerText = `$${ingredients[el[0]].price} ${ingredients[el[0]].name}`
+            panelPrice.appendChild(elemLi)
+        }
+    })
+
 }
 
 renderEverything();
