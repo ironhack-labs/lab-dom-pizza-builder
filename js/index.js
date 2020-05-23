@@ -19,6 +19,14 @@ let state = {
     glutenFreeCrust: false
 };
 
+const arrayState = {
+    pepperoni: 'btn-pepperoni', 
+    mushrooms: 'btn-mushrooms',
+    greenPeppers: 'btn-green-peppers',
+    whiteSauce: 'btn-white-sauce',
+    glutenFreeCrust: 'btn-crust'
+}
+
 // This function takes care of rendering the pizza based on the state
 // This function is triggered once at the beginning and every time the state is changed
 function renderEverything() {
@@ -86,6 +94,10 @@ function renderGlutenFreeCrust() {
 function renderButtons() {
     const allButtons = document.querySelectorAll('.btn')
     const allButtonsArr = [...allButtons]
+    arrayState
+    Object.entries(arrayState)
+
+
 
     // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 }
