@@ -106,14 +106,19 @@ function renderButtons() {
 function renderPrice() {
     // Iteration 4: change the HTML of `<aside class="panel price">`
     const panelPrice = document.querySelector('.panel.price ul')
+    const total = document.querySelector('.panel.price strong')
+    let totalPizza = 10
+    total.innerText = ''
     panelPrice.innerHTML = ''
     Object.entries(state).forEach(el => {
         if (el[1]) {
             const elemLi = document.createElement('li')
             elemLi.innerText = `$${ingredients[el[0]].price} ${ingredients[el[0]].name}`
             panelPrice.appendChild(elemLi)
+            totalPizza += ingredients[el[0]].price
         }
     })
+    total.innerText = `$${totalPizza}`
 
 }
 
