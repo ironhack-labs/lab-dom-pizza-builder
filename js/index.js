@@ -20,11 +20,11 @@ let state = {
 };
 
 const arrayState = {
-    pepperoni: 'btn-pepperoni', 
-    mushrooms: 'btn-mushrooms',
-    greenPeppers: 'btn-green-peppers',
-    whiteSauce: 'btn-white-sauce',
-    glutenFreeCrust: 'btn-crust'
+    pepperoni: '.btn-pepperoni', 
+    mushrooms: '.btn-mushrooms',
+    greenPeppers: '.btn-green-peppers',
+    whiteSauce: '.btn-sauce',
+    glutenFreeCrust: '.btn-crust'
 }
 
 // This function takes care of rendering the pizza based on the state
@@ -92,18 +92,20 @@ function renderGlutenFreeCrust() {
 }
 
 function renderButtons() {
-    const allButtons = document.querySelectorAll('.btn')
-    const allButtonsArr = [...allButtons]
-    arrayState
-    Object.entries(arrayState)
-
-
-
     // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+    Object.entries(arrayState).forEach(element => {
+      if (state[element[0]]) {
+          document.querySelector(element[1]).classList.add('active')
+      } else {
+        document.querySelector(element[1]).classList.remove('active')
+      }
+
+    })
 }
 
 function renderPrice() {
     // Iteration 4: change the HTML of `<aside class="panel price">`
+    
 }
 
 renderEverything();
