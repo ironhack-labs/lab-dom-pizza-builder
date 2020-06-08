@@ -88,7 +88,7 @@ ul {
 /* tables still need 'cellspacing="0"' in the markup */
 table {
   border-collapse: separate;
-  border-spacing: 0;
+  border-spacing: 0; 
 }
 
 caption,

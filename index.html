@@ -17,7 +17,7 @@
     <div class="panel controls">
       <ul>
         <li>
-          <button class="btn btn-pepperoni active">pepperoni</button>
+          <button class="btn btn-pepperoni active">Pepperoni</button>
         </li>
         <li>
           <button class="btn btn-mushrooms active">Mushrooms</button>
@@ -36,18 +36,18 @@
     <!-- End Controls -->
 
     <!-- Price -->
-    <aside class="panel price">
+    <aside class="panel price" onclick="renderPrice()">
       <h2>Your pizza's price</h2>
 
       <b>$10 cheese pizza</b>
       <ul>
-        <li>$1 pepperoni</li>
-        <li>$1 mushrooms</li>
-        <li>$1 green peppers</li>
-        <li>$3 white sauce</li>
-        <li>$5 gluten-free crust</li>
+        <li class="pepperoni">$1 pepperoni</li>
+        <li class="mushroom">$1 mushrooms</li>
+        <li class="greenPepper">$1 green peppers</li>
+        <li class="whiteSauce">$3 white sauce</li>
+        <li class="glutenFreeCrust">$5 gluten-free crust</li>
       </ul>
-      <strong>$21</strong>
+      <p id="total"><strong>$21</strong></p>
     </aside>
     <!-- End Price -->
 
