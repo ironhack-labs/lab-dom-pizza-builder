@@ -18,6 +18,28 @@ let state = {
   whiteSauce: false,
   glutenFreeCrust: false
 };
+let newState = {
+  pepperoni: {
+    isActive: true,
+    className: 'btn-pepperoni',
+  },
+  mushrooms: {
+    isActive: true,
+    className: 'btn-mushrooms',
+  },
+  greenPeppers: {
+    isActive: true,
+    className: 'btn-green-peppers',
+  },
+  whiteSauce: {
+    isActive: false,
+    className: 'btn-sauce',
+  },
+  glutenFreeCrust: {
+    isActive: false,
+    className: 'btn-crust',
+  },
+};
 
 
 // This function takes care of rendering the pizza based on the state
@@ -86,39 +108,34 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  if (state.pepperoni) {
-    document.querySelector('.btn.btn-pepperoni').classList.add('active')
-  } else if (!state.pepperoni)
-    document.querySelector('.btn.btn-pepperoni').classList.remove('active')
-  if (state.mushrooms) {
-    document.querySelector('.btn.btn-mushrooms').classList.add('active')
-  } else if (!state.mushrooms)
-    document.querySelector('.btn.btn-mushrooms').classList.remove('active')
-  if (state.greenPeppers) {
-    document.querySelector('.btn.btn-green-peppers').classList.add('active')
-  } else if (!state.greenPeppers)
-    document.querySelector('.btn.btn-green-peppers').classList.remove('active')
-  if (state.whiteSauce) {
-    document.querySelector('.btn.btn-sauce').classList.add('active')
-  } else if (!state.whiteSauce)
-    document.querySelector('.btn.btn-sauce').classList.remove('active')
-  if (state.glutenFreeCrust) {
-    document.querySelector('.btn.btn-crust').classList.add('active')
-  } else if (!state.glutenFreeCrust)
-    document.querySelector('.btn.btn-crust').classList.remove('active')
+  const addClassActive = ({ className }) => {
+    document.querySelector(`.btn.${className}`).classList.add('active')
+  }
+  const removeClassActive = ({ className }) => {
+    document.querySelector(`.btn.${className}`).classList.remove('active')
+  }
+
+  Object.entries(newState).map(([key, value]) => {
+    if (state[key]) {
+      addClassActive(value)
+    } else {
+      removeClassActive(value)
+    }
+  })
 
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   document.querySelector('body > aside > b').innerHTML = `$${basePrice} cheese pizza`;
-
   const panelPrice = document.querySelector('.panel.price ul');
   const totalPrice = document.querySelector('body > aside > strong');
+
   panelPrice.innerHTML = '';
   totalPrice.innerHTML = '';
 
   let total = basePrice
+
   const createIngredientPriceAndTotal = (item) => {
     const { name, price } = item
     const ingredient = document.createElement('li');
@@ -135,9 +152,6 @@ function renderPrice() {
   })
 
   totalPrice.innerHTML = `$${total}`;
-
-
-
 }
 
 renderEverything();
