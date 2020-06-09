@@ -131,8 +131,6 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-
-  document.querySelector('.price ul').innerHTML = '';
   let extra = '';
   let sum = basePrice;
   for (const element in state) {
