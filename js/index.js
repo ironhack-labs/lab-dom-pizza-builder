@@ -141,7 +141,7 @@ function renderPrice() {
     }
   })
 
-  totalPrice.innerHTML = `$${total}`;
+  totalPrice.innerHTML = `TOTAL => $${total}`;
 }
 
 renderEverything();
