@@ -138,9 +138,8 @@ function renderPrice() {
   for (const element in state) {
     if (state[element]) {
       sum += ingredients[element].price;
-      extra += `<li>${ingredients[element].price}$ ${ingredients[element].name} </li>`;
+      extra += `<li>$${ingredients[element].price} ${ingredients[element].name} </li>`;
     }
-
   }
 
   document.querySelector('strong').innerText = `$${sum}`;
