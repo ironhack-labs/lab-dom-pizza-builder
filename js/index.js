@@ -56,53 +56,45 @@ function renderEverything() {
 }
 
 function renderPepperoni() {
-  document.querySelectorAll('.pep').forEach(onePep => {
-    if (state.pepperoni) {
-      onePep.style.visibility = 'visible';
-    } else {
-      onePep.style.visibility = 'hidden';
-    }
-  });
+  document.querySelectorAll('.pep').forEach(onePep =>
+    state.pepperoni ?
+      onePep.style.visibility = 'visible' :
+      onePep.style.visibility = 'hidden'
+  );
 
 }
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
-  document.querySelectorAll('.mushroom').forEach(oneMushroom => {
-    if (state.mushrooms) {
-      return oneMushroom.style.visibility = 'visible';
-    }
-    return oneMushroom.style.visibility = 'hidden'
-
-  })
+  document.querySelectorAll('.mushroom').forEach(oneMushroom =>
+    state.mushrooms ?
+      oneMushroom.style.visibility = 'visible' :
+      oneMushroom.style.visibility = 'hidden'
+  )
 
 }
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
-  document.querySelectorAll('.green-pepper').forEach(oneGreenPepper => {
-    if (state.greenPeppers) {
-      return oneGreenPepper.style.visibility = 'visible';
-    }
-    return oneGreenPepper.style.visibility = 'hidden';
-  })
+  document.querySelectorAll('.green-pepper').forEach(oneGreenPepper => state.greenPeppers ?
+    oneGreenPepper.style.visibility = 'visible' :
+    oneGreenPepper.style.visibility = 'hidden'
+  )
 
 }
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  if (state.whiteSauce) {
-    return document.querySelector('.sauce').classList.add('sauce-white')
-  }
-  return document.querySelector('.sauce').classList.remove('sauce-white')
+  return state.whiteSauce ?
+    document.querySelector('.sauce').classList.add('sauce-white') :
+    document.querySelector('.sauce').classList.remove('sauce-white')
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  if (state.glutenFreeCrust) {
-    return document.querySelector('.crust-gluten-free').classList.add('crust')
-  }
-  return document.querySelector('.crust-gluten-free').classList.remove('crust')
+  state.glutenFreeCrust ?
+    document.querySelector('.crust-gluten-free').classList.add('crust') :
+    document.querySelector('.crust-gluten-free').classList.remove('crust')
 
 }
 
@@ -115,13 +107,11 @@ function renderButtons() {
     document.querySelector(`.btn.${className}`).classList.remove('active')
   }
 
-  Object.entries(newState).map(([key, value]) => {
-    if (state[key]) {
-      addClassActive(value)
-    } else {
+  Object.entries(newState).map(([key, value]) =>
+    state[key] ?
+      addClassActive(value) :
       removeClassActive(value)
-    }
-  })
+  )
 
 }
 
@@ -136,7 +126,7 @@ function renderPrice() {
 
   let total = basePrice
 
-  const createIngredientPriceAndTotal = (item) => {
+  const createIngredientPriceListAndTotal = (item) => {
     const { name, price } = item
     const ingredient = document.createElement('li');
     ingredient.innerHTML = `$${price} ${name}`;
@@ -147,7 +137,7 @@ function renderPrice() {
   Object.entries(ingredients).map(item => {
     const [key, data] = item
     if (state[key]) {
-      createIngredientPriceAndTotal(data)
+      createIngredientPriceListAndTotal(data)
     }
   })
 
