@@ -100,10 +100,17 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  const items = document.querySelector(".panel.price > ul");
-  if (!state.pepperoni) {
-    items.innerHTML = "";
+  const list = document.querySelector(".panel.price > ul");
+  const price = document.querySelector(".panel.price strong");
+  list.innerHTML = "";
+  let total = 0;
+  for (let topping in state) {
+    if (state[topping]) {
+      list.innerHTML += `<li>$${ingredients[topping].price} ${ingredients[topping].name}</li>`;
+      total += ingredients[topping].price;
+    }
   }
+  price.textContent = `$ ${basePrice + total}`;
 }
 
 renderEverything();
