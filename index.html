@@ -3,6 +3,7 @@
   <head>
     <title>Pizza Builder</title>
     <link rel="stylesheet" href="styles/style.css" />
+    <script type="module" src="js/index.js"></script>
   </head>
 
   <body>
@@ -17,7 +18,7 @@
     <div class="panel controls">
       <ul>
         <li>
-          <button class="btn btn-pepperoni active">pepperoni</button>
+          <button class="btn btn-pepperoni active">Pepperoni</button>
         </li>
         <li>
           <button class="btn btn-mushrooms active">Mushrooms</button>
@@ -41,13 +42,13 @@
 
       <b>$10 cheese pizza</b>
       <ul>
-        <li>$1 pepperoni</li>
-        <li>$1 mushrooms</li>
-        <li>$1 green peppers</li>
-        <li>$3 white sauce</li>
-        <li>$5 gluten-free crust</li>
+        <li id="pepperoni">$1 pepperoni</li>
+        <li id="mushrooms">$1 mushrooms</li>
+        <li id="greenPeppers">$1 green peppers</li>
+        <li id= "whiteSauce">$3 white sauce</li>
+        <li id="glutenFreeCrust">$5 gluten-free crust</li>
       </ul>
-      <strong>$21</strong>
+      <strong id="totalPrice">$21</strong>
     </aside>
     <!-- End Price -->
 
@@ -289,6 +290,5 @@
     </footer>
     <!-- Footer -->
 
-    <script src="js/index.js"></script>
   </body>
 </html>
