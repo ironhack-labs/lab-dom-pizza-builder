@@ -1,3 +1,5 @@
+//  LAB - Elephant team   - Graziella & Charlotte 
+
 // Write your Pizza Builder JavaScript in this file.
 
 // Constants
