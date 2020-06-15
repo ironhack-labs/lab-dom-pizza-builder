@@ -40,7 +40,7 @@ function renderPepperoni() {
       onePep.style.visibility = "hidden";
     }
   });
-}
+};
 
 function changeStatePep() {
   state.pepperoni = !state.pepperoni;
@@ -78,10 +78,6 @@ function changeStateGreenPeppers() {
   state.greenPeppers = !state.greenPeppers;
   renderEverything();
 }
-
-
-// Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-
 function changeState(ingredient) {
   console.log(ingredient);
   console.log(state[ingredient]);
@@ -89,13 +85,15 @@ function changeState(ingredient) {
   renderEverything();
 }
 
-// document.getElementsByClassName("btn-sauce").onClick = changeState(whiteSauce);
+// Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+
 
 function renderWhiteSauce() {
-  const whiteSauce = document.querySelector(".sauce-white");
+  const whiteSauce = document.querySelector(".sauce");
   if (state.whiteSauce) {
-    whiteSauce.style.visibility = "visible";
-  } else whiteSauce.style.visibility = "hidden";
+    whiteSauce.classList.add("sauce-white");
+  } else {
+whiteSauce.classList.remove("sauce-white");
 }
 
 function changeStateWhiteSauce() {
@@ -104,9 +102,18 @@ function changeStateWhiteSauce() {
 }
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
 
-function renderGlutenFreeCrust() {
-  document.querySelector(".crust").classList.toggle("crust-gluten-free");
-}
+    function renderGlutenFreeCrust() {
+      const gfCrust = document.querySelector(".crust");
+      if (state.gfCrust) {
+        gfCrust.classList.add("crust-gluten-free");
+      } else {
+        gfCrust.classList.remove("crust-gluten-free");
+};
+
+function changeStateCrust() {
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 function renderButtons() {
   document.querySelector(".btn").classList.toggle(".active");
@@ -136,4 +143,5 @@ document.querySelector(".btn-green-peppers").onclick = changeStateGreenPeppers;
 document.querySelector(".btn-sauce").onclick = changeStateWhiteSauce;
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
-document.querySelector(".btn-crust").onclick = changeStateWhiteSauce;
+
+document.querySelector(".btn-crust").onclick = changeStateCrust;
