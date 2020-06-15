@@ -86,21 +86,18 @@ function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
 
   var totalPrice = basePrice;
-  var ingredientsPrice = document.querySelector('aside.panel.price ul');
-  ingredientsPrice.innerHTML = "";
+  var currentOrder = document.querySelector('aside.panel.price ul');
+  currentOrder.innerHTML = "";
 
   for (const key in state) {
     if (state[key] === true) {
       totalPrice += ingredients[key].price;
-      ingredientsPrice.innerHTML+= `<li> $${ingredients[key].price}  ${ingredients[key].name}</li>`;
-
+      currentOrder.innerHTML+= `<li> $${ingredients[key].price}  ${ingredients[key].name}</li>`;
     }
     
   }
-  document.querySelector('aside.panel.price strong').innerHTML = `$  ${totalPrice}`
-  //console.log(sum, ingredientsPrice);
+  document.querySelector('aside.panel.price strong').innerHTML = `$  ${totalPrice}`;
 }
-
 //console.log(currentOrder);
 
 renderEverything();
