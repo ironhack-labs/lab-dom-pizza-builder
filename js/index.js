@@ -66,31 +66,21 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  document.querySelectorAll(".sauce").forEach((sauce) => {
-    if (state.whiteSauce) {
-      sauce.classList.add("sauce-white");
-    } else {
-      sauce.classList.remove("sauce-white");
-    }
-  });
+
+  const sauce = document.querySelector(".sauce");
+  sauce.classList.toggle("sauce-white");
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  document.querySelectorAll(".crust").forEach((elCrust) => {
-    if (state.glutenFreeCrust) {
-      elCrust.classList.add("crust-gluten-free");
-    } else {
-      elCrust.classList.remove("crust-gluten-free");
-    }
-  });
+  const crust = document.querySelector(".crust");
+  crust.classList.toggle("crust-gluten-free");
 }
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
   const buttons = document.querySelectorAll(".btn");
   function toggleIsActive(event) {
-    // evt.target represents the clicked block
     event.target.classList.toggle("active");
   }
   buttons.forEach((button) => {
@@ -105,6 +95,7 @@ function renderPrice() {
   list.innerHTML = "";
   let total = 0;
   for (let topping in state) {
+    // console.log(state[topping]);
     if (state[topping]) {
       list.innerHTML += `<li>$${ingredients[topping].price} ${ingredients[topping].name}</li>`;
       total += ingredients[topping].price;
