@@ -43,41 +43,145 @@ function renderPepperoni() {
 }
 
 function renderMushrooms() {
-  // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll(".mushroom").forEach(oneMush => {
+    if(state.mushrooms){
+      oneMush.style.visibility = "visible";
+    } else {
+      oneMush.style.visibility = "hidden";
+    }
+  })
 }
 
 function renderGreenPeppers() {
-  // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll(".green-pepper").forEach(onePep => {
+    if(state.greenPeppers){
+      onePep.style.visibility = "visible";
+    } else {
+      onePep.style.visibility = "hidden";
+    }
+  })
 }
 
 function renderWhiteSauce() {
-  // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+  const sauce = document.querySelector(".sauce");
+  if(state.whiteSauce){
+    sauce.classList.add("sauce-white");
+  } else {
+    sauce.classList.remove("sauce-white");
+  }
 }
 
 function renderGlutenFreeCrust() {
-  // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  const crust = document.querySelector(".crust");
+  if(state.glutenFreeCrust){
+    crust.classList.add("crust-gluten-free");
+  } else {
+    crust.classList.remove("crust-gluten-free");
+  }
 }
 
 function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  const buttons = document.querySelectorAll(".btn");
+  // I just inversed the logic as I think the "active" format is more relevant when the topping is not active...
+  if(!state.pepperoni){
+    buttons[0].classList.add("active");
+  } else {
+    buttons[0].classList.remove("active");
+  }
+
+  if(!state.mushrooms){
+    buttons[1].classList.add("active");
+  } else {
+    buttons[1].classList.remove("active");
+  }
+
+  if(!state.greenPeppers){
+    buttons[2].classList.add("active");
+  } else {
+    buttons[2].classList.remove("active");
+  }
+
+  if(!state.whiteSauce){
+    buttons[3].classList.add("active");
+  } else {
+    buttons[3].classList.remove("active");
+  }
+
+  if(!state.glutenFreeCrust){
+    buttons[4].classList.add("active");
+  } else {
+    buttons[4].classList.remove("active");
+  }
+  
+  
 }
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+  let totalPrice = 10;
+  const pepLi = document.querySelector(".panel.price ul :first-child");
+  const mushLi = document.querySelector(".panel.price ul :nth-child(2)");
+  const greenPepLi = document.querySelector(".panel.price ul :nth-child(3)");
+  const sauceLi = document.querySelector(".panel.price ul :nth-child(4)");
+  const crustLi = document.querySelector(".panel.price ul :nth-child(5)");
+
+  if(state.pepperoni){
+    pepLi.style.display = "";
+    totalPrice += ingredients.pepperoni.price;
+  } else {
+    pepLi.style.display = "none";
+  }
+  if(state.mushrooms){
+    mushLi.style.display = "";
+    totalPrice += ingredients.mushrooms.price;
+  } else {
+    mushLi.style.display = "none";
+  }
+  if(state.greenPeppers){
+    greenPepLi.style.display = "";
+    totalPrice += ingredients.greenPeppers.price;
+  } else {
+    greenPepLi.style.display = "none";
+  }
+  if(state.whiteSauce){
+    sauceLi.style.display = "";
+    totalPrice += ingredients.whiteSauce.price;
+  } else {
+    sauceLi.style.display = "none";
+  }
+  if(state.glutenFreeCrust){
+    crustLi.style.display = "";
+    totalPrice += ingredients.glutenFreeCrust.price;
+  } else {
+    crustLi.style.display = "none";
+  }
+
+  document.querySelector(".panel.price > :last-child").textContent = `$ ${totalPrice}`;
 }
 
 renderEverything();
 
-// Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
   state.pepperoni = !state.pepperoni;
   renderEverything();
 });
 
-// Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
+document.querySelector(".btn-mushrooms").onclick = () => {
+  state.mushrooms = !state.mushrooms;
+  renderEverything();
+}
 
-// Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+document.querySelector(".btn-green-peppers").onclick = () => {
+  state.greenPeppers = !state.greenPeppers;
+  renderEverything();
+}
 
-// Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 
-// Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector(".btn-sauce").onclick = () => {
+  state.whiteSauce = !state.whiteSauce;
+  renderEverything();
+}
+
+document.querySelector(".btn-crust").onclick = () => {
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+}
