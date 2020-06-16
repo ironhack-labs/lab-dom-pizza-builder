@@ -121,8 +121,21 @@ function renderButtons() {
 
   // Iteration 4: change the HTML of `<aside class="panel price">`
 
-function renderPrice() {
+// const list of products
+
+const listIngredients=document.querySelector("#ingredients-list")
+const totalIngredients=document.querySelector("#total-price")
+
+const printIngredients = function(ingredient) {
+  listIngredients.innerHTML =+ `<li> $ ${ingredients.ingredient.price} ${ingredients.ingredient.name} </li>`
 }
+
+const printTotal = function() {
+  totalIngredients.textContent = ingredients.reduce((acc,i) => acc + i.price,10)
+}
+ingredients.forEach(ingredient => {
+  if (state.ingredient) printIngredients(ingredient)
+})
 
 renderEverything();
 
