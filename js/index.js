@@ -88,7 +88,7 @@ function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
 
   var totalPrice = basePrice;
-  var currentOrder = document.querySelector('aside.panel.price ul');
+  var currentOrder = document.querySelector('.panel.price ul');
   currentOrder.innerHTML = "";
 
   for (const key in state) {
@@ -108,7 +108,7 @@ renderEverything();
 document.querySelector(".btn.btn-pepperoni").addEventListener("click", function(e) {
   state.pepperoni = !state.pepperoni;
   e.target.classList.toggle("active");
-  console.log(this);
+  //console.log(this);
   renderEverything();
 });
 
