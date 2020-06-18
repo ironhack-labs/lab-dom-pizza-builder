@@ -168,3 +168,5 @@ function renderPrice() {
   document.querySelector('.panel.price ul').innerHTML = list;
 
 }
+
+
