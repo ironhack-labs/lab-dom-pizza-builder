@@ -87,21 +87,25 @@ function renderButtons() {
 }
 
 function renderPrice() {
-	// Iteration 4: change the HTML of `<aside class="panel price">`
+  // Iteration 4: change the HTML of `<aside class="panel price">`
+  let pizzaPrice = 10;
 	const priceList = document.querySelector(".panel.price ul");
-	const liElements = document.querySelectorAll(".panel.price ul li");
+  const liElements = document.querySelectorAll(".panel.price ul li");
+  const priceElement = document.querySelector(".panel.price strong");
 	liElements.forEach((li) => {li.style.display = "none";}); //first, hide all the li elements by default
 
   for (let topping in state) {
-			for (let ingredient in ingredients) {
-				if (state[topping] && ingredient === topping) { //if the state object property value is true and the property matches the property on the ingredients object... 
-					let targetLi = [...liElements].filter((li) => {
-						return li.innerText.includes(ingredients[ingredient].name.toLowerCase()); //filter the <li>'s where the ingredients.name matches the text of the li
-					});
-          targetLi.forEach((li) => {priceList.appendChild(li); li.style.display = "block";}); //"unhide" the elements that were returned from the filter function
-				}
-			}
-	}
+    for (let ingredient in ingredients) {
+      if (state[topping] && ingredient === topping) { //if the state object property value is true and the property matches the property on the ingredients object... 
+        let targetLi = [...liElements].filter((li) => {
+          return li.innerText.includes(ingredients[ingredient].name.toLowerCase()); //filter the <li>'s where the ingredients.name matches the text of the li
+        });
+        targetLi.forEach((li) => {priceList.appendChild(li); li.style.display = "block" //"unhide" the elements that were returned from the filter function
+        pizzaPrice += Number(li.innerText.slice(1,2))}); 
+      }
+    }
+    priceElement.innerText = `$${pizzaPrice}`;
+  }
 }
 
 renderEverything();
