@@ -12,11 +12,11 @@ let ingredients = {
 
 // Initial value of the state (the state values can change over time)
 let state = {
-    pepperoni: true,
-    mushrooms: true,
-    greenPeppers: true,
-    whiteSauce: false,
-    glutenFreeCrust: false,
+    pepperoni: false,
+    mushrooms: false,
+    greenPeppers: false,
+    whiteSauce: true,
+    glutenFreeCrust: true,
 };
 
 // This function takes care of rendering the pizza based on the state
@@ -27,18 +27,15 @@ function renderEverything() {
     renderGreenPeppers();
     renderWhiteSauce();
     renderGlutenFreeCrust();
-
     renderButtons();
     renderPrice();
 }
 
 function renderPepperoni() {
     document.querySelectorAll(".pep").forEach((onePep) => {
-        if (state.pepperoni) {
-            onePep.style.visibility = "visible";
-        } else {
-            onePep.style.visibility = "hidden";
-        }
+        state.pepperoni
+            ? (onePep.style.visibility = "visible")
+            : (onePep.style.visibility = "hidden");
     });
 }
 
@@ -76,12 +73,29 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
     // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+    state.pepperoni
+        ? document.querySelector(".btn-pepperoni").classList.add("active")
+        : document.querySelector(".btn-pepperoni").classList.remove("active");
+    state.mushrooms
+        ? document.querySelector(".btn-mushrooms").classList.add("active")
+        : document.querySelector(".btn-mushrooms").classList.remove("active");
+    state.greenPeppers
+        ? document.querySelector(".btn-green-peppers").classList.add("active")
+        : document
+              .querySelector(".btn-green-peppers")
+              .classList.remove("active");
+    state.whiteSauce
+        ? document.querySelector(".btn-sauce").classList.remove("active")
+        : document.querySelector(".btn-sauce").classList.add("active");
+    state.glutenFreeCrust
+        ? document.querySelector(".btn-crust").classList.remove("active")
+        : document.querySelector(".btn-crust").classList.add("active");
 }
 
 function renderPrice() {
     // Iteration 4: change the HTML of `<aside class="panel price">`
 }
-
+//=============================================================
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
