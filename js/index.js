@@ -48,27 +48,21 @@ function renderEverything() {
 
 function renderPepperoni() {
     document.querySelectorAll(".pep").forEach((pep) => {
-        state.pepperoni ?
-            (pep.style.visibility = "visible") :
-            (pep.style.visibility = "hidden");
+        pep.style.visibility = state.pepperoni ? "visible" : "hidden";
     });
 }
 
 function renderMushrooms() {
     // Iteration 1: set the visibility of `<section class="mushroom">`
     document.querySelectorAll(".mushroom").forEach((eachMushroom) => {
-        state.mushrooms ?
-            (eachMushroom.style.visibility = "visible") :
-            (eachMushroom.style.visibility = "hidden");
+        eachMushroom.style.visibility = state.mushrooms ? "visible" : "hidden";
     });
 }
 
 function renderGreenPeppers() {
     // Iteration 1: set the visibility of `<section class="green-pepper">`
     document.querySelectorAll(".green-pepper").forEach((eachPepper) => {
-        state.greenPeppers ?
-            (eachPepper.style.visibility = "visible") :
-            (eachPepper.style.visibility = "hidden");
+        eachPepper.style.visibility = state.greenPeppers ? "visible" : "hidden";
     });
 }
 
@@ -90,23 +84,14 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
     // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-    state.pepperoni ?
-        document.querySelector(".btn-pepperoni").classList.add("active") :
-        document.querySelector(".btn-pepperoni").classList.remove("active");
-    state.mushrooms ?
-        document.querySelector(".btn-mushrooms").classList.add("active") :
-        document.querySelector(".btn-mushrooms").classList.remove("active");
-    state.greenPeppers ?
-        document.querySelector(".btn-green-peppers").classList.add("active") :
-        document
-        .querySelector(".btn-green-peppers")
-        .classList.remove("active");
-    state.whiteSauce ?
-        document.querySelector(".btn-sauce").classList.add("active") :
-        document.querySelector(".btn-sauce").classList.remove("active");
-    state.glutenFreeCrust ?
-        document.querySelector(".btn-crust").classList.add("active") :
-        document.querySelector(".btn-crust").classList.remove("active");
+    let btnArray = [".btn-pepperoni", ".btn-mushrooms", ".btn-green-peppers", ".btn-sauce", ".btn-crust"];
+    let i = 0;
+    for (const topping in state) {
+        state[topping] ?
+            document.querySelector(btnArray[i]).classList.add("active") :
+            document.querySelector(btnArray[i]).classList.remove("active");
+        i++;
+    }
 }
 
 function renderPrice() {
