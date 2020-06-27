@@ -115,6 +115,47 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  const priceArray = document.querySelectorAll('.price > ul > li');
+  const totalPrice = document.querySelector('.price > strong');
+  let pizzaPrice = basePrice;
+
+  if (state.pepperoni) {
+    priceArray[0].style.display = 'block';
+    pizzaPrice += ingredients.pepperoni.price;
+  } else {
+    priceArray[0].style.display = 'none';
+    pizzaPrice -= ingredients.pepperoni.price;
+  }
+
+  if (state.mushrooms) {
+    priceArray[1].style.display = 'block';
+    pizzaPrice += ingredients.mushrooms.price;
+  } else {
+    priceArray[1].style.display = 'none';
+  }
+
+  if (state.greenPeppers) {
+    priceArray[2].style.display = 'block';
+    pizzaPrice += ingredients.greenPeppers.price;
+  } else {
+    priceArray[2].style.display = 'none';
+  }
+
+  if (state.whiteSauce) {
+    priceArray[3].style.display = 'block';
+    pizzaPrice += ingredients.whiteSauce.price;
+  } else {
+    priceArray[3].style.display = 'none';
+  }
+
+  if (state.glutenFreeCrust) {
+    priceArray[4].style.display = 'block';
+    pizzaPrice += ingredients.glutenFreeCrust.price;
+  } else {
+    priceArray[4].style.display = 'none';
+  }
+
+  totalPrice.innerHTML = `$${pizzaPrice}`;
 }
 
 renderEverything();
