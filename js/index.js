@@ -93,7 +93,7 @@ function renderGlutenFreeCrust() {
 
 }
 
-function renderButtons(e) {
+function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 
   if (state.pepperoni) {
