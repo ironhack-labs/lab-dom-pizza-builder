@@ -123,10 +123,22 @@ function renderButtons(event) {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  const priceList = document.getElementsByClassName(`.priceList`)
+  const priceList = document.querySelector(`.panel.price ul`)
   priceList.innerHTML = ''
+  let subTotal = basePrice
+  let total = document.querySelector(`.panel.price strong`)
+  for (const key in ingredients) {
+    if (state[key]) {
+      let li = document.createElement(`li`)
+      li.innerHTML = `$${ingredients[key].price} ${ingredients[key].name}`
+      priceList.appendChild(li)
 
+      subTotal += ingredients[key].price
+    }
 
+  }
+
+  total.innerHTML = `$${subTotal}`
 
 }
 
