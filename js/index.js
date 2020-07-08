@@ -83,14 +83,58 @@ function renderGreenPeppers() {
  }
 
 function renderButtons() {
- // letrenderButtons = document.querySelectorAll('.btn')
-  //  if (btn.classList.contains('active')) {
- //     btn.classList.remove('active');
-  //  } else {
-   //   btn.classList.add('active');
-   // }
+  let renderButtons = document.querySelectorAll('.btn');
+  //document.addEventListener('click', function () {
+
+    // Bail if it's not a .btn
+    if (!event.target.classList.contains('btn')) return;
+  
+  
+    // Add the active class
+    event.target.classList.add('active');
+  
+    // Get all .btn
+    //var links = document.querySelectorAll('.btn');
+  
+    // Loop through each button
+    for (var i = 0; i < renderButtons.length; i++) {
+  
+       //If the btn is the one clicked, skip it
+      if (renderButtons[i] === event.target) continue;
+  
+      // Remove the .active class
+      renderButtons[i].classList.remove('active');
+  
+    }
+  
+  }//, false);
+//}
+
+
+
+
+
+
+  //    // Get the container element
+//   let renderButtons = document.querySelectorAll('.btn');
+//   // Get all buttons with class="btn" inside the container
+//   let btns = renderButtons.getElementsByClassName('.btn');
+//   // Loop through the buttons and add the active class to the current/clicked button
+// for (let i = 0; i < btns.length; i++) {
+//   btns[i].addEventListener("click", function() {
+//     let current = document.getElementsByClassName("active");
+//     current[0].className = current[0].className.replace(" active", "");
+//     this.className += " active";
+//   });
+// }}
+ // if (btn.classList != true {
+   //  btn.classList.remove('active');
+   // } else {
+    // btn.classList.add('active');
+    //} 
+  
 //  btn.classList.remove('active');// Iteration 3: add/remove the class "active" of each `<button class="btn">`
-}
+
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
@@ -129,4 +173,4 @@ document.querySelector('.btn.btn-crust').addEventListener('click', () => {
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 
-// Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+// Iteration 2: Add click event listener on `<button class="btn btn-crust">
