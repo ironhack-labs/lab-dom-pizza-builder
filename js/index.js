@@ -119,11 +119,15 @@ function renderButtons(event) {
       target.classList.add('active')
     }
   }
-
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  const priceList = document.getElementsByClassName(`.priceList`)
+  priceList.innerHTML = ''
+
+
+
 }
 
 renderEverything();
