@@ -59,10 +59,24 @@ function renderPepperoni() {
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll('.cap, .stem').forEach(oneMush => {
+    if (state.mushrooms) {
+      oneMush.style.visibility = 'visible';
+    } else {
+      oneMush.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll('.green-pepper').forEach(oneGP => {
+    if (state.greenPeppers) {
+      oneGP.style.visibility = 'visible';
+    } else {
+      oneGP.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderWhiteSauce() {
