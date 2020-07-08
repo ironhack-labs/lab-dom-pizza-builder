@@ -43,18 +43,19 @@ function renderEverything() {
   renderWhiteSauce();
   renderGlutenFreeCrust();
 
-  renderButtons();
+  renderButtons(event);
   renderPrice();
 }
 
 function renderPepperoni() {
   document.querySelectorAll('.pep').forEach(onePep => {
     if (state.pepperoni) {
-      onePep.style.visibility = 'visible';
+      onePep.style.visibility = `visible`
     } else {
       onePep.style.visibility = 'hidden';
     }
   });
+
 }
 
 function renderMushrooms() {
@@ -108,8 +109,17 @@ function renderGlutenFreeCrust() {
   });
 }
 
-function renderButtons() {
+function renderButtons(event) {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  if (event) {
+    const target = event.currentTarget;
+    if (target.classList.contains('active')) {
+      target.classList.remove('active');
+    } else {
+      target.classList.add('active')
+    }
+  }
+
 }
 
 function renderPrice() {
@@ -121,6 +131,7 @@ renderEverything();
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
   state.pepperoni = !state.pepperoni;
+
   renderEverything();
 });
 
