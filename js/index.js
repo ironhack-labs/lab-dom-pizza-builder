@@ -74,13 +74,12 @@ function renderWhiteSauce() {
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  document.querySelectorAll('.crust').forEach(oneCrust => {
-    if(state.glutenFreeCrust){
-      oneCrust.style.visibility = 'visible';
-    } else {
-      oneCrust.style.visibility = 'hidden';
-    }
-  })
+  let masa = document.querySelector('.crust');
+  if(state.glutenFreeCrust){
+    masa.classList.add('crust-gluten-free')
+  } else {
+    masa.classList.remove('crust-gluten-free')
+  }
 }
 
 function renderButtons() {
