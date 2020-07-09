@@ -3,11 +3,26 @@
 // Constants
 let basePrice = 10;
 let ingredients = {
-  pepperoni: { name: 'pepperoni', price: 1 },
-  mushrooms: { name: 'Mushrooms', price: 1 },
-  greenPeppers: { name: 'Green Peppers', price: 1 },
-  whiteSauce: { name: 'White sauce', price: 3 },
-  glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
+  pepperoni: {
+    name: 'pepperoni',
+    price: 1
+  },
+  mushrooms: {
+    name: 'Mushrooms',
+    price: 1
+  },
+  greenPeppers: {
+    name: 'Green Peppers',
+    price: 1
+  },
+  whiteSauce: {
+    name: 'White sauce',
+    price: 3
+  },
+  glutenFreeCrust: {
+    name: 'Gluten-free crust',
+    price: 5
+  }
 };
 
 // Initial value of the state (the state values can change over time)
@@ -39,26 +54,72 @@ function renderPepperoni() {
     } else {
       onePep.style.visibility = 'hidden';
     }
+
   });
-}
+};
 
 function renderMushrooms() {
+  document.querySelectorAll('.mushroom').forEach(oneMush => {
+    if (state.mushrooms) {
+      oneMush.style.visibility = 'visible';
+    } else {
+      oneMush.style.visibility = 'hidden';
+    }
+  });
   // Iteration 1: set the visibility of `<section class="mushroom">`
-}
+};
 
 function renderGreenPeppers() {
+  document.querySelectorAll('.green-pepper').forEach(onePepper => {
+    if (state.greenPeppers) {
+      onePepper.style.visibility = 'visible';
+    } else {
+      onePepper.style.visibility = 'hidden';
+    }
+  });
+
   // Iteration 1: set the visibility of `<section class="green-pepper">`
-}
+};
 
 function renderWhiteSauce() {
+  let sauceWhite = document.querySelector('.sauce');
+  console.log(sauceWhite);
+
+  if (state.whiteSauce) {
+    sauceWhite.classList.add("sauce-white");
+  } else {
+    sauceWhite.classList.remove("sauce-white");
+  }
+
+
+
+
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
 }
 
 function renderGlutenFreeCrust() {
+  let freeGluten = document.querySelector('.crust');
+  console.log(freeGluten);
+
+  if (state.glutenFreeCrust) {
+    freeGluten.classList.add("crust-gluten-free");
+  } else {
+    freeGluten.classList.remove("crust-gluten-free");
+  }
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
 }
 
-function renderButtons() {
+function renderButtons(event) {
+  if (event) {
+    const target = event.currentTarget;
+    if (target.classList.contains("active")) {
+      target.classList.add("active");
+    } else {
+      target.classList.remove("active")
+    }
+
+  }
+
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 }
 
@@ -66,7 +127,7 @@ function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
 }
 
-renderEverything();
+renderEverything(event);
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
@@ -74,6 +135,25 @@ document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
   renderEverything();
 });
 
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', () => {
+  state.mushrooms = !state.mushrooms;
+  renderEverything();
+});
+
+document.querySelector('.btn.btn-green-peppers').addEventListener('click', () => {
+  state.greenPeppers = !state.greenPeppers;
+  renderEverything();
+});
+
+document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
+  state.whiteSauce = !state.whiteSauce;
+  renderEverything();
+});
+
+document.querySelector('.btn.btn-crust').addEventListener('click', () => {
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+});
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
