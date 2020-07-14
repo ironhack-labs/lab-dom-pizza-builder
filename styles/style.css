@@ -215,135 +215,161 @@ p.description {
   background: #e8103b;
   box-shadow: 0 6px #890923;
   color: #fff;
+  opacity: 0.4;
 }
 
 .btn-pepperoni:hover {
   background: #c80e33;
   box-shadow: 0 5px #69071b;
   color: #fff;
+  opacity: 1;
 }
 
 .btn-pepperoni.active {
   top: 2px;
   box-shadow: 0 2px #890923;
+  opacity: 1;
 }
 
 .btn-pepperoni.active:hover {
   box-shadow: 0 2px #69071b;
+  opacity: 1;
 }
 
 .btn-pepperoni:active,
 .btn-pepperoni.active:active {
   top: 5px;
   box-shadow: none;
+  opacity: 1;
 }
 
 .btn-mushrooms {
   background: #b49989;
   box-shadow: 0 6px #644d40;
   color: #fff;
+  opacity: 0.4;
 }
 
 .btn-mushrooms:hover {
   background: #a78774;
   box-shadow: 0 5px #503d33;
   color: #fff;
+  opacity: 1;
 }
 
 .btn-mushrooms.active {
   top: 2px;
   box-shadow: 0 2px #644d40;
+  opacity: 1;
 }
 
 .btn-mushrooms.active:hover {
   box-shadow: 0 2px #503d33;
+  opacity: 1;
 }
 
 .btn-mushrooms:active,
 .btn-mushrooms.active:active {
   top: 5px;
   box-shadow: none;
+  opacity: 1;
 }
 
 .btn-green-peppers {
   background: #129306;
   box-shadow: 0 6px #0a5203;
   color: #fff;
+  opacity: 0.4;
 }
 
 .btn-green-peppers:hover {
   background: #0e7205;
   box-shadow: 0 5px #063102;
   color: #fff;
+  opacity: 1;
 }
 
 .btn-green-peppers.active {
   top: 2px;
   box-shadow: 0 2px #0a5203;
+  opacity: 1;
 }
 
 .btn-green-peppers.active:hover {
   box-shadow: 0 2px #063102;
+  opacity: 1;
 }
 
 .btn-green-peppers:active,
 .btn-green-peppers.active:active {
   top: 5px;
   box-shadow: none;
+  opacity: 1;
 }
 
 .btn-sauce {
   background: #fff4aa;
   box-shadow: 0 6px #998500;
   color: #555;
+  opacity: 0.4;
 }
 
 .btn-sauce:hover {
   background: #fff088;
   box-shadow: 0 5px #776800;
   color: #555;
+  opacity: 1;
 }
 
 .btn-sauce.active {
   top: 2px;
   box-shadow: 0 2px #998500;
+  opacity: 1;
 }
 
 .btn-sauce.active:hover {
   box-shadow: 0 2px #776800;
+  opacity: 1;
 }
 
 .btn-sauce:active,
 .btn-sauce.active:active {
   top: 5px;
   box-shadow: none;
+  opacity: 1;
 }
 
 .btn-crust {
   background: #e0d5cf;
   box-shadow: 0 6px #957160;
   color: #555;
+  opacity: 0.4;
 }
 
 .btn-crust:hover {
   background: #d3c3bb;
   box-shadow: 0 5px #816253;
   color: #555;
+  opacity: 1;
 }
 
 .btn-crust.active {
   top: 2px;
   box-shadow: 0 2px #957160;
+  opacity: 1;
 }
 
 .btn-crust.active:hover {
   box-shadow: 0 2px #816253;
+  opacity: 1;
 }
 
 .btn-crust:active,
 .btn-crust.active:active {
   top: 5px;
   box-shadow: none;
+  opacity: 1;
+  
 }
 
 /*------ Price -----*/
