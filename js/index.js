@@ -94,12 +94,21 @@ function renderButtons() {
 
 function renderPrice() {
     // Iteration 4: change the HTML of `<aside class="panel price">`
-    let totalPrice = 0;
-    for (let element of state) {
-        if (element) {
-            totalPrice += 
+    const priceList = document.querySelector('.price ul');
+    let totalPrice = document.querySelector('.price strong');
+    // Reset List
+    priceList.innerHTML = '';
+    // Reset total price
+    let total = basePrice;
+
+    for (let ingr in ingredients) {
+        if (state[ingr]) {
+            total += +ingredients[ingr].price
+            priceList.innerHTML += `<li>$${ingredients[ingr].price} ${ingredients[ingr].name}`
         }
+        totalPrice.innerText = total;
     }
+    console.log(total);
 }
 
 renderEverything();
