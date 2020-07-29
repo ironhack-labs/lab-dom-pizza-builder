@@ -107,9 +107,9 @@ function renderPrice() {
     const eachBtnState = li.getAttribute('state-object');
     if (state[eachBtnState]) {
       extrasPrice += +li.innerHTML[1];
-      li.style.visibility = 'visible';
+      li.style.display = 'block';
     } else {
-      li.style.visibility = 'hidden';
+      li.style.display = 'none';
     }
     // console.log(extrasPrice);
   });
