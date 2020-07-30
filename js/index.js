@@ -106,9 +106,8 @@ function renderPrice() {
             total += +ingredients[ingr].price
             priceList.innerHTML += `<li>$${ingredients[ingr].price} ${ingredients[ingr].name}`
         }
-        totalPrice.innerText = total;
+        totalPrice.innerText = `$${total}`;
     }
-    console.log(total);
 }
 
 renderEverything();
