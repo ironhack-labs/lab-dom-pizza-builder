@@ -100,8 +100,8 @@ body {
 
 /* Imitate a pressed effect for buttons */
 .btn:active {
-  top: 5px;
-  box-shadow: none;
+  top: 20px;
+  box-shadow:none;
 }
 
 /*------ Header -----*/
