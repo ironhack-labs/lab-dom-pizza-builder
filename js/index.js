@@ -107,18 +107,34 @@ function renderGlutenFreeCrust() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  renderButtons(ingredients){
 
+  let ul = document.querySelector('.price ul')
+  let strong = document.querySelector('.price strong')
+  let innerUl = '';
+  let sum = 10;
+  for (el in state){
+    if(state[el]) {
+      sum += ingredients[el].price;
+      innerUl += `<li> $${ingredients[el].price} ${ingredients[el].name}</li>`
+    }
   }
-  document.querySelectorAll('.price').forEach((btn,index) => {
-    const price = Object.keys(ingredients)
-  if (ingredients[eachBtnState[index]]) {
-    btn.classList.add(`active`)
-  } else {
-    btn.classList.remove(`active`)
-  }
-  basePrice += ingredients.price 
-})
+  strong.innerHTML =`$${sum}`
+  console.log(innerUl);
+  ul.innerHTML = innerUl;
+
+
+  
+  // let pizzahtml = document.querySelector('strong')
+  
+  // .forEach((li,index) => {
+  //   const price = Object.keys(ingredients)
+  // if (ingredients[eachBtnState[index]]) {
+  //   btn.classList.add(`active`)
+  // } else {
+  //   btn.classList.remove(`active`)
+  // }
+  // basePrice += ingredients.price 
+// })
 }
 
 renderEverything();
