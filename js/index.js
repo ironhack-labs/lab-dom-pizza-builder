@@ -66,13 +66,12 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  document.querySelectorAll('.sauce').forEach(oneSauce => {
-    if (state.whiteSauce) {
-      oneSauce.style.visibility = 'visible';
-    } else {
-      oneSauce.style.visibility = 'hidden';
-    }
-  });
+  if (state.whiteSauce) {
+    document.querySelector('.sauce').classList.add('sauce-white');
+  }
+  else {
+    document.querySelector('.sauce').classList.remove('sauce-white');
+  }
 }
 
 function renderGlutenFreeCrust() {
