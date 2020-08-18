@@ -44,18 +44,44 @@ function renderPepperoni() {
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll('.mushroom').forEach(oneMushroom => {
+    if (state.mushrooms) {
+      oneMushroom.style.visibility = 'visible';
+    } else {
+      oneMushroom.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll('.green-pepper').forEach(onePepper => {
+    if (state.greenPeppers) {
+      onePepper.style.visibility = 'visible';
+    } else {
+      onePepper.style.visibility = 'hidden';
+    }
+  });
 }
+
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-}
+     if (state.whiteSauce){ 
+       WhiteSauce = document.querySelector("sauce-white").classList.add("sauce-white");
+    } else { 
+      WhiteSauce = document.querySelector("sauce-white").classList.remove("sauce-white");
+    }
+    
+ 
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  if (state.glutenFreeCrust){ 
+    glutenFreeCrust = document.querySelector("crust-gluten-free").classList.add("crust-gluten-free");
+ } else { 
+   glutenFreeCrust = document.querySelector("crust-gluten-free").classList.remove("crust-gluten-free");
+ }
 }
 
 function renderButtons() {
@@ -73,6 +99,26 @@ document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
   state.pepperoni = !state.pepperoni;
   renderEverything();
 });
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', () => {
+  state.mushrooms = !state.mushrooms;
+  renderEverything();
+});
+document.querySelector('.btn.btn-green-peppers').addEventListener('click', () => {
+  state.greenPeppers = !state.greenPeppers;
+  renderEverything();
+});
+
+document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
+  state.whiteSauce = !state.whiteSauce;
+  //console.log('this changes the state,',state.whiteSauce);
+  renderEverything();
+});
+
+//alternatively sytax can be like this
+// document.querySelector('.btn.btn-pepperoni').onclick = function()  {
+//   state.pepperoni = !state.pepperoni;
+//   renderEverything();
+// };
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
 
