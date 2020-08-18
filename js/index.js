@@ -137,6 +137,16 @@ function renderGlutenFreeCrust() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let list = '';
+  let price = basePrice
+  for (let ingredient in state){
+  if(state[ingredient]) {
+    list += `<li>$ ${ingredients[ingredient].price}  </li>`;
+    price += ingredients[ingredient].price
+  }
+}
+document.querySelector('.panel.price ul').innerHTML = list;
+document.querySelector('.panel.price strong').innerHTML = `$${price}`;
 }
 
 renderEverything();
