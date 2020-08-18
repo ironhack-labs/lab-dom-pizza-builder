@@ -96,10 +96,40 @@ function renderGlutenFreeCrust() {
 
   function renderButtons() {
     // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+
+    //pepperoni button
     if (state.pepperoni) {
       document.querySelector('.btn.btn-pepperoni').classList.add('active');
     } else {
       document.querySelector('.btn.btn-pepperoni').classList.remove('active');
+    }
+
+    // mushrooms button
+    if (state.mushrooms) {
+      document.querySelector('.btn.btn-mushrooms').classList.add('active');
+    } else {
+      document.querySelector('.btn.btn-mushrooms').classList.remove('active');
+    }
+
+    //greenPeppers Button 
+    if (state.greenPeppers) {
+      document.querySelector('.btn.btn-green-peppers').classList.add('active');
+    } else {
+      document.querySelector('.btn.btn-green-peppers').classList.remove('active');
+    }
+
+    // whiteSauce Button
+    if (state.whiteSauce) {
+      document.querySelector('.btn.btn-sauce').classList.add('active');
+    } else {
+      document.querySelector('.btn.btn-sauce').classList.remove('active');
+    }
+
+    //  glutenFreeCrust Button 
+    if (state.glutenFreeCrust) {
+      document.querySelector('.btn.btn-crust').classList.add('active');
+    } else {
+      document.querySelector('.btn.btn-crust').classList.remove('active');
     }
   }
 
