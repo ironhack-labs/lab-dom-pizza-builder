@@ -73,6 +73,7 @@ function renderWhiteSauce() {
       oneSauce.style.visibility = 'hidden';
     }
 
+    // this small change 
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
