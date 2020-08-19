@@ -111,19 +111,17 @@ function renderPrice() {
   let ul = document.querySelector('.price ul')
   let strong = document.querySelector('.price strong')
   let innerUl = '';
-  let sum = 10;
-  for (el in state){
-    if(state[el]) {
-      sum += ingredients[el].price;
-      innerUl += `<li> $${ingredients[el].price} ${ingredients[el].name}</li>`
+  let sum = basePrice;
+  for (ingredient in state){
+    if(state[ingredient]) {
+      sum += ingredients[ingredient].price;
+      innerUl += `<li> $ ${ingredients[ingredient].price} ${ingredients[ingredient].name}</li>`
     }
   }
-  strong.innerHTML =`$${sum}`
+  strong.innerHTML =`$ ${sum}`
   console.log(innerUl);
   ul.innerHTML = innerUl;
 
-
-  
   // let pizzahtml = document.querySelector('strong')
   
   // .forEach((li,index) => {
