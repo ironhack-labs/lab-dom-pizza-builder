@@ -77,14 +77,14 @@ const renderGlutenFreeCrust = () => {
 
 // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 const renderButtons = () => {
-  if(state.pepperoni) document.querySelector('.btn.btn-pepperoni').classList.remove('active');
-  else document.querySelector('.btn.btn-pepperoni').classList.add('active');
+  if(state.pepperoni) document.querySelector('.btn.btn-pepperoni').classList.add('active');
+  else document.querySelector('.btn.btn-pepperoni').classList.remove('active');
 
-  if(state.mushrooms) document.querySelector('.btn.btn-mushrooms').classList.remove('active');
-  else document.querySelector('.btn.btn-mushrooms').classList.add('active');
+  if(state.mushrooms) document.querySelector('.btn.btn-mushrooms').classList.add('active');
+  else document.querySelector('.btn.btn-mushrooms').classList.remove('active');
 
-  if(state.greenPeppers) document.querySelector('.btn.btn-green-peppers').classList.remove('active');
-  else document.querySelector('.btn.btn-green-peppers').classList.add('active');
+  if(state.greenPeppers) document.querySelector('.btn.btn-green-peppers').classList.add('active');
+  else document.querySelector('.btn.btn-green-peppers').classList.remove('active');
 
   if(state.whiteSauce) document.querySelector('.btn.btn-sauce').classList.remove('active');
   else document.querySelector('.btn.btn-sauce').classList.add('active');
@@ -94,10 +94,22 @@ const renderButtons = () => {
 };
 
 
-function renderPrice() {
+const renderPrice = () => {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let totalPrice = basePrice;
+  let priceList = document.querySelector('.panel.price ul');
+  let totalPriceHTML = document.querySelector('.panel.price strong');
+  priceList.innerHTML = '';
+  totalPriceHTML.innerHTML = '';
 
+  for (let ingredient in ingredients) {
+    if (state[ingredient]) {
+      priceList.innerHTML += ('<li>'+ '$' + ingredients[ingredient].price + ' ' + ingredients[ingredient].name.toLowerCase()+ '' + '</li>');
+      totalPriceHTML.innerHTML = '$' + '' + (totalPrice += ingredients[ingredient].price);
+    }
+  }
 }
+
 
 renderEverything();
 
