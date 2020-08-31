@@ -15,8 +15,8 @@ let state = {
   pepperoni: true,
   mushrooms: true,
   greenPeppers: true,
-  whiteSauce: false,
-  glutenFreeCrust: false
+  whiteSauce: true,
+  glutenFreeCrust: true
 };
 
 // This function takes care of rendering the pizza based on the state
@@ -48,10 +48,15 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+  const sauce = document.querySelector('section.sauce')
+  state.whiteSauce ? sauce.classList.remove('sauce-white') : sauce.classList.add('sauce-white')
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  //document.querySelector('section.crust').classList.toggle('crust-gluten-free')
+  const crust = document.querySelector('section.crust')
+  state.glutenFreeCrust ? crust.classList.remove('crust-gluten-free') : crust.classList.add('crust-gluten-free')
 }
 
 function renderButtons() {
@@ -83,5 +88,12 @@ document.querySelector('.btn.btn-green-peppers').addEventListener('click', () =>
 
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
-
+document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
+  state.whiteSauce = !state.whiteSauce
+  renderEverything()
+})
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector('.btn.btn-crust').addEventListener('click', () => {
+  state.glutenFreeCrust = !state.glutenFreeCrust
+  renderEverything()
+})
