@@ -33,16 +33,11 @@ function renderEverything() {
 }
 
 function renderPepperoni() {
-  document.querySelectorAll('.pep').forEach(onePep => {
-    if (state.pepperoni) {
-      onePep.style.visibility = 'visible';
-    } else {
-      onePep.style.visibility = 'hidden';
-    }
-  });
+  document.querySelectorAll('.pep').forEach(onePep => state.pepperoni ? onePep.style.visibility = 'visible' : onePep.style.visibility = 'hidden')
 }
 
 function renderMushrooms() {
+  document.querySelectorAll('.mushroom').forEach(oneShroom => state.mushrooms ? oneShroom.style.visibility = 'visible' : oneShroom.style.visibility = 'hidden')
   // Iteration 1: set the visibility of `<section class="mushroom">`
 }
 
@@ -70,12 +65,15 @@ renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
-  state.pepperoni = !state.pepperoni;
-  renderEverything();
+  state.pepperoni = !state.pepperoni
+  renderEverything()
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
-
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', () => {
+  state.mushrooms = !state.mushrooms
+  renderEverything()
+});
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
