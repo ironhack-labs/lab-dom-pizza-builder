@@ -21,8 +21,6 @@ let state = {
 
 let pep = true, mush = true, greenPep = true, sauceAct = true, crustAct = true;
 
-
-
 // This function takes care of rendering the pizza based on the state
 // This function is triggered once at the beginning and every time the state is changed
 function renderEverything() {
@@ -119,15 +117,20 @@ function crustVisible(){
   }
 }
 
-function removeActiveInit() {
+function init() {
   document.querySelector('.btn.btn-crust').classList.remove('active');
   document.querySelector('.btn.btn-sauce').classList.remove('active');
   crustAct = !crustAct;
   sauceAct = !sauceAct;
-
+  var whiteSauceelement = document.querySelector('.panel.price ul li:nth-child(4)');
+  var element = document.querySelector('.panel.price ul li:nth-child(5)')
+  element.parentNode.removeChild(element);
+  whiteSauceelement.parentNode.removeChild(whiteSauceelement);
+  var displayTotal = document.querySelector('.panel.price strong');
+  displayTotal.innerHTML = "$10";
 }
 
-removeActiveInit()
+init()
 
 function renderGlutenFreeCrust() {
   /*
@@ -150,8 +153,10 @@ function renderButtons() {
 
   if(pep){
     pepperoniConst.classList.add('active');
+
   } else {
     pepperoniConst.classList.remove('active');
+
   }
   if(mush){
     mushroomsConst.classList.add('active');
@@ -175,11 +180,27 @@ function renderButtons() {
   }
 }
 
+
+
+
 function renderPrice() {
+
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  console.log(basePrice);
+  
+  if (pep) {
+    basePrice++;
+  } else  { basePrice--; }
+
+  
+  document.querySelector('.panel.price strong').innerHTML = "$" + basePrice;
+
+  console.log(basePrice);
+
 }
 
-//renderEverything();
+
+renderEverything();
 regularCrust();
 tomato();
 
