@@ -43,6 +43,7 @@ function renderMushrooms() {
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll('.green-pepper').forEach(oneGreenPep => state.greenPeppers ? oneGreenPep.style.visibility = 'visible' : oneGreenPep.style.visibility = 'hidden')
 }
 
 function renderWhiteSauce() {
@@ -73,8 +74,13 @@ document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
 document.querySelector('.btn.btn-mushrooms').addEventListener('click', () => {
   state.mushrooms = !state.mushrooms
   renderEverything()
-});
+})
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+document.querySelector('.btn.btn-green-peppers').addEventListener('click', () => {
+  state.greenPeppers = !state.greenPeppers
+  renderEverything()
+})
+
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 
