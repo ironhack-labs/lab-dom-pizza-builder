@@ -28,7 +28,6 @@ function renderEverything() {
   renderWhiteSauce();
   renderGlutenFreeCrust();
 
-  renderButtons();
   renderPrice();
 }
 
@@ -77,14 +76,13 @@ function renderGlutenFreeCrust() {
     document.querySelector('section.crust').classList.add("crust-gluten-free")  
 }
 
+var test = document.querySelectorAll("button.btn");
 function renderButtons(event) {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-//   event.target.classList.toggle("active");
+  event.target.classList.toggle("active");
 } 
 
-// document
-//   .querySelectorAll("button.btn")
-//   .forEach((button) => button.addEventListener("click", renderButtons));
+test.forEach((button) => button.addEventListener("click", renderButtons));
 
 
 function renderPrice() {
