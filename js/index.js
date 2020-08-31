@@ -105,14 +105,31 @@ function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
 
 let chosenToppings = "";
-if (state.pepperoni) chosenToppings += "<li>$1 pepperoni</li>"
-if (state.mushrooms) chosenToppings += "<li>$1 mushrooms</li>"
-if (state.greenPeppers) chosenToppings += "<li>$1 green peppers</li>"
-if (state.whiteSauce) chosenToppings += "<li>$3 white sauce</li>"
-if (state.glutenFreeCrust) chosenToppings += "<li>$5 gluten-free crust</li>"
+let totalPrice = 10;
 
+if (state.pepperoni){
+  chosenToppings += "<li>$1 pepperoni</li>";
+  totalPrice += 1;
+}  
+if (state.mushrooms) {
+  chosenToppings += "<li>$1 mushrooms</li>";
+  totalPrice += 1;
+} 
+if (state.greenPeppers) {
+  chosenToppings += "<li>$1 green peppers</li>";
+  totalPrice += 1;
+} 
+if (state.whiteSauce) {
+  chosenToppings += "<li>$3 white sauce</li>";
+  totalPrice += 3;
+} 
+if (state.glutenFreeCrust) {
+  chosenToppings += "<li>$5 gluten-free crust</li>";
+  totalPrice += 5;  
+} 
 document.querySelector('#toppings-list').innerHTML = chosenToppings;
-  console.log(chosenToppings);
+document.getElementById('price').textContent = `$${totalPrice} cheese pizza`;
+  
 }
 
 
