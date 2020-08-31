@@ -87,41 +87,53 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  
+  document.querySelectorAll('.btn').forEach(oneBtn =>{
+    if (state.oneBtn){
+      oneBtn.classList.add("active");
+    } else {
+      oneBtn.classList.remove("active");
+    }
+  })
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-}
 
+
+}
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
-document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
+document.querySelector('.btn.btn-pepperoni').addEventListener('click', (pepBtn) => {
   state.pepperoni = !state.pepperoni;
   renderEverything();
+  
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
-document.querySelector(".btn.btn-mushrooms").addEventListener('click', () => {
+document.querySelector(".btn.btn-mushrooms").addEventListener('click', (mushBtn) => {
   state.mushrooms = !state.mushrooms;
+  
   renderEverything();
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-document.querySelector(".btn.btn-green-peppers").addEventListener('click', () => {
+document.querySelector(".btn.btn-green-peppers").addEventListener('click', (greenPeppersBtn) => {
   state.greenPeppers = !state.greenPeppers;
+  
   renderEverything();
 });
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
-document.querySelector(".btn.btn-sauce").addEventListener('click', () => {
+document.querySelector(".btn.btn-sauce").addEventListener('click', (sauceBtn) => {
   state.oneSauce = !state.oneSauce;
+ 
   renderEverything();
 });
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
-document.querySelector(".btn.btn-crust").addEventListener('click', () => {
+document.querySelector(".btn.btn-crust").addEventListener('click', (crustBtn) => {
   state.oneCrust = !state.oneCrust;
+
   renderEverything();
 });
