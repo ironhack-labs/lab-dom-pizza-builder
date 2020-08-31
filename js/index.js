@@ -104,6 +104,17 @@ function renderButtons() {
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
 
+let chosenToppings = "";
+if (state.pepperoni) chosenToppings += "<li>$1 pepperoni</li>"
+if (state.mushrooms) chosenToppings += "<li>$1 mushrooms</li>"
+if (state.greenPeppers) chosenToppings += "<li>$1 green peppers</li>"
+if (state.whiteSauce) chosenToppings += "<li>$3 white sauce</li>"
+if (state.glutenFreeCrust) chosenToppings += "<li>$5 gluten-free crust</li>"
+
+document.querySelector('#toppings-list').innerHTML = chosenToppings;
+  console.log(chosenToppings);
+}
+
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
@@ -144,3 +155,5 @@ document.querySelector(".btn.btn-crust").addEventListener('click', () => {
   console.log(document.querySelector('.sauce').classList);
   console.log(document.querySelector('.crust').classList);
 });
+
+renderPrice();
