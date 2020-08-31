@@ -77,11 +77,32 @@ function renderGlutenFreeCrust() {
 }
 
 function renderButtons() {
+
     // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+    let buttons = document.querySelectorAll('.btn');
+    for (let i = 0; i < Object.keys(state).length; i++) {
+        //console.log(buttons[i]);
+        if (Object.values(state)[i]) buttons[i].classList.add("active");
+        else buttons[i].classList.remove("active");
+    }
 }
 
 function renderPrice() {
     // Iteration 4: change the HTML of `<aside class="panel price">`
+    let lilist = document.querySelectorAll(".price li");
+    console.log(Object.keys(lilist).length);
+    let price = 0;
+    for (let i = 0; i < Object.keys(lilist).length; i++) {
+        console.log(Object.values(ingredients)[i].price);
+        if (Object.values(state)[i]) lilist[i].innerHTML = "";
+        else {
+            lilist[i].innerHTML = `$ ${Object.values(ingredients)[i].price} ${Object.values(ingredients)[i].name}`;
+            price += Object.values(ingredients)[i].price;
+        }
+    }
+
+    let htmlprice = document.querySelector(".price strong");
+    htmlprice.innerHTML = `$ ${price}`;
 }
 
 renderEverything();
@@ -109,10 +130,14 @@ document.querySelector('.btn.btn-green-peppers').addEventListener('click', () =>
 document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
     state.whiteSauce = !state.whiteSauce;
     renderWhiteSauce();
+    renderButtons();
+    renderPrice();
 });
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
 document.querySelector('.btn.btn-crust').addEventListener('click', () => {
     state.glutenFreeCrust = !state.glutenFreeCrust;
     renderGlutenFreeCrust();
+    renderButtons();
+    renderPrice();
 });
