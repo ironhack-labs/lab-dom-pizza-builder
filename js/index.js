@@ -122,6 +122,19 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  var totalPrice = basePrice
+  var list = document.querySelector('aside.panel.price ul')
+  list.innerHTML = ""
+
+  for (let currentIngredient in ingredients) {
+    console.log(currentIngredient);
+    if (state[currentIngredient]) {
+      totalPrice += ingredients[currentIngredient].price;
+      console.log(totalPrice);
+      list.innerHTML += `<li>$${ingredients[currentIngredient].price} ${ingredients[currentIngredient].name.toLowerCase()}</li>`
+    }
+    document.querySelector('aside.panel.price strong').innerHTML = "$" + totalPrice
+  }
 }
 
 renderEverything();
