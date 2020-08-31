@@ -66,29 +66,21 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  if (state.whiteSauce) {
-    document.querySelector('section.sauce').classList.add("sauce-white")
-  }
-  else {
+  state.whiteSauce ? document.querySelector('section.sauce').classList.add("sauce-white") :
     document.querySelector('section.sauce').classList.remove("sauce-white")  
-    }
 }
 
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  if (state.glutenFreeCrust) {
-    document.querySelector('section.crust').classList.remove("crust-gluten-free")
-  }
-  else {
+  state.glutenFreeCrust ? document.querySelector('section.crust').classList.remove("crust-gluten-free") :
     document.querySelector('section.crust').classList.add("crust-gluten-free")  
-    }
 }
 
 function renderButtons(event) {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 //   event.target.classList.toggle("active");
-}
+} 
 
 // document
 //   .querySelectorAll("button.btn")
