@@ -98,55 +98,19 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  const ul = document.querySelector(".price ul");
-   let pricePepperoni,
-     priceMushrooms,
-     priceGreenPeppers,
-     priceWhiteSauce,
-     priceGlutenFreeCrust;
+  let totalPrice = basePrice;
+  let list = document.querySelector('aside.panel.price ul');
+  list.innerHTML = '';
 
-   let priceTotal = basePrice;
-
-   if (state.pepperoni) {
-     pricePepperoni = `<li>$${ingredients.pepperoni.price} ${ingredients.pepperoni.name}</li>`;
-     priceTotal += ingredients.pepperoni.price;
-   } else {
-     pricePepperoni = "";
+   for (let ingredient in ingredients) {
+     console.log(ingredient, ingredients);
+     if (state[ingredient]) {
+       totalPrice += ingredients[ingredient].price;
+       list.innerHTML += `<li> $ ${ingredients[ingredient].price} ${ingredients[ingredient].name}</li>`;
+     }
+     document.querySelector('aside.panel.price strong').innerHTML =
+       '$' + totalPrice;
    }
-   if (state.mushrooms) {
-     priceMushrooms = `<li>$${ingredients.mushrooms.price} ${ingredients.mushrooms.name}</li>`;
-     priceTotal += ingredients.mushrooms.price;
-   } else {
-     priceMushrooms = "";
-   }
-   if (state.greenPeppers) {
-     priceGreenPeppers = `<li>$${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name}</li>`;
-     priceTotal += ingredients.greenPeppers.price;
-   } else {
-     priceGreenPeppers = "";
-   }
-   if (state.whiteSauce) {
-     priceWhiteSauce = `<li>$${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name}</li>`;
-     priceTotal += ingredients.whiteSauce.price;
-   } else {
-     priceWhiteSauce = "";
-   }
-   if (state.glutenFreeCrust) {
-     priceGlutenFreeCrust = `<li>$${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name}</li>`;
-     priceTotal += ingredients.glutenFreeCrust.price;
-   } else {
-     priceGlutenFreeCrust = "";
-   }
-
-   ul.innerHTML =
-     pricePepperoni +
-     priceMushrooms +
-     priceGreenPeppers +
-     priceWhiteSauce +
-     priceGlutenFreeCrust;
-
-   const totalDisplay = document.querySelector(".price strong");
-   totalDisplay.innerText = `$${priceTotal}`;
 
 }
 renderEverything();
