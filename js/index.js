@@ -89,14 +89,15 @@ function renderButtons() {
 
 function renderPrice() {
     // Iteration 4: change the HTML of `<aside class="panel price">`
-    let lilist = document.querySelectorAll(".price li");
-    console.log(Object.keys(lilist).length);
-    let price = 0;
-    for (let i = 0; i < Object.keys(lilist).length; i++) {
-        console.log(Object.values(ingredients)[i].price);
-        if (Object.values(state)[i]) lilist[i].innerHTML = "";
-        else {
-            lilist[i].innerHTML = `$ ${Object.values(ingredients)[i].price} ${Object.values(ingredients)[i].name}`;
+    let priceUl = document.querySelector(".price ul");
+    //let lilist = document.querySelectorAll(".price li");
+    console.log(priceUl.innerHTML);
+    priceUl.innerHTML = "";
+    let price = 10;
+
+    for (let i = 0; i < Object.keys(state).length; i++) {
+        if (Object.values(state)[i]) {
+            priceUl.innerHTML += `<li>$ ${Object.values(ingredients)[i].price} ${Object.values(ingredients)[i].name}</li>`;
             price += Object.values(ingredients)[i].price;
         }
     }
