@@ -1,5 +1,8 @@
 // Write your Pizza Builder JavaScript in this file.
-
+//const shrooms = document.querySelectorAll(".mushroom");
+const peppers = document.querySelectorAll(".green-pepper");
+const sauce = document.querySelectorAll(".sauce");
+const glutenFreeCrust =  document.querySelectorAll(".crust");
 // Constants
 let basePrice = 10;
 let ingredients = {
@@ -44,14 +47,38 @@ function renderPepperoni() {
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll(".mushroom").forEach(Shroom => {
+    if (state.mushrooms) 
+    {
+      Shroom.style.visibility = 'visible';
+    } else {
+      Shroom.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+  peppers.forEach(greenPepp => {
+    if (state.greenPeppers) 
+    {
+      greenPepp.style.visibility = 'visible';
+    } else {
+      greenPepp.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+  sauce.forEach(whiteSauce => {
+    if (state.whiteSauce) 
+    {
+      whiteSauce.style.visibility = 'visible';
+    } else {
+      whiteSauce.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderGlutenFreeCrust() {
@@ -71,6 +98,21 @@ renderEverything();
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
   state.pepperoni = !state.pepperoni;
+  renderEverything();
+});
+
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', () => {
+  state.mushrooms = !state.mushrooms;
+  renderEverything();
+});
+
+document.querySelector('.btn.btn-green-peppers').addEventListener('click', () => {
+  state.greenPeppers = !state.greenPeppers;
+  renderEverything();
+});
+
+document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
+  state.whiteSauce = !state.whiteSauce;
   renderEverything();
 });
 
