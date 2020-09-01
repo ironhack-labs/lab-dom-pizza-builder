@@ -104,26 +104,26 @@ function renderButtons() {
   
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
- /*
-  if (state.pepperoni){
-    document.querySelector('.panel.price ul').removeChild(document.querySelector('.panel.price ul li:nth-child(1)'))
-  } else {document.querySelector('.panel.price ul').removeChild(document.querySelector('.panel.price ul li:nth-child(1)'))}
-  */ 
+
     if (!state.pepperoni) {
       if (document.querySelector('.panel.price ul li:nth-child(1)').style.display === "block") {
         document.querySelector('.panel.price ul li:nth-child(1)').style.display = "none";
       } 
+      basePrice--;
     } else {
       document.querySelector('.panel.price ul li:nth-child(1)').style.display = "block";
+      basePrice++;
     }
 
     if (!state.mushrooms) {
       if (document.querySelector('.panel.price ul li:nth-child(2)').style.display === "block") {
         document.querySelector('.panel.price ul li:nth-child(2)').style.display = "none";
       } 
+
     } else {
       document.querySelector('.panel.price ul li:nth-child(2)').style.display = "block";
     }
+
 
     if (!state.greenPeppers) {
       if (document.querySelector('.panel.price ul li:nth-child(3)').style.display === "block") {
@@ -148,16 +148,9 @@ function renderPrice() {
     } else {
       document.querySelector('.panel.price ul li:nth-child(5)').style.display = "none";
     }
-}
+    document.querySelector('.panel.price strong').textContent = `$ ${basePrice}`
 
-/*
-var x = document.getElementById("myDIV");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-*/
+}
 
 renderEverything();
 
