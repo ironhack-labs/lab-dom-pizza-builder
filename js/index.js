@@ -95,19 +95,20 @@ function renderButtons() {
 
 //* Iteration 4: change the HTML of `<aside class="panel price">`
 function renderPrice() {
-  let updatedListOfPrice = document.querySelectorAll("aside > ul");
-  console.log(updatedListOfPrice);
+  let updatedListOfPrice = document.querySelector("aside > ul");
+  updatedListOfPrice.innerHTML = "";
   let eachIngredient = Object.values(ingredients);
   let valueOfStateKeys = Object.values(state);
   let sum = basePrice;
   for (let i = 0; i < eachIngredient.length; i++) {
     if (valueOfStateKeys[i]) {
       sum += eachIngredient[i].price;
-      updatedListOfPrice.innerHTML += `<li> ${eachIngredient[
+      updatedListOfPrice.innerHTML += `<li>${eachIngredient[
         i
-      ].name.toLowerCase()} </li>`;
+      ].name.toLowerCase()}</li>`;
     }
   }
+  console.log(updatedListOfPrice);
   document.querySelector("strong").innerHTML = `$ ${sum}`;
 }
 
