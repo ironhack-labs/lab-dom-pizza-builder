@@ -3,6 +3,9 @@
 const peppers = document.querySelectorAll(".green-pepper");
 const sauce = document.querySelectorAll(".sauce");
 const glutenFreeCrust =  document.querySelectorAll(".crust");
+//const clicked = document.querySelectorAll(".btn");
+
+
 // Constants
 let basePrice = 10;
 let ingredients = {
@@ -93,13 +96,40 @@ function renderGlutenFreeCrust() {
   });
 }
 
-function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 
-}
+ function renderButtons() {
+  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+    document.querySelectorAll(".btn").onclick = (evt) => {
+      // console.log("wazaa"); 
+      return evt.target.classList.toggle("active");
+    }
+ };
+
+ // I don't get it, I will push it but I don't understand why it doesn't toggle the active class on .btn class tags
+
+
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+
+//  let price = [];
+//  if (topping.state) {
+//    price.push(ingredient.topping.price)
+//  }
+//  price.reduce((acc, curr) => 
+//    acc + curr
+//  )
+
+  // ingredients.topping.price
+  //let basePrice = 10;
+  //let ingredients = {
+  //  pepperoni: { name: 'pepperoni', price: 1 },
+    //mushrooms: { name: 'Mushrooms', price: 1 },
+    //greenPeppers: { name: 'Green Peppers', price: 1 },
+    //whiteSauce: { name: 'White sauce', price: 3 },
+    //glutenFreeCrust: { name: 'Gluten-free crust', //price: 5 }
+  //};
+
 }
 
 renderEverything();
@@ -137,3 +167,4 @@ document.querySelector('.btn.btn-crust').addEventListener('click', () => {
   state.glutenFreeCrust = !state.glutenFreeCrust;
   renderEverything();
 });
+
