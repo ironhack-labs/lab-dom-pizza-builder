@@ -103,27 +103,44 @@ function renderButtons() {
 }
   
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
 
+
+  
+  /*
+  const list = document.querySelector('aside.panel.price ul li');
+  const pepLi = list[0];
+  const mushLi = list[1];
+  const greenPepLi = list[2];
+  const whiteSauceLi = list[3];
+  const crustLi = list[4];
+
+  state.pepperoni ? pepLi.style.display = "block" : pepLi.style.display = "none";
+  state.mushrooms ? mushLi.style.display = "block" : mushLi.style.display = "none";
+  state.greenPeppers ? greenPepLi.style.display = "block" : greenPepLi.style.display = "none";
+  state.whiteSauce ? whiteSauceLi.style.display = "none" : whiteSauceLi.style.display = "block";
+  state.glutenFreeCrust ? crustLi.style.display = "none" : crustLi.style.display = "block";
+  */
+
+
+
+
+  
+  // Iteration 4: change the HTML of `<aside class="panel price">`
     if (!state.pepperoni) {
       if (document.querySelector('.panel.price ul li:nth-child(1)').style.display === "block") {
         document.querySelector('.panel.price ul li:nth-child(1)').style.display = "none";
       } 
-      basePrice--;
     } else {
       document.querySelector('.panel.price ul li:nth-child(1)').style.display = "block";
-      basePrice++;
     }
 
     if (!state.mushrooms) {
       if (document.querySelector('.panel.price ul li:nth-child(2)').style.display === "block") {
         document.querySelector('.panel.price ul li:nth-child(2)').style.display = "none";
       } 
-
     } else {
       document.querySelector('.panel.price ul li:nth-child(2)').style.display = "block";
     }
-
 
     if (!state.greenPeppers) {
       if (document.querySelector('.panel.price ul li:nth-child(3)').style.display === "block") {
@@ -148,7 +165,17 @@ function renderPrice() {
     } else {
       document.querySelector('.panel.price ul li:nth-child(5)').style.display = "none";
     }
-    document.querySelector('.panel.price strong').textContent = `$ ${basePrice}`
+  //  document.querySelector('.panel.price strong').textContent = `$ ${basePrice}`
+
+  let pepFinalPrice = ingredients.pepperoni.price * state.pepperoni;
+  let mushFinalPrice =  ingredients.mushrooms.price * state.mushrooms;
+  let greenPepFinalPrice =  ingredients.greenPeppers.price * state.greenPeppers;
+  let whiteSauceFinalPrice =  ingredients.whiteSauce.price * state.whiteSauce;
+  let crustFinalPrice = ingredients.glutenFreeCrust.price * state.glutenFreeCrust;
+  
+  let finalPrice = basePrice + pepFinalPrice + mushFinalPrice +  greenPepFinalPrice + whiteSauceFinalPrice + crustFinalPrice;
+  document.querySelector('.panel.price strong').textContent = `$ ${finalPrice}`
+  
 
 }
 
@@ -182,4 +209,5 @@ document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
 document.querySelector('.btn.btn-crust').addEventListener('click', () => {
   state.glutenFreeCrust = !state.glutenFreeCrust;
   renderEverything();
+
 });
