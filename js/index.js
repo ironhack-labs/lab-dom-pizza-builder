@@ -109,12 +109,18 @@ function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
 let total = 10;
 
-if (state.pepperoni) {total += ingredients.pepperoni.price}
-if (state.mushroom) {total += ingredients.mushrooms.price}
+if (state.pepperoni) {total += ingredients.pepperoni.price} 
+if (state.mushrooms) {total += ingredients.mushrooms.price}
 if (state.greenPeppers) {total += ingredients.greenPeppers.price}
 if (state.whiteSauce) {total += ingredients.whiteSauce.price}
 if (state.glutenFreeCrust) {total += ingredients.glutenFreeCrust.price}
 document.querySelector("strong").innerHTML = "$" + total
+
+if (!state.pepperoni) {document.querySelector(".peperoniClass").remove()}
+if (!state.mushrooms) {document.querySelector(".mushroomsClass").remove()}
+if (!state.greenPeppers) {document.querySelector(".greenClass").remove()}
+if (!state.whiteSauce) {document.querySelector(".whiteClass").remove()}
+if (!state.glutenFreeCrust) {document.querySelector(".glutenClass").remove()}
 }
 renderEverything();
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
