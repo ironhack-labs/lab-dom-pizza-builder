@@ -146,7 +146,8 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  let pizzaPrice = 10;
+
+  /*let pizzaPrice = 10;
 
   if (state.pepperoni) {
     pizzaPrice += ingredients.pepperoni.price;
@@ -168,66 +169,90 @@ function renderPrice() {
 
   if (state.glutenFreeCrust) {
     pizzaPrice += ingredients.glutenFreeCrust.price;
-  }
+  }*/
+
+  const basePrice = 10;
+  const pizzaPrice = Object.keys(ingredients)
+    .filter(k => state[k]) // filter out ingredients which are active and keep them
+    .map(k => ingredients[k].price) // get the price value for active ingredients
+    .reduce((sum, price) => sum + price, basePrice); // sum the prices
 
   document.querySelector("strong").innerHTML = "$" + pizzaPrice;
 
+  /*
+    if (!state.pepperoni) {
+      document.querySelector(".peperoniClass").remove(); // css, the dot before class name
+    } else if (!document.querySelector(".peperoniClass")) {
+      const newLi = document.createElement("li");
+      newLi.classList.add("peperoniClass"); // we are creating new html element, class without a dot
+      newLi.innerText = `$${ingredients.pepperoni.price} ${ingredients.pepperoni.name}`;
+      document.querySelector(".panel.price ul").appendChild(newLi); // css, the dot before class name
+    }
+  
+    if (!state.mushrooms) {
+      document.querySelector(".mushroomsClass").remove();
+    } else if (!document.querySelector(".mushroomsClass")) {
+      const newLi = document.createElement("li"); // scopes! this block of code doesn't see the code in the block above, you can use sama variable name
+      newLi.classList.add("mushroomsClass");
+      newLi.innerText = `$${ingredients.mushrooms.price} ${ingredients.mushrooms.name}`;
+      document.querySelector(".panel.price ul").appendChild(newLi);
+    }
+  
+    if (!state.greenPeppers) {
+      document.querySelector(".greenPepClass").remove();
+    } else if (!document.querySelector(".greenPepClass")) {
+      const newLi = document.createElement("li");
+      newLi.classList.add("greenPepClass");
+      newLi.innerText = `$${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name}`;
+      document.querySelector(".panel.price ul").appendChild(newLi);
+    }
+  
+    if (!state.whiteSauce) {
+      document.querySelector(".whiteSauceClass").remove();
+    } else if (!document.querySelector(".whiteSauceClass")) {
+      const newLi = document.createElement("li");
+      newLi.classList.add("whiteSauceClass");
+      newLi.innerText = `$${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name}`;
+      document.querySelector(".panel.price ul").appendChild(newLi);
+    }
+  
+    if (!state.glutenFreeCrust) {
+      document.querySelector(".glutenClass").remove();
+    } else if (!document.querySelector(".glutenClass")) {
+      const newLi = document.createElement("li"); // crate a new element
+      newLi.classList.add("glutenClass"); // give this element an html class
+      newLi.innerText = `$${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name}`; // add content to the element
+      document.querySelector(".panel.price ul").appendChild(newLi); // add the element to the DOM 
+  
+    }
+  */
+
+  document.querySelectorAll(".panel.price ul li").forEach(e => e.remove());
+  /* renderIngredient('glutenFreeCrust');
+   renderIngredient('whiteSauce');
+   renderIngredient('greenPeppers');
+   renderIngredient('mushrooms');
+   renderIngredient('pepperoni'); */
+
+  Object.keys(ingredients).sort().forEach(renderIngredient);
 
 
-  if (!state.pepperoni) {
-    document.querySelector(".peperoniClass").remove(); // css, dot before class name
-  } else if (!document.querySelector(".peperoniClass")) {
-    const newLi = document.createElement("li");
-    newLi.classList.add("peperoniClass"); // we are creating new html element, class without dot
-    newLi.innerText = `$${ingredients.pepperoni.price} ${ingredients.pepperoni.name}`;
-    document.querySelector(".panel.price ul").appendChild(newLi); // css, dot before class name
-  }
-
-  if (!state.mushrooms) {
-    document.querySelector(".mushroomsClass").remove();
-  } else if (!document.querySelector(".mushroomsClass")) {
-    const newLi = document.createElement("li"); // scopes! this block of code doesn't see the code in the block above, zou can use sama variable name
-    newLi.classList.add("mushroomsClass");
-    newLi.innerText = `$${ingredients.mushrooms.price} ${ingredients.mushrooms.name}`;
-    document.querySelector(".panel.price ul").appendChild(newLi);
-  }
-
-  if (!state.greenPeppers) {
-    document.querySelector(".greenPepClass").remove();
-  } else if (!document.querySelector(".greenPepClass")) {
-    const newLi = document.createElement("li");
-    newLi.classList.add("greenPepClass");
-    newLi.innerText = `$${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name}`;
-    document.querySelector(".panel.price ul").appendChild(newLi);
-  }
-
-  if (!state.whiteSauce) {
-    document.querySelector(".whiteSauceClass").remove();
-  } else if (!document.querySelector(".whiteSauceClass")) {
-    const newLi = document.createElement("li");
-    newLi.classList.add("whiteSauceClass");
-    newLi.innerText = `$${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name}`;
-    document.querySelector(".panel.price ul").appendChild(newLi);
-  }
-
-  if (!state.glutenFreeCrust) {
-    document.querySelector(".glutenClass").remove();
-  } else if (!document.querySelector(".glutenClass")) {
-    const newLi = document.createElement("li"); // crate a new element
-    newLi.classList.add("glutenClass"); // give this element an html class
-    newLi.innerText = `$${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name}`; // ad content to the element
-    document.querySelector(".panel.price ul").appendChild(newLi); // add the element to the DOM 
-
-  }
+  // sort() is sorting keys alphabetically 
+  // general idea:
+  // we delete all ingredients at the beginng and add these which are active
 
 }
 
+function renderIngredient(ingrediantKey) {
+  if (state[ingrediantKey]) { // [] this type brackets because we need to access strings
+    const newLi = document.createElement("li"); // crate a new element
+    newLi.innerText = `$${ingredients[ingrediantKey].price} ${ingredients[ingrediantKey].name}`; // add content to the element
+    document.querySelector(".panel.price ul").appendChild(newLi); // add the element to the DOM 
+  }
+}
+
+
 renderEverything();
-
-
-
-
-
 
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
