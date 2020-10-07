@@ -29,7 +29,6 @@ function renderEverything() {
   renderGlutenFreeCrust();
   renderButtons();
   renderPrice();
-  console.log(state);
 }
 
 function renderPepperoni() {
@@ -84,6 +83,19 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  //pepperoniBtn.setAttribute('class', '.btn .btn-pepperoni');
+  // Get all buttons
+  let pepperoniBtn = document.querySelector('.btn.btn-pepperoni');
+  let mushRoomBtn = document.querySelector('.btn.btn-mushrooms');
+  let greenPepperoniBtn = document.querySelector('.btn.btn-green-peppers');
+  let whiteSauceBtn = document.querySelector('.btn.btn-sauce');
+  let glutenFreeCrustBtn = document.querySelector('.btn.btn-crust');
+  // Set class attribute according to their state.
+  state.pepperoni? pepperoniBtn.setAttribute('class', 'btn btn-pepperoni active') : pepperoniBtn.setAttribute('class', 'btn btn-pepperoni');
+  state.mushrooms? mushRoomBtn.setAttribute('class', 'btn btn-mushrooms active') : mushRoomBtn.setAttribute('class', 'btn btn-mushrooms');
+  state.greenPeppers? greenPepperoniBtn.setAttribute('class', 'btn btn-green-peppers active') : greenPepperoniBtn.setAttribute('class', 'btn btn-green-peppers');
+  state.whiteSauce? whiteSauceBtn.setAttribute('class', 'btn btn-sauce active') : whiteSauceBtn.setAttribute('class', 'btn btn-sauce');
+  state.glutenFreeCrust? glutenFreeCrustBtn.setAttribute('class', 'btn btn-crust active') : glutenFreeCrustBtn.setAttribute('class', 'btn btn-crust');
 }
 
 function renderPrice() {
