@@ -33,56 +33,76 @@ function renderEverything() {
 }
 
 function renderPepperoni() {
+  price=0;
   document.querySelectorAll('.pep').forEach(onePep => {
     if (state.pepperoni) {
       onePep.style.visibility = 'visible';
+      price=1;
     } else {
       onePep.style.visibility = 'hidden';
+      price=0;
     }
   });
+  return price;
 }
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
+  price=0;
   document.querySelectorAll('.mushroom').forEach(oneMush => {
     if (state.mushrooms) {
       oneMush.style.visibility = 'visible';
+      price=1;
     } else {
       oneMush.style.visibility = 'hidden';
+      price=0;
     }
   });
+  return price;
 }
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+  price=0;
   document.querySelectorAll('.green-pepper').forEach(onePepper =>{
     if (state.greenPeppers){
       onePepper.style.visibility='visible';
+      price=1;
     }else{
       onePepper.style.visibility='hidden';
+      price=0;
     }
   })
+  return price;
 }
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
 //document.querySelector('')
+price=0;
 let whiteS=document.querySelector('.sauce')
 if (state.whiteSauce){
   whiteS.classList.add('sauce-white');
+  price=3;
 }else{
  whiteS.classList.remove('sauce-white');
+ price=0;
 }
+return price;
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  price=0;
   let crusty=document.querySelector('.crust')
   if (state.glutenFreeCrust){
     crusty.classList.add('crust-gluten-free');
+    price=5;
   }else{
     crusty.classList.remove('crust-gluten-free');
+    price=0;
   }
+  return price;
 }
 
 function renderButtons() {
@@ -102,8 +122,8 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  let list=[...document.querySelectorAll('.panel.price ul')];
-  let listEl=[...document.querySelectorAll('.panel.price ul>li')];
+  
+  let listEl=[...document.querySelectorAll('.price li')];
 
   console.log(listEl);
   
@@ -112,9 +132,23 @@ function renderPrice() {
   
    
    for(i=0;i<trues.length;i++){
-    if(trues[i]==='false'){listEl[i].setAtribute('display', 'none')};
-  }
- }
+    if(trues[i]){listEl[i].style.display='block';}
+    else(listEl[i].style.display='none');}
+
+    let cheezePizza = 10;
+    let pricePep = renderPepperoni();
+    let priceMush = renderMushrooms(); 
+    let priceGreenPep = renderGreenPeppers();
+    let priceGlutenFree = renderGlutenFreeCrust();
+    let priceWhiteSauce = renderWhiteSauce();
+
+    let total = cheezePizza + pricePep + priceMush + priceGreenPep + priceGlutenFree + priceWhiteSauce;
+    let priceTotalPlaceholder = document.querySelector(".price strong");
+    priceTotalPlaceholder.innerHTML = total + "$";
+    
+
+}
+
   
 
 
