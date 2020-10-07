@@ -99,7 +99,41 @@ function renderButtons() {
 }
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+  //basic pizza price
+  let pizzaPrice = 10;
+
+  //string to store li elements
+  let listHtml = "";
+
+  //Calculate price & Generate list html content
+  if(state.pepperoni){
+    pizzaPrice += ingredients.pepperoni.price;
+    listHtml += "<li>$" + ingredients.pepperoni.price +" pepperoni</li>";
+  }
+  if(state.mushrooms){
+    pizzaPrice += ingredients.mushrooms.price;
+    listHtml += "<li>$" + ingredients.mushrooms.price +" mushrooms</li>";
+  }
+  if(state.greenPeppers){
+    pizzaPrice += ingredients.greenPeppers.price;
+    listHtml += "<li>$" + ingredients.greenPeppers.price +" green peppers</li>";
+  }
+  if(state.whiteSauce){
+    pizzaPrice += ingredients.whiteSauce.price;
+    listHtml += "<li>$" + ingredients.whiteSauce.price +" white sauce</li>";
+  }
+  if(state.glutenFreeCrust){
+    pizzaPrice += ingredients.glutenFreeCrust.price;
+    listHtml += "<li>$" + ingredients.glutenFreeCrust.price +" gluten-free crust</li>";
+  }
+
+  //Update list content
+  let ul = document.querySelector('.panel.price ul');
+  ul.innerHTML = listHtml;
+
+  // Update Total
+  let displayPrice = document.querySelector('.panel.price strong');
+  displayPrice.innerHTML = "$"+pizzaPrice;
 }
 
 renderEverything();
