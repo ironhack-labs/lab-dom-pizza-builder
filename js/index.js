@@ -64,11 +64,11 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
 // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  whiteSauce = document.querySelector('.sauce-white');
+  whiteSauce = document.querySelector('.sauce');
   if (state.whiteSauce) {
-    whiteSauce.style.visibility = 'visible';
+    whiteSauce.setAttribute('class', 'sauce sauce-white');
   } else {
-    whiteSauce.style.visibility = 'hidden';
+    whiteSauce.setAttribute('class', 'sauce');
   }
 }
 
