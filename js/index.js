@@ -81,42 +81,53 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   if (state.pepperoni){
-    document.querySelector('.btn.btn-pepperoni').setAttribute('class', 'btn btn-pepperoni active' )
+    document.querySelector('.btn.btn-pepperoni').setAttribute('class', 'btn btn-pepperoni active')
     
   }
   else {
-    document.querySelector('.btn.btn-pepperoni').setAttribute('class', 'btn btn-pepperoni' )
+    document.querySelector('.btn.btn-pepperoni').setAttribute('class', 'btn btn-pepperoni')
   }
   if (state.mushrooms){
-    document.querySelector('.btn.btn-mushrooms').classList.add('active')
+    document.querySelector('.btn.btn-mushrooms').setAttribute('class', 'btn btn-mushrooms active')
   }
   else {
-    document.querySelector('.btn.btn-mushrooms').classList.remove('active')
+    document.querySelector('.btn.btn-mushrooms').setAttribute('class', 'btn btn-mushrooms')
   }
   if (state.greenPeppers){
-    document.querySelector('.btn.btn-green-peppers').classList.add('active')
+    document.querySelector('.btn.btn-green-peppers').setAttribute('class', 'btn btn-green-peppers active')
   }
   else {
-    document.querySelector('.btn.btn-green-peppers').classList.remove('active')
+    document.querySelector('.btn.btn-green-peppers').setAttribute('class', 'btn btn-green-peppers')
   }
   if (state.whiteSauce){
-    document.querySelector('.btn.btn-sauce').classList.add('active')
+    document.querySelector('.btn.btn-sauce').setAttribute('class', 'btn btn-sauce active')
   }
   else {
-    document.querySelector('.btn.btn-sauce').classList.remove('active')
+    document.querySelector('.btn.btn-sauce').setAttribute('class', 'btn btn-sauce')
   }
   if (state.glutenFreeCrust){
-    document.querySelector('.btn.btn-crust').classList.add('active')
+    document.querySelector('.btn.btn-crust').setAttribute('class', 'btn btn-crust active')
   }
   else {
-    document.querySelector('.btn.btn-crust').classList.remove('active')
+    document.querySelector('.btn.btn-crust').setAttribute('class', 'btn btn-crust')
   }
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   let price = document.querySelector('aside.panel.price ul')
-  console.log(price)
+  let whiteText= document.createElement('li')
+  whiteText.innerText= '$3 white sauce'
+  let freeText= document.createElement('li')
+  freeText.innerText= '$5 gluten-free crust'
+
+  if (state.whiteSauce){
+    price.appendChild(whiteText)
+  } 
+
+  if (state.glutenFreeCrust){
+    price.appendChild(freeText)
+  } 
 }
 
 renderEverything();
