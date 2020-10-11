@@ -10,6 +10,8 @@ let ingredients = {
   glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
 };
 
+
+
 // Initial value of the state (the state values can change over time)
 let state = {
   pepperoni: true,
@@ -29,7 +31,7 @@ function renderEverything() {
   renderGlutenFreeCrust();
 
   renderButtons();
-  //renderPrice();
+  renderPrice();
 }
 
 function renderPepperoni() {
@@ -118,26 +120,24 @@ function renderButtons() {
   }
 }
 
+const ingredientsArray = Object.keys(ingredients);
+const priceTags = document.querySelector('.price ul');
 
+function renderPrice() {
+  priceTags.innerHTML = '';
+  let totalPrice = basePrice;
 
-/* let basePrice = 10;
-let ingredients = {
-  pepperoni: { name: 'pepperoni', price: 1 },
-  mushrooms: { name: 'Mushrooms', price: 1 },
-  greenPeppers: { name: 'Green Peppers', price: 1 },
-  whiteSauce: { name: 'White sauce', price: 3 },
-  glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
-};
-
-// Initial value of the state (the state values can change over time)
-let state = {
-  pepperoni: true,
-  mushrooms: true,
-  greenPeppers: true,
-  whiteSauce: false,
-  glutenFreeCrust: false
-}; */
-
+  ingredientsArray.forEach(ingredientKey => {
+    if (state[ingredientKey]) {
+      const ingredient = ingredients[ingredientKey];
+      const ingredientPriceTag = document.createElement('li');
+      ingredientPriceTag.textContent = `$${ingredient.price} ${ingredient.name}`;
+      priceTags.appendChild(ingredientPriceTag);
+      totalPrice += ingredient.price;
+    }
+  });
+  document.querySelector('.price strong').textContent = `$${totalPrice}`;
+}
 
 renderEverything();
 
