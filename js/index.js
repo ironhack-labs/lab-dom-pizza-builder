@@ -90,9 +90,11 @@ function renderButtons(e) {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 
   let buttons = document.querySelectorAll(".btn");
+  let states = Object.values(state);
+
 
   for (i = 0; i < buttons.length; i++) {
-    if (state === true) {
+    if (states[i]) {
       buttons[i].classList.add("active")
     } else {
       buttons[i].classList.remove("active")
@@ -102,23 +104,23 @@ function renderButtons(e) {
 } 
 
 
-
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
-
-  // let buttons = document.querySelectorAll(".btn");
-  // let listItems = document.getElementsByClassName("panel price").getAttribute('li');
-
-  // for (i = 0; i < buttons.length; i++) {
-  //   if (state === true) {
-  //     buttons[i].classList.add("active")
-  //   } else {
-  //     buttons[i].classList.remove("active")
-  // }
-
-  // }
-
+  let bill = document.querySelectorAll(".price li");
+  let stateValues = Object.values(state);
+  let totalBill = 10;
+  for (let i = 0; i < stateValues.length; i++) {
+    if (stateValues[i] === true) {
+      bill[i].style.display = "block";
+      totalBill += Number(bill[i].innerHTML.slice(1, 2));
+    } else {
+      bill[i].style.display = "none";
+    }
+  }
+  document.querySelector(".price strong").textContent = `$${totalBill}`;
 }
+
+
+
 
 renderEverything();
 
