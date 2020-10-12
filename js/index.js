@@ -128,41 +128,19 @@ function renderButtons() {
 }
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
-  let pricePanel = document.getElementsByClassName('panel price')[0];
-
-  if (state.pepperoni) {
-    document.getElementsByClassName('btn btn-pepperoni')[0].setAttribute('class', 'btn btn-pepperoni active');
-  } else {
-    document.getElementsByClassName('btn btn-pepperoni')[0].setAttribute('class', 'btn btn-pepperoni');
+  let prices = document.querySelectorAll(".price li");
+  let states = Object.values(state);
+  let total = 10;
+  for (let i = 0; i < states.length; i++) {
+    if (states[i] === true) {
+      prices[i].style.display = "block";
+      total += Number(prices[i].innerHTML.slice(1, 2));
+    } else {
+      prices[i].style.display = "none";
+    }
   }
-
-  if (state.mushrooms) {
-    document.getElementsByClassName('btn btn-mushrooms')[0].setAttribute('class', 'btn btn-mushrooms active');
-  } else {
-    document.getElementsByClassName('btn btn-mushrooms')[0].setAttribute('class', 'btn btn-mushrooms');
-  }
-
-  if (state.greenPeppers) {
-    document.getElementsByClassName('btn btn-green-peppers')[0].setAttribute('class', 'btn btn-green-peppers active');
-  } else {
-    document.getElementsByClassName('btn btn-green-peppers')[0].setAttribute('class', 'btn btn-green-peppers');
-  }
-
-  if (state.whiteSauce) {
-    document.getElementsByClassName('btn btn-sauce')[0].setAttribute('class', 'btn btn-sauce active');
-  } else {
-    document.getElementsByClassName('btn btn-sauce')[0].setAttribute('class', 'btn btn-sauce');
-  }
-
-  if (state.glutenFreeCrust) {
-    document.getElementsByClassName('btn btn-crust')[0].setAttribute('class', 'btn btn-crust active');
-  } else {
-    document.getElementsByClassName('btn btn-crust')[0].setAttribute('class', 'btn btn-crust');
-  }
-
+  document.querySelector(".price strong").innerHTML = '$ '+total;
 }
-
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
