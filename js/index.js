@@ -1,5 +1,5 @@
 // Write your Pizza Builder JavaScript in this file.
-
+console.log('JS connected')
 // Constants
 let basePrice = 10;
 let ingredients = {
@@ -44,26 +44,85 @@ function renderPepperoni() {
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
+document.querySelectorAll(".mushroom").forEach(oneMush =>{
+  if(state.mushrooms){
+    oneMush.style.visibility ="visible";
+  }else{
+    oneMush.style.visibility ="hidden";
+  }
+})
+
+}
+const $MushrmBttn = document.getElementbyClass("btn btn-mushrooms active")
+$MushrmBttn.onClick = function {
+ renderEverything.renderMushrooms()
 }
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll(".green").forEach(oneGreen =>{
+    if(state.greenPeppers){
+      oneGreen.style.visibility ="visible";
+    }else{
+      oneGreen.style.visibility ="hidden";
+    }
+}
+const $PepperBttn = document.getElementbyClass("btn btn-green-peppers active")
+$PepperBttn.onClick = function{
+ renderEverything.renderGreenPeppers(){}
 }
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+let $theSauce =document.getElementByClass("sauce sauce-white");
+$theSauce.classlist.remove("sauce-white")
+
 }
+
+const $SauceBttn = document.getElementbyClass("btn btn-sauce active")
+$SauceBttn.onClick = function{
+ renderEverything.renderWhiteSauce(){}
+ if (state.whiteSauce== false){
+   return state.whitesSauce == true;
+ }else{
+   return state.whiteSauce == false;
+ }
+}
+
+
+
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  let $theCrust =document.getElementByClass("crust crust-gluten-free");
+  $theSauce.classlist.remove("crust-gluten-free")
+
+
 }
+const $CrustBttn = document.getElementbyClass("btn btn-crust active")
+$CrustBttn.onClick = function{
+ renderEverything.renderGlutenFreeCrust(){};
+ if (state.glutenFreeCrust== false){
+  return state.glutenFreeCrust == true;
+}else{
+  return state.glutenFreeCrust == false;
+}
+
+
+}
+
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+let $actRem = document.getElementsByClass(".panel controls" "button")
+$actRem.classlist.remove("active")
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+let $priceList = documentquerySelectorAll(".panel price")
+return $priceList
+
 }
 
 renderEverything();
