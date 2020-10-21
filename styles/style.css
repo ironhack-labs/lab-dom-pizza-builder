@@ -239,7 +239,7 @@ p.description {
 }
 
 .btn-mushrooms {
-  background: #b49989;
+  background: #a1a1a1;
   box-shadow: 0 6px #644d40;
   color: #fff;
 }
@@ -252,7 +252,7 @@ p.description {
 
 .btn-mushrooms.active {
   top: 2px;
-  box-shadow: 0 2px #644d40;
+  box-shadow: 0 2px #464545;
 }
 
 .btn-mushrooms.active:hover {
