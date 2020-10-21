@@ -15,8 +15,8 @@ let state = {
   pepperoni: true,
   mushrooms: true,
   greenPeppers: true,
-  whiteSauce: false,
-  glutenFreeCrust: false,
+  whiteSauce: true,
+  glutenFreeCrust: true,
 };
 
 // This function takes care of rendering the pizza based on the state
@@ -89,6 +89,13 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  document.querySelectorAll(".panel btn").forEach((hoverButton) => {
+    if (state.glutenFreeCrust) {
+      hoverButton.style.visibility = "visible";
+    } else {
+      hoverButton.style.visibility = "hidden";
+    }
+  });
 }
 
 function renderPrice() {
