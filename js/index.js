@@ -105,6 +105,25 @@ const crustBtn = document.querySelector(".btn-crust");
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+
+
+  const lista = document.querySelector(".panel.price ul");
+  lista.innerHTML="";
+  let total = 10;
+  for(let key in state){
+     if(state[key]){
+      let precio =  ingredients[key].price;
+      let ing = key;
+      const element = document.createElement("li");
+      element.innerText =`$ ${precio} ${key}`;
+      lista.appendChild(element);
+      total += precio;
+    }
+      
+  }
+  if(total > 10)document.querySelector(".panel strong").innerText = `$ ${total}`;
+  else document.querySelector(".panel strong").innerText = "";
+
 }
 
 renderEverything();
