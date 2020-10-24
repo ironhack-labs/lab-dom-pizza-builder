@@ -40,6 +40,8 @@ function renderPepperoni() {
       onePep.style.visibility = 'hidden';
     }
   });
+
+  
 }
 
 function renderMushrooms() {
@@ -88,6 +90,17 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+const pepBtn = document.querySelector('.btn.btn-pepperoni');
+const mushBtn = document.querySelector(".btn-mushrooms");
+const greenBtn = document.querySelector(".btn-green-peppers");
+const whiteBtn = document.querySelector(".btn-sauce");
+const crustBtn = document.querySelector(".btn-crust");
+
+!state.pepperoni? pepBtn.classList.add("active"): pepBtn.classList.remove("active");
+!state.mushrooms? mushBtn.classList.add("active"): mushBtn.classList.remove("active");
+!state.greenPeppers? greenBtn.classList.add("active"): greenBtn.classList.remove("active");
+!state.whiteSauce? whiteBtn.classList.add("active"): whiteBtn.classList.remove("active");
+!state.glutenFreeCrust? crustBtn.classList.add("active"): crustBtn.classList.remove("active");
 }
 
 function renderPrice() {
