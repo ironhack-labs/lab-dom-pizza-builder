@@ -110,12 +110,12 @@ function renderPrice() {
   const lista = document.querySelector(".panel.price ul");
   lista.innerHTML="";
   let total = 10;
-  for(let key in state){
-     if(state[key]){
+  for(let key in state){ //iteramos entre cada estado
+     if(state[key]){ //si está activo obtenemos precio y nombre de ingrediente
       let precio =  ingredients[key].price;
       let ing = key;
-      const element = document.createElement("li");
-      element.innerText =`$ ${precio} ${key}`;
+      const element = document.createElement("li"); //creamos un <li>
+      element.innerText =`$ ${precio} ${key}`; //y le introducimos la información
       lista.appendChild(element);
       total += precio;
     }
