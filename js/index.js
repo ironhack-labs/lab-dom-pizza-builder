@@ -87,8 +87,36 @@ function renderGlutenFreeCrust() {
   console.log('Crust!')
 } 
 
-function renderButtons() {
+function renderButtons() {  
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  if (state.pepperoni) {
+    document.querySelector('.btn-pepperoni').classList.add('active')
+  } else { 
+    document.querySelector('.btn-pepperoni').classList.remove('active')
+  }
+  if (state.mushroom) {
+    document.querySelector('.btn-mushrooms').classList.add('active')
+  } else { 
+    document.querySelector('.btn-mushrooms').classList.remove('active')
+  }
+  // green Peppers
+  if (state.greenPeppers) {
+    document.querySelector('.btn-green-peppers').classList.add('active')
+  } else { 
+    document.querySelector('.btn-green-peppers').classList.remove('active')
+  }
+  // Sauce
+  if (state.whiteSauce) {
+    document.querySelector('.btn-sauce').classList.add('active')
+  } else { 
+    document.querySelector('.btn-sauce').classList.remove('active')
+  }
+  // Crust
+  if (state.glutenFreeCrust) {
+    document.querySelector('.btn-crust').classList.add('active')
+  } else { 
+    document.querySelector('.btn-crust').classList.remove('active')
+  }
 }
 
 function renderPrice() {
