@@ -121,12 +121,9 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  /*const listIngredients = document.querySelector("body > aside > ul");
-  if (!state.pepperoni) {
-    listIngredients.removeChild(listIngredients.childNodes[1]);
-  }
+
 }
-*/
+
 
 renderEverything();
 
