@@ -42,29 +42,83 @@ function renderPepperoni() {
   });
 }
 
-function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
+function renderMushrooms() {
+  document.querySelectorAll('.mushroom').forEach(oneMushroom => {
+    if (state.mushroom) {
+      oneMushroom.style.visibility = 'visible';
+    } else {
+      oneMushroom.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll('.green-pepper').forEach(oneGreenPepper => {
+    if (state.greenPepper) {
+      oneGreenPepper.style.visibility = 'visible';
+    } else {
+      oneGreenPepper.style.visibility = 'hidden';
+    }
+  });
 }
 
+
+// Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
 function renderWhiteSauce() {
-  // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+  const element = document.querySelector(".sauce")
+  if (state.whiteSauce) {
+    element.classList.add("sauce-white");
+  } else {
+    element.classList.remove("sauce-white");
+  }
+  
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  const element = document.querySelector(".crust")
+  if (state.glutenFreeCrust) {
+    element.classList.add("crust-gluten-free");
+  } else {
+    element.classList.remove("crust-gluten-free");
+  }
+  
 }
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-}
+  const allButtons = document.querySelectorAll("button");
+  allButtons.forEach(function (button){
+    button.addEventListener("click", function () {
+      button.classList.toggle("active")
+    })
+  })
+};
+
+// not working, tried to to the following logic:
+// 1. select all Buttuns in document (make them to an array? or is it still a HTML collection?)
+// 2. for each Button:
+//    -by clicking on the button (=addEventListener for the event "click")
+//    -> do: if "active" is contained, remove it, otherwise add it (=toogle)
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+  // Iteration 4: change the HTML of `<aside class="panel price">`:
+  // 1. Display list of alle items selected: 
+  //      const selectedItems = state.active;
+  //      + visible only if active
+ //  2. total price 
+ //     const getEachPrice = selectedItems, innerHTML string index [1] ODER create.element() + apppendChild()
+ //     const totalprice = selectedItems.reduce(function (acc, price) {
+  //    return acc += getEachPrice;
+//      }, 10);
 }
+
+
+
+
+
 
 renderEverything();
 
@@ -75,9 +129,26 @@ document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', () => {
+  state.mushroom = !state.mushroom;
+  renderEverything();
+});
+
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+document.querySelector('.btn.btn-green-peppers').addEventListener('click', () => {
+  state.greenPepper = !state.greenPepper;
+  renderEverything();
+});
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
+document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
+  state.whiteSauce = !state.whiteSauce;
+  renderEverything();
+});
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector('.btn.btn-crust').addEventListener('click', () => {
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+});
