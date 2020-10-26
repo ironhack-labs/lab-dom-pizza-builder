@@ -86,30 +86,42 @@ function renderGlutenFreeCrust() {
 }
 
 function renderButtons() {
-  // do a loop and check the state
   // // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 
-  // const selectButtons = document.querySelector(".btn");
-  // const addActive = selectButtons.classList.toggle("active")
-  // selectButtons.onclick = function(){
-  //       selectButtons = addActive;
-
-  // }
   let btns = document.querySelectorAll('.btn');
   btns.forEach(btn => {
     btn.onclick = function () {
       btn.classList.toggle("active")
     }
   })
-  // selectButtons.addEventListener("click", function(){
-  //   selectButtons.classList.toggle("active")
-  // })
 
 };
 
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  document.querySelector(".price b").innerHTML = `$${basePrice} cheese pizza`
+  let total = basePrice;
+  // remove ingredients from list
+  const list = document.querySelectorAll(".price li");
+  list.forEach(li => li.remove());
+
+  // select ingredients elements for the list
+  let ingredientsList = document.querySelector(".price ul")
+  // loop over current state
+  for (let key in state) {
+    if(state[key] === true) {
+      total += ingredients[key].price;
+      //create html list item
+      const listItem = document.createElement("li");
+      // set text of ingredient with price and name
+      listItem.innerText = `$${ingredients[key].price} ${ingredients[key].name}`;
+      //add li to DOM
+      ingredientsList.appendChild(listItem);
+    }
+  }
+  // update total price
+  document.querySelector(".price strong").innerHTML = `$${total}`
 }
 
 renderEverything();
