@@ -133,35 +133,35 @@ function renderPrice() {
     prices[0].textContent = "$1 pepperoni"
     count +=1
   } else {
-    prices[0].textContent = "$0 pepperoni"
+    prices[0].textContent = ""
     count +=0
   }
   if(state.mushrooms){
     prices[1].textContent = "$1 mushrooms"
     count +=1
   } else {
-    prices[1].textContent = "$0 mushrooms"
+    prices[1].textContent = ""
     count +=0
   }
   if(state.greenPeppers){
     prices[2].textContent = "$1 greenPeppers"
     count +=1
   } else {
-    prices[2].textContent = "$0 greenPeppers"
+    prices[2].textContent = ""
     count +=0
   }
   if(state.whiteSauce){
     prices[3].textContent = "$3 whiteSauce"
     count +=3
   } else {
-    prices[3].textContent = "$0 whiteSauce"
+    prices[3].textContent = ""
     count +=0
   }
   if(state.glutenFreeCrust){
     prices[4].textContent = "$5 glutenFreeCust"
     count +=5
   } else {
-    prices[4].textContent = "$0 glutenFreeCust"
+    prices[4].textContent = ""
     count +=0
   }
   totalPrice.textContent = `$${count}`
