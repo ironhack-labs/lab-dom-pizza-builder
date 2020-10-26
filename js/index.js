@@ -43,27 +43,129 @@ function renderPepperoni() {
 }
 
 function renderMushrooms() {
-  // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll('.mushroom').forEach(oneMushroom => {
+    if (state.mushrooms) {
+      oneMushroom.style.visibility = 'visible';
+    } else {
+      oneMushroom.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderGreenPeppers() {
-  // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll('.green-pepper').forEach(onePepper => {
+    if (state.greenPeppers) {
+      onePepper.style.visibility = 'visible';
+    } else {
+      onePepper.style.visibility = 'hidden';
+;    }
+  })
 }
 
 function renderWhiteSauce() {
-  // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+  const sauce = document.querySelector('.sauce.sauce-white')
+  if (state.whiteSauce) {
+    sauce.style.visibility = 'visible';
+  } else {
+    sauce.style.visibility = 'hidden';
+  }
 }
 
+
+
 function renderGlutenFreeCrust() {
-  // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  const gluten = document.querySelector('.crust');
+  if (state.glutenFreeCrust) {
+    gluten.classList.remove('crust-gluten-free');
+  } else {
+    gluten.classList.add('crust-gluten-free')
+  }
 }
+
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-}
+
+    const btnPepperoni = document.querySelector('.btn.btn-pepperoni')
+    if (!state.pepperoni) {
+      btnPepperoni.classList.remove('active')
+    } else {
+      btnPepperoni.classList.add('active')
+    }
+    const btnMushrooms = document.querySelector('.btn.btn-mushrooms')
+    if (!state.mushrooms) {
+      btnMushrooms.classList.remove('active')
+    } else {
+      btnMushrooms.classList.add('active')
+    }
+    btnGreenPeppers = document.querySelector('.btn.btn-green-peppers')
+    if (!state.greenPeppers) {
+      btnGreenPeppers.classList.remove('active')
+    } else {
+      btnGreenPeppers.classList.add('active')
+    }
+    btnWhiteSauce = document.querySelector('.btn.btn-sauce')
+    if (!state.whiteSauce) {
+      btnWhiteSauce.classList.remove('active')
+    } else {
+      btnWhiteSauce.classList.add('active')
+    }
+    btnGlutenFree = document.querySelector('.btn.btn-crust')
+    if (!state.glutenFreeCrust) {
+      btnGlutenFree.classList.remove('active')
+    } else {
+      btnGlutenFree.classList.add('active')
+    }
+  }
+
+  function createIngredientLi(text){
+    var li = document.createElement('li')
+    li.innerText = text
+    return li;
+  }
+
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+  
+  const priceList = document.querySelector('.price ul')
+
+  const totalPrice = document.querySelector('.price strong')
+
+ 
+  
+  var child = priceList.lastElementChild;  
+  while (child) { 
+      priceList.removeChild(child); 
+      child = priceList.lastElementChild; 
+  } 
+
+  let acumulado = 0
+
+  if (state.pepperoni) {
+      priceList.appendChild(createIngredientLi("$" + ingredients.pepperoni.price + " " + ingredients.pepperoni.name))
+      acumulado += ingredients.pepperoni.price
+  }
+
+  if (state.mushrooms) {
+    priceList.appendChild(createIngredientLi("$" + ingredients.mushrooms.price + " " + ingredients.mushrooms.name))
+    acumulado += ingredients.mushrooms.price
+  }
+  if (state.greenPeppers) {
+    priceList.appendChild(createIngredientLi("$" + ingredients.greenPeppers.price + " " + ingredients.greenPeppers.name))
+    acumulado += ingredients.greenPeppers.price
+  }
+  if (state.whiteSauce) {
+    priceList.appendChild(createIngredientLi("$" + ingredients.whiteSauce.price + " " + ingredients.whiteSauce.name))
+    acumulado += ingredients.whiteSauce.price
+  }
+  if (state.glutenFreeCrust) {
+    priceList.appendChild(createIngredientLi("$" + ingredients.glutenFreeCrust.price + " " + ingredients.glutenFreeCrust.name))
+    acumulado += ingredients.glutenFreeCrust.price
+
+  }
+ 
+  totalPrice.innerText = "$" + (basePrice + acumulado)
+
 }
 
 renderEverything();
@@ -75,9 +177,27 @@ document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', () => {
+  state.mushrooms = !state.mushrooms;
+  renderEverything();
+});
+
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+document.querySelector('.btn.btn-green-peppers').addEventListener('click', () => {
+  state.greenPeppers = !state.greenPeppers;
+  renderEverything();
+})
+
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
+document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
+  state.whiteSauce = !state.whiteSauce;
+  renderEverything();
+})
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector('.btn.btn-crust').addEventListener('click', () => {
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+})
