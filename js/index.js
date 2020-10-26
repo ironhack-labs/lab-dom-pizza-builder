@@ -1,6 +1,6 @@
 // Write your Pizza Builder JavaScript in this file.
 
-// Constants
+// Constants 
 let basePrice = 10;
 let ingredients = {
   pepperoni: { name: 'pepperoni', price: 1 },
@@ -137,7 +137,34 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  document.querySelector('.toppings').innerHTML= '';
+  let htmlBuilder = '';
+  let pizzaPrice = 10;
+
+  if (state.pepperoni) {
+    htmlBuilder = htmlBuilder + "<li>$1 pepperoni 🐷</li>";
+    pizzaPrice = pizzaPrice + 1;
+   } 
+   if (state.mushrooms) {
+    htmlBuilder = htmlBuilder + "<li>$1 Mushrooms 🍄</li>";
+    pizzaPrice = pizzaPrice + 1;
+  }  if (state.greenPeppers) {
+    htmlBuilder = htmlBuilder + "<li>$1 Green Peppers</li>";
+    pizzaPrice = pizzaPrice + 1;
+   } 
+     if (state.whiteSauce) {
+    htmlBuilder = htmlBuilder + "<li>$3 White Sauce</li>";
+    pizzaPrice = pizzaPrice + 3;
+   } 
+    if (state.glutenFreeCrust) {
+    htmlBuilder = htmlBuilder + "<li>$5 Gluten Free base 🙄</li>";
+    pizzaPrice = pizzaPrice + 5;
+   } 
+   document.querySelector('.toppings').innerHTML= htmlBuilder;
+   document.querySelector('.priceTotal').innerText = `€ ${pizzaPrice}.00`
 }
+
+
 
 renderEverything();
 
