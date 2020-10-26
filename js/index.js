@@ -155,8 +155,38 @@ document.querySelector(".btn.btn-pepperoni").addEventListener("click", () => {
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
 
+document.querySelector(".btn.btn-mushrooms").addEventListener("click", () => {
+  state.mushrooms = !state.mushrooms;
+  renderEverything();
+});
+
+
+
+
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+
+document.querySelector(".btn.btn-green-peppers")
+  .addEventListener("click", () => {
+    state.greenPeppers = !state.greenPeppers;
+    renderEverything();
+  });
+
+
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 
+document.querySelector(".btn.btn-sauce").addEventListener("click", () => {
+  state.whiteSauce = !state.whiteSauce;
+  renderEverything();
+});
+
+
+
+
+
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+
+document.querySelector(".btn.btn-crust").addEventListener("click", () => {
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+});
