@@ -2,6 +2,7 @@
 
 // Constants
 let basePrice = 10;
+
 let ingredients = {
   pepperoni: { name: "pepperoni", price: 1 },
   mushrooms: { name: "Mushrooms", price: 1 },
@@ -121,6 +122,21 @@ function renderPrice() {
   // Write the function renderPrice() that:
   // Displays the list of all items selected
   // Displays the total price.
+
+  let total = basePrice;
+  let ulElement = document.querySelector(".panel.price ul");
+  // console.log(ulElement);
+  ulElement.innerHTML = "";
+
+  for (let ingredient in ingredients) {
+    if (state[ingredient]) {
+      total = total + ingredients[ingredient].price;
+    }
+    // console.log(total);
+    ulElement.innerHTML += `<li>$ ${ingredients[ingredient].price} ${ingredients[ingredient].name}</li>`;
+    console.log(ulElement);
+  }
+  document.querySelector("aside.panel.price strong").innerHTML = "$" + total;
 }
 
 renderEverything();
