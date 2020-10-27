@@ -1,3 +1,4 @@
+  
 // Write your Pizza Builder JavaScript in this file.
 
 // Constants
@@ -87,85 +88,59 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  document.querySelectorAll('.btn.btn-pepperoni').forEach(btn => {
+  let btnPep = document.querySelector('.btn.btn-pepperoni')
     if(state.pepperoni){
-      btn.classList.add("active");
+      btnPep.classList.add("active");
     }else{
-      btn.classList.remove("active");
+      btnPep.classList.remove("active");
     }
-  });
-  document.querySelectorAll('.btn.btn-mushrooms').forEach(btn => {
+  let btnMush = document.querySelector('.btn.btn-mushrooms')
     if(state.mushrooms){
-      btn.classList.add("active");
+      btnMush.classList.add("active");
     }else{
-      btn.classList.remove("active");
+      btnMush.classList.remove("active");
     }
-  });
-  document.querySelectorAll('.btn.btn-green-peppers').forEach(btn => {
+  let btnPepper = document.querySelector('.btn.btn-green-peppers')
     if(state.greenPeppers){
-      btn.classList.add("active");
+      btnPepper.classList.add("active");
     }else{
-      btn.classList.remove("active");
+      btnPepper.classList.remove("active");
     }
-  });
-  document.querySelectorAll('.btn.btn-sauce').forEach(btn => {
+   let btnSauce = document.querySelector('.btn.btn-sauce')
     if(state.whiteSauce){
-      btn.classList.add("active");
+      btnSauce.classList.add("active");
     }else{
-      btn.classList.remove("active");
+      btnSauce.classList.remove("active");
     }
-  });
-  document.querySelectorAll('.btn.btn-crust').forEach(btn => {
+  let btnCrust = document.querySelector('.btn.btn-crust')
     if(state.glutenFreeCrust){
-      btn.classList.add("active");
+      btnCrust.classList.add("active");
     }else{
-      btn.classList.remove("active");
+      btnCrust.classList.remove("active");
     }
-  });
 }
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
-  let prices = document.querySelectorAll(".price > ul >li")
-  let count = 10
-  let totalPrice = document.querySelector("strong")
-  if(state.pepperoni){
-    prices[0].textContent = "$1 pepperoni"
-    count +=1
-  } else {
-    prices[0].textContent = ""
-    count +=0
+  // Iteration 4: change the HTML of `<aside class="panel price">
+  const ul = document.querySelector(".panel.price ul");
+  ul.innerHTML="";
+  let total = 10;
+  for(let key in state){ 
+    if(state[key]){ 
+    let precio =  ingredients[key].price;
+    //let ing = key;
+    const li = document.createElement("li"); 
+    li.innerText =`$ ${precio} ${key}`;
+    ul.appendChild(li);
+    total += precio;
+    }
   }
-  if(state.mushrooms){
-    prices[1].textContent = "$1 mushrooms"
-    count +=1
+  if(total > 10){
+    document.querySelector(".panel strong").innerText = `$ ${total}`;
   } else {
-    prices[1].textContent = ""
-    count +=0
+    document.querySelector(".panel strong").innerText = "$ 0";
   }
-  if(state.greenPeppers){
-    prices[2].textContent = "$1 greenPeppers"
-    count +=1
-  } else {
-    prices[2].textContent = ""
-    count +=0
-  }
-  if(state.whiteSauce){
-    prices[3].textContent = "$3 whiteSauce"
-    count +=3
-  } else {
-    prices[3].textContent = ""
-    count +=0
-  }
-  if(state.glutenFreeCrust){
-    prices[4].textContent = "$5 glutenFreeCust"
-    count +=5
-  } else {
-    prices[4].textContent = ""
-    count +=0
-  }
-  totalPrice.textContent = `$${count}`
-}
+} 
 
 renderEverything();
 
