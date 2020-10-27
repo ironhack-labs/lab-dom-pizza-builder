@@ -120,7 +120,24 @@ function renderButtons() {
 }
 
 function renderPrice() {
+  let totalPrice = 10;
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  // access the LIs
+  //Pepperoni
+  let priceOne = document.querySelector('.price li');
+  const parentElement = document.querySelector('.price ul');
+  if (state.pepperoni) {
+     parentElement.removeChild(priceOne);
+     totalPrice -=1;
+  }
+  else {
+    parentElement.appendChild(priceOne)
+    totalPrice += 1;
+  }
+   console.log(priceOne);
+   console.log(parentElement)
+  // Update price
+  totalPrice += 1;
 }
 
 renderEverything();
