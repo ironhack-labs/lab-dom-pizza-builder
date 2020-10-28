@@ -90,7 +90,15 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  document.querySelectorAll('.active').forEach(vs => {
+    if (state.pepperoni === true) {
+      vs.className === 'inactive';
+    } else {
+      vs.className === 'active';
+    }
+  });
 }
+
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
@@ -102,6 +110,7 @@ renderEverything();
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
   state.pepperoni = !state.pepperoni;
   renderEverything();
+  
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
