@@ -33,21 +33,37 @@ function renderEverything() {
 }
 
 function renderPepperoni() {
-  document.querySelectorAll('.pep').forEach(onePep => {
+  document.querySelectorAll('.pep').forEach(vs => {
     if (state.pepperoni) {
-      onePep.style.visibility = 'visible';
+      vs.style.visibility = 'visible';
     } else {
-      onePep.style.visibility = 'hidden';
+      vs.style.visibility = 'hidden';
     }
   });
 }
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll('.mushroom').forEach(vs => {
+    if (state.mushrooms) {
+      vs.style.visibility = 'visible';
+    } else {
+      vs.style.visibility = 'hidden';
+    }
+  });
+
 }
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll('.green-pepper').forEach(vs => {
+    if (state.greenPeppers) {
+      vs.style.visibility = 'visible';
+    } else {
+      vs.style.visibility = 'hidden';
+    }
+  });
+
 }
 
 function renderWhiteSauce() {
@@ -75,9 +91,23 @@ document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', () => {
+  state.mushrooms = !state.mushrooms;
+  renderEverything();
+});
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-
+document.querySelector('.btn.btn-green-peppers').addEventListener('click', () => {
+  state.greenPeppers = !state.greenPeppers;
+  renderEverything();
+});
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
-
+document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
+  state.whiteSauce = !state.whiteSauce;
+  renderEverything();
+});
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector('.btn.btn-crust').addEventListener('click', () => {
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+});
