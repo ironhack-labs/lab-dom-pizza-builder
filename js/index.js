@@ -83,13 +83,6 @@ function renderWhiteSauce() {
  }
 
 
-/*function renderButtons() {
-  if (state.btnPepperoni) {}
-
-  btn btn-pepperoni active
-
-}*/
-
 function renderButtons() {
   if (state.pepperoni) {
     document.querySelector(".btn.btn-pepperoni").classList.add("active")
@@ -122,9 +115,22 @@ function renderButtons() {
   }
 }
 
-function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+ // Iteration 4: change the HTML of `<aside class="panel price">`
+
+ function renderPrice() {
+  let totalPrice = basePrice
+  let $list = document.querySelector('aside.panel.price ul')
+  $list.innerHTML = ""
+
+  for (let ingredientKey in ingredients) {
+    if (state[ingredientKey]) {
+      totalPrice += ingredients[ingredientKey].price
+      $list.innerHTML += `<li>$${ingredients[ingredientKey].price} ${ingredients[ingredientKey].name.toLowerCase()}</li>`
+    }
+  }
+  document.querySelector('aside.panel.price strong').innerHTML = "$" + totalPrice
 }
+
 
 renderEverything();
 
