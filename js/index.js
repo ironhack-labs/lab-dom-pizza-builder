@@ -43,7 +43,7 @@ function renderPepperoni() {
 }
 
 function renderMushrooms() {
-  document.getElementsByClassName('mushroom').forEach(mush => {
+  document.querySelectorAll('.mushroom').forEach(mush => {
     if(state.mushrooms) {
       mush.style.visibility = 'visible';
     } else {
@@ -53,8 +53,8 @@ function renderMushrooms() {
 }
 
 function renderGreenPeppers() {
-  document.getElementsByClassName('.green-pepper').forEach(pepper => {
-    if(state.greenPepper) {
+  document.querySelectorAll('.green-pepper').forEach(pepper => {
+    if(state.greenPeppers) {
       pepper.style.visibility = 'visible';
     } else {
       pepper.style.visibility = 'hidden';
@@ -64,12 +64,22 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  document.querySelector('.sauce.sauce-white').removeAttribute('.sauce-white');
+  const sauce = document.querySelector('.sauce-white');
+  if (state.whiteSauce) {
+    sauce.style.visibility = 'visible';
+  } else {
+    sauce.style.visibility = 'hidden';
+  }
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  document.querySelector('.crust.crust-gluten-free').removeAttribute('.crust-gluten-free');
+  const crust = document.querySelector('.crust-gluten-free');
+  if(state.glutenFreeCrust) {
+    crust.style.visibility = 'visible';
+  } else {
+    crust.style.visibility = 'hidden'
+  }
 }
 
 function renderButtons() {
@@ -88,34 +98,32 @@ function renderButtons() {
 }
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
-  //DISPLAY THE LIST OF ALL ITEMS SELECTED
-  const panelPrices = document.getElementsByClassName('.panel.price');
-  const ingrCostList = panelPrices[0].querySelectorAll('li');
-  const ingrCostListArr = [...ingrCostList];
-  for (let i; i < ingrCostListArr.length; i++) {
-    if(ingrState[i]) {
-      ingrCostList[i].style.visibility = 'visible';
-    } else {
-      ingrCostList[i].style.visibility = 'hidden';
-    }
+  let listHtml = ''
+  let totalPrice = 10
+  if(state.pepperoni){
+    listHtml += `<li> $${ingredients.pepperoni.price} ${ingredients.pepperoni.name} </li> `
+    totalPrice += 1
   }
-  
-  //DISPLAY THE TOTAL PRICE
-  const activeIngrPrices = [];
-  for (let i = 0; i < ingrCostListArr.length; i++) {
-    if(ingrState[i]) {
-      activeIngrPrices.push(Number(ingrCostList[i].innerHTML[1]))
-    }
+  if(state.mushrooms){
+    listHtml = listHtml + `<li> $${ingredients.mushrooms.price} ${ingredients.mushrooms.name} </li> `
+    totalPrice += 1
   }
-
-  const totalCost = activeIngrPrices.reduce((acc, item) => {
-    return acc += item;
-  }, 0)
-  
-  const totalDisplay = document.querySelector('.panel strong');
-  totalDisplay.innerHTML = totalCost;
+  if(state.greenPeppers){
+    listHtml = listHtml + `<li> $${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name} </li> `
+    totalPrice += 1
+  }
+  if(state.whiteSauce){
+    listHtml = listHtml + `<li> $${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name} </li> `
+    totalPrice += 3
+  }
+  if(state.glutenFreeCrust){
+    listHtml = listHtml + `<li> $${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name} </li> `
+    totalPrice += 5
+  }
+  document.querySelector('.panel.price ul').innerHTML = listHtml
+  document.querySelector('.panel.price strong').innerText = `$ ${totalPrice}`
 }
+
 
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
