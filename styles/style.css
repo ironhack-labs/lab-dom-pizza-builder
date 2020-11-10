@@ -371,6 +371,9 @@ p.description {
   margin: 5px 20px 0;
   color: #666;
 }
+.visibility{
+  display:none;
+}
 
 .price li:before {
   content: '+ ';
