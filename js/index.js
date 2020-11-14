@@ -101,7 +101,16 @@ function renderButtons() {
 }
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+  /*
+  const buttons = document.querySelectorAll('.btn');
+  
+  const listaIngredientes = document.querySelectorAll('.panel.price ul');
+  
+
+  if (state.glutenFreeCrust.visibility = 'visible'){
+    //listaIngredientes[].innerHTML = '<li>$5 gluten-free crust</li>';
+  }
+  */
 }
 
 renderEverything();
