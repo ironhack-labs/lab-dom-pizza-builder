@@ -42,20 +42,43 @@ function renderPepperoni() {
   });
 }
 
-function renderMushrooms() {
+
   // Iteration 1: set the visibility of `<section class="mushroom">`
-}
+  function renderMushrooms() {
+    document.querySelectorAll('.mushroom').forEach(oneMush => {
+      if (state.mushrooms) {
+        oneMush.style.visibility = 'visible';
+      } else {
+        oneMush.style.visibility = 'hidden';
+      }
+    });
+  }
 
-function renderGreenPeppers() {
-  // Iteration 1: set the visibility of `<section class="green-pepper">`
-}
+// function renderGreenPeppers() {
+  document.querySelectorAll('.green-pepper').forEach(onePepper => {
+    if (state.greenPeppers {
+      onePepper.style.visibility = 'visible';
+    } else {
+      onePepper.style.visibility = 'hidden';
+    }
+  });
 
-function renderWhiteSauce() {
+  
+    // I am assuming that we don't need forEach function in here, so just the queryselector will work
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-}
 
+  function renderWhiteSauce() {
+    document.querySelector(".sauce").classList.add("sauce-white");
+} else {
+  document.querySelector(".sauce").classList.remove("sauce-white");
+}
+   
+// Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
 function renderGlutenFreeCrust() {
-  // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  document.querySelector(".crust").classList.add("crust-gluten-free");
+   } else {
+     document.querySelector(".crust").classList.remove("crust-gluten-free");
+   }
 }
 
 function renderButtons() {
@@ -76,8 +99,27 @@ document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
 
-// Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', () => {
+  state.mushrooms = !state.mushrooms;
+  renderEverything();
+});
+
+
+
+// // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+document.querySelector('.btn.btn-green-peppers').addEventListener('click', () => {
+  state.greenPeppers = !state.greenPeppers;
+  renderEverything();
+});
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
+document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
+  state.whiteSauce = !state.whiteSauce;
+  renderEverything();
+});
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector('.btn.btn-crust').addEventListener('click', () => {
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+});
