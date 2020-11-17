@@ -112,38 +112,6 @@ function renderButtons() {
   }
 }
 
-/*const buttons = document.querySelectorAll(".btn");
-buttons.forEach(function (button) {
-  button.onclick = renderButtons;
-});*/
-
-/*
-  for (let toto in ingredients) {
-    if (state[toto]) {
-      evt.target.classList.add("active");
-    } else {
-      evt.target.classList.remove("active");
-    }
-  }
-button.forEach(function (button) {
-  button.onclick = renderButtons;
-});*/
-
-/*
-  
-
-  function toggleCssClass(target) {
-    target.classList.toggle("active");
-  }
-
-  function click(evt) {
-    toggleCssClass(evt.target);
-  }
-
-  button.forEach(function (button) {
-    button.onclick = click;
-  });*/
-
 function renderPrice() {
   let panelPrices = document.querySelector(".price ul");
   let total = basePrice;
