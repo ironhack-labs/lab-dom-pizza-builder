@@ -10,6 +10,11 @@ let ingredients = {
   glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
 };
 
+
+
+
+
+
 // Initial value of the state (the state values can change over time)
 let state = {
   pepperoni: true,
@@ -102,18 +107,45 @@ function handleClick(evt){
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-      // const list = document.querySelector('ul');
-//       document.querySelectorAll('price .li').forEach(item => {
-//          if((item.onclick)==true){
-//            item.style.visibility = 'visible';
-//          } else {
-//            item.style.visibility = 'hidden';
-//          }
-//       });
-// }
+      const list = document.querySelectorAll('.price ul li');
+      // console.log("here-->>",list);
 
+      list.forEach(() => {
+      state.pepperoni ? list[0].style.visibility = 'visible' : list[0].style.visibility = 'hidden';
+      state.mushrooms ? list[1].style.visibility = 'visible' : list[1].style.visibility = 'hidden';
+      state.greenPeppers ? list[2].style.visibility = 'visible' : list[2].style.visibility = 'hidden';
+      state.whiteSauce ? list[3].style.visibility = 'visible' : list[3].style.visibility = 'hidden';
+      state.glutenFreeCrust ? list[4].style.visibility = 'visible' : list[4].style.visibility = 'hidden';
+          
+    });
 
+    // console.log("price", ingredients["pepperoni"]["price"]);
+    let priceArr = [
+                   ingredients["pepperoni"]["price"], 
+                   ingredients["mushrooms"]["price"],
+                   ingredients["greenPeppers"]["price"],
+                   ingredients["whiteSauce"]["price"],
+                   ingredients["glutenFreeCrust"]["price"]
 
+    ]; 
+
+      let sum = 10;
+      state.pepperoni ? sum+=priceArr[0] : sum-=0;
+      state.mushrooms ? sum+=priceArr[1] : sum-=0;
+      state.greenPeppers ? sum+=priceArr[2] : sum-=0;
+      state.whiteSauce ? sum+=priceArr[3] : sum-=0;
+      state.glutenFreeCrust ? sum+=priceArr[4] : sum-=0;
+
+    
+          
+    // console.log(priceArr);
+    // console.log(sum);
+
+      const newPrice = document.querySelector('strong');
+      newPrice.textContent = "$"+sum;
+      // console.log(newPrice);
+
+  }    
 
 
 
