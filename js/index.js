@@ -73,24 +73,90 @@ function renderGlutenFreeCrust() {
   document.querySelector('.crust').classList.toggle('crust-gluten-free');
 }
 
-function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  // when click on the button 'btn:active' === true
-  // when not click on the button 'btn:active' == false 
-  // element.classList.add('btn:active');
-  // element.classList.remove('btn:active');
-}
+// Iteration 3
+// function renderButtons() {
+  
+//   const btnPep = document.querySelector('.btn-pepperoni');
+//   if(state.pepperoni) {
+//     btnPep.classList.add('active');
+//   } else {
+//     btnPep.classList.remove('active');
+//   }
+  
+//   const btnMush = document.querySelector('.btn-mushrooms');
+//   if(state.mushroom) {
+//     btnMush.classList.add('active');
+//   } else {
+//     btnPep.classList.remove('active');
+//   }
 
-// if (btn.onclick)
+//   const btnPepp = document.querySelector('.btn-green-peppers');
+//   if(state.peppers) {
+//     btnPepp.classList.add('active');
+//   } else {
+//     btnPepp.classList.remove('active');
+//   }
 
-// if (element.contains('.active)) {
-//   element.classList.remove('btn:active');
+//   const btnWhiteSauce = document.querySelector('btn-sauce');
+//   if(!state.whiteSauce) {
+//     btnWhiteSauce.classList.add('active');
+//   } else {
+//     btnWhiteSauce.classList.remove('active');
+//   }
+
+//   const btnGlutenFreeCrust = document.querySelector('btn-crust');
+//   if(!state.glutenFreeCrust) {
+//     btnGlutenFreeCrust.classList.add('active');
+//   } else {
+//     btnGlutenFreeCrust.classList.remove('active');
+//   }
+
+//   const btns = document.querySelectorAll('.btn');
+//   btns.forEach(function(btn) {
+//     btn.onclick = renderButtons;
+//   })
+
 // }
 
+function renderButton() {
+  if (state.pepperoni) {
+    document.querySelector('.btn.btn-pepperoni').classList.remove('active');
+  } else { 
+    document.querySelector('.btn.btn-pepperoni').classList.add('active');
+  }
+
+  if (state.mushrooms) {
+    document.querySelector('.btn.btn-mushrooms').classList.remove('active');
+  } else {
+    document.querySelector('.btn.btn-mushrooms').classList.add('active');
+
+  } if (state.greenPeppers) {
+    document.querySelector('.btn.btn-green-peppers').classList.remove('active');
+  } else {
+    document.querySelector('.btn.btn-green-peppers').classList.add('active');
+  }
+
+  if (state.whiteSauce) {
+    document.querySelector('.btn.btn-sauce').classList.remove('active');
+  } else {
+    document.querySelector('.btn.btn-sauce').classList.add('active');
+  }
+
+  if (state.glutenFreeCrust) {
+    document.querySelector('.btn.btn-crust').classList.remove('active');
+  } else {
+    document.querySelector('.btn.btn-crust').classList.add('active');
+  }
+}
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
 }
+
+// liste des prix à faire par rapport au state
+// if state.pepperoni // ou for toto in object.name loop
+// acceder tout le temps au prix de base
+// faire un calcule sur base price + ingrédient coché puis somme des 2 et après l'afficher 
 
 renderEverything();
 
@@ -98,32 +164,35 @@ renderEverything();
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
   state.pepperoni = !state.pepperoni;
   renderPepperoni();
+  renderButtons();
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
 document.querySelector('.btn.btn-mushrooms').addEventListener('click', () => {
-  state.mushroom = !state.mushroom;
+  state.mushrooms = !state.mushrooms;
   renderMushrooms();
+  renderButtons();
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
 document.querySelector('.btn.btn-green-peppers').addEventListener('click', () => {
-  state.peppers = !state.peppers;
+  state.greenPeppers = !state.greenPeppers;
   renderGreenPeppers();
+  renderButtons();
 });
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
 if(!state.whiteSauce) {
-  state.whiteSauce === false;
   renderWhiteSauce();
+  renderButtons();
 }
 });
-
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
 document.querySelector('.btn.btn-crust').addEventListener('click', () => {
   if (!state.glutenFreeCrust) {
     renderGlutenFreeCrust();
+    renderButtons();
   }
   });
