@@ -117,7 +117,7 @@ function renderButtons() {
   }
 }
 
-// I tried this way but it didn't work :/
+// I tried this way but it didn't work :/ Idon't know why
 
 // for (let i = 0; i < butTon.length; i++) {
 //   console.log(i);
@@ -136,8 +136,17 @@ function renderButtons() {
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
 
-  const panel = document.querySelector(".panel.price");
-  let total = panel;
+  let total = basePrice;
+  const listOfPrice = document.querySelector("aside.panel.price ul");
+  listOfPrice.innerHTML = "";
+  // console.log(typeof listOfPrice);
+  for (let ingredientKey in ingredients) {
+    if (state[ingredientKey]) {
+      total += ingredients[ingredientKey].price;
+      listOfPrice.innerHTML += `<li>${ingredients[ingredientKey].price}  ${ingredients[ingredientKey].name} </li> `;
+    }
+  }
+  document.querySelector(".panel.price strong").innerHTML = "$" + total;
 }
 
 renderEverything();
