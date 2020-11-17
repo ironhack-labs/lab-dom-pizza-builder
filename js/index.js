@@ -71,7 +71,66 @@ function renderGlutenFreeCrust() {
 }
 
 function renderButtons() {
-  const button = document.querySelectorAll(".btn");
+  const buttonPep = document.querySelector(".btn-pepperoni");
+
+  if (state.pepperoni) {
+    buttonPep.classList.add("active");
+  } else if (!state.pepperoni) {
+    buttonPep.classList.remove("active");
+  }
+
+  const buttonMush = document.querySelector(".btn-mushrooms");
+
+  if (state.mushrooms) {
+    buttonMush.classList.add("active");
+  } else if (!state.mushrooms) {
+    buttonMush.classList.remove("active");
+  }
+
+  const buttonGreenPep = document.querySelector(".btn-green-peppers");
+
+  if (state.greenPeppers) {
+    buttonGreenPep.classList.add("active");
+  } else if (!state.greenPeppers) {
+    buttonGreenPep.classList.remove("active");
+  }
+
+  const buttonSauce = document.querySelector(".btn-sauce");
+
+  if (state.whiteSauce) {
+    buttonSauce.classList.add("active");
+  } else if (!state.whiteSauce) {
+    buttonSauce.classList.remove("active");
+  }
+
+  const buttonCrust = document.querySelector(".btn-crust");
+
+  if (state.glutenFreeCrust) {
+    buttonCrust.classList.add("active");
+  } else if (!state.whiteSauce) {
+    buttonCrust.classList.remove("active");
+  }
+}
+
+/*const buttons = document.querySelectorAll(".btn");
+buttons.forEach(function (button) {
+  button.onclick = renderButtons;
+});*/
+
+/*
+  for (let toto in ingredients) {
+    if (state[toto]) {
+      evt.target.classList.add("active");
+    } else {
+      evt.target.classList.remove("active");
+    }
+  }
+button.forEach(function (button) {
+  button.onclick = renderButtons;
+});*/
+
+/*
+  
 
   function toggleCssClass(target) {
     target.classList.toggle("active");
@@ -83,13 +142,21 @@ function renderButtons() {
 
   button.forEach(function (button) {
     button.onclick = click;
-  });
-}
+  });*/
 
 function renderPrice() {
-  const priceList = document.querySelector("price");
+  let panelPrices = document.querySelector(".price ul");
+  let total = basePrice;
+  let totalIng = document.querySelector(".price.panel strong");
+  panelPrices.innerHTML = "";
 
-  console.log(priceList);
+  for (let key in ingredients) {
+    if (state[key]) {
+      total += ingredients[key].price;
+      panelPrices.innerHTML += `<li>$ ${ingredients[key].price} ${ingredients[key].name}</li>`;
+    }
+  }
+  totalIng.textContent = `$ ${total}`;
 }
 
 renderEverything();
@@ -98,12 +165,16 @@ renderEverything();
 document.querySelector(".btn.btn-pepperoni").addEventListener("click", () => {
   state.pepperoni = !state.pepperoni;
   renderPepperoni();
+  renderButtons();
+  renderPrice();
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
 document.querySelector(".btn.btn-mushrooms ").addEventListener("click", () => {
   state.mushrooms = !state.mushrooms;
   renderMushrooms();
+  renderButtons();
+  renderPrice();
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
@@ -112,16 +183,22 @@ document
   .addEventListener("click", () => {
     state.greenPeppers = !state.greenPeppers;
     renderGreenPeppers();
+    renderButtons();
+    renderPrice();
   });
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 document.querySelector(".btn.btn-sauce ").addEventListener("click", () => {
-  !state.whiteSauce === state.whiteSauce;
+  state.whiteSauce = !state.whiteSauce;
   renderWhiteSauce();
+  renderButtons();
+  renderPrice();
 });
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
 document.querySelector(".btn.btn-crust").addEventListener("click", () => {
-  !state.glutenFreeCrust === state.glutenFreeCrust;
+  state.glutenFreeCrust = !state.glutenFreeCrust;
   renderGlutenFreeCrust();
+  renderButtons();
+  renderPrice();
 });
