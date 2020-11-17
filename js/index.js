@@ -54,9 +54,9 @@ function renderPepperoni() {
     });
   }
 
-// function renderGreenPeppers() {
+function renderGreenPeppers() {
   document.querySelectorAll('.green-pepper').forEach(onePepper => {
-    if (state.greenPeppers {
+    if (state.greenPeppers) {
       onePepper.style.visibility = 'visible';
     } else {
       onePepper.style.visibility = 'hidden';
@@ -64,21 +64,23 @@ function renderPepperoni() {
   });
 
   
-    // I am assuming that we don't need forEach function in here, so just the queryselector will work
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
 
   function renderWhiteSauce() {
-    document.querySelector(".sauce").classList.add("sauce-white");
-} else {
-  document.querySelector(".sauce").classList.remove("sauce-white");
+    if (document.querySelectorAll('.sauce')===false)  {
+    document.querySelector(".sauce").classList.add(".sauce-white");}
+ else { 
+   document.querySelector(".sauce").classList.remove(".sauce-white");
+  }
 }
    
 // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
 function renderGlutenFreeCrust() {
-  document.querySelector(".crust").classList.add("crust-gluten-free");
-   } else {
-     document.querySelector(".crust").classList.remove("crust-gluten-free");
-   }
+  if (document.querySelectorAll('.crust')===false)  {
+    document.querySelector('.crust').classList.add(".crust-gluten-free")
+  }
+  else { document.querySelector(".crust").classList.remove(".crust-gluten-free");
+}
 }
 
 function renderButtons() {
@@ -123,3 +125,4 @@ document.querySelector('.btn.btn-crust').addEventListener('click', () => {
   state.glutenFreeCrust = !state.glutenFreeCrust;
   renderEverything();
 });
+}
