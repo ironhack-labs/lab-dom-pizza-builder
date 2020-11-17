@@ -90,6 +90,7 @@ function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
   if (state.pepperoni){
     document.querySelector('.btn.btn-pepperoni').classList.add('active') 
+  }
   else { 
      document.querySelector('.btn.btn-pepperoni').classList.remove('active')
   }
@@ -167,4 +168,3 @@ document.querySelector('.btn.btn-crust').addEventListener('click', () => {
   state.glutenFreeCrust = !state.glutenFreeCrust;
   renderEverything();
 }); 
-}
