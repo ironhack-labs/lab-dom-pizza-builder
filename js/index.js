@@ -117,29 +117,31 @@ function renderButtons() {
   };
 };
 
-/*function renderPrice() {
+function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  	var ul = document.getElementById('prices');
-	while (ul.firstChild) { 
-		ul.removeChild(ul.firstChild);
-	}
-	pizzaPrice = basePrice;
-  for (var key in state) {
-		price = ingredients[key]['price'];
-		name = ingredients[key]['name'];
+  const lists = document.querySelectorAll(".panel.price li");
+  const [liPep, liMush, liGreen, liWhite, liGlut] = lists;
+  // if (state.pepperoni) {
+  liPep.style.display = state.pepperoni ? "block" : "none";
+  // } else {
+  //   liPep.style.display = "none"
+  // }
+  liMush.style.display = state.mushrooms ? "block" : "none";
+  liGreen.style.display = state.greenPeppers ? "block" : "none";
+  liWhite.style.display = state.whiteSauce ? "block" : "none";
+  liGlut.style.display = state.glutenFreeCrust ? "block" : "none";
 
-    if (!state[key]) {
-			node.style.display = 'none';
-		} else {
-			pizzaPrice += price;
-		}
-	}
+  let pricePep = ingredients.pepperoni.price * state.pepperoni;
+  let priceMush = ingredients.mushrooms.price * state.mushrooms;
+  let priceGreen = ingredients.greenPeppers.price * state.greenPeppers;
+  let priceSauce = ingredients.whiteSauce.price * state.whiteSauce;
+  let priceCrust = ingredients.glutenFreeCrust.price * state.glutenFreeCrust;
 
-	var finalPrice = document.getElementById("finalPrice");
-	finalPrice.innerHTML = `$${pizzaPrice}`;
-};
+  let finalPrice = basePrice + pricePep + priceMush + priceGreen + priceSauce + priceCrust;
 
-renderEverything();*/
+  document.querySelector("aside.panel.price strong").innerHTML = `$ ${finalPrice}`;
+}
+renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
@@ -149,13 +151,13 @@ document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
 document.querySelector('.btn.btn-mushrooms').addEventListener('click', () => {
-  state.mushroom = !state.mushroom;
+  state.mushrooms = !state.mushrooms;
   renderEverything();
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-greenpeppers">`
 document.querySelector('.btn.btn-greenpeppers').addEventListener('click', () => {
-  state.greenpepper = !state.greenpepper;
+  state.greenPeppers = !state.greenPeppers;
   renderEverything();
 });
 
