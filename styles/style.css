@@ -609,11 +609,11 @@ p.description {
 }
 
 .mushroom.one {
-  margin: 367px 0 0 122px;
+  margin: 1px 0 0 55px;
   -webkit-transform: rotate(22deg);
   -moz-transform: rotate(22deg);
   -o-transform: rotate(22deg);
-  transform: rotate(22deg);
+  transform: rotate(90deg);
 }
 
 .mushroom.two {
