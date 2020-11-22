@@ -52,7 +52,7 @@ function renderMushrooms() {
       oneMush.style.visibility = "hidden";
     }
   });
-  // guillaume is typinng :) wes ay arraylike because each value has an
+  // wes ay arraylike because each value has an
   // const mushrooms = document.querySelectorAll(".mushroom"); // array like (indexes)
   //for (let i = 0; i < mushrooms.length; i++) {
   // if (state.mushrooms) {
@@ -99,9 +99,9 @@ function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 
   if (state.pepperonni) {
-    document.querySelector(".btn.btn-pepperonni").classList.add("active");
+    document.querySelector(".btn.btn-pepperoni").classList.add("active");
   } else {
-    document.querySelector(".btn.btn-pepperonni").classList.remove("active");
+    document.querySelector(".btn.btn-pepperoni").classList.remove("active");
   }
   if (state.mushrooms) {
     document.querySelector(".btn.btn-mushrooms").classList.add("active");
@@ -127,6 +127,33 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let total = 10;
+  let ul = document.querySelector(".panel.price ul");
+  let str = "";
+  if (state.pepperoni) {
+    str = str + "<li>$1 pepperoni</li>";
+    total += 1;
+  }
+  if (state.mushrooms) {
+    str = str + "<li>1$ mushrooms</li>";
+    total += 1;
+  }
+  if (state.greenPeppers) {
+    str = str + "<li>$1 green peppers</li>";
+    total += 1;
+  }
+  if (state.whiteSauce) {
+    str = str + "<li>3$ white sauce</li>";
+    total += 3;
+  }
+
+  if (state.glutenFreeCrust) {
+    str = str + "<li>5$ gluten-free crust</li>";
+    total += 5;
+  }
+  ul.innerHTML = str;
+  document.querySelector(".panel.price strong").innerHTML = "$" + total;
+  return total;
 }
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
