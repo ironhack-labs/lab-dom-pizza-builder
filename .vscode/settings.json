@@ -1,0 +1,21 @@
+{
+    "jshint.config": "",
+    "jshint.options": {
+        "esversion": 6
+    },
+    "json.schemas": [
+    
+    ],
+
+
+    "launch": {
+
+
+        "configurations": [],
+        "compounds": []
+    },
+    "editor.wordWrapColumn": 1,
+    "editor.wrappingIndent": "none",
+    "html.format.wrapLineLength": 0,
+}
+
