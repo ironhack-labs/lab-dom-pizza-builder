@@ -135,18 +135,22 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  // const changeAside = document.getElementsByTagName('aside')
-  const changeStrong = document.getElementsByTagName('strong')
-  if(state.pepperoni){
-changeStrong.innerHtml = changeStrong + 1
-  } if(state.mushrooms){
-changeStrong.innerHtml = changeStrong + 1
-  }if(state.greenPeppers){
-    changeStrong.innerHtml = changeStrong + 1
-}if(state.whiteSauce){
-  changeStrong.innerHtml = changeStrong + 3
-}if(state.glutenFreeCrust){
-  changeStrong.innerHtml = changeStrong + 5
+  // const changeUl = document.getElementsByTagName('ul')
+  let total = 10
+  const changeStrong = document.querySelector('.price strong')
+  if (state.pepperoni) {
+    total += 1
+  } if (state.mushrooms) {
+    total += 1
+  } if (state.greenPeppers) {
+    total += 1
+  } if (state.whiteSauce) {
+    total +=  3
+  } if (state.glutenFreeCrust) {
+    total += 5
+  }
+  changeStrong.innerHTML= '<h1>teste</h1>'
+
 }
 
 renderEverything()
