@@ -125,6 +125,12 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let total = querySelector(".panel.price")
+  for (ingredient in state) {
+    if (state.pepperoni) {
+      total+= // TRABAJANDO AQUÍ
+    }
+  }
 }
 
 renderEverything();
