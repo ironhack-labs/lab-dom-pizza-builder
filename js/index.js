@@ -105,61 +105,16 @@ function renderButtons() {
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
 
-  let list = document.querySelector('.price').querySelector('ul')
-  let price = document.querySelector('.price').querySelector('strong')
-  list.innerHTML = ''
-  let pricePep = ingredients.pepperoni.price
-  let priceMus = ingredients.mushrooms.price
-  let priceGre = ingredients.greenPeppers.price
-  let priceSau = ingredients.whiteSauce.price
-  let priceGlu = ingredients.glutenFreeCrust.price
-  let totalPrice = 10
-  let namePep = ingredients.pepperoni.name
-  let nameMus = ingredients.mushrooms.name
-  let nameGre = ingredients.greenPeppers.name
-  let nameSau = ingredients.whiteSauce.name
-  let nameGlu = ingredients.glutenFreeCrust.name
-  if (state.pepperoni) {
-    list.innerHTML += `<li> $${pricePep} ${namePep}</li>`
-    totalPrice += pricePep
+  let parentList= document.querySelector('.panel.price ul')
+  let totPrice= basePrice;
+  parentList.innerHTML='';
+  for(let ingredient in ingredients){
+    if(state[ingredient]){
+      totPrice+= ingredients[ingredient].price;
+      parentList.innerHTML +=`<li>$ ${ingredients[ingredient].price} ${ingredients[ingredient].name}</li>`
+    }
   }
-  if (state.mushrooms) {
-    list.innerHTML += `<li> $${priceMus} ${nameMus}</li>`
-    totalPrice += priceMus
-  }
-  if (state.greenPeppers) {
-    list.innerHTML += `<li> $${priceGre} ${nameGre}</li>`
-    totalPrice += priceGre
-  }
-  if (state.whiteSauce) {
-    list.innerHTML += `<li> $${priceSau} ${nameSau}</li>`
-    totalPrice += priceSau
-  }
-  if (state.glutenFreeCrust) {
-    list.innerHTML += `<li> $${priceGlu} ${nameGlu}</li>`
-    totalPrice += priceGlu
-  }
-  console.log(totalPrice)
-  price.innerHTML = `$${totalPrice}`
-
- /*  console.log(document.querySelector('.panel.price'))
-  let ingredientsArray = document.querySelector('.panel.price').getElementsByTagName('li')
-  state.pepperoni ?  ingredientsArray[0].innerHTML = '$1 pepperoni' : ingredientsArray[0].innerHTML = ''
-  state.mushrooms ?  ingredientsArray[1].innerHTML = '$1 mushrooms' : ingredientsArray[1].innerHTML = ''
-  state.greenPeppers ?  ingredientsArray[2].innerHTML = '$1 green peppers' : ingredientsArray[2].innerHTML = ''
-  state.whiteSauce ?  ingredientsArray[3].innerHTML = '$3 white sauce' : ingredientsArray[3].innerHTML = ''
-  state.glutenFreeCrust ?  ingredientsArray[4].innerHTML = '$5 gluten-free crust' : ingredientsArray[4].innerHTML = ''
-  
-  
-  let total = 10
-  state.pepperoni ?  total++ : 1
-  state.mushrooms ?  total++ : 1
-  state.greenPeppers ?  total++ : 1
-  state.whiteSauce ?  total += 3: 1
-  state.glutenFreeCrust ?  total += 5 : 1
-  console.log(total)
-
-  document.querySelector('.panel.price').getElementsByTagName('strong')[0].innerHTML =  `$${total}` */
+  document.querySelector('strong').innerHTML=totPrice;
 }
 
 renderEverything();
