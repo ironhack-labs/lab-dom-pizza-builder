@@ -124,12 +124,18 @@ function renderButtons() {
 }
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
-  let total = querySelector(".panel.price")
-  for (ingredient in state) {
-    if (state.pepperoni) {
-      total+= // TRABAJANDO AQUÍ
+  //Iteration 4: change the HTML of `<aside class="panel price">`
+  let list = document.querySelector(".panel.price ul")
+  let totalprice = document.querySelector(".panel.price strong")
+  let total= 10;
+
+  list.innerHTML = ''
+  for (let ingredient in ingredients) {
+    if (state[ingredient]) {
+      list.insertAdjacentHTML("beforeend",`<li>$ ${ingredients[ingredient].price} ${ingredient}</li>`)
+      total+= ingredients[ingredient].price
     }
+    totalprice.innerHTML= `$${total}`
   }
 }
 
