@@ -32,21 +32,37 @@ function renderEverything() {
   renderPrice();
 }
 
+console.log(document.querySelectorAll(".btn.btn-sauce"));
+
 function renderPepperoni() {
-  document.querySelectorAll('.pep').forEach(onePep => {
+  document.querySelectorAll('.pep').forEach((element) => {
     if (state.pepperoni) {
-      onePep.style.visibility = 'visible';
+      element.style.visibility = 'visible';
     } else {
-      onePep.style.visibility = 'hidden';
+      element.style.visibility = 'hidden';
     }
   });
 }
 
 function renderMushrooms() {
+  document.querySelectorAll('.pep').forEach((element) => {
+    if (state.mushrooms) {
+      element.style.visibility = 'visible';
+    } else {
+      element.style.visibility = 'hidden';
+    }
+  });
   // Iteration 1: set the visibility of `<section class="mushroom">`
 }
 
 function renderGreenPeppers() {
+  document.querySelectorAll('.pep').forEach((element) => {
+    if (state.greenPeppers) {
+      element.style.visibility = 'visible';
+    } else {
+      element.style.visibility = 'hidden';
+    }
+  });
   // Iteration 1: set the visibility of `<section class="green-pepper">`
 }
 
