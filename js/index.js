@@ -1,3 +1,4 @@
+// done by Michael Raman and Ana-Maria Garlau
 // Write your Pizza Builder JavaScript in this file.
 
 // Constants
@@ -119,6 +120,7 @@ function renderButtons() {
 }
 
 function renderPrice() {
+
   basePrice = 21;
   // Iteration 4: change the HTML of `<aside class="panel price">`
   if (state.pepperoni){
