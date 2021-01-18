@@ -161,6 +161,30 @@ function renderPrice() {
   document.querySelector('.panel.price').lastElementChild.innerText = `$${basePrice}`;
 }
 
+/* other option Ahmed and Ana:
+
+function renderPrice() {
+
+ let a= document.getElementsByClassName('panel price');
+ let b =[...a[0].getElementsByTagName('li')]
+ let c = document.getElementsByTagName('strong')
+  let i = 0;
+ let totalPrice= basePrice
+ for (let el in state) {
+  if (state[el]){
+     totalPrice = totalPrice + ingredients[el].price;
+    b[i].style.display = 'block';
+  }
+  else {
+    b[i].style.display = 'none';
+  }
+  i++
+ }
+c[0].innerText = totalPrice
+}
+
+*/
+
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
