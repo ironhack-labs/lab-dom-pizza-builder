@@ -110,20 +110,14 @@ function renderPrice() {
   // array of key in the state object
   const listOfKeys = Object.keys(state);
 
-  let total = 10; // price without toppings
+  let total = basePrice; // price without toppings
   // loop through all toppings
   for (let i=0; i<listOfKeys.length; i++) {
     // if the topping is true, set the corresponding list item to block display, if false, none display
     if (state[listOfKeys[i]]) {
       toppingPrices.children[i].style.display = "block";
       // adding to total price
-      if (i === 3) {
-        total += 3;
-      } else if (i===4) {
-        total +=5
-      } else {
-        total+=1;
-      }
+      total +=ingredients[listOfKeys[i]].price;
     } else {
       toppingPrices.children[i].style.display = "none";
     }
