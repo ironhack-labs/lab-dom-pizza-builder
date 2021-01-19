@@ -119,6 +119,7 @@ function renderPrice() {
 
 }
 
+
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
