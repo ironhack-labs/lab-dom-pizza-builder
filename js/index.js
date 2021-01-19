@@ -81,43 +81,22 @@ function renderWhiteSauce() {
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
   
+  //Get a NodeList of all .crust elements
   const crust = document.querySelectorAll(".crust")
-  console.log(crust);
+  //console.log(crust[1]);
 
-  crust.forEach(  => {
+  //remove add a class with  loop
+  crust.forEach(element => {
+   //console.log(element.classList[1]);
+    
     if (state.glutenFreeCrust === false) {
-      crust.classList.add("crust-gluten-free")
+      element.classList.add("crust-gluten-free")
     } else {
-      crust.classList.remove("crust-gluten-free")
-    }
+      element.classList.remove("crust-gluten-free")
+    } 
   })
-
-  console.log(crust)
-  
-  /*
-
-  
-  if (state.glutenFreeCrust) {
-    crust[0].classList.add('crust-gluten-free');
-  } else {
-    crust[0].classList.remove('crust-gluten-free');
-  } */
-
 }
 
-
-
-/*
-function renderGlutenFreeCrust() {
-  // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  const crust = document.querySelectorAll('.crust');
-  if (state.glutenFreeCrust) {
-    crust[0].classList.add('crust-gluten-free');
-  } else {
-    crust[0].classList.remove('crust-gluten-free');
-  }
-}
-*/
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
@@ -135,6 +114,9 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  /* - Displays the list of all items selected
+- Displays the total price.*/ 
+
 }
 
 renderEverything();
@@ -167,6 +149,5 @@ document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
 document.querySelector('.btn.btn-crust').addEventListener('click', () => {
   state.glutenFreeCrust = !state.glutenFreeCrust;
-  renderEverything();
-
+  renderEverything()
 });
