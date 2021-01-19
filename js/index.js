@@ -19,6 +19,11 @@ let state = {
   glutenFreeCrust: false
 };
 
+// map class
+let lookup = {
+
+}
+
 // This function takes care of rendering the pizza based on the state
 // This function is triggered once at the beginning and every time the state is changed
 function renderEverything() {
@@ -90,57 +95,35 @@ function renderGlutenFreeCrust() {
   });
 }
 
+
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-
-document.querySelectorAll('.btn.btn-pepperoni').forEach(button => {
-    if (state.pepperoni) {
-      button.classList.add('active'); 
-    } else {
-      button.classList.remove('active'); 
-    }
-  })
-}
-
-function renderButtons() {
-document.querySelectorAll('.btn.btn-mushrooms').forEach(button => {
-    if (state.mushrooms) {
-      button.classList.add('active'); 
-    } else {
-      button.classList.remove('active'); 
-    }
-  })
-}
-
-function renderButtons() {
-document.querySelectorAll('.btn.btn-green-peppers').forEach(button => {
-    if (state.greenPeppers) {
-      button.classList.add('active'); 
-    } else {
-      button.classList.remove('active'); 
-    }
-  })
-}
-
-function renderButtons() {
-  document.querySelectorAll('.btn.btn-sauce').forEach(button => {
-      if (state.whiteSauce) {
-        button.classList.remove('active'); 
-      } else {
-        button.classList.add('active'); 
-      }
-    })
+  if (state.pepperoni) {
+    document.querySelector('.btn-pepperoni').classList.add('active'); 
+  }else{
+    document.querySelector('.btn-pepperoni').classList.remove('active'); 
   }
-
-  function renderButtons() {
-    document.querySelectorAll('.btn.btn-crust').forEach(button => {
-        if (state.glutenFreeCrust) {
-          button.classList.remove('active'); 
-        } else {
-          button.classList.add('active'); 
-        }
-      })
-    }
+  if (state.mushrooms) {
+    document.querySelector('.btn-mushrooms').classList.add('active'); 
+  } else {
+    document.querySelector('.btn-mushrooms').classList.remove('active'); 
+  }
+  if (state.greenPeppers) {
+    document.querySelector('.btn-green-peppers').classList.add('active');
+  }else {
+    document.querySelector('.btn-green-peppers').classList.remove('active');
+  }
+  if (state.whiteSauce) {
+    document.querySelector('.btn-sauce').classList.remove('active');
+  } else {
+    document.querySelector('.btn-sauce').classList.add('active');
+  }
+  if (state.glutenFreeCrust) {
+    document.querySelector('.btn-crust').classList.remove('active');
+  } else {
+    document.querySelector('.btn-crust').classList.remove('active');
+  }
+} 
 
 
 
@@ -148,7 +131,7 @@ function renderPrice() {
    // Iteration 4: change the HTML of `<aside class="panel price">`
    // create a new variable to sum all prices
    //create a new variable to change the HTML of the <li> list
-   
+   // loop over the state to add topping price to total variable and to change the HTML variable
     let total = basePrice
     let newHtml = ""
     for ( let ingredient in state) {
