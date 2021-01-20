@@ -2,8 +2,7 @@
 
 // Constants
 let basePrice = 10;
-let total = 0
-let precioUnitario = 0
+var total = 0
 let ingredients = {
   pepperoni: { name: 'pepperoni', price: 1 },
   mushrooms: { name: 'Mushrooms', price: 1 },
@@ -90,10 +89,8 @@ function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 }
 
-function renderPrice(topping) {
-  total = precioUnitario + basePrice
-  return total
-}
+
+
 
 function activeButton(button){
   if(button.classList.contains("active")){
@@ -105,6 +102,65 @@ function activeButton(button){
   }
 }
 
+function renderPrice(topping,status) {
+  const precioPep = ingredients.pepperoni.price
+  const precioMushrooms = ingredients.mushrooms.price
+  const precioGreenPeppers = ingredients.greenPeppers.price
+  const precioWhiteSauce = ingredients.whiteSauce.price
+  const precioGlutenFreeCrust = ingredients.glutenFreeCrust.price
+  
+  switch(topping){
+    case "pepperoni":
+      if(status.pepperoni){
+        basePrice += precioPep
+        console.log(`aqui verdadero ${basePrice}`)
+      }else{
+        basePrice -= precioPep
+        console.log(`aqui falso ${basePrice}`)
+      }
+      break
+      case "mushrooms":
+      if(status.mushrooms){
+        basePrice += precioMushrooms
+        console.log(`aqui verdadero ${basePrice}`)
+      }else{
+        basePrice -= precioMushrooms
+        console.log(`aqui falso ${basePrice}`)
+      }
+      break
+      case "greenPeppers":
+        if(status.greenPeppers){
+          basePrice += precioGreenPeppers
+          console.log(`aqui verdadero ${basePrice}`)
+        }else{
+          basePrice -= precioGreenPeppers
+          console.log(`aqui falso ${basePrice}`)
+        }
+        break
+
+        case "WhiteSauce":
+        if(status.whiteSauce){
+          basePrice += precioWhiteSauce
+          console.log(`aqui verdadero ${basePrice}`)
+        }else{
+          basePrice -= precioWhiteSauce
+          console.log(`aqui falso ${basePrice}`)
+        }
+        break
+
+        case "glutenFreeCrust":
+        if(status.glutenFreeCrust){
+          basePrice += precioGlutenFreeCrust
+          console.log(`aqui verdadero ${basePrice}`)
+        }else{
+          basePrice -= precioGlutenFreeCrust
+          console.log(`aqui falso ${basePrice}`)
+        }
+        break
+  }
+}
+
+
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
@@ -113,7 +169,8 @@ document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
   renderEverything();
   const contiene = document.querySelector(".btn-pepperoni")
   activeButton(contiene)
-  renderPrice()
+  renderPrice("pepperoni",state)
+
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
@@ -122,6 +179,7 @@ document.querySelector('.btn.btn-mushrooms').addEventListener('click', () => {
   renderEverything();
   const contiene = document.querySelector(".btn.btn-mushrooms")
   activeButton(contiene)
+  renderPrice("mushrooms",state)
   // console.log("funciona mushyy")
 });
 
@@ -131,7 +189,8 @@ document.querySelector('.btn.btn-green-peppers').addEventListener('click', () =>
   renderEverything();
   const contiene = document.querySelector(".btn.btn-green-peppers")
   activeButton(contiene)
-  console.log("funciona peppers")
+  // console.log("funciona peppers")
+  renderPrice("greenPeppers",state)
 });
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
@@ -140,7 +199,8 @@ document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
   renderEverything();
   const contiene = document.querySelector(".btn.btn-sauce")
   activeButton(contiene)
-  console.log("funciona saucy")
+  // console.log("funciona saucy")
+  renderPrice("WhiteSauce",state)
 });
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
@@ -149,7 +209,8 @@ document.querySelector('.btn.btn-crust').addEventListener('click', () => {
   renderEverything();
   const contiene = document.querySelector(".btn.btn-crust")
   activeButton(contiene)
-  console.log( state.glutenFreeCrust)
+  renderPrice("glutenFreeCrust",state)
+  
 });
 
 
