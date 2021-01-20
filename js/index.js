@@ -19,6 +19,8 @@ let state = {
   glutenFreeCrust: false
 };
 
+console.log(state)
+
 // This function takes care of rendering the pizza based on the state
 // This function is triggered once at the beginning and every time the state is changed
 function renderEverything() {
@@ -34,36 +36,90 @@ function renderEverything() {
 
 function renderPepperoni() {
   document.querySelectorAll('.pep').forEach(onePep => {
-    if (state.pepperoni) {
-      onePep.style.visibility = 'visible';
+      if (state.pepperoni) {
+        onePep.style.visibility = 'visible';
+      } else {
+        onePep.style.visibility = 'hidden';
+        
+      }
+    });
+  }
+
+function renderMushrooms() {
+  // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll('.mushroom').forEach(oneMush => {
+    if (state.mushrooms) {
+      oneMush.style.visibility = 'visible';
     } else {
-      onePep.style.visibility = 'hidden';
+      oneMush.style.visibility = 'hidden';
     }
   });
 }
 
-function renderMushrooms() {
-  // Iteration 1: set the visibility of `<section class="mushroom">`
-}
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll('.green-pepper').forEach(oneGP => {
+    if (state.greenPeppers) {
+      oneGP.style.visibility = 'visible';
+    } else {
+      oneGP.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+  document.querySelectorAll('.sauce').forEach(oneWS => {
+    if (state.whiteSauce) {
+      oneWS.style.visibility = 'hidden';
+    } else {
+      oneWS.style.visibility = 'visible';
+    }
+  });
 }
 
-function renderGlutenFreeCrust() {
+function renderGlutenFreeCrust() {  
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  document.querySelectorAll('.crust').forEach(oneCrust => {
+    if (state.glutenFreeCrust) {
+      oneCrust.style.visibility = 'hidden';
+    } else {
+      oneCrust.style.visibility = 'visible';
+    }
+  });
 }
 
+
+/*const actRemove = document.querySelector('btn btn-pepperoni active')
+const status = actRemove.classList.contains("active")*/
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+    if (event) {
+  const currentButton = event.currentTarget;
+    const status = currentButton.classList.contains('active')
+     if (status===true){
+      currentButton.classList.remove('active');
+
+     } else {
+      currentButton.classList.add('active');
+     }
+    }
 }
 
+
+
+
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+ const totalPrice = document.querySelector(".panel.price > totalPrice")
+    for(let i in state) {
+      for(let j in ingredients)
+      if(state[i] === true) {
+        basePrice+=ingredients.price[j]
+        totalPrice.innerHTML = basePrice
+      }
+    }
+  
 }
 
 renderEverything();
@@ -75,9 +131,22 @@ document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
-
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', () => {
+  state.mushrooms = !state.mushrooms;
+  renderEverything();
+});
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-
+document.querySelector('.btn.btn-green-peppers').addEventListener('click', () => {
+  state.greenPeppers = !state.greenPeppers;
+  renderEverything();
+});
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
-
+document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
+  state.whiteSauce = !state.whiteSauce;
+  renderEverything();
+});
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector('.btn.btn-crust').addEventListener('click', () => {
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+});
