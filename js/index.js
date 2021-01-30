@@ -103,13 +103,17 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  document.querySelector(".panel.price").innerHTML = "<aside></aside>"
+  document.querySelector(".panel.price").innerHTML = "<aside><ul></ul></aside>"
 
   // select the aside
   // in aside, create UL
-  // if an ingredient is visible, create a new LI which displays name and price
-  // calculate price of all ingredients
+  // if an ingredient is visible, create a new LI which displays name and price from ingredients object
+  // calculate price of all ingredients active ingredients
   // display price of all ingredients
+  // drink a very large glass of wine
+  // question everything
+  // stare into the void
+  // the void stares back...
 }
 
 renderEverything();
