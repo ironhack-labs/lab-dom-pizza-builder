@@ -66,18 +66,23 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  let sauceysauce = document.querySelector(".sauce");
-  sauceysauce.classList.toggle("sauce-white");
+  document.querySelector(".sauce").classList.toggle("sauce-white");
   };
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  // let glutfree = document.querySelector(".crust");
-  // glutfree.classList.toggle("crust-gluten-free");
+  let glutfree = document.querySelector(".crust");
+  glutfree.classList.toggle("crust-gluten-free");
 };
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  const activeButton = document.querySelectorAll(".btn");
+  activeButton.forEach(button => {
+    button.addEventListener("click", () => {
+      button.classList.toggle("active");
+    })
+  })
 }
 
 function renderPrice() {
