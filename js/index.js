@@ -66,7 +66,8 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  document.querySelector(".sauce").classList.toggle("sauce-white");
+  let sauceysauce = document.querySelector(".sauce");
+  sauceysauce.classList.toggle("sauce-white");
   };
 
 function renderGlutenFreeCrust() {
@@ -83,10 +84,14 @@ function renderButtons() {
       button.classList.toggle("active");
     })
   })
+
+  // let buttons = document.querySelectorAll('.btn');
+  // buttons.classList.toggle('active');
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  document.querySelector(".panel.price").innerHTML
 }
 
 renderEverything();
