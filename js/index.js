@@ -92,8 +92,7 @@ function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
   if(event){
     const thisButton = event.target;
-      const isActive = thisButton.classList.contains('active')
-      if (isActive == true){
+      if (thisButton.classList.contains('active')){
         thisButton.classList.remove('active');
        } else {
         thisButton.classList.add('active');
