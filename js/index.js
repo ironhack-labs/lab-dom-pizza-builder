@@ -99,16 +99,6 @@ function renderButtons() {
         thisButton.classList.add('active');
        };
       }
-      
-  // const activeButton = document.querySelectorAll(".btn");
-  // activeButton.forEach(button => {
-  //   button.addEventListener("click", () => {
-  //     button.classList.toggle("active");
-  //   })
-  // })
-
-  // let buttons = document.querySelectorAll('.btn');
-  // buttons.classList.toggle('active');
 }
 
 function renderPrice() {
