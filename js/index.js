@@ -1,9 +1,11 @@
+// Completed with Gizem :)
+
 // Write your Pizza Builder JavaScript in this file.
 
 // Constants
 let basePrice = 10;
 let ingredients = {
-  pepperoni: { name: 'pepperoni', price: 1 },
+  pepperoni: { name: 'Pepperoni', price: 1 },
   mushrooms: { name: 'Mushrooms', price: 1 },
   greenPeppers: { name: 'Green Peppers', price: 1 },
   whiteSauce: { name: 'White sauce', price: 3 },
@@ -58,8 +60,6 @@ function renderGreenPeppers() {
   document.querySelectorAll(".green-pepper").forEach(grnPep => {
     if (state.greenPeppers) {
       grnPep.style.visibility = "visible";
-      // const newLi = displayPrice.createElement("li");
-      // newLi.innerText = ingredients.name["pepperoni"];
     } else {
       grnPep.style.visibility = "hidden";
     }
@@ -101,11 +101,9 @@ function renderButtons() {
   // buttons.classList.toggle('active');
 }
 
-let displayPrice = document.querySelector(".price ul");
-
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  document.querySelector(".panel.price").innerHTML = ""
+  document.querySelector(".panel.price").innerHTML = "<aside></aside>"
 }
 
 renderEverything();
