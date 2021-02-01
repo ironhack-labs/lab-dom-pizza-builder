@@ -107,10 +107,15 @@ function renderPrice() {
   Object.values(state).forEach(ingredient => {
     if (ingredient === true){
       const newLi = document.createElement("li");
-      newLi.innerText = Object.keys(state).forEach(key => {
+      Object.keys(state).forEach(key => {
         // compare keys of active ingredients in state with ingredient array
+        
+        // if (valueof(key) === true){
+        //   newLi.innerText = key;
+        // }
+
         // print the name and price of active items in inngredients array using innerText
-        "MAKE ME DYNAMIC"
+        
       });
       ingredientList.appendChild(newLi);
     }
