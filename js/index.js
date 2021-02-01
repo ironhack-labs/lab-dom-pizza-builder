@@ -92,21 +92,28 @@ function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
   if(event){
     const thisButton = event.target;
-      if (thisButton.classList.contains('active')){
-        thisButton.classList.remove('active');
-       } else {
-        thisButton.classList.add('active');
-       };
-      }
+    if (thisButton.classList.contains('active')){
+      thisButton.classList.remove('active');
+      } else {
+      thisButton.classList.add('active');
+      };
+    }
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  document.querySelector(".panel.price").innerHTML = "<aside><ul></ul></aside>"
+  document.querySelector(".panel.price").innerHTML = `<aside><ul></ul></aside>`
+  const ingredientList = document.querySelector("ul");
+  if (valueof(Object.keys(state)) === true){ // CHECK THIS
+    const newLi = document.createElement("li");
+    newLi.innerText = "object property"; // MAKE DYNAMIC
+    ingredientList.appendChild(newLi);
+  };
 
-  // select the aside
-  // in aside, create UL
+  // select the aside - done
+  // in aside, create UL - done
   // if an ingredient is visible, create a new LI which displays name and price from ingredients object
+  // - maybe this should be done in the seperate ingredient render functions, although instructions say otherwise
   // calculate price of all ingredients active ingredients
   // display price of all ingredients
   // drink a very large glass of wine
