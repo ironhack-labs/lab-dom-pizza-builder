@@ -104,11 +104,18 @@ function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   document.querySelector(".panel.price").innerHTML = `<aside><ul></ul></aside>`
   const ingredientList = document.querySelector("ul");
-  if (valueof(Object.keys(state)) === true){ // CHECK THIS
-    const newLi = document.createElement("li");
-    newLi.innerText = "object property"; // MAKE DYNAMIC
-    ingredientList.appendChild(newLi);
-  };
+  Object.keys(state).forEach(key => {
+    if (key === true){
+      const newLi = document.createElement("li");
+      newLi.innerText = "object property";
+      ingredientList.appendChild(newLi);
+    }
+  })
+  // if (valueof(Object.keys(state)) === true){ // CHECK THIS
+  //   const newLi = document.createElement("li");
+  //   newLi.innerText = "object property"; // MAKE DYNAMIC
+  //   ingredientList.appendChild(newLi);
+  // };
 
   // select the aside - done
   // in aside, create UL - done
