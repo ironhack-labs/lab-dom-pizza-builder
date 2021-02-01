@@ -103,11 +103,13 @@ function renderButtons() {
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   document.querySelector(".panel.price").innerHTML = `<aside><ul></ul></aside>`
-  const ingredientList = document.querySelector("ul");
+  const ingredientList = document.querySelector("aside ul");
   Object.values(state).forEach(ingredient => {
     if (ingredient === true){
       const newLi = document.createElement("li");
-      newLi.innerText = "object property";
+      newLi.innerText = Object.keys(state).forEach(key => {
+
+      });
       ingredientList.appendChild(newLi);
     }
   })
