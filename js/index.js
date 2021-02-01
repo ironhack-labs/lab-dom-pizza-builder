@@ -12,7 +12,7 @@ let ingredients = {
 
 // Initial value of the state (the state values can change over time)
 let state = {
-  pepperoni: true,
+  pepperoni: false,
   mushrooms: true,
   greenPeppers: true,
   whiteSauce: false,
@@ -111,8 +111,16 @@ function renderButtons() {
   }
 }
 
+// Iteration 4: change the HTML of `<aside class="panel price">`
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+  const priceList = ['$1 pepperoni', '$1 mushrooms', '$1 green peppers', '$3 white sauce', '$5 gluten-free crust']
+  const pricePanel = document.querySelector('aside > ul');
+  const pepperoniPrice = document.createElement('li');
+    pepperoniPrice.innerText = priceList[0];
+    pepperoniPrice.style.listStyleType = 'none'
+  if(state.pepperoni) {
+    pricePanel.appendChild(pepperoniPrice);
+  } 
 }
 
 renderEverything();
