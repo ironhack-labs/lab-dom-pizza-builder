@@ -108,16 +108,13 @@ function renderPrice() {
     if (ingredient === true){
       const newLi = document.createElement("li");
       newLi.innerText = Object.keys(state).forEach(key => {
-
+        // compare keys of active ingredients in state with ingredient array
+        // print the name and price of active items in inngredients array using innerText
+        "MAKE ME DYNAMIC"
       });
       ingredientList.appendChild(newLi);
     }
   })
-  // if (valueof(Object.keys(state)) === true){ // CHECK THIS
-  //   const newLi = document.createElement("li");
-  //   newLi.innerText = "object property"; // MAKE DYNAMIC
-  //   ingredientList.appendChild(newLi);
-  // };
 
   // select the aside - done
   // in aside, create UL - done
