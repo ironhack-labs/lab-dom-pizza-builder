@@ -113,14 +113,35 @@ function renderButtons() {
 
 // Iteration 4: change the HTML of `<aside class="panel price">`
 function renderPrice() {
-  const priceList = ['$1 pepperoni', '$1 mushrooms', '$1 green peppers', '$3 white sauce', '$5 gluten-free crust']
-  const pricePanel = document.querySelector('aside > ul');
-  const pepperoniPrice = document.createElement('li');
-    pepperoniPrice.innerText = priceList[0];
-    pepperoniPrice.style.listStyleType = 'none'
+  let totalPrice = basePrice;
+  document.querySelector('aside > ul').innerHTML = '';
   if(state.pepperoni) {
-    pricePanel.appendChild(pepperoniPrice);
-  } 
+    document.querySelector('aside > ul').innerHTML += `<li>${ingredients.pepperoni.price}$ pepperoni</li>`
+    totalPrice += ingredients.pepperoni.price;
+  }
+
+  if(state.mushrooms) {
+    document.querySelector('aside > ul').innerHTML += `<li>${ingredients.mushrooms.price}$ mushrooms</li>`
+    totalPrice += ingredients.mushrooms.price;
+  }
+
+  if(state.greenPeppers) {
+    document.querySelector('aside > ul').innerHTML += `<li>${ingredients.greenPeppers.price}$ green peppers</li>`
+    totalPrice += ingredients.greenPeppers.price;
+  }
+
+  if(state.whiteSauce) {
+    document.querySelector('aside > ul').innerHTML += `<li>${ingredients.whiteSauce.price}$ white sauce</li>`
+    totalPrice += ingredients.whiteSauce.price;
+  }
+
+  if(state.glutenFreeCrust) {
+    document.querySelector('aside > ul').innerHTML += `<li>${ingredients.glutenFreeCrust.price}$ gluten free crust</li>`
+    totalPrice += ingredients.glutenFreeCrust.price;
+  }
+
+  let theBill = document.querySelector('aside > strong');
+  theBill.innerHTML = '$' + totalPrice;
 }
 
 renderEverything();
