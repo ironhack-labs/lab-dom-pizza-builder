@@ -117,7 +117,7 @@ function renderGlutenFreeCrust() {
 //   }
 // }
 
-// Felipe's solution:
+// Filipe's solution:
 function renderButtons() {
   document.querySelectorAll(".btn").forEach((btn) => {
     for (let key in ingredients) {
