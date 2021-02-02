@@ -107,6 +107,9 @@ function renderPrice() {
   Object.values(state).forEach(ingredient => {
     if (ingredient === true){
       const key = Object.keys(ingredients).find(key => state[key] === ingredient);
+      // ingredients.forEach(activeIngredient => {
+
+      // })
       const newLi = document.createElement("li");
       newLi.innerText = key;
       ingredientList.appendChild(newLi);
