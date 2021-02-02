@@ -106,17 +106,9 @@ function renderPrice() {
   const ingredientList = document.querySelector("aside ul");
   Object.values(state).forEach(ingredient => {
     if (ingredient === true){
+      const key = Object.keys(ingredients).find(key => state[key] === ingredient);
       const newLi = document.createElement("li");
-      Object.keys(state).forEach(key => {
-        // compare keys of active ingredients in state with ingredient array
-        
-        // if (valueof(key) === true){
-        //   newLi.innerText = key;
-        // }
-
-        // print the name and price of active items in inngredients array using innerText
-        
-      });
+      newLi.innerText = key;
       ingredientList.appendChild(newLi);
     }
   })
