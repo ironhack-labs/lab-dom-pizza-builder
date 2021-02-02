@@ -68,7 +68,7 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  if(state.whiteSauce){
+  if(!state.whiteSauce){
     let sauceysauce = document.querySelector(".sauce");
     sauceysauce.classList.remove("sauce-white");
   } else {
@@ -79,7 +79,7 @@ function renderWhiteSauce() {
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  if(state.glutenFreeCrust){
+  if(!state.glutenFreeCrust){
     let glutfree = document.querySelector(".crust");
     glutfree.classList.remove("crust-gluten-free");
   } else {
@@ -100,32 +100,39 @@ function renderButtons() {
     }
 }
 
+// TOM'S MALFUNCTIONING SOLUTION
+
+// function renderPrice() {
+//   // Iteration 4: change the HTML of `<aside class="panel price">`
+//   document.querySelector(".panel.price").innerHTML = `<aside><ul></ul></aside>`
+//   const ingredientList = document.querySelector("aside ul");
+//   Object.values(state).forEach(ingredient => {
+//     if (ingredient === true){
+//       const key = Object.keys(ingredients).find(key => state[key] === ingredient);
+//       // ingredients.forEach(activeIngredient => {
+
+//       // })
+//       const newLi = document.createElement("li");
+//       newLi.innerText = key;
+//       ingredientList.appendChild(newLi);
+//     }
+//   })
+
+// GIZEM'S SOLUTION
+
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  document.querySelector(".panel.price").innerHTML = `<aside><ul></ul></aside>`
-  const ingredientList = document.querySelector("aside ul");
-  Object.values(state).forEach(ingredient => {
-    if (ingredient === true){
-      const key = Object.keys(ingredients).find(key => state[key] === ingredient);
-      // ingredients.forEach(activeIngredient => {
+  let totalPrice = basePrice;
+  let html = "";
 
-      // })
-      const newLi = document.createElement("li");
-      newLi.innerText = key;
-      ingredientList.appendChild(newLi);
-    }
-  })
-
-  // select the aside - done
-  // in aside, create UL - done
-  // if an ingredient is visible, create a new LI which displays name and price from ingredients object
-  // - maybe this should be done in the seperate ingredient render functions, although instructions say otherwise
-  // calculate price of all ingredients active ingredients
-  // display price of all ingredients
-  // drink a very large glass of wine
-  // question everything
-  // stare into the void
-  // the void stares back...
+  for (let toppings in ingredients) {
+      if (state[toppings]) {
+          totalPrice += ingredients[toppings].price;
+          html += `<li>$${ingredients[toppings].price} ${ingredients[toppings].name}</li>`;
+      }
+  }
+  document.querySelector(".price ul").innerHTML = html;
+  document.querySelector("strong").innerHTML = `$${totalPrice}`;
 }
 
 renderEverything();
