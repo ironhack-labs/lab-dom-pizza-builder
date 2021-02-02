@@ -100,6 +100,9 @@ function renderButtons() {
     }
 }
 
+// The state of the crust and sauce was active in HTML which conflicted with the initial false statements in JS - 
+// I have take "active" out of the HTML classes to align these. 
+
 // TOM'S MALFUNCTIONING SOLUTION
 
 // function renderPrice() {
