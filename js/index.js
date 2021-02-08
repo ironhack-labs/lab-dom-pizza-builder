@@ -99,6 +99,27 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  
+  const prices = document.querySelectorAll('.price li');
+  const pepPrice = prices[0]
+  if(state.pepperoni) {pepPrice.style.display = "block"} 
+  else { pepPrice.style.display = "none" }
+
+  const mushPrice = prices[1]
+  if(state.mushrooms) {mushPrice.style.display = "block"} 
+  else { mushPrice.style.display = "none" }
+
+  const greenPepPrice = prices[2]
+  if(state.greenPeppers) {greenPepPrice.style.display = "block"} 
+  else { greenPepPrice.style.display = "none" }
+
+  const whiteSaucePrice = prices[3]
+  if(state.whiteSauce) {whiteSaucePrice.style.display = "block"} 
+  else { whiteSaucePrice.style.display = "none" }
+
+  const glutenCrustPrice = prices[4]
+  if(state.glutenFreeCrust) {glutenCrustPrice.style.display = "block"} 
+  else { glutenCrustPrice.style.display = "none" }
 }
 
 renderEverything();
