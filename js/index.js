@@ -120,22 +120,23 @@ let ingredients = {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  let priceList = document.querySelector('.panel.price ul');
-  priceList.innerHTML = '';
   let totalPrice = basePrice;
-  let totalPriceHTML = document.querySelector('.panel.price strong');
+  let priceList = document.querySelector('aside.panel.price ul');
+  priceList.innerHTML = '';
   
   //loop through ingredients object to check state of each ingredient
   //if state[ingredient] true add a li with price and name / add price to total
   for(ingredient in ingredients) {
     if(state[ingredient]) {
-      priceList.innerHTML +=`<li>$${ingredients[ingredient].price} ${ingredients[ingredient].name}</li>`
+      let li = document.createElement('li');
+      li.innerText = `$${ingredients[ingredient].price} ${ingredients[ingredient].name} `;
+      priceList.appendChild(li)
       totalPrice += ingredients[ingredient].price;
-    }
+    } 
   }
-
+  
   //show totalprice
-  totalPriceHTML.innerText = `$${totalPrice}`;
+  document.querySelector('.panel.price strong').innerText = `$${totalPrice}`;
 }
 
 renderEverything();
