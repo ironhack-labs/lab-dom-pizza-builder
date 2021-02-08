@@ -68,9 +68,9 @@ function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
   document.querySelectorAll('.sauce').forEach(oneSauce => {
     if (state.whiteSauce){
-    oneSauce.style.visibility = 'hidden';
+    oneSauce.classList.remove('sauce-white');
   } else {
-    oneSauce.style.visibility = 'visible';
+    oneSauce.classList.add('sauce-white');
   }
 });
 }
@@ -79,15 +79,22 @@ function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
   document.querySelectorAll('.crust').forEach(oneCrust => {
     if (state.glutenFreeCrust){
-      oneCrust.style.visibility = 'hidden';
+      oneCrust.classList.remove('crust-gluten-free');
   } else {
-      oneCrust.style.visibility = 'visible';
+      oneCrust.classList.add('crust-gluten-free');
   }
 });
 }
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  document.querySelectorAll('.btn').forEach(activeBtn => {
+    if (activeBtn.classList.contains("active")) {
+      activeBtn.classList.remove('active');
+    } else {
+      activeBtn.classList.add('active');
+    }
+  })
 }
 
 function renderPrice() {
