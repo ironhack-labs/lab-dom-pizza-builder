@@ -83,25 +83,54 @@ function renderGlutenFreeCrust() {
 }
 // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 function renderButtons() {
-  document.querySelectorAll('.btn').forEach(bttn => {
-    if (bttn.classList.contains("active")) {
-      bttn.classList.remove("active");
-    } else {
-      bttn.classList.add("active");
-    }
-  });
+  if (state.pepperoni) {
+    document.querySelector('.btn-pepperoni').classList.add("active");
+  }
+  else {
+    document.querySelector('.btn-pepperoni').classList.remove("active");
+  }
+
+  if (state.mushrooms) {
+    document.querySelector('.btn-mushrooms').classList.add("active");
+  }
+  else {
+    document.querySelector('.btn-mushrooms').classList.remove("active");
+  }
+
+  if (state.greenPeppers) {
+    document.querySelector('.btn-green-peppers').classList.add("active");
+  }
+  else {
+    document.querySelector('.btn-green-peppers').classList.remove("active");
+  }
+
+  if (state.whiteSauce) {
+    document.querySelector('.btn-sauce').classList.add("active");
+  }
+  else {
+    document.querySelector('.btn-sauce').classList.remove("active");
+  }
+
+  if (state.glutenFreeCrust) {
+    document.querySelector('.btn-crust').classList.add("active");
+  }
+  else {
+    document.querySelector('.btn-crust').classList.remove("active");
+  }
 }
 
 // Iteration 4: change the HTML of `<aside class="panel price">`
 function renderPrice() {
-  const ingredients = document.querySelector(".panel.price ul");
-  const bttnList = document.querySelector(".panel.controls ul");
+  const ingredients = document.querySelectorAll(".panel.price ul li");
+  const bttnList = document.querySelectorAll(".panel.controls ul li");
 
-  const ingredientsPrice = 0
+  let ingredientsPrice = 0
 
   for (let i = 0; i < ingredients.length; i++) {
+
     if (bttnList[i].classList.contains("active")) {
-      ingredientsPrice += Number(ingredients[i.innerHTML].slice(1, 2))
+      console.log(Number(ingredients[i].innerHTML.slice(1, 2)))
+      ingredientsPrice += Number(ingredients[i].innerHTML.slice(1, 2))
     }
   }
 
