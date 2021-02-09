@@ -122,7 +122,7 @@ function renderButtons() {
 // Iteration 4: change the HTML of `<aside class="panel price">`
 function renderPrice() {
   const ingredients = document.querySelectorAll(".panel.price ul li");
-  const bttnList = document.querySelectorAll(".panel.controls ul li");
+  const bttnList = document.querySelectorAll(".panel.controls ul li button");
 
   let ingredientsPrice = 0
 
