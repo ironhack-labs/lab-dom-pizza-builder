@@ -22,44 +22,56 @@ let state = {
 // This function takes care of rendering the pizza based on the state
 // This function is triggered once at the beginning and every time the state is changed
 function renderEverything() {
-  renderPepperoni();
-  renderMushrooms();
-  renderGreenPeppers();
-  renderWhiteSauce();
-  renderGlutenFreeCrust();
+  renderToppings('pepperoni')
+  renderToppings('mushrooms')
+  renderToppings('greenPeppers')
+  renderToppings('whiteSauce')
+  renderToppings('glutenFreeCrust')
+
 
   renderButtons();
   renderPrice();
 }
 
-function renderPepperoni() {
-  document.querySelectorAll('.pep').forEach(onePep => {
-    if (state.pepperoni) {
-      onePep.style.visibility = 'visible';
+function renderToppings(arg) {
+  const toppings = {
+    pepperoni: '.pep',
+    mushrooms: '.mushroom',
+    greenPeppers: '.green-pepper',
+    whiteSauce: '.sauce',
+    glutenFreeCrust: '.crust-gluten-free',
+  }
+
+  const toppingState = {
+    pepperoni: 'pepperoni',
+    mushrooms: 'mushrooms',
+    greenPeppers: 'greenPeppers',
+    whiteSauce: 'whiteSauce',
+    glutenFreeCrust: 'glutenFreeCrust'
+  }
+
+
+  document.querySelectorAll(toppings[arg]).forEach(toppingOne => {
+    if (state[toppingState[arg]]) {
+      toppingOne.style.visibility = 'visible';
     } else {
-      onePep.style.visibility = 'hidden';
+      toppingOne.style.visibility = 'hidden';
     }
   });
 }
 
-function renderMushrooms() {
-  // Iteration 1: set the visibility of `<section class="mushroom">`
-}
-
-function renderGreenPeppers() {
-  // Iteration 1: set the visibility of `<section class="green-pepper">`
-}
-
-function renderWhiteSauce() {
-  // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-}
-
-function renderGlutenFreeCrust() {
-  // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-}
-
 function renderButtons() {
+
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  let buttonPep = document.querySelector('.btn.btn-pepperoni');
+  if (buttonPep.className.valueOf('active')) {
+    buttonPep.classList.remove('active')
+    buttonPep.classList.add('disabled')
+  }
+  buttonPep.classList.remove('disabled')
+  buttonPep.classList.add('active')
+
+  console.log(buttonPep)
 }
 
 function renderPrice() {
@@ -68,16 +80,33 @@ function renderPrice() {
 
 renderEverything();
 
-// Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
-document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
-  state.pepperoni = !state.pepperoni;
-  renderEverything();
-});
+function changeToppings(params) {
+  const toppings = {
+    pepperoni: document.querySelector('.btn.btn-pepperoni'),
+    mushrooms: document.querySelector('.btn.btn-mushrooms'),
+    greenPeppers: document.querySelector('.btn.btn-green-peppers'),
+    whiteSauce: document.querySelector('.btn.btn-sauce'),
+    glutenFreeCrust: document.querySelector('.btn.btn-crust')
+  }
 
-// Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
+  const toppingState = {
+    pepperoni: 'pepperoni',
+    mushrooms: 'mushrooms',
+    greenPeppers: 'greenPeppers',
+    whiteSauce: 'whiteSauce',
+    glutenFreeCrust: 'glutenFreeCrust',
+  }
 
-// Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+  toppings[params].addEventListener('click', () => {
+    state[toppingState[params]] = !state[toppingState[params]];
+    renderEverything();
+  });
+}
 
-// Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 
-// Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+changeToppings('pepperoni');
+changeToppings('mushrooms');
+changeToppings('greenPeppers');
+changeToppings('whiteSauce');
+changeToppings('glutenFreeCrust');
+
