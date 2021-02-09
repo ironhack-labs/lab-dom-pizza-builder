@@ -68,7 +68,7 @@ function renderGreenPeppers() {
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
 if (state.whiteSauce) {
-  document.querySelector('.sauce').classList.add('sauce-white')
+  document.querySelector('.sauce').classList.add('.sauce-white')
 }
 else {
   document.querySelector('.sauce').classList.remove('.sauce-white')
