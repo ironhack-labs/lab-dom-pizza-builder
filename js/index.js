@@ -122,6 +122,7 @@ function changeToppings(topping) {
     renderEverything();
   });
 }
+
 renderEverything();
 
 for (const key in ingredients) {
