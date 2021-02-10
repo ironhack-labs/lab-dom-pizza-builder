@@ -28,8 +28,11 @@ function renderEverything() {
   renderToppings('whiteSauce')
   renderToppings('glutenFreeCrust')
 
-
-  renderButtons();
+  renderButtons('pepperoni')
+  renderButtons('mushrooms')
+  renderButtons('greenPeppers')
+  renderButtons('whiteSauce')
+  renderButtons('glutenFreeCrust')
   renderPrice();
 }
 
@@ -60,18 +63,30 @@ function renderToppings(arg) {
   });
 }
 
-function renderButtons() {
-
+function renderButtons(params) {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  let buttonPep = document.querySelector('.btn.btn-pepperoni');
-  if (buttonPep.className.valueOf('active')) {
-    buttonPep.classList.remove('active')
-    buttonPep.classList.add('disabled')
-  }
-  buttonPep.classList.remove('disabled')
-  buttonPep.classList.add('active')
 
-  console.log(buttonPep)
+  const toppings = {
+    pepperoni: document.querySelector('.btn.btn-pepperoni'),
+    mushrooms: document.querySelector('.btn.btn-mushrooms'),
+    greenPeppers: document.querySelector('.btn.btn-green-peppers'),
+    whiteSauce: document.querySelector('.btn.btn-sauce'),
+    glutenFreeCrust: document.querySelector('.btn.btn-crust')
+  }
+
+  const toppingState = {
+    pepperoni: 'pepperoni',
+    mushrooms: 'mushrooms',
+    greenPeppers: 'greenPeppers',
+    whiteSauce: 'whiteSauce',
+    glutenFreeCrust: 'glutenFreeCrust',
+  }
+
+  if (state[toppingState[params]]) {
+    toppings[params].classList.add('active')
+  } else {
+    toppings[params].classList.remove('active')
+  }
 }
 
 function renderPrice() {
