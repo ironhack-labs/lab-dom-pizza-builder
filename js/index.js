@@ -3,11 +3,46 @@
 // Constants
 let basePrice = 10;
 let ingredients = {
-  pepperoni: { name: 'pepperoni', price: 1 },
-  mushrooms: { name: 'Mushrooms', price: 1 },
-  greenPeppers: { name: 'Green Peppers', price: 1 },
-  whiteSauce: { name: 'White sauce', price: 3 },
-  glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
+  pepperoni: {
+    name: 'pepperoni',
+    price: 1,
+    add: false,
+    button: document.querySelector('.btn.btn-pepperoni'),
+    allElement: document.querySelectorAll('.pep'),
+    elementPrice: document.querySelector('#pep'),
+  },
+  mushrooms: {
+    name: 'mushrooms',
+    price: 1,
+    add: false,
+    button: document.querySelector('.btn.btn-mushrooms'),
+    allElement: document.querySelectorAll('.mushroom'),
+    elementPrice: document.querySelector('#mush'),
+  },
+  greenPeppers: {
+    name: 'greenPeppers',
+    price: 1,
+    add: false,
+    button: document.querySelector('.btn.btn-green-peppers'),
+    allElement: document.querySelectorAll('.green-pepper'),
+    elementPrice: document.querySelector('#greenp')
+  },
+  whiteSauce: {
+    name: 'whiteSauce',
+    price: 3,
+    add: false,
+    button: document.querySelector('.btn.btn-sauce'),
+    allElement: document.querySelectorAll('.sauce'),
+    elementPrice: document.querySelector('#whitesauce')
+  },
+  glutenFreeCrust: {
+    name: 'glutenFreeCrust',
+    price: 5,
+    add: false,
+    button: document.querySelector('.btn.btn-crust'),
+    allElement: document.querySelectorAll('.crust-gluten-free'),
+    elementPrice: document.querySelector('#glutenfree')
+  }
 };
 
 // Initial value of the state (the state values can change over time)
@@ -21,41 +56,19 @@ let state = {
 
 // This function takes care of rendering the pizza based on the state
 // This function is triggered once at the beginning and every time the state is changed
-function renderEverything() {
-  renderToppings('pepperoni')
-  renderToppings('mushrooms')
-  renderToppings('greenPeppers')
-  renderToppings('whiteSauce')
-  renderToppings('glutenFreeCrust')
 
-  renderButtons('pepperoni')
-  renderButtons('mushrooms')
-  renderButtons('greenPeppers')
-  renderButtons('whiteSauce')
-  renderButtons('glutenFreeCrust')
-  renderPrice();
+function renderEverything() {
+  for (const key in ingredients) {
+    const element = ingredients[key];
+    renderToppings(element.name);
+    renderButtons(element.name);
+    renderPrice(element.name);
+  }
 }
 
-function renderToppings(arg) {
-  const toppings = {
-    pepperoni: '.pep',
-    mushrooms: '.mushroom',
-    greenPeppers: '.green-pepper',
-    whiteSauce: '.sauce',
-    glutenFreeCrust: '.crust-gluten-free',
-  }
-
-  const toppingState = {
-    pepperoni: 'pepperoni',
-    mushrooms: 'mushrooms',
-    greenPeppers: 'greenPeppers',
-    whiteSauce: 'whiteSauce',
-    glutenFreeCrust: 'glutenFreeCrust'
-  }
-
-
-  document.querySelectorAll(toppings[arg]).forEach(toppingOne => {
-    if (state[toppingState[arg]]) {
+function renderToppings(topping) {
+  ingredients[topping].allElement.forEach(toppingOne => {
+    if (state[ingredients[topping].name]) {
       toppingOne.style.visibility = 'visible';
     } else {
       toppingOne.style.visibility = 'hidden';
@@ -63,65 +76,56 @@ function renderToppings(arg) {
   });
 }
 
-function renderButtons(params) {
+function renderButtons(topping) {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-
-  const toppings = {
-    pepperoni: document.querySelector('.btn.btn-pepperoni'),
-    mushrooms: document.querySelector('.btn.btn-mushrooms'),
-    greenPeppers: document.querySelector('.btn.btn-green-peppers'),
-    whiteSauce: document.querySelector('.btn.btn-sauce'),
-    glutenFreeCrust: document.querySelector('.btn.btn-crust')
-  }
-
-  const toppingState = {
-    pepperoni: 'pepperoni',
-    mushrooms: 'mushrooms',
-    greenPeppers: 'greenPeppers',
-    whiteSauce: 'whiteSauce',
-    glutenFreeCrust: 'glutenFreeCrust',
-  }
-
-  if (state[toppingState[params]]) {
-    toppings[params].classList.add('active')
+  if (state[ingredients[topping].name]) {
+    ingredients[topping].button.classList.add('active');
   } else {
-    toppings[params].classList.remove('active')
+    ingredients[topping].button.classList.remove('active');
   }
 }
 
-function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+function subPrice(topping) {
+  if (ingredients[topping].add) {
+    ingredients[topping].add = false
+    basePrice -= ingredients[topping].price;
+
+    return basePrice
+  }
 }
 
-renderEverything();
+function sumPrice(topping) {
+  if (!ingredients[topping].add) {
+    ingredients[topping].add = true;
+    basePrice += ingredients[topping].price;
 
-function changeToppings(params) {
-  const toppings = {
-    pepperoni: document.querySelector('.btn.btn-pepperoni'),
-    mushrooms: document.querySelector('.btn.btn-mushrooms'),
-    greenPeppers: document.querySelector('.btn.btn-green-peppers'),
-    whiteSauce: document.querySelector('.btn.btn-sauce'),
-    glutenFreeCrust: document.querySelector('.btn.btn-crust')
+    return basePrice;
   }
+}
 
-  const toppingState = {
-    pepperoni: 'pepperoni',
-    mushrooms: 'mushrooms',
-    greenPeppers: 'greenPeppers',
-    whiteSauce: 'whiteSauce',
-    glutenFreeCrust: 'glutenFreeCrust',
+function renderPrice(topping) {
+  let price = basePrice;
+  if (state[ingredients[topping].name]) {
+    ingredients[topping].elementPrice.style.display = 'block';
+    price = sumPrice(topping)
+  } else {
+    ingredients[topping].elementPrice.style.display = 'none';
+    price = subPrice(topping)
   }
+  document.querySelector('strong').innerHTML = `$${basePrice}`
+}
 
-  toppings[params].addEventListener('click', () => {
-    state[toppingState[params]] = !state[toppingState[params]];
+
+function changeToppings(topping) {
+  ingredients[topping].button.addEventListener('click', () => {
+    state[ingredients[topping].name] = !state[ingredients[topping].name];
     renderEverything();
   });
 }
+renderEverything();
 
-
-changeToppings('pepperoni');
-changeToppings('mushrooms');
-changeToppings('greenPeppers');
-changeToppings('whiteSauce');
-changeToppings('glutenFreeCrust');
+for (const key in ingredients) {
+  const element = ingredients[key];
+  changeToppings(element.name);
+}
 
