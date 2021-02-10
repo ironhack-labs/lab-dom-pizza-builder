@@ -93,7 +93,7 @@ function renderPrice() {
   const ingredientsName = Object.keys(ingredients);
   const ingredientsState = Object.values(state);
 
-  let totalPrice = 10;  
+  let totalPrice = basePrice;  
 
   for(let i = 0; i < ingredientsState.length; i++) {
     if (!ingredientsState[i]) {
@@ -115,23 +115,26 @@ document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
   renderEverything();
 });
 
-
-document.querySelector('.btn-mushrooms').addEventListener('click', () => {
+// Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', () => {
   state.mushrooms = !state.mushrooms;
   renderEverything();
 })
 
-document.querySelector('.btn-green-peppers').addEventListener('click', () => {
+// Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+document.querySelector('.btn.btn-green-peppers').addEventListener('click', () => {
   state.greenPeppers = !state.greenPeppers;
   renderEverything();
 })
 
+// Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
   state.whiteSauce = !state.whiteSauce;
   renderEverything();
 })
 
-document.querySelector('.btn.btn-crust').addEventListener('click', (event) => {
+// Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector('.btn.btn-crust').addEventListener('click', () => {
   state.glutenFreeCrust = !state.glutenFreeCrust;
   renderEverything();
 })
