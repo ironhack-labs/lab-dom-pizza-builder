@@ -3,11 +3,11 @@
 // Constants
 let basePrice = 10;
 let ingredients = {
-  pepperoni: { name: 'pepperoni', price: 1 },
-  mushrooms: { name: 'Mushrooms', price: 1 },
-  greenPeppers: { name: 'Green Peppers', price: 1 },
-  whiteSauce: { name: 'White sauce', price: 3 },
-  glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
+  pepperoni: { name: 'pepperoni', price: 1, add: false },
+  mushrooms: { name: 'Mushrooms', price: 1, add: false },
+  greenPeppers: { name: 'Green Peppers', price: 1, add: false },
+  whiteSauce: { name: 'White sauce', price: 3, add: false },
+  glutenFreeCrust: { name: 'Gluten-free crust', price: 5, add: false }
 };
 
 // Initial value of the state (the state values can change over time)
@@ -27,13 +27,16 @@ function renderEverything() {
   renderToppings('greenPeppers')
   renderToppings('whiteSauce')
   renderToppings('glutenFreeCrust')
-
   renderButtons('pepperoni')
   renderButtons('mushrooms')
   renderButtons('greenPeppers')
   renderButtons('whiteSauce')
   renderButtons('glutenFreeCrust')
-  renderPrice();
+  renderPrice('pepperoni')
+  renderPrice('mushrooms')
+  renderPrice('greenPeppers')
+  renderPrice('whiteSauce')
+  renderPrice('glutenFreeCrust')
 }
 
 function renderToppings(arg) {
@@ -89,8 +92,51 @@ function renderButtons(params) {
   }
 }
 
-function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+function renderPrice(params) {
+
+  const toppings = {
+    pepperoni: document.querySelector('#pep'),
+    mushrooms: document.querySelector('#mush'),
+    greenPeppers: document.querySelector('#greenp'),
+    whiteSauce: document.querySelector('#whitesauce'),
+    glutenFreeCrust: document.querySelector('#glutenfree')
+  }
+
+  const toppingState = {
+    pepperoni: 'pepperoni',
+    mushrooms: 'mushrooms',
+    greenPeppers: 'greenPeppers',
+    whiteSauce: 'whiteSauce',
+    glutenFreeCrust: 'glutenFreeCrust',
+  }
+
+  if (state[toppingState[params]]) {
+    toppings[params].style.display = 'block'
+    sumPrice(params)
+  } else {
+    subPrice(params)
+    toppings[params].style.display = 'none'
+  }
+
+}
+
+function sumPrice(food){
+  if(!ingredients[food].add){
+    basePrice += ingredients[food].price;
+    ingredients[food].add = true
+    document.querySelector('strong').innerHTML = basePrice
+  }
+}
+
+function subPrice(food){
+  if(basePrice<0){
+    basePrice = 0;
+  }
+  if(ingredients[food].add){
+    basePrice -= ingredients[food].price;
+    ingredients[food].add = false
+    document.querySelector('strong').innerHTML = basePrice
+  }
 }
 
 renderEverything();
@@ -114,7 +160,10 @@ function changeToppings(params) {
 
   toppings[params].addEventListener('click', () => {
     state[toppingState[params]] = !state[toppingState[params]];
+    renderPrice(params)
+    // finalPrice(params)
     renderEverything();
+    
   });
 }
 
