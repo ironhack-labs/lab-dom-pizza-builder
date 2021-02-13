@@ -98,6 +98,22 @@ function renderButtons(event) {
 
 function renderPrice() {
     // Iteration 4: change the HTML of `<aside class="panel price">`
+    let list = '';
+    Object.keys(state).forEach(key => {
+        if (state[key] === true) list += `
+    <li>$${ingredients[key].price} ${ingredients[key].name}</li>
+    `;
+    });
+    document.querySelector('.panel.price ul').innerHTML = list;
+    document.querySelector('.panel.price strong').innerHTML = `$${calculateTotal()}`;
+}
+
+function calculateTotal() {
+    let price = 10;
+    Object.keys(state).forEach(key => {
+        if (state[key] === true) price += ingredients[key].price;
+    });
+    return price;
 }
 
 renderEverything();
