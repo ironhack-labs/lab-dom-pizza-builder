@@ -66,35 +66,80 @@ function renderGreenPeppers() {
 
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
 function renderWhiteSauce() {
-  document.querySelectorAll('.sauce').forEach(oneSauce => {
-    if (state.sauce) {
-      oneSauce.style.visibility = 'visible';
-    } else {
-      oneSauce.style.visibility = 'hidden';
-    }
-  });
+  if (state.sauce) {
+    document.querySelector('.sauce').classList.add('sauce-white');
+  } else {
+    document.querySelector('.sauce').classList.remove('sauce-white');
+  }
 }
 
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
 function renderGlutenFreeCrust() {
-  document.querySelectorAll('.crust').forEach(oneCrust => {
-    if (state.crust) {
-      oneCrust.style.visibility = 'visible';
-    } else {
-      oneCrust.style.visibility = 'hidden';
-    }
-  });
+  if (state.crust) { 
+    document.querySelector('.crust').classList.add('crust-gluten-free');
+} else {
+    document.querySelector('.crust').classList.remove('crust-gluten-free');
+  }
 }
 
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 function renderButtons() {
-  
+  if (state.pepperoni) {
+    document.querySelector('.btn-pepperoni').classList.add('active');
+  } else {
+    document.querySelector('.btn-pepperoni').classList.remove('active');
+  }
+  if (state.mushroom) {
+    document.querySelector('.btn-mushrooms').classList.add('active');
+  } else {
+    document.querySelector('.btn-mushrooms').classList.remove('active');
+  }
+  if (state.greenPepper) {
+    document.querySelector('.btn-green-peppers').classList.add('active');
+  } else {
+    document.querySelector('.btn-green-peppers').classList.remove('active');
+  }
+  if (state.sauce) {
+    document.querySelector('.btn-sauce').classList.add('active');
+  } else {
+    document.querySelector('.btn-sauce').classList.remove('active');
+  }
+  if (state.crust) {
+    document.querySelector('.btn-crust').classList.add('active');
+  } else {
+    document.querySelector('.btn-crust').classList.remove('active');
+  }
 }
+
+// document.querySelectorAll('.btn').forEach((eachButton) => {
+//   if (state.thisParticularButton) {
+//     eachButton.classList.add('active');
+//   } else {
+//     eachButton.classList.remove('active');
+//   }
+// })
+// }
 
   // Iteration 4: change the HTML of `<aside class="panel price">`
 function renderPrice() {
+  const ingredients = document.querySelectorAll(".panel.price ul li");
+  const buttonList = document.querySelectorAll(".panel.controls ul li button");
 
+  let ingredientsPrice = 0
+
+  for (let i = 0; i < ingredients.length; i++) {
+
+    if (buttonList[i].classList.contains("active")) {
+      console.log(Number(ingredients[i].innerHTML.slice(1, 2)))
+      ingredientsPrice += Number(ingredients[i].innerHTML.slice(1, 2))
+    }
+  }
+
+  const totalPrice = basePrice + ingredientsPrice
+
+  document.querySelector(".panel.price strong").innerHTML = `${totalPrice}$`
 }
+
 
 renderEverything();
 
