@@ -118,7 +118,7 @@ function renderButtons() {
   })
 
   document.querySelectorAll('.btn-sauce').forEach((element)=>{
-    if (state.whiteSauce===true){
+    if (state.whiteSauce===false){
       element.classList.remove('active')
     } else {
       element.classList.add('active')
@@ -126,7 +126,7 @@ function renderButtons() {
   })
 
   document.querySelectorAll('.btn-crust').forEach((element)=>{
-    if (state.glutenFreeCrust===true){
+    if (state.glutenFreeCrust===false){
       element.classList.remove('active')
     } else {
       element.classList.add('active')
