@@ -115,6 +115,63 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let liNode = document.querySelector("aside > ul").querySelectorAll("li");
+  let priceBase = 10;
+  let pricePepperoni;
+  let priceMushrooms;
+  let priceGreenPeppers;
+  let priceWhiteSauce;
+  let priceGlutenFreeCrust;
+
+  if (state.pepperoni) {
+    liNode[0].style.visibility = "visible";
+    pricePepperoni = 1;
+  } else {
+    liNode[0].style.visibility = "hidden";
+    pricePepperoni = 0;
+  }
+
+  if (state.mushrooms) {
+    liNode[1].style.visibility = "visible";
+    priceMushrooms = 1;
+  } else {
+    liNode[1].style.visibility = "hidden";
+    priceMushrooms = 0;
+  }
+
+  if (state.greenPeppers) {
+    liNode[2].style.visibility = "visible";
+    priceGreenPeppers = 1;
+  } else {
+    liNode[2].style.visibility = "hidden";
+    priceGreenPeppers = 0;
+  }
+
+  if (state.whiteSauce) {
+    liNode[3].style.visibility = "visible";
+    priceWhiteSauce = 3;
+  } else {
+    liNode[3].style.visibility = "hidden";
+    priceWhiteSauce = 0;
+  }
+
+  if (state.glutenFreeCrust) {
+    liNode[4].style.visibility = "visible";
+    priceGlutenFreeCrust = 5;
+  } else {
+    liNode[4].style.visibility = "hidden";
+    priceGlutenFreeCrust = 0;
+  }
+
+  let priceTotal =
+    priceBase +
+    pricePepperoni +
+    priceMushrooms +
+    priceGreenPeppers +
+    priceWhiteSauce +
+    priceGlutenFreeCrust;
+
+  document.querySelector("aside > strong").innerHTML = `${priceTotal}$`;
 }
 
 renderEverything();
