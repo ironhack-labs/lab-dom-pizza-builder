@@ -144,8 +144,8 @@ function renderPrice() {
     parentElement.appendChild(crustPrice)
     totalPrice += 5
   }
-  // change price
-  document.querySelector('.price ul strong').innerText = `$${totalPrice}`
+  // // change price
+  document.querySelector('.price strong').innerText = `$${totalPrice}`
 }
 
 renderEverything()
