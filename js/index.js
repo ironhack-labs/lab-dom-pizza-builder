@@ -136,7 +136,6 @@ function renderButtons() {
   } else {
     crustBtn.classList.remove('active');
   }
-
 }
 
 function renderPrice() {
@@ -145,46 +144,14 @@ function renderPrice() {
 
   let priceList = document.querySelector('.price ul')
   priceList.innerHTML = '';
-  if (state.pepperoni) {
-    const pep = document.createElement('li');
-    pep.innerText = `$${ingredients.pepperoni.price} ${ingredients.pepperoni.name}`
-    priceList.appendChild(pep)
-    sum += ingredients.pepperoni.price;
-  }
 
-  if (state.mushrooms) {
-    const mush = document.createElement('li');
-    mush.innerText = `$${ingredients.mushrooms.price} ${ingredients.mushrooms.name}`
-    priceList.appendChild(mush)
-    sum += ingredients.mushrooms.price;
-  }
+  for (ingredientsKey in ingredients)
+    if (state[ingredientsKey]) {
+      sum += ingredients[ingredientsKey].price
+      priceList.innerHTML += `<li>$${ingredients[ingredientsKey].price} ${ingredients[ingredientsKey].name}</li>`;
+    }
 
-  if (state.greenPeppers) {
-    const green = document.createElement('li');
-    green.innerText = `$${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name}`
-    priceList.appendChild(green)
-    sum += ingredients.greenPeppers.price;
-  }
-
-  if (state.whiteSauce) {
-    const sauce = document.createElement('li');
-    sauce.innerText = `$${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name}`
-    priceList.appendChild(sauce)
-    sum += ingredients.whiteSauce.price;
-  }
-
-  if (state.glutenFreeCrust) {
-    const crust = document.createElement('li');
-    crust.innerText = `$${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name}`
-    priceList.appendChild(crust)
-    sum += ingredients.glutenFreeCrust.price;
-  }
-
-
-
-  let sumRender = document.querySelector('.price strong');
-  sumRender
-  sumRender.innerText = `$${sum}`;
+  document.querySelector('.price strong').innerText = `$${sum}`;
 }
 
 renderEverything();
