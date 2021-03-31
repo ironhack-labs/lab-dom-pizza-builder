@@ -1,5 +1,7 @@
 // Write your Pizza Builder JavaScript in this file.
 
+const priceListCopy = document.querySelector('.price ul').cloneNode(true)
+
 // Constants
 let basePrice = 10;
 let ingredients = {
@@ -140,8 +142,49 @@ function renderButtons() {
   }
 }
 
+function cleanPriceList(parentList) {
+  const childrenList = document.querySelectorAll('.pricesList li')
+  childrenList.forEach((child)=>{
+    parentList.removeChild(child)
+  })
+}
+
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  const parentList = document.getElementsByClassName('pricesList')[0]
+  cleanPriceList(parentList)
+
+  const totalPriceValue = document.querySelector('.price strong');
+  let totalPrice = 0
+
+  const pricePepperoniListItem = '<li id="pep-price">$1 pepperoni</li>'
+  const priceMushroomsListItem = '<li id="mush-price">$1 mushrooms</li>'
+  const priceGreenPeppersListItem = '<li id="gpep-price">$1 green peppers</li>'
+  const priceWhiteSauceListItem = '<li id="sauce-price">$3 white sauce</li>'
+  const priceGlutenFreeCrustListItem = '<li id="crust-price">$5 gluten-free crust</li>'
+
+  if (state.pepperoni) {
+    parentList.innerHTML += pricePepperoniListItem;
+    totalPrice += 1
+  }
+  if (state.mushrooms) {
+    parentList.innerHTML += priceMushroomsListItem;
+    totalPrice += 1
+  }
+  if (state.greenPeppers) {
+    parentList.innerHTML += priceGreenPeppersListItem;
+    totalPrice += 1
+  }
+  if (state.whiteSauce) {
+    parentList.innerHTML += priceWhiteSauceListItem;
+    totalPrice += 3
+  }
+  if (state.glutenFreeCrust) {
+    parentList.innerHTML += priceGlutenFreeCrustListItem;
+    totalPrice += 5
+  }
+
+  totalPriceValue.innerText = '$'+totalPrice
 }
 
 renderEverything();
