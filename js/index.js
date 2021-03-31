@@ -73,6 +73,20 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  let pepperoniButton = document.querySelector('.btn.btn-pepperoni')
+  state.pepperoni ? pepperoniButton.classList.add('active') : pepperoniButton.classList.remove('active')
+
+   let mushroomButton = document.querySelector('.btn.btn-mushrooms')
+  state.mushrooms ? mushroomButton.classList.add('active') : mushroomButton.classList.remove('active')
+  
+  let greenPeppersButton = document.querySelector('.btn.btn-green-peppers')
+  state.greenPeppers ? greenPeppersButton.classList.add('active') : greenPeppersButton.classList.remove('active')
+
+  let sauceButton = document.querySelector('.btn.btn-sauce')
+   state.whiteSauce ? sauceButton.classList.add('active') : sauceButton.classList.remove('active')
+
+  let crustButton = document.querySelector('.btn.btn-crust')
+  state.glutenFreeCrust ? crustButton.classList.add('active') : crustButton.classList.remove('active')
 }
 
 function renderPrice() {
