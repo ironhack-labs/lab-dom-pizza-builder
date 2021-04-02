@@ -44,26 +44,93 @@ function renderPepperoni() {
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll('.mushroom').forEach(mush => {
+    if (state.mushrooms) {
+      mush.style.visibility = 'visible';
+    } else {
+      mush.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll('.green-pepper').forEach(gp=> {
+    if (state.greenPeppers) {
+      gp.style.visibility = 'visible';
+    } else {
+      gp.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+  const whiteSauce = document.querySelector('.sauce-white'); 
+    if (state.whiteSauce) {
+      whiteSauce.style.visibility = 'visible';
+    } else {
+      whiteSauce.style.visibility = 'hidden';
+    }
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  const glutenFreeCrust = document.querySelector('.crust-gluten-free'); 
+    if (state.glutenFreeCrust) {
+      glutenFreeCrust.style.visibility = 'visible';
+    } else {
+      glutenFreeCrust.style.visibility = 'hidden';
+    }
 }
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  //const allButtons = document.querySelectorAll('.btn').forEach(button => button.classList.includes('active') ? button.classList.remove('active') : button.classList.add('active'))
+  if (state.pepperoni) {
+    document.querySelector('.btn-pepperoni').classList.add('active')
+  } else {
+    document.querySelector('.btn-pepperoni').classList.remove('active')
+  }
+
+  if (state.greenPeppers) {
+    document.querySelector('.btn-green-peppers').classList.add('active')
+  } else {
+    document.querySelector('.btn-green-peppers').classList.remove('active')
+  }
+
+  if (state.mushrooms) {
+    document.querySelector('.btn-mushrooms').classList.add('active')
+  } else {
+    document.querySelector('.btn-mushrooms').classList.remove('active')
+  }
+
+  if (state.whiteSauce) {
+    document.querySelector('.btn-sauce').classList.add('active')
+  } else {
+    document.querySelector('.btn-sauce').classList.remove('active')
+  }
+
+  if (state.glutenFreeCrust) {
+    document.querySelector('.btn-crust').classList.add('active')
+  } else {
+    document.querySelector('.btn-crust').classList.remove('active')
+  }
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let totalPrice = basePrice;
+  let list = '';
+
+  for (let ingredient in state) {
+    if (state[ingredient]) {
+      totalPrice += ingredients[ingredient].price
+      list += `<li>${ingredients[ingredient].price} ${ingredients[ingredient].name}</li>`
+    }
+  } 
+  document.querySelector('.panel>strong').innerHTML = '$' + totalPrice;
+  document.querySelector('.panel.price>ul').innerHTML = list;
 }
 
 renderEverything();
@@ -75,9 +142,22 @@ document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
-
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', () => {
+  state.mushrooms = !state.mushrooms;
+  renderEverything();
+});
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-
+document.querySelector('.btn.btn-green-peppers').addEventListener('click', () => {
+  state.greenPeppers = !state.greenPeppers;
+  renderEverything();
+});
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
-
+document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
+  state.whiteSauce = !state.whiteSauce;
+  renderEverything();
+});
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector('.btn.btn-crust').addEventListener('click', () => {
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+});
