@@ -58,7 +58,7 @@ function renderMushrooms() {
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
-  document.querySelectorAll('.green-pepper').forEach(onePepp => {
+  const green = document.querySelectorAll('.green-pepper').forEach(onePepp => {
     if (state.greenPeppers) {
       onePepp.style.visibility = 'visible';
     } else {
@@ -93,6 +93,30 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  const btnArr = document.querySelectorAll('.btn')
+  let count = 0
+
+  for(const ingred in state){
+    if(state[ingred] === true){
+      btnArr[count].classList.add('active')
+      count++
+    }else{
+      btnArr[count].classList.remove('active')
+      count++
+    }
+  }
+
+ /*  const ingredBtn = document.querySelectorAll('.btn')
+  console.log(...ingredBtn)
+  for(ingred in Object.values(state)){
+    if(ingred === true){
+      console.log('aqui',ingred)
+    }
+    console.log('mierda')
+  } */
+
+  //console.log(Object.values(object1));
+// expected output: Array ["somestring", 42, false]
   /* 
 1.checkear el estado del btn (activo o no)
 2.checkear si state.key es true o false
@@ -125,6 +149,8 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  //Displays the list of all items selected
+//Displays the total price.
 }
 
 renderEverything();
