@@ -1,7 +1,5 @@
-// Write your Pizza Builder JavaScript in this file.
-
-//QUESTIONS: How are state and ingredients connected when renderPepperoni() ?
-//Iteration 2, L74. How to do it without forEach
+//QUESTIONS: L200 why [] and .price ?
+//Why we need totalPrice = basePrice
 
 // Constants
 let basePrice = 10;
@@ -106,6 +104,7 @@ function renderButtons() {
     }
   }
 
+
  /*  const ingredBtn = document.querySelectorAll('.btn')
   console.log(...ingredBtn)
   for(ingred in Object.values(state)){
@@ -149,8 +148,74 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  //Displays the list of all items selected
-//Displays the total price.
+  const priceItems = document.querySelectorAll('.price > ul li');
+  const price = document.querySelector('.price strong');
+  let totalPrice = basePrice;
+
+  if(state.pepperoni){
+    priceItems[0].style.display = "block"
+    totalPrice += ingredients.pepperoni.price
+  }else{
+    priceItems[0].style.display = "none"
+  }
+
+  if(state.mushrooms){
+    priceItems[1].style.display = "block"
+    totalPrice += ingredients.mushrooms.price
+  }else{
+    priceItems[1].style.display = "none"
+  }
+
+
+  if(state.greenPeppers){
+    priceItems[2].style.display = "block"
+     totalPrice += ingredients.greenPeppers.price
+  }else{
+    priceItems[2].style.display = "none"
+  }
+    
+  if(state.whiteSauce){
+    priceItems[3].style.display = "block"
+    totalPrice += ingredients.whiteSauce.price
+  }else{
+    priceItems[3].style.display = "none"
+  }
+
+  if(state.glutenFreeCrust){
+    priceItems[4].style.display = "block"
+    totalPrice += ingredients.glutenFreeCrust.price
+  }else{
+    priceItems[4].style.display = "none"
+  }
+
+
+//RESULT:
+  
+ /*  
+ const list = document.querySelector('aside.panel.price ul');
+ list.innerHtML = ""
+ 
+  for (const ingred in ingredients){
+    if(state[ingred]){
+      totalPrice += ingredients[ingred].price
+      list.innrHTML += `<li>$${ingredients[ingred].price} ${ingredients[ingred].name.toLowerCase()}</li>`
+    }
+  } */
+ price.innerHTML = "$"+ totalPrice
+
+
+
+/* MY FIRST TRIAL 
+for(const ingred in state){
+  for (let i = 0, len = priceItems.length; i < len; i++){
+    if(state[ingred] === true){
+      return priceItems[i].style.display = "block"
+    }else if(state[ingred] === false){
+      return priceItems[i].style.display = "none"
+    }
+  }
+}
+ */
 }
 
 renderEverything();
