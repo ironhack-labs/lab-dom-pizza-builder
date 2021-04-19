@@ -94,17 +94,23 @@ function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   const statesClone = [...Object.entries(state)];
 
-  const filteredItems = statesClone.filter((item) => item[1] === true); 
+  const filteredItems = statesClone.filter((item) => item[1] === true);
 
   markup = ''
-  filteredItems.forEach((topping) => {
+  filteredItems.forEach((topping) => {    
     markup += `<li>${topping[0]}</li>`;
   })
 
   document.querySelector('aside.panel.price ul').innerHTML = markup;
-
-
 }
+
+// let ingredients = {
+//   pepperoni: { name: 'pepperoni', price: 1 },
+//   mushrooms: { name: 'Mushrooms', price: 1 },
+//   greenPeppers: { name: 'Green Peppers', price: 1 },
+//   whiteSauce: { name: 'White sauce', price: 3 },
+//   glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
+// };
 
 renderEverything();
 
