@@ -75,6 +75,11 @@ function renderGlutenFreeCrust() {
   let crustSection = document.querySelector('.crust');
   crustSection.classList.toggle('crust-gluten-free');
 }
+  
+  let sauceButton = document.querySelector('.btn-sauce');
+  let crustButton = document.querySelector('.btn-crust');
+  sauceButton.classList.remove('active');
+  crustButton.classList.remove('active');
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
