@@ -1,3 +1,4 @@
+// Write your Pizza Builder JavaScript in this file.
 // Constants
 let basePrice = 10;
 let ingredients = {
@@ -26,8 +27,8 @@ let state = {
     pepperoni: true,
     mushrooms: true,
     greenPeppers: true,
-    whiteSauce: true,
-    glutenFreeCrust: true
+    whiteSauce: false,
+    glutenFreeCrust: false
 };
 
 function renderEverything() {
@@ -121,39 +122,38 @@ function renderPrice() {
     let totalPrice = basePrice;
     let priceList = document.querySelector(".price ul");
     priceList.innerHTML = "";
-    if (state.pepperoni) {
-        const pep = document.createElement("li");
-        pep.innerText = `$${ingredients.pepperoni.price} ${ingredients.pepperoni.name}`
-        priceList.append(pep);
-        totalPrice += ingredients.pepperoni.price;
+    switch (state) {
+        case (state.pepperoni):
+            const pep = document.createElement("li");
+            pep.innerText = `$${ingredients.pepperoni.price} ${ingredients.pepperoni.name}`
+            priceList.append(pep);
+            totalPrice += ingredients.pepperoni.price;
+            break
+        case (state.mushrooms):
+            const mush = document.createElement("li");
+            mush.innerText = `$${ingredients.mushrooms.price} ${ingredients.mushrooms.name}`;
+            priceList.append(mush);
+            totalPrice += ingredients.mushrooms.price;
+            break
+        case (state.greenPeppers):
+            const green = document.createElement("li");
+            green.innerText = `$${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name}`
+            priceList.append(greenPeppers);
+            totalPrice += ingredients.greenPeppers.price;
+            break
+        case (state.whiteSauce):
+            const sauce = document.createElement("li");
+            sauce.innerText = `$${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name}`;
+            priceList.append(sauce);
+            totalPrice += ingredients.whiteSauce.price;
+            break
+        case (state.glutenFreeCrust):
+            const crust = document.createElement("li");
+            crust.innerText = `$${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name}`;
+            priceList.append(crust);
+            totalPrice += ingredients.glutenFreeCrust.price;
+            break
     }
-    if (state.mushrooms) {
-        const mush = document.createElement("li");
-        mush.innerText = `$${ingredients.mushrooms.price} ${ingredients.mushrooms.name}`;
-        priceList.append(mush);
-        totalPrice += ingredients.mushrooms.price;
-    }
-    if (state.greenPeppers) {
-        const pepper = document.createElement("li");
-        pepper.innerText = `$${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name}`;
-        priceList.append(pepper);
-        totalPrice += ingredients.greenPeppers.price;
-    }
-    if (state.whiteSauce) {
-        const sauce = document.createElement("li");
-        sauce.innerText = `$${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name}`;
-        priceList.append(sauce);
-        totalPrice += ingredients.whiteSauce.price;
-    }
-    if (state.glutenFreeCrust) {
-        const crust = document.createElement("li");
-        crust.innerText = `$${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name}`;
-        priceList.append(crust);
-        totalPrice += ingredients.glutenFreeCrust.price;
-    }
-    let totalPriceRender = document.querySelector(".price strong");
-    totalPriceRender;
-    totalPriceRender.innerText = `$${totalPrice}`;
 }
 renderEverything();
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
