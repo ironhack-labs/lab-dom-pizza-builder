@@ -153,7 +153,7 @@ function renderButtons() {
 
 function renderPrice() {
     // Iteration 4: change the HTML of `<aside class="panel price">`
-    let cantidad = 0
+    let cantidad = [];
     const {
         pepperoni,
         mushrooms,
@@ -169,23 +169,17 @@ function renderPrice() {
             case "$1 pepperoni":
                 pepperoni ? (
                     onePep.style.visibility = 'visible',
-                    cantidad = cantidad + 1
+                    cantidad.push(1)
 
                 ) : (
 
                     onePep.style.visibility = 'hidden',
-                    cantidad = cantidad - 1
+                    cantidad.slice(0, 1)
 
 
                 );
 
-                if (pepperoni) {
-                    onePep.style.visibility = 'visible',
-                        cantidad += 1
-                } else {
-                    onePep.style.visibility = 'hidden'
-                    cantidad -= 1
-                }
+
 
 
                 break;
@@ -193,12 +187,12 @@ function renderPrice() {
             case '$1 mushrooms':
                 mushrooms ? (
                     onePep.style.visibility = 'visible',
-                    cantidad += 1
+                    cantidad.push(1)
 
                 ) : (
 
                     onePep.style.visibility = 'hidden',
-                    cantidad -= 1
+                    cantidad.slice(1, 1)
 
                 );
 
@@ -207,11 +201,11 @@ function renderPrice() {
 
                 greenPeppers ? (
                     onePep.style.visibility = 'visible',
-                    cantidad += 1
+                    cantidad.push(1)
                 ) : (
 
                     onePep.style.visibility = 'hidden',
-                    cantidad -= 1
+                    cantidad.slice(2, 1)
 
                 );
 
@@ -219,11 +213,11 @@ function renderPrice() {
             case '$3 white sauce':
                 whiteSauce ? (
                     onePep.style.visibility = 'visible',
-                    cantidad += 3
+                    cantidad.push(3)
                 ) : (
 
                     onePep.style.visibility = 'hidden',
-                    cantidad -= 3
+                    cantidad.slice(3, 1)
 
                 );
 
@@ -232,49 +226,27 @@ function renderPrice() {
 
                 crust ? (
                     onePep.style.visibility = 'visible',
-                    cantidad += 5
+                    cantidad.push(5)
                 ) : (
 
                     onePep.style.visibility = 'hidden',
-                    cantidad -= 5
+                    cantidad.slice(4, 1)
 
                 );
                 break;
 
-
-
-
-
-
         }
-
-
-
-
-
-
 
 
     })
 
+    let dolares = cantidad.reduce((acc, actual) => {
+        return acc += actual
+    }, 0)
+
     let precio = document.getElementById('precio');
 
-    precio.innerHTML = `$${10+(cantidad-1)}`
-
-
-
-
-
-
-
-
-    /* 
-
-    NO SE ME OCURRIO OTRA IDEA :(
-
-    */
-
-
+    precio.innerHTML = `$${10+dolares}`
 
 
 }
