@@ -96,27 +96,19 @@ function renderPrice() {
 
   const filteredItems = statesClone.filter((item) => item[1] === true);
 
-  markup = ''
+  let markup = ''
+  let updatedPrice = 10;
   for (let i = 0; i < filteredItems.length; i ++) {
     for (let j = 0; j <= filteredItems[i].length; j ++) {
       if (filteredItems[i][0] === Object.keys(ingredients)[j]) {
-        console.log(filteredItems[i][0]);
         markup += `<li>$${Object.values(ingredients)[j].price} ${Object.values(ingredients)[j].name}`;
+        updatedPrice += Number(Object.values(ingredients)[j].price);
       }
     }    
   }
-  
   document.querySelector('aside.panel.price ul').innerHTML = markup;
+  document.querySelector('aside.panel.price strong').innerHTML = `$${updatedPrice}`;
 }
-
-
-// let ingredients = {
-//   pepperoni: { name: 'pepperoni', price: 1 },
-//   mushrooms: { name: 'Mushrooms', price: 1 },
-//   greenPeppers: { name: 'Green Peppers', price: 1 },
-//   whiteSauce: { name: 'White sauce', price: 3 },
-//   glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
-// };
 
 renderEverything();
 
