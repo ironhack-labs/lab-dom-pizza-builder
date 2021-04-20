@@ -92,20 +92,21 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  const statesClone = [...Object.entries(state)];
+  let statesClone = [...Object.entries(state)];
 
   const filteredItems = statesClone.filter((item) => item[1] === true);
 
   let markup = ''
   let updatedPrice = 10;
   for (let i = 0; i < filteredItems.length; i ++) {
-    for (let j = 0; j <= filteredItems[i].length; j ++) {
+    for (let j = 0; j <= filteredItems.length; j ++) {
       if (filteredItems[i][0] === Object.keys(ingredients)[j]) {
         markup += `<li>$${Object.values(ingredients)[j].price} ${Object.values(ingredients)[j].name}`;
         updatedPrice += Number(Object.values(ingredients)[j].price);
       }
     }    
   }
+
   document.querySelector('aside.panel.price ul').innerHTML = markup;
   document.querySelector('aside.panel.price strong').innerHTML = `$${updatedPrice}`;
 }
