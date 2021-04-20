@@ -97,12 +97,18 @@ function renderPrice() {
   const filteredItems = statesClone.filter((item) => item[1] === true);
 
   markup = ''
-  filteredItems.forEach((topping) => {    
-    markup += `<li>${topping[0]}</li>`;
-  })
-
+  for (let i = 0; i < filteredItems.length; i ++) {
+    for (let j = 0; j <= filteredItems[i].length; j ++) {
+      if (filteredItems[i][0] === Object.keys(ingredients)[j]) {
+        console.log(filteredItems[i][0]);
+        markup += `<li>$${Object.values(ingredients)[j].price} ${Object.values(ingredients)[j].name}`;
+      }
+    }    
+  }
+  
   document.querySelector('aside.panel.price ul').innerHTML = markup;
 }
+
 
 // let ingredients = {
 //   pepperoni: { name: 'pepperoni', price: 1 },
