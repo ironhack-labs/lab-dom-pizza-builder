@@ -125,20 +125,29 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  const ingredientsList = [...ingredients];
-  const list = document.getElementById("todo-list");
-  list.innerHTML = "";
-    // modify the list HTML with a new li
-    const newli = document.createElement("li");
+//   const ingredientsList = [...ingredients];
+//   const list = document.getElementById("todo-list");
+//   list.innerHTML = "";
+//     // modify the list HTML with a new li
+//     const newli = document.createElement("li");
 
 
-ingredientsList.forEach((ingredient) => {
+// ingredientsList.forEach((ingredient) => {
+
+//   if (state.ingredient === true) {
+//     newli.textContent = `$${ingredient.price} ${ingredient.name}`;
+//     list.appendChild(newli);
+//   }
+// });
+
+
+ingredients.forEach((ingredient) => {
 
   if (state.ingredient === true) {
-    newli.textContent = `$${ingredient.price} ${ingredient.name}`;
-    list.appendChild(newli);
+    list.innerHTML += `<li>$ ${ingredient.price} ${ingredient.name}<li>`;
   }
 });
+
 }
 
 renderEverything();
