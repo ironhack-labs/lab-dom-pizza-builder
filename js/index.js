@@ -119,7 +119,7 @@ function renderButtons() {
   }
 }
 
-function renderPrice(pizza) {
+function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
 /*const price = pizza.querySelector('.price');
 const subtotal = Number(price.innerHTML) + Number(basePrice.value)
@@ -127,7 +127,7 @@ pizza.querySelector('.subtotal span').innerHTML = subtotal;
 }
 
 const thePizza = []*/
-
+}
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
