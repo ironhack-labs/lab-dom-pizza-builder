@@ -119,33 +119,47 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let totalPrice = 10;
   const ingredientsList = document.querySelector(".panel.price ul");
   ingredientsList.innerHTML = "";
   if (state.pepperoni) {
     const ingPep = document.createElement("li");
     ingPep.innerText = `${ingredients.pepperoni.price} ${ingredients.pepperoni.name}`;
     ingredientsList.append(ingPep);
+
+    totalPrice += ingredients.pepperoni.price;
   }
   if (state.mushrooms) {
     const ingMus = document.createElement("li");
     ingMus.innerText = `${ingredients.mushrooms.price} ${ingredients.mushrooms.name}`;
     ingredientsList.append(ingMus);
+
+    totalPrice += ingredients.mushrooms.price;
   }
   if (state.greenPeppers) {
     const ingGreenPep = document.createElement("li");
     ingGreenPep.innerText = `${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name}`;
     ingredientsList.append(ingGreenPep);
+
+    totalPrice += ingredients.greenPeppers.price;
   }
   if (state.whiteSauce) {
     const ingWhiteSauce = document.createElement("li");
     ingWhiteSauce.innerText = `${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name}`;
     ingredientsList.append(ingWhiteSauce);
+
+    totalPrice += ingredients.whiteSauce.price;
   }
   if (state.glutenFreeCrust) {
     const ingglutenFreeCrust = document.createElement("li");
     ingglutenFreeCrust.innerText = `${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name}`;
     ingredientsList.append(ingglutenFreeCrust);
+
+    totalPrice += ingredients.glutenFreeCrust.price;
   }
+
+  const price = document.querySelector(".panel.price strong");
+  price.textContent = `$ ${totalPrice}`;
 }
 
 renderEverything();
