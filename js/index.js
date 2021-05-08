@@ -119,6 +119,33 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  const ingredientsList = document.querySelector(".panel.price ul");
+  ingredientsList.innerHTML = "";
+  if (state.pepperoni) {
+    const ingPep = document.createElement("li");
+    ingPep.innerText = `${ingredients.pepperoni.price} ${ingredients.pepperoni.name}`;
+    ingredientsList.append(ingPep);
+  }
+  if (state.mushrooms) {
+    const ingMus = document.createElement("li");
+    ingMus.innerText = `${ingredients.mushrooms.price} ${ingredients.mushrooms.name}`;
+    ingredientsList.append(ingMus);
+  }
+  if (state.greenPeppers) {
+    const ingGreenPep = document.createElement("li");
+    ingGreenPep.innerText = `${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name}`;
+    ingredientsList.append(ingGreenPep);
+  }
+  if (state.whiteSauce) {
+    const ingWhiteSauce = document.createElement("li");
+    ingWhiteSauce.innerText = `${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name}`;
+    ingredientsList.append(ingWhiteSauce);
+  }
+  if (state.glutenFreeCrust) {
+    const ingglutenFreeCrust = document.createElement("li");
+    ingglutenFreeCrust.innerText = `${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name}`;
+    ingredientsList.append(ingglutenFreeCrust);
+  }
 }
 
 renderEverything();
