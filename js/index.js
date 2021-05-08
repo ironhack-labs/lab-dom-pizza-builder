@@ -3,11 +3,11 @@
 // Constants
 let basePrice = 10;
 let ingredients = {
-  pepperoni: { name: "pepperoni", price: 1 },
-  mushrooms: { name: "Mushrooms", price: 1 },
-  greenPeppers: { name: "Green Peppers", price: 1 },
-  whiteSauce: { name: "White sauce", price: 3 },
-  glutenFreeCrust: { name: "Gluten-free crust", price: 5 },
+  pepperoni: { name: "pepperoni", price: 1, className: "pepperoni" },
+  mushrooms: { name: "Mushrooms", price: 1, className: "mushrooms" },
+  greenPeppers: { name: "Green Peppers", price: 1, className: "green-peppers" },
+  whiteSauce: { name: "White sauce", price: 3, className: "sauce" },
+  glutenFreeCrust: { name: "Gluten-free crust", price: 5, className: "crust" },
 };
 
 // Initial value of the state (the state values can change over time)
@@ -85,35 +85,13 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  const pepBut = document.querySelector(".btn-pepperoni");
-  if (state.pepperoni) {
-    pepBut.classList.add("active");
-  } else {
-    pepBut.classList.remove("active");
-  }
-  const mushBut = document.querySelector(".btn-mushrooms");
-  if (state.mushrooms) {
-    mushBut.classList.add("active");
-  } else {
-    mushBut.classList.remove("active");
-  }
-  const greenBut = document.querySelector(".btn-green-peppers");
-  if (state.greenPeppers) {
-    greenBut.classList.add("active");
-  } else {
-    greenBut.classList.remove("active");
-  }
-  const sauceBut = document.querySelector(".btn-sauce");
-  if (state.whiteSauce) {
-    sauceBut.classList.add("active");
-  } else {
-    sauceBut.classList.remove("active");
-  }
-  const glutenBut = document.querySelector(".btn-crust");
-  if (state.glutenFreeCrust) {
-    glutenBut.classList.add("active");
-  } else {
-    glutenBut.classList.remove("active");
+  for (ingredient in ingredients){
+    const button = document.querySelector(`.btn-${ingredients[ingredient].className}`);
+    if (state[ingredient]) {
+      button.classList.add("active");
+    } else {
+      button.classList.remove("active");
+    }
   }
 }
 
@@ -122,40 +100,15 @@ function renderPrice() {
   let totalPrice = 10;
   const ingredientsList = document.querySelector(".panel.price ul");
   ingredientsList.innerHTML = "";
-  if (state.pepperoni) {
-    const ingPep = document.createElement("li");
-    ingPep.innerText = `${ingredients.pepperoni.price} ${ingredients.pepperoni.name}`;
-    ingredientsList.append(ingPep);
 
-    totalPrice += ingredients.pepperoni.price;
-  }
-  if (state.mushrooms) {
-    const ingMus = document.createElement("li");
-    ingMus.innerText = `${ingredients.mushrooms.price} ${ingredients.mushrooms.name}`;
-    ingredientsList.append(ingMus);
+  for (ingredient in state) {
+    if (state[ingredient]) {
+      const ing = document.createElement("li");
+      ing.innerText = `${ingredients[ingredient].price} ${ingredients[ingredient].name}`;
+      ingredientsList.append(ing);
 
-    totalPrice += ingredients.mushrooms.price;
-  }
-  if (state.greenPeppers) {
-    const ingGreenPep = document.createElement("li");
-    ingGreenPep.innerText = `${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name}`;
-    ingredientsList.append(ingGreenPep);
-
-    totalPrice += ingredients.greenPeppers.price;
-  }
-  if (state.whiteSauce) {
-    const ingWhiteSauce = document.createElement("li");
-    ingWhiteSauce.innerText = `${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name}`;
-    ingredientsList.append(ingWhiteSauce);
-
-    totalPrice += ingredients.whiteSauce.price;
-  }
-  if (state.glutenFreeCrust) {
-    const ingglutenFreeCrust = document.createElement("li");
-    ingglutenFreeCrust.innerText = `${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name}`;
-    ingredientsList.append(ingglutenFreeCrust);
-
-    totalPrice += ingredients.glutenFreeCrust.price;
+      totalPrice += ingredients[ingredient].price;
+    }
   }
 
   const price = document.querySelector(".panel.price strong");
