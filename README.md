@@ -16,14 +16,15 @@ There is only one problem: our local pizzeria's pizza builder **is not working**
 
 - Fork this repo
 - Clone this repo
+- Visit the "actions" tab in your fork, and enable workflows
 
 ## Submission
 
 - Upon completion, run the following commands:
 
-```
+```bash
 $ git add .
-$ git commit -m "done"
+$ git commit -m "Solved lab"
 $ git push origin master
 ```
 
@@ -140,4 +141,4 @@ Write the function `renderPrice()` that:
 - Displays the list of all items selected
 - Displays the total price.
 
-**Happy coding!** :heart:
+**Happy coding!** 💙
