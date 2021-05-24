@@ -30,13 +30,19 @@ $ git push origin master
 
 - Create Pull Request so your TAs can check up your work.
 
+## Automated Tests
+
+This lab includes an automated testing suite. For DOM related labs, our automated tests should be seen as a secondary tool, that helps you to programmatically understand wether your solution is correct and allows the educational team to track your progress.
+
+To run the automated tests, please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Now, you can run the `npm run test:watch` command to run automated tests in watch mode. Open the resulting `lab-solution.html` file with the "Live Server" VSCode extension to always see the most up to date test results.
+
 ## Instructions
 
 We will only work with the `js/index.js` file. As you will see, the file contains some code. The file is built to have a [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) and make the code scalable. This architecture is very close to what you will use with React.
 
 In this architecture, there is a variable `state` with different values, such as `pepperoni` initially set to `true`. When the user clicks on it, the value will be changed to the opposite (example: `false`).
 
-In this architecture, there is also a function `renderEverything` that renders the pizza, the buttons and the price based on the state. This function every time the state is changed, because the pizza, the buttons and the price must be changed. To give an example, when `state.pepperoni` is `true`, the function will:
+In this architecture, there is also a function `renderEverything` that renders the pizza, the buttons and the price based on the state. This function should run every time the state is changed, because the pizza, the buttons and the price must be changed. To give an example, when `state.pepperoni` is `true`, the function will:
 
 - make the pepperoni on the pizza visible,
 - add a class active to the "pepperoni" button,
