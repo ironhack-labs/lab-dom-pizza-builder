@@ -2,6 +2,8 @@
 
 # LAB | DOM Pizza Builder
 
+<br>
+
 ## Introduction
 
 [![](https://i.giphy.com/e2AKpOvx2MREY.gif)](https://www.youtube.com/watch?v=04MJIXcZKPk)
@@ -30,11 +32,15 @@ $ git push origin master
 
 - Create Pull Request so your TAs can check up your work.
 
+<br>
+
 ## Automated Tests
 
-This lab includes an automated testing suite. For DOM related labs, our automated tests should be seen as a secondary tool, that helps you to programmatically understand wether your solution is correct and allows the educational team to track your progress.
+This lab includes an automated testing suite. For DOM-related labs, our automated tests should be seen as a secondary tool, that helps you to programmatically understand whether your solution is correct and allows the educational team to track your progress.
 
-To run the automated tests, please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Now, you can run the `npm run test:watch` command to run automated tests in watch mode. Open the resulting `lab-solution.html` file with the "Live Server" VSCode extension to always see the most up to date test results.
+To run the automated tests, please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Now, you can run the `npm run test:watch` command to run automated tests in watch mode. Open the resulting `lab-solution.html` file with the "Live Server" VSCode extension to always see the most up-to-date test results.
+
+<br>
 
 ## Instructions
 
@@ -42,15 +48,17 @@ We will only work with the `js/index.js` file. As you will see, the file contain
 
 In this architecture, there is a variable `state` with different values, such as `pepperoni` initially set to `true`. When the user clicks on it, the value will be changed to the opposite (example: `false`).
 
-In this architecture, there is also a function `renderEverything` that renders the pizza, the buttons and the price based on the state. This function should run every time the state is changed, because the pizza, the buttons and the price must be changed. To give an example, when `state.pepperoni` is `true`, the function will:
+In this architecture, there is also a function `renderEverything` that renders the pizza, the buttons, and the price based on the state. This function should run every time the state is changed, because the pizza, the buttons, and the price must be changed. To give an example, when `state.pepperoni` is `true`, the function will:
 
 - make the pepperoni on the pizza visible,
-- add a class active to the "pepperoni" button,
+- add a class `active` to the "pepperoni" button,
 - update the price panel.
+
+<br>
 
 ### Iteration 1: Add and remove toppings
 
-There are five buttons on the left of the pizza builder. Three of those have to add or remove toppings from the pizza. Write the necessary JavaScript for those three buttons to **add and remove pepperoni, mushrooms and green peppers** from the pizza. **Don't worry about updating the price**. We will do it later.
+There are five buttons on the left of the pizza builder. Three of those have to add or remove toppings from the pizza. Write the necessary JavaScript for those three buttons to **add and remove pepperoni, mushrooms, and green peppers** from the pizza. **Don't worry about updating the price**. We will do it later.
 
 Each individual topping has its own HTML element.
 
@@ -101,6 +109,8 @@ Each individual topping has its own HTML element.
 - Add click event listener on `<button class="btn btn-mushrooms">` and `<button class="btn btn-green-peppers">` (pepperoni is already done)
 - Write the code for the functions `renderMushrooms()` and `renderGreenPeppers()`
 
+<br>
+
 ### Iteration 2: Sauce and crust options
 
 In this iteration, your goal is to:
@@ -110,7 +120,7 @@ In this iteration, your goal is to:
 - Add click event listener on `<button class="btn btn-crust">` and change `state.glutenFreeCrust`
 - Write the function `renderGlutenFreeCrust()`
 
-As you can see, the initial value for `state.whiteSauce` and `state.glutenFreeCrust` is false. The reason is because, by default, we want a pizza with pepperoni, mushrooms, green peppers but no white sauce nor gluten-free crust.
+As you can see, the initial value for `state.whiteSauce` and `state.glutenFreeCrust` is false. The reason is that, by default, we want a pizza with pepperoni, mushrooms, green peppers but no white sauce nor gluten-free crust.
 
 For now, **don't worry about updating the price**.
 
@@ -128,6 +138,9 @@ For now, **don't worry about updating the price**.
 </section>
 ```
 
+<br>
+
+
 ### Iteration 3: Make the buttons active or not
 
 Currently, all buttons look the same, no matter if the option is activated or not. If you notice, all the buttons have an `active` class.
@@ -138,6 +151,8 @@ Currently, all buttons look the same, no matter if the option is activated or no
 
 **Write the logic for removing and adding the buttons' `active` class appropriately. Write the code in the function `renderButtons()`**.
 
+<br>
+
 ### Iteration 4: Ingredients and prices
 
 On the right side of the pizza builder, there is a price section.
@@ -146,5 +161,8 @@ Write the function `renderPrice()` that:
 
 - Displays the list of all items selected
 - Displays the total price.
+
+
+<br>
 
 **Happy coding!** 💙
