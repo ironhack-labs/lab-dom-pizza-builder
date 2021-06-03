@@ -14,6 +14,7 @@ const getPageState = () => page.evaluate(() => state);
 // Ironhack Pizza Builder Test-suite
 describe('Ironhack Pizza Builder', () => {
   beforeAll(async () => {
+    page.on('console', (msg) => console.log(msg.text()));
     await page.goto('http://localhost:4444');
   });
 
