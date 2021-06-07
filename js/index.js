@@ -91,27 +91,27 @@ function renderButtons() {
 
   //console.log(document.querySelector('.btn.btn-pepperoni'))
   
-  if(state.pepperoni === true)
+  if(state.pepperoni)
     document.querySelector('.btn.btn-pepperoni').classList.add('active')
   else
     document.querySelector('.btn.btn-pepperoni').classList.remove('active')
 
-  if(state.mushrooms === true)
+  if(state.mushrooms)
     document.querySelector('.btn.btn-mushrooms').classList.add('active')
   else
     document.querySelector('.btn.btn-mushrooms').classList.remove('active')
 
-  if(state.greenPeppers === true)
+  if(state.greenPeppers)
     document.querySelector('.btn.btn-green-peppers').classList.add('active')
   else
     document.querySelector('.btn.btn-green-peppers').classList.remove('active')
 
-  if(state.whiteSauce === true)
+  if(state.whiteSauce)
     document.querySelector('.btn.btn-sauce').classList.add('active')
   else
     document.querySelector('.btn.btn-sauce').classList.remove('active')
 
-  if(state.glutenFreeCrust === true)
+  if(state.glutenFreeCrust)
     document.querySelector('.btn.btn-crust').classList.add('active')
   else
     document.querySelector('.btn.btn-crust').classList.remove('active')
