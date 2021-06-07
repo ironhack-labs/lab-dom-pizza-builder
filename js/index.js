@@ -1,8 +1,8 @@
 // Write your Pizza Builder JavaScript in this file.
 
 // Constants
-let basePrice = 10;
-let ingredients = {
+const basePrice = 10;
+const ingredients = {
   pepperoni: { name: 'pepperoni', price: 1 },
   mushrooms: { name: 'Mushrooms', price: 1 },
   greenPeppers: { name: 'Green Peppers', price: 1 },
@@ -11,7 +11,7 @@ let ingredients = {
 };
 
 // Initial value of the state (the state values can change over time)
-let state = {
+const state = {
   pepperoni: true,
   mushrooms: true,
   greenPeppers: true,
@@ -69,7 +69,7 @@ function renderPrice() {
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
-document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
+document.querySelector('.btn.btn-pepperoni').addEventListener('click', function () {
   state.pepperoni = !state.pepperoni;
   renderEverything();
 });
