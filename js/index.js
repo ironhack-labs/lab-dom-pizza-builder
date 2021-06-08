@@ -33,8 +33,19 @@ function renderEverything() {
 }
 
 function renderPepperoni() {
-  document.querySelectorAll('.pep').forEach((oneMush) => {
+  document.querySelectorAll('.pep').forEach((onePep) => {
     if (state.pepperoni) {
+      onePep.style.visibility = 'visible';
+    } else {
+      onePep.style.visibility = 'hidden';
+    }
+  });
+}
+
+function renderMushrooms() {
+  // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll('.mushroom').forEach((oneMush) => {
+    if (state.mushrooms) {
       oneMush.style.visibility = 'visible';
     } else {
       oneMush.style.visibility = 'hidden';
@@ -42,24 +53,13 @@ function renderPepperoni() {
   });
 }
 
-function renderMushrooms() {
-  // Iteration 1: set the visibility of `<section class="mushroom">`
+function renderGreenPeppers() {
+  // Iteration 1: set the visibility of `<section class="green-pepper">`
   document.querySelectorAll('.green-pepper').forEach((oneGreen) => {
     if (state.greenPeppers) {
       oneGreen.style.visibility = 'visible';
     } else {
       oneGreen.style.visibility = 'hidden';
-    }
-  });
-}
-
-function renderGreenPeppers() {
-  // Iteration 1: set the visibility of `<section class="green-pepper">`
-  document.querySelectorAll('.mushroom').forEach((onePep) => {
-    if (state.mushrooms) {
-      onePep.style.visibility = 'visible';
-    } else {
-      onePep.style.visibility = 'hidden';
     }
   });
 }
@@ -95,7 +95,7 @@ function renderButtons() {
       isActive.classList.remove('active');
     }
   });
-
+  //can removes the forEach & isActive
   document.querySelectorAll('.btn-mushrooms').forEach((isActive) => {
     if (state.mushrooms) {
       isActive.classList.add('active');
@@ -129,42 +129,42 @@ function renderButtons() {
   });
 
 }
+/*
+const lookup = {
+  pepperonni:'btn-pepperoni',
+  mushrooms: '.btn-mushroooms',
+  greenPeppers: '.btn-green-peppers',
+  glutenFreeCrust: '.btn-crust',
+  whiteSauce: '.btn-sauce',
+}
+  for (let ingredient in state) {
+    console.log(ingredient);
+    const button = document.querySelector(lookup[ingredient]);
+    if (state[ingredient]) {
+      button.classList.add('active');
+    } else {
+      button.classList.remove('active');
+    }
+  }
+
+  */
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  let totalPrice = 10;
-  if (state.greenPeppers) {
-    document.getElementById('green').innerText = '$1 green peppers';
-    totalPrice += 1;
-  } else {
-    document.getElementById('green').innerText = ''
+  let ingredientList = ''
+  let totalPrice = basePrice
+  for (let ingredient in state) {
+    console.log(ingredients[ingredient])
+    if (state[ingredient]) {
+      ingredientList += `<li>$ ${ingredients[ingredient].price} ${ingredients[ingredient].name}</li>`
+      totalPrice += ingredients[ingredient].price
+    }
   }
-  if (state.pepperoni) {
-    document.getElementById('roni').innerText = '$1 pepperoni';
-    totalPrice += 1;
-  } else {
-    document.getElementById('roni').innerText = ''
-  }
-  if (state.mushrooms) {
-    document.getElementById('shrooms').innerText = '$1 mushrooms';
-    totalPrice += 1;
-  } else {
-    document.getElementById('shrooms').innerText = ''
-  }
-  if (state.whiteSauce) {
-    document.getElementById('white').innerText = '$3 white sauce';
-    totalPrice += 3;
-  } else {
-    document.getElementById('white').innerText = ''
-  }
-  if (state.glutenFreeCrust) {
-    document.getElementById('gluten').innerText = '$5 gluten-free crust';
-    totalPrice += 1;
-  } else {
-    document.getElementById('gluten').innerText = ''
-  };
-  document.getElementById('total-price').innerText = `$${totalPrice}`
+  document.querySelector('.panel.price ul').innerHTML = ingredientList;
+  document.querySelector('.panel.price strong').innerText = `$${totalPrice}`;
 }
+
+
 
 renderEverything();
 
