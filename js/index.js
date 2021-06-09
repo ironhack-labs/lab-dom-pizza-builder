@@ -134,6 +134,38 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let panel = document.querySelector ('.panel.price')
+  let list = panel.querySelector('ul')
+  list.innerHTML = ""
+
+  let price = 10;
+  if (state.pepperoni){
+    price += 1
+    list.innerHTML += "<li>$1 pepperoni</li>"
+  }
+  if (state.mushrooms){
+    price += 1
+    list.innerHTML += "<li>$1 mushrooms</li>"
+
+  }
+  if (state.greenPeppers){
+    price += 1
+    list.innerHTML += "<li>$1 green peppers</li>"
+
+  }
+  if (state.whiteSauce){
+    price += 3
+    list.innerHTML += "<li>$3 white sauce</li>"
+
+  }
+  if (state.glutenFreeCrust){
+    price += 5
+    list.innerHTML += "<li>$5 gluten-free crust</li>"
+
+  }
+  
+  panel.querySelector('strong').innerText = "$" + price
+
 }
 
 renderEverything();
@@ -167,6 +199,7 @@ document.querySelector('.btn.btn-sauce').addEventListener('click', function () {
   state.whiteSauce = !state.whiteSauce;
   renderEverything();
 });
+
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
 document.querySelector('.btn.btn-crust').addEventListener('click', function () {
   state.glutenFreeCrust = !state.glutenFreeCrust;
