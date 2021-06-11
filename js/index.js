@@ -32,7 +32,7 @@ function renderEverything() {
 }
 
 function renderPepperoni() {
-  console.log('Test Pep');
+  //console.log('Test Pep');
   document.querySelectorAll('.pep').forEach((onePep) => {
     if (state.pepperoni) {
       onePep.style.visibility = 'visible';
@@ -71,11 +71,11 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  let sauceWhite = document.querySelector('.sauce.sauce-white');
+  let sauceWhite = document.querySelector('.sauce');
   if (state.whiteSauce){
-    sauceWhite.style.visibility = 'visible';
+    sauceWhite.classList.add('sauce-white');
   } else {
-    sauceWhite.style.visibility = 'hidden';
+    sauceWhite.classList.remove('sauce-white');
   }
 }
 
@@ -94,9 +94,27 @@ function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 
 
+
+
+  
+
+}
+
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+
+let Zutaten = 0;
+
+  for (let ingredient in ingredients) {
+    if (state[ingredient] === true)
+        Zutaten = ingredients[ingredient].price;
+         
+        console.log(Zutaten);
+  }
+// dont forget to add base price
 }
+
+
 
 renderEverything();
 
@@ -118,14 +136,11 @@ document.querySelector('.btn.btn-green-peppers').addEventListener('click', () =>
   renderEverything();
 });
 
-
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
   state.whiteSauce = !state.whiteSauce;
-  renderEverything;
+  renderEverything();
 });
-
-
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
 document.querySelector('.btn.btn-crust').addEventListener('click', () => {
