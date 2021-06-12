@@ -89,13 +89,44 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  document.querySelectorAll('.btn').forEach((clickedElement)=>{
-    if (state.clickedElement) {
-      clickedElement.classList.add("active");
+  document.querySelectorAll('.btn-pepperoni').forEach((isActive) => {
+    if (state.pepperoni) {
+      isActive.classList.add('active');
     } else {
-      clickedElement.classList.remove("active");
+      isActive.classList.remove('active');
     }
+  });
 
+  document.querySelectorAll('.btn-mushrooms').forEach((isActive) => {
+    if (state.mushrooms) {
+      isActive.classList.add('active');
+    } else {
+      isActive.classList.remove('active');
+    }
+  });
+
+  document.querySelectorAll('.btn-green-peppers').forEach((isActive) => {
+    if (state.greenPeppers) {
+      isActive.classList.add('active');
+    } else {
+      isActive.classList.remove('active');
+    }
+  });
+
+  document.querySelectorAll('.btn-sauce').forEach((isActive) => {
+    if (state.whiteSauce) {
+      isActive.classList.add('active');
+    } else {
+      isActive.classList.remove('active');
+    }
+  });
+
+  document.querySelectorAll('.btn-crust').forEach((isActive) => {
+    if (state.glutenFreeCrust) {
+      isActive.classList.add('active');
+    } else {
+      isActive.classList.remove('active');
+    }
   });
 }
 
