@@ -103,15 +103,20 @@ function renderButtons() {
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
 
-let Zutaten = 0;
-
+let gesamtPreis = 0;
+gesamtPreis += basePrice;
   for (let ingredient in ingredients) {
-    if (state[ingredient] === true)
-        Zutaten = ingredients[ingredient].price;
+    if (state[ingredient] === true) {
+      gesamtPreis += ingredients[ingredient].price;
+    } 
          
-        console.log(Zutaten);
+      console.log(gesamtPreis);
   }
-// dont forget to add base price
+
+  let precio = document.querySelector('#precio')
+  precio.textContent = '$'+ gesamtPreis;
+  console.log(precio);
+
 }
 
 
