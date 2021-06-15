@@ -135,7 +135,7 @@ function renderPrice() {
     finalPrice += ingredients.glutenFreeCrust.price
     ingredientsList.innerHTML += `<li>$${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name.toLowerCase()}</li>`
   }
-  document.querySelector('.panel.price strong').innerHTML = `$${Number(finalPrice) + Number(basePrice)}`;
+  document.querySelector('.panel.price strong').innerHTML = "$" + Number(finalPrice + basePrice);
 }
 
 renderEverything();
