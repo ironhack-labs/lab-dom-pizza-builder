@@ -96,7 +96,49 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  if (state.pepperoni) {
+    pepBtn = document.querySelector(".btn-pepperoni")
+    pepBtn.classList.add("active")
+  }else{
+    pepBtn = document.querySelector(".btn-pepperoni").classList.remove("active")
+  }
+
+  if (state.mushrooms) {
+    mshBtn = document.querySelector(".btn-mushrooms")
+    mshBtn.classList.add("active") 
+  }else{
+    mshBtn = document.querySelector(".btn-mushrooms")
+    mshBtn.classList.remove("active") 
+  }
+
+  if (state.greenPeppers) {
+    grnBtn = document.querySelector(".btn-green-peppers")
+    grnBtn.classList.add("active") 
+  }else{
+    grnBtn = document.querySelector(".btn-green-peppers")
+    grnBtn.classList.remove("active") 
+  }
+  if (state.whiteSauce) {
+    wtsBtn = document.querySelector(".btn-sauce")
+    wtsBtn.classList.add("active") 
+  }else{
+    wtsBtn = document.querySelector(".btn-sauce")
+    wtsBtn.classList.remove("active") 
+  }
+  if (state.glutenFreeCrust) {
+    crsBtn = document.querySelector(".btn-crust")
+    crsBtn.classList.add("active") 
+  }else{
+    crsBtn = document.querySelector(".btn-crust")
+    crsBtn.classList.remove("active") 
+  }
 }
+  
+  
+  
+  
+  
+
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
