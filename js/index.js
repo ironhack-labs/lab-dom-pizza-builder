@@ -66,7 +66,7 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-    const wSauce = document.querySelector('.sauce-white');
+    const wSauce = document.querySelector('.sauce');
 
     if (state.whiteSauce) {
       wSauce.style.visibility = 'visible'
@@ -82,13 +82,16 @@ function renderWhiteSauce() {
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  const crustIs = document.querySelector('.crust-gluten-free');
+  
 
-    if (state.glutenFreeCrust) {
-      crustIs.style.visibility = 'visible'
-    }else{
-      crustIs.style.visibility = 'hidden'
-    }
+  if (state.glutenFreeCrust) {
+    isCrust = document.querySelector(".crust")
+    isCrust.classList.add("crust-gluten-free")
+    
+  }else{
+    isCrust = document.querySelector(".crust")
+    isCrust.classList.remove("crust-gluten-free")
+  }
 
     
   }
@@ -99,6 +102,7 @@ function renderButtons() {
   if (state.pepperoni) {
     pepBtn = document.querySelector(".btn-pepperoni")
     pepBtn.classList.add("active")
+    
   }else{
     pepBtn = document.querySelector(".btn-pepperoni").classList.remove("active")
   }
@@ -142,6 +146,8 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  
+
 }
 
 renderEverything();
