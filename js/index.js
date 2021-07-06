@@ -110,21 +110,18 @@ if (state.pepperoni) {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-
- let ingredientList = ''
-  let totalPrice = basePrice
-  for (let ingredient in state) {
-  
-    if (state[ingredient]) {
-      totalPrice += state[ingredient].price `<li>$ ${ingredients[ingredient].price} ${ingredients[ingredient].name}</li>`
-      totalPrice += ingredients[ingredient].price
-    }
-  }
-  document.querySelector('.aside.panel.price ul').innerHTML = ingredientList;
-  document.querySelector('.panel.price strong').innerText = `$${totalPrice}`;
-}
-
-
+  let ingredientList = ''
+   let totalPrice = basePrice
+   for (let ingredient in state) {
+   
+     if (state[ingredient]) {
+       totalPrice += state[ingredient].price `<li>$ ${ingredients[ingredient].price} ${ingredients[ingredient].name}</li>`
+       totalPrice += ingredients[ingredient].price
+     }
+   }
+   document.querySelector('.aside.panel.price ul').innerHTML = ingredientList;
+   document.querySelector('.panel.price strong').innerText = `$${totalPrice}`;
+ }
 
 
 renderEverything();
