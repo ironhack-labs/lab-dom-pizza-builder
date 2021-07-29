@@ -115,9 +115,36 @@ function renderButtons() {
   }  
 }
 
+/*
+for (const ingredient in btnClasses) {
+    // console.log('ingredient:', ingredient);
+    const zeButton = document.querySelector(btnClasses[ingredient]);
+
+    if (state[ingredient]) {
+      zeButton.classList.add('active');
+    } else {
+      zeButton.classList.remove('active');
+    }
+  }
+}
+*/
+
 // Iteration 4: change the HTML of `<aside class="panel price">`
 function renderPrice() {
-  
+  const priceSection = document.querySelector('.price ul');
+  const price = document.querySelector('.price strong');
+  // priceSection.innerHTML = '';
+  let startingText = '';
+  let sum = basePrice;
+
+  for (const ingredient in state) {
+    if (state[ingredient]) {
+      startingText += `<li>$${ingredients[ingredient].price} ${ingredients[ingredient].name}</li>`;
+      sum += ingredients[ingredient].price;
+    }
+  }
+  priceSection.innerHTML = startingText;
+  price.innerText = `$${sum}`;  
 }
 
 renderEverything();
