@@ -131,26 +131,42 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  // let lista = document.querySelector("#ul");
-  // let pepperoniIngrediente = document.querySelector("#pepperoni");
-  // if (!state.pepperoni) {
-  //   lista.removeChild(pepperoniIngrediente);
-  // } else if (state.pepperoni) {
-  //   pepperoniIngrediente = document.createElement("li");
-  //   pepperoniIngrediente.innerHTML = "$1 pepperoni";
-  //   pepperoniIngrediente.setAttribute("id", "pepperoni");
-  //   lista.appendChild(pepperoniIngrediente);
-  // }
-  // let mushroomIngrediente = document.querySelector("#mushroom");
-  // if (!state.mushrooms) {
-  //   lista.removeChild(mushroomIngrediente);
-  // } else if (state.mushrooms) {
-  //   mushroomIngrediente = document.createElement("li");
-  //   mushroomIngrediente.innerHTML = "$1 mushroom";
-  //   mushroomIngrediente.setAttribute("id", "mushroom");
-  //   lista.appendChild(mushroomIngrediente);
-  // }
+  let total = basePrice;
+  let IngredientsPriceLi = "";
+  for (const ingredient in ingredients) {
+    if (state[ingredient]) {
+      IngredientsPriceLi += ` <li>${ingredients[ingredient].price} ${ingredients[ingredient].name}</li>`;
+      total += ingredients[ingredient].price;
+    }
+  }
+  const pricePanelHTML = `
+    <h2>Your pizza's price</h2>
+    <b>${basePrice} cheese pizza</b>
+    <ul>${IngredientsPriceLi}</ul>
+    <strong>$${total}</strong>
+        `;
+  document.querySelector(".panel.price").innerHTML = pricePanelHTML;
 }
+
+// let lista = document.querySelector("#ul");
+// let pepperoniIngrediente = document.querySelector("#pepperoni");
+// if (!state.pepperoni) {
+//   lista.removeChild(pepperoniIngrediente);
+// } else if (state.pepperoni) {
+//   pepperoniIngrediente = document.createElement("li");
+//   pepperoniIngrediente.innerHTML = "$1 pepperoni";
+//   pepperoniIngrediente.setAttribute("id", "pepperoni");
+//   lista.appendChild(pepperoniIngrediente);
+// }
+// let mushroomIngrediente = document.querySelector("#mushroom");
+// if (!state.mushrooms) {
+//   lista.removeChild(mushroomIngrediente);
+// } else if (state.mushrooms) {
+//   mushroomIngrediente = document.createElement("li");
+//   mushroomIngrediente.innerHTML = "$1 mushroom";
+//   mushroomIngrediente.setAttribute("id", "mushroom");
+//   lista.appendChild(mushroomIngrediente);
+// }
 
 renderEverything();
 
