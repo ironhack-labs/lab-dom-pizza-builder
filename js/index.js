@@ -130,7 +130,7 @@ document
     state.pepperoni = !state.pepperoni;
     // If we are showing the pepperoni, then the button should say Remove
     if (state.pepperoni) {
-      event.target.innerText = 'Remove pepperoni';
+      event.target.innerText = 'Remove Pepperoni';
       event.target.classList.add('active');
     } else {
       event.target.innerText = 'Add pepperoni';
