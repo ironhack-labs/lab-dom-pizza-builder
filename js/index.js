@@ -115,10 +115,10 @@ function renderPrice() {
   let startingText = '';
   let sum = basePrice;
 
-  for (const ingridient in state) {
+  for (const ingredient in state) {
     if (state[ingredient]) {
-      startingText += `<li>$${ingridients[ingridient].price} ${ingridients[ingridient].name}</li>`;
-      sum += ingridients[ingridient].price;
+      startingText += `<li>$${ingredients[ingredient].price} ${ingredients[ingredient].name}</li>`;
+      sum += ingredients[ingredient].price;
     }
   }
   priceSection.innerHTML = startingText;
