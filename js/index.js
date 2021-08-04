@@ -1,7 +1,7 @@
 // Write your Pizza Builder JavaScript in this file.
 
 // Constants
-const basePrice = 10;
+const basePrice = 12;
 const ingredients = {
   pepperoni: { name: 'pepperoni', price: 1 },
   mushrooms: { name: 'Mushrooms', price: 1 },
@@ -86,39 +86,36 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-if(state.pepperoni){
-  document.querySelector('.btn.btn-pepperoni').classList.add('active');
-}
-else{
-  document.querySelector('.btn.btn-pepperoni').classList.remove('active');
-}
-if(state.mushrooms){
-  document.querySelector('.btn.btn-mushrooms').classList.add('active');
-}
-else{
-  document.querySelector('.btn.btn-mushrooms').classList.remove('active');
-}
-if(state.greenPeppers){
-  document.querySelector('.btn.btn-green-peppers').classList.add('active');
-}
-else{
-  document.querySelector('.btn.btn-green-peppers').classList.remove('active');
-}
-
-if (state.whiteSauce){
-  document.querySelector('.btn.btn-sauce').classList.remove('active')
-} else {
-  document.querySelector('.btn.btn-sauce').classList.add('active')
-}
-if (state.glutenFreeCrust){
-  document.querySelector('.btn.btn-crust').classList.remove('active')
-} else {
-  document.querySelector('.btn.btn-crust').classList.add('active')
-}  
+state.pepperoni ? document.querySelector('.btn.btn-pepperoni').classList.add('active') : document.querySelector('.btn.btn-pepperoni').classList.remove('active');
+state.mushrooms ? document.querySelector('.btn.btn-mushrooms').classList.add('active') : document.querySelector('.btn.btn-mushrooms').classList.remove('active');
+state.greenPeppers ? document.querySelector('.btn.btn-green-peppers').classList.add('active'): document.querySelector('.btn.btn-green-peppers').classList.remove('active');
+state.whiteSauce ? document.querySelector('.btn.btn-sauce').classList.remove('active') : document.querySelector('.btn.btn-sauce').classList.add('active');
+state.glutenFreeCrust ? document.querySelector('.btn.btn-crust').classList.remove('active') : document.querySelector('.btn.btn-crust').classList.add('active');   
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+
+  let totalPrice = 0;
+  let priceIngredientLi = '';
+
+  for (ingredient in ingredients){
+    if(state[ingredient]){
+      priceIngredientLi += `<li>$${ingredients[ingredient].price} ${ingredients[ingredient].name}</li>`;
+
+      totalPrice += ingredients[ingredient].price;
+    }
+  }
+  let pricePanelHTML = `
+  <h2>Your pizza's price</h2>
+
+  <b>$${basePrice} cheese pizza</b>
+  <ul> 
+  ${priceIngredientLi}
+  </ul>
+  <strong>$${totalPrice + basePrice}</strong> `;
+
+  document.querySelector('.panel.price').innerHTML = pricePanelHTML;
 }
 
 renderEverything();
