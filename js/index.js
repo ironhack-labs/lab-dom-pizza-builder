@@ -141,17 +141,22 @@ function renderButtons() {
 
 
 function renderPrice() {
+  //declare empty price list and total price variables
+
   // let priceList = ''
+
+  // //set total price to init value of baseprice declared at the start
+
   // let totalPrice = basePrice
 
   // for (let item in state) {
-  //   if (state[ingredent] === true) {
-  //
+  //   if (state[item] === true) {
+  //     priceList += <li>${item.price}</li> ???
   //   }
   // }
 
-  //finally set the list to the equal of the priceList
-  // document.
+  // //finally set the list to the equal of the priceList
+  // document.querySelector('.panel .price ul') = priceList
 
 }
 
