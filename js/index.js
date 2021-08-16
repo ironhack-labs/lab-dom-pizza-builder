@@ -84,10 +84,63 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-}
+  if(state.pepperoni) {
+    document.querySelector('.btn-pepperoni').classList.remove('active');
+  }
+  else if(!state.pepperoni){
+    document.querySelector('.btn-pepperoni').classList.add('active');
+  }
+  if(state.mushrooms) {
+    document.querySelector('.btn-mushrooms').classList.remove('active');
+  }
+  else if(!state.mushrooms){
+    document.querySelector('.btn-mushrooms').classList.add('active');
+  }
+  if(state.greenPeppers) {
+    document.querySelector('.btn-green-peppers').classList.remove('active');
+  }
+  else if(!state.greenPeppers){
+    document.querySelector('.btn-green-peppers').classList.add('active');
+  }
+  if(state.whiteSauce) {
+    document.querySelector('.btn-sauce').classList.add('active');
+  }
+  else if(!state.whiteSauce){
+    document.querySelector('.btn-sauce').classList.remove('active');
+  }
+  if(state.glutenFreeCrust) {
+    document.querySelector('.btn-crust').classList.add('active');
+  }
+  else if(!state.glutenFreeCrust){
+    document.querySelector('.btn-crust').classList.remove('active');
+  }
+} 
+/*
+  I initially tried going over the buttons as an array.
+  I couldn't find a way to separate the states without calling .addEventListener()
+  However, that was making the call redundant and user needs to click button twice 
+  to remove active button state. I know document query selector ingredient
+*/
+// function renderButtons() {
+//  // console.log("render button");
+//   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+//   const btns = document.querySelectorAll('.btn');
+//   Array.from(btns).forEach(function (btn) {
+//     btn.addEventListener('click', function () {
+//       if(btn.classList.contains('active')) {
+//         btn.classList.remove('active');
+//       }
+//       else {
+//         btn.classList.add('active');
+//       }
+//     });
+//   });
+// }
+
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  // toggle to <ul> price list on and off onclick()
 }
 
 renderEverything();
