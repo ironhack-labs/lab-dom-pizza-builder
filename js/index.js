@@ -85,41 +85,42 @@ function renderGlutenFreeCrust() {
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
   // const buttons = document.getElementsByTagName('button')
-  const allButtons = document.querySelectorAll('.panel.controls ul'); //this will return a nodeList
+  //const allButtons = document.querySelectorAll('.panel.controls ul'); //this will return a nodeList
   //console.log(allButtons);
-  allButtons.forEach(function(button) {
-    //console.log(button);
-    if (state.button) {
-      button.classList.add('active');
-    } else {
-      button.classList.remove('active');
-    }
-});
-  // if (state.pepperoni) {
-  //   document.querySelector('.btn-pepperoni').classList.add('active')
-  // } else {
-  //   document.querySelector('.btn-pepperoni').classList.remove('active')
-  // }
-  // if (state.mushrooms) {
-  //   document.querySelector('.btn-mushrooms').classList.add('active')
-  // } else {
-  //   document.querySelector('.btn-mushrooms').classList.remove('active')
-  // }
-  // if (state.greenPeppers) {
-  //   document.querySelector('.btn-green-peppers').classList.add('active')
-  // } else {
-  //   document.querySelector('.btn-green-peppers').classList.remove('active')
-  // }
-  // if (state.glutenFreeCrust) {
-  //   document.querySelector('.btn-crust').classList.add('active')
-  // } else {
-  //   document.querySelector('.btn-crust').classList.remove('active')
-  // }
-  // if (state.whiteSauce) {
-  //   document.querySelector('.btn-sauce').classList.add('active')
-  // } else {
-  //   document.querySelector('.btn-sauce').classList.remove('active')
-  // }
+  // commented code is under construction!!
+//   for (let ingredient in state) {
+//     //console.log(button);
+//     if (state.ingredient) {
+//       button.classList.add('active');
+//     } else {
+//       button.classList.remove('active');
+//     }
+// });
+  if (state.pepperoni) {
+    document.querySelector('.btn-pepperoni').classList.add('active')
+  } else {
+    document.querySelector('.btn-pepperoni').classList.remove('active')
+  }
+  if (state.mushrooms) {
+    document.querySelector('.btn-mushrooms').classList.add('active')
+  } else {
+    document.querySelector('.btn-mushrooms').classList.remove('active')
+  }
+  if (state.greenPeppers) {
+    document.querySelector('.btn-green-peppers').classList.add('active')
+  } else {
+    document.querySelector('.btn-green-peppers').classList.remove('active')
+  }
+  if (state.glutenFreeCrust) {
+    document.querySelector('.btn-crust').classList.add('active')
+  } else {
+    document.querySelector('.btn-crust').classList.remove('active')
+  }
+  if (state.whiteSauce) {
+    document.querySelector('.btn-sauce').classList.add('active')
+  } else {
+    document.querySelector('.btn-sauce').classList.remove('active')
+  }
 }
 
 function renderPrice() {
