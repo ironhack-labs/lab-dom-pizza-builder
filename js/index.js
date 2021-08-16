@@ -114,33 +114,68 @@ function renderButtons() {
   else if(!state.glutenFreeCrust){
     document.querySelector('.btn-crust').classList.remove('active');
   }
-} 
+}
+
 /*
   I initially tried going over the buttons as an array.
   I couldn't find a way to separate the states without calling .addEventListener()
   However, that was making the call redundant and user needs to click button twice 
   to remove active button state. I know document query selector ingredient
 */
+// An Attempt to shorten iteration 3
 // function renderButtons() {
-//  // console.log("render button");
+//   // console.log("render button");
 //   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+//   // document.querySelector(<here is the string>).classList.remove('active')
 //   const btns = document.querySelectorAll('.btn');
-//   Array.from(btns).forEach(function (btn) {
-//     btn.addEventListener('click', function () {
-//       if(btn.classList.contains('active')) {
-//         btn.classList.remove('active');
-//       }
-//       else {
-//         btn.classList.add('active');
-//       }
-//     });
+//   // this only returns the state names which don't match the css button names
+//   // const nameOfFood = Object.getOwnPropertyNames(state);
+//   // console.log(nameOfFood);
+//   // Trying to get the food name by eliminating active and splitting from index 3.
+//   // The issue i'm facing is how to detect the one item being clicked.
+//   // Currently finalword console.log()'s all the css toppings
+//   Array.from(btns).forEach(function (item) {
+//     // console.log(item);
+//     const removeActive = item.className.replace('active','');
+//     const finalWord = removeActive.slice(4, removeActive.length);
+//     //console.log(finalWord); 
+//     if(item.classList.contains('active'))
+//     {
+//       // document.querySelector(`${finalWord}`).classList.remove('active');
+//     }
+//     else {
+//       // item.classList.add('active');
+//     }
 //   });
+  
+//   // btns.forEach(function (btn) {
+//   //   if (state.btn) {
+//   //     btn.classList.remove('active');
+//   //   } else {
+//   //     btn.classList.add('active');
+//   //   }
+//   // });
 // }
-
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   // toggle to <ul> price list on and off onclick()
+   //declare empty price list and total price variables
+
+  // let priceList = ''
+
+  // set total price to init value of baseprice declared at the start
+
+  // let totalPrice = basePrice
+
+  // for (let item in state) {
+  //   if (state[item] === true) {
+  //     priceList += <li>${item.price}</li> ???
+  //   }
+  // }
+
+  // set list = priceList
+  // document.querySelector('.panel .price ul') = priceList
 }
 
 renderEverything();
