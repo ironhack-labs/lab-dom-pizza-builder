@@ -118,7 +118,7 @@ function renderPrice() {
   let list = document.querySelector('aside ul')
   let total = basePrice
   list.innerHTML = ""
-  let totalPrice = document.querySelector('strong')
+  let totalPrice = document.querySelector('aside strong')
 
   for (ingredient in ingredients) {
     if (state[ingredient]) {
@@ -126,7 +126,7 @@ function renderPrice() {
       list.innerHTML += `<li>${ingredients[ingredient].price} ${ingredients[ingredient].name}</li>`
     }
   }
-  totalPrice.innerText = '$' + total
+  totalPrice.innerText = total
 }
 
 renderEverything();
