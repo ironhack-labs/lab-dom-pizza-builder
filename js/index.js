@@ -33,7 +33,7 @@ function renderEverything() {
 }
 
 function renderPepperoni() {
-  document.querySelectorAll('.pep').forEach((onePep) => {
+  document.querySelectorAll('.pep').forEach(function(onePep) {
     if (state.pepperoni) {
       onePep.style.visibility = 'visible';
     } else {
@@ -44,7 +44,7 @@ function renderPepperoni() {
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
-  document.querySelectorAll('.mushroom').forEach((oneMushroom) => {
+  document.querySelectorAll('.mushroom').forEach(function(oneMushroom) {
     if (state.mushrooms) {
       oneMushroom.style.visibility = 'visible';
     } else {
@@ -55,7 +55,7 @@ function renderMushrooms() {
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
-  document.querySelectorAll('.green-pepper').forEach((eachGreenPepper) => {
+  document.querySelectorAll('.green-pepper').forEach(function(eachGreenPepper) {
     if (state.greenPeppers) {
       eachGreenPepper.style.visibility = 'visible';
     } else {
@@ -84,42 +84,50 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  // const buttons = document.getElementsByTagName('button')
-  //const allButtons = document.querySelectorAll('.panel.controls ul'); //this will return a nodeList
-  //console.log(allButtons);
-  // commented code is under construction!!
-//   for (let ingredient in state) {
-//     //console.log(button);
-//     if (state.ingredient) {
-//       button.classList.add('active');
-//     } else {
-//       button.classList.remove('active');
-//     }
-// });
-  if (state.pepperoni) {
-    document.querySelector('.btn-pepperoni').classList.add('active')
-  } else {
-    document.querySelector('.btn-pepperoni').classList.remove('active')
+
+// the long solution using if statements:
+  // if (state.pepperoni) {
+  //   document.querySelector('.btn-pepperoni').classList.add('active')
+  // } else {
+  //   document.querySelector('.btn-pepperoni').classList.remove('active')
+  // }
+  // if (state.mushrooms) {
+  //   document.querySelector('.btn-mushrooms').classList.add('active')
+  // } else {
+  //   document.querySelector('.btn-mushrooms').classList.remove('active')
+  // }
+  // if (state.greenPeppers) {
+  //   document.querySelector('.btn-green-peppers').classList.add('active')
+  // } else {
+  //   document.querySelector('.btn-green-peppers').classList.remove('active')
+  // }
+  // if (state.glutenFreeCrust) {
+  //   document.querySelector('.btn-crust').classList.add('active')
+  // } else {
+  //   document.querySelector('.btn-crust').classList.remove('active')
+  // }
+  // if (state.whiteSauce) {
+  //   document.querySelector('.btn-sauce').classList.add('active')
+  // } else {
+  //   document.querySelector('.btn-sauce').classList.remove('active')
+  // }
+
+  // alternative solution/ shorter solution:
+  //
+  const ingredientClasses = {
+    pepperoni: '.btn-pepperoni',
+    mushrooms: '.btn-mushrooms',
+    greenPeppers: '.btn-green-peppers',
+    whiteSauce: '.btn-sauce',
+    glutenFreeCrust: '.btn-crust'
   }
-  if (state.mushrooms) {
-    document.querySelector('.btn-mushrooms').classList.add('active')
-  } else {
-    document.querySelector('.btn-mushrooms').classList.remove('active')
-  }
-  if (state.greenPeppers) {
-    document.querySelector('.btn-green-peppers').classList.add('active')
-  } else {
-    document.querySelector('.btn-green-peppers').classList.remove('active')
-  }
-  if (state.glutenFreeCrust) {
-    document.querySelector('.btn-crust').classList.add('active')
-  } else {
-    document.querySelector('.btn-crust').classList.remove('active')
-  }
-  if (state.whiteSauce) {
-    document.querySelector('.btn-sauce').classList.add('active')
-  } else {
-    document.querySelector('.btn-sauce').classList.remove('active')
+  for (let ingredient in state) {
+    const button = document.querySelector(ingredientClasses[ingredient]);
+    if (state[ingredient]) {
+      button.classList.add('active')
+    } else {
+      button.classList.remove('active')
+    }
   }
 }
 
@@ -134,7 +142,7 @@ function renderPrice() {
       Totalprice += ingredients[ingredient].price 
     }
   }
-  document.querySelector('.panel.price strong').innerHTML = `$${Totalprice}`;
+  document.querySelector('.panel.price strong').innerText = `$${Totalprice}`;
   document.querySelector('.panel.price ul').innerHTML = ingredientsList;
 }
 
