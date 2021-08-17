@@ -116,31 +116,39 @@ function renderPrice() {
   // parentElement.insertBefore(heading, list)
   const asideUl = document.querySelector("aside > ul");
   const asideStrong = document.querySelector("aside > strong");
-  let text = "";
-  let sum = 10;
-  if (state.pepperoni) {
-    text += "<li>$1 pepperoni</li>"
-    sum += ingredients.pepperoni.price;
-  } 
-  if (state.mushrooms) {
-    text += "<li>$1 mushrooms</li>"
-    sum += ingredients.mushrooms.price;
+  // let text = "";
+  let list ='';
+  let sum = basePrice;
+  // if (state.pepperoni) {
+  //   text += "<li>$1 pepperoni</li>"
+  //   sum += ingredients.pepperoni.price;
+  // } 
+  // if (state.mushrooms) {
+  //   text += "<li>$1 mushrooms</li>"
+  //   sum += ingredients.mushrooms.price;
+  // }
+  // if (state.greenPeppers) {
+  //   text += "<li>$1 green peppers</li>"
+  //   sum += ingredients.greenPeppers.price;
+  // }
+  // if (state.whiteSauce) {
+  //   text += "<li>$3 white sauce</li>"
+  //   sum += ingredients.whiteSauce.price;
+  // }
+  // if (state.glutenFreeCrust) {
+  //   text += "<li>$5 gluten-free crust</li>"
+  //   sum += ingredients.glutenFreeCrust.price;
+  // }
+  for (let ingredient in state) {
+    if (state[ingredient]) {
+      list +=`<li>$ ${ingredients[ingredient].price} ${ingredients[ingredient.name]}</li>`
+      sum += ingredients[ingredient].price
+    }
   }
-  if (state.greenPeppers) {
-    text += "<li>$1 green peppers</li>"
-    sum += ingredients.greenPeppers.price;
-  }
-  if (state.whiteSauce) {
-    text += "<li>$3 white sauce</li>"
-    sum += ingredients.whiteSauce.price;
-  }
-  if (state.glutenFreeCrust) {
-    text += "<li>$5 gluten-free crust</li>"
-    sum += ingredients.glutenFreeCrust.price;
-  }
-  
-  asideUl.innerHTML = text;
-  asideStrong.innerText = "$" + sum;
+
+
+  asideUl.innerHTML = list;
+  asideStrong.innerHTML = `$${sum}`;
 }
 
 renderEverything();
