@@ -139,46 +139,38 @@ function renderButtons() {
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   let currentPrice = 10;
+  let list = '';
   //                                               V this is wrong ////
   // let displayedPrice = document.querySelector(".panel > b")
   let displayedPrice = document.querySelector("aside.panel > strong:nth-child(4)")
   if (state.pepperoni){
     currentPrice += 1;
-    document.querySelector("aside.panel > ul:nth-child(3) > li:nth-child(1)").style.visibility = 'visible';
-  } else {
-    
-    document.querySelector("aside.panel > ul:nth-child(3) > li:nth-child(1)").style.visibility = 'hidden';
+    list += '<li>$1 pepperoni</li>';
   }
-
   if (state.greenPeppers) {
     currentPrice += 1;
-    document.querySelector("aside.panel > ul:nth-child(3) > li:nth-child(2)").style.visibility = 'visible';
-  } else {
-    document.querySelector("aside.panel > ul:nth-child(3) > li:nth-child(2)").style.visibility = 'hidden';
+    list +='<li>$1 green peppers</li>';
   }
-
   if (state.mushrooms) {
     currentPrice += 1;
-    document.querySelector("aside.panel > ul:nth-child(3) > li:nth-child(3)").style.visibility = 'visible';
-  } else {
-    document.querySelector("aside.panel > ul:nth-child(3) > li:nth-child(3)").style.visibility = 'hidden';
-    
+    list +='<li>$1 mushrooms</li>';
   }
-
+  
   if (state.whiteSauce) {
     currentPrice += 3;
-    document.querySelector("aside.panel > ul:nth-child(3) > li:nth-child(4)").style.visibility = 'visible';
-  } else {
-    document.querySelector("aside.panel > ul:nth-child(3) > li:nth-child(4)").style.visibility = 'hidden';
+    list += '<li>$3 white sauce</li>';
   }
+  
+  if (state.glutenFreeCrust) {
+    currentPrice += 5;
+    list += '<li>$5 gluten-free crust</li>'
+  }
+  console.log (list)
 
-  if (state.glutenFreeCrust) {currentPrice += 5;
-    document.querySelector("aside.panel > ul:nth-child(3) > li:nth-child(5)").style.visibility = 'visible';
-  } else {
-    document.querySelector("aside.panel > ul:nth-child(3) > li:nth-child(5)").style.visibility = 'hidden';
-  }
+  document.querySelector('.panel.price ul').innerHTML = list;
+  
   console.log(`price is now ${currentPrice} <i>`)
-  displayedPrice.innerHTML = `<i> ${currentPrice} <i>`
+  displayedPrice.innerHTML = `<i>$${currentPrice} <i>`
   // aside.panel > strong:nth-child(4)
 }
 
