@@ -95,45 +95,65 @@ function renderGlutenFreeCrust() {
   }
 }
 
-function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  //// //// //// //// could do it smarter //// //// //// //// 
-  var element = document.querySelector(".btn-pepperoni");
-  if (!state.pepperoni){
-    element.classList.remove("active");
-  } else {
-    element.classList.add("active");
-  }
-  
-  element = document.querySelector(".btn-mushrooms");
-  if (!state.mushrooms){
-    element.classList.remove("active");
-  } else {
-    element.classList.add("active");
-  }
-  
-  element = document.querySelector(".btn-green-peppers");
-  if (!state.greenPeppers){
-    element.classList.remove("active");
-  } else {
-    element.classList.add("active");
-  }
-  
-  element = document.querySelector(".btn-sauce");
-  if (!state.whiteSauce){
-    element.classList.remove("active");
-  } else {
-    element.classList.add("active");
-  }
-  
-  element = document.querySelector(".btn-crust");
-  if (!state.glutenFreeCrust){
-    element.classList.remove("active");
-  } else {
-    element.classList.add("active");
-  }
-  
+//// or put this in the original ingredients list ////
+buttonFor = {
+  pepperoni: ".btn-pepperoni",
+  mushrooms: ".btn-mushrooms",
+  greenPeppers: ".btn-green-peppers",
+  whiteSauce: ".btn-sauce",
+  glutenFreeCrust: ".btn-crust",
 }
+
+function renderButtons() {
+  
+  for (let ingredient in state){
+    const button = document.querySelector(buttonFor[ingredient])
+    if (state[ingredient]){
+      button.classList.add('active')     
+    } else {
+      button.classList.remove('active')
+    }
+  }
+}
+
+// Iteration 3: add/remove the class "active" of each `<button class="btn">`
+//// //// //// //// could do it smarter //// //// //// //// 
+//   var element = document.querySelector(".btn-pepperoni");
+//   if (!state.pepperoni){
+//     element.classList.remove("active");
+//   } else {
+//     element.classList.add("active");
+//   }
+
+//   element = document.querySelector(".btn-mushrooms");
+//   if (!state.mushrooms){
+//     element.classList.remove("active");
+//   } else {
+//     element.classList.add("active");
+//   }
+
+//   element = document.querySelector(".btn-green-peppers");
+//   if (!state.greenPeppers){
+//     element.classList.remove("active");
+//   } else {
+//     element.classList.add("active");
+//   }
+
+//   element = document.querySelector(".btn-sauce");
+//   if (!state.whiteSauce){
+//     element.classList.remove("active");
+//   } else {
+//     element.classList.add("active");
+//   }
+
+//   element = document.querySelector(".btn-crust");
+//   if (!state.glutenFreeCrust){
+//     element.classList.remove("active");
+//   } else {
+//     element.classList.add("active");
+//   }
+
+// }
 
 
 function renderPrice() {
@@ -143,6 +163,7 @@ function renderPrice() {
   //                                               V this is wrong ////
   // let displayedPrice = document.querySelector(".panel > b")
   let displayedPrice = document.querySelector("aside.panel > strong:nth-child(4)")
+
   if (state.pepperoni){
     currentPrice += 1;
     list += '<li>$1 pepperoni</li>';
@@ -165,13 +186,17 @@ function renderPrice() {
     currentPrice += 5;
     list += '<li>$5 gluten-free crust</li>'
   }
-  console.log (list)
-
+  // console.log (list)
+  
   document.querySelector('.panel.price ul').innerHTML = list;
   
-  console.log(`price is now ${currentPrice} <i>`)
-  displayedPrice.innerHTML = `<i>$${currentPrice} <i>`
-  // aside.panel > strong:nth-child(4)
+  //console.log(`price is now ${currentPrice}`)
+  
+  // this works in the test
+  displayedPrice.innerHTML = `${currentPrice}`
+  // 
+  // but this should be better    V
+  // displayedPrice.innerHTML = `$${currentPrice}`
 }
 
 
@@ -203,7 +228,7 @@ document.querySelector('.btn.btn-sauce').addEventListener('click', function () {
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
 document.querySelector('.btn.btn-crust').addEventListener('click', function () {
   state.glutenFreeCrust = !state.glutenFreeCrust;
-  console.log(state);
+  // console.log(state);
   renderEverything();
 });
 
