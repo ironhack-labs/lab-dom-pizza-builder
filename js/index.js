@@ -122,11 +122,11 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  let totalPrice = 10;
-  let allItems = document.querySelector('aside > ul')
+  // let totalPrice = 10;
+  // let allItems = document.querySelector('aside > ul')
 
 
-  console.log(allItems)
+  // console.log(allItems)
 
 }
 
