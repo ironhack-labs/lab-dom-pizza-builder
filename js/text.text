@@ -1,0 +1,45 @@
+
+
+className = button.classList[1];
+
+
+
+
+currentStates = {
+btn-pepperoni: state.pepperoni
+}
+
+
+
+
+const modifyActive = (object, button) => {
+
+const className = "btn-pepperoni" // object.className
+const state = state.pepperoni // object.state
+const buttonName  = button.classList[1];
+
+  if (buttonName === className && !state) {
+    if (button.classList.contains('active')) {
+      button.classList.remove('active');
+    }
+  } else {
+    button.classList.add('active');
+  }
+
+}
+
+function renderButtons() {
+  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+
+  document.querySelectorAll('.btn').forEach((button) => {
+    const buttonName = button.classList[1];
+
+    if (buttonName === 'btn-pepperoni' && !state.pepperoni) {
+      if (button.classList.contains('active')) {
+        button.classList.remove('active');
+      }
+    } else {
+      button.classList.add('active');
+    }
+  });
+}
