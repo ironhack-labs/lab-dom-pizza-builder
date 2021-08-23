@@ -82,27 +82,16 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
 
-  let buttons = document.querySelectorAll('.btn');
+  // get the buttons in an array and make them active based off of current statement buttons 
 
-  console.log(buttons);
-
-  let i = 0;
-
-
-    if(state.bool){
-      buttons[i].classList.add("active");
-    }else{
-      buttons[i].classList.remove("active");
-    }
-
-
-
-
-  
 }
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+
+  // get 
+
+  console.log(document.querySelector('.price strong').innerHTML);
+  document.querySelector('.price strong').innerHTML = total;
 }
 
 renderEverything();
