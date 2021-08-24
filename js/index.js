@@ -30,7 +30,6 @@ function renderEverything() {
 
   renderButtons();
   renderPrice();
-  console.log(state);
 }
 
 function renderPepperoni() {
@@ -99,6 +98,14 @@ const stateObject = {
   'btn-crust': 'glutenFreeCrust'
 };
 
+const priceObject = {
+  '$1 pepperoni': 'pepperoni',
+  '$1 mushroom': 'mushroom',
+  '$1 green peppers': 'greenPeppers',
+  '$3 white sauce': 'whiteSauce',
+  '$5 gluten-free crust': 'glutenFreeCrust'
+};
+
 const modifyActive = (button, state, stateObject) => {
   const className = button.classList[1];
   const key = stateObject[className];
@@ -122,6 +129,18 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+
+  let totalPrice = 0; //plus 10 and $
+
+  const price = document.querySelector('.price');
+  const ul = price.querySelector('ul');
+  const li = ul.querySelectorAll('li');
+  const totalDisplay = price.querySelector('strong');
+
+  ul.innerHTML = '';
+  totalDisplay.innerHTML = '';
+
+  li.forEach((listItem) => {});
 }
 
 renderEverything();
