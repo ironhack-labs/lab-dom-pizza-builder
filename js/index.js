@@ -85,12 +85,41 @@ function renderGlutenFreeCrust() {
   }
 }
 
+const ingredientBtns = {
+  pepperoni: '.btn-pepperoni',
+  mushrooms: '.btn-mushrooms',
+  greenPeppers: '.btn-green-peppers',
+  whiteSauce: '.btn-sauce',
+  glutenFreeCrust: '.btn-crust'
+};
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  for (const ingredient in ingredientBtns) {
+    const ingredientButton = document.querySelector(ingredientBtns[ingredient]);
+    if (state[ingredient]) {
+      ingredientButton.classList.add('active');
+    } else {
+      ingredientButton.classList.remove('active');
+    }
+  }
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  const priceSection = document.querySelector('.price ul');
+  const price = document.querySelector('.price strong');
+  // priceSection.innerHTML = '';
+  let startingText = '';
+  let sum = basePrice;
+
+  for (const ingredient in state) {
+    if (state[ingredient]) {
+      startingText += `<li>$${ingredients[ingredient].price} ${ingredients[ingredient].name}</li>`;
+      sum += ingredients[ingredient].price;
+    }
+  }
+  priceSection.innerHTML = startingText;
+  price.innerText = `${sum}`;
 }
 
 renderEverything();
