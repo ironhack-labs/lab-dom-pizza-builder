@@ -66,7 +66,9 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  document.querySelector('section.sauce').classList.toggle('sauce-white');
+  document
+    .querySelector('.crust section.sauce')
+    .classList.toggle('sauce-white');
 }
 
 function renderGlutenFreeCrust() {
@@ -76,6 +78,14 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  document.querySelectorAll('.controls button').forEach((button) => {
+    const foodName = button.dataset.foodName;
+    if (state[foodName]) {
+      button.classList.add('active');
+    } else {
+      button.classList.remove('active');
+    }
+  });
 }
 
 function renderPrice() {
@@ -90,7 +100,8 @@ document
   .addEventListener('click', function () {
     state.pepperoni = !state.pepperoni;
     console.log(state.pepperoni);
-    renderEverything();
+    renderPepperoni();
+    renderButtons();
   });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
@@ -98,23 +109,27 @@ document
   .querySelector('.btn.btn-mushrooms')
   .addEventListener('click', function () {
     state.mushrooms = !state.mushrooms;
-    renderEverything();
+    renderMushrooms();
+    renderButtons();
   });
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
 document
   .querySelector('.btn.btn-green-peppers')
   .addEventListener('click', function () {
     state.greenPeppers = !state.greenPeppers;
-    renderEverything();
+    renderGreenPeppers();
+    renderButtons();
   });
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 document.querySelector('.btn.btn-sauce').addEventListener('click', function () {
   state.whiteSauce = !state.whiteSauce;
-  renderEverything();
+  renderWhiteSauce();
+  renderButtons();
 });
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
 document.querySelector('.btn.btn-crust').addEventListener('click', function () {
   state.glutenFreeCrust = !state.glutenFreeCrust;
-  renderEverything();
+  renderGlutenFreeCrust();
+  renderButtons();
 });
