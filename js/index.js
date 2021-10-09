@@ -1,6 +1,6 @@
 // Write your Pizza Builder JavaScript in this file.
 
-// Constants
+
 const basePrice = 10;
 const ingredients = {
   pepperoni: { name: 'pepperoni', price: 1 },
@@ -10,6 +10,8 @@ const ingredients = {
   glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
 };
 
+
+
 // Initial value of the state (the state values can change over time)
 const state = {
   pepperoni: true,
@@ -18,6 +20,8 @@ const state = {
   whiteSauce: false,
   glutenFreeCrust: false
 };
+
+
 
 // This function takes care of rendering the pizza based on the state
 // This function is triggered once at the beginning and every time the state is changed
@@ -32,52 +36,200 @@ function renderEverything() {
   renderPrice();
 }
 
+//The visibility property allows the author to show or hide an element. It is similar to the display property. However, the difference is that if you set display:none, it hides the entire element, while visibility:hidden means that the contents of the element will be invisible, but the element stays in its original position and size.
+
+
+
 function renderPepperoni() {
-  document.querySelectorAll('.pep').forEach((onePep) => {
+
+  const pepLocal = document.querySelectorAll('.pep')
+
+  pepLocal.forEach((peppy) => {
     if (state.pepperoni) {
-      onePep.style.visibility = 'visible';
+      peppy.style.visibility = 'visible';
     } else {
-      onePep.style.visibility = 'hidden';
+      peppy.style.visibility = 'hidden';
     }
-  });
+  })
 }
 
 function renderMushrooms() {
-  // Iteration 1: set the visibility of `<section class="mushroom">`
+
+  const mushLocal = document.querySelectorAll('.mushroom')
+
+  mushLocal.forEach((mush) => {
+    if(state.mushrooms) {
+      mush.style.visibility = 'visible';
+    } else {
+      mush.style.visibility = 'hidden';
+    }
+  })
 }
 
+
 function renderGreenPeppers() {
-  // Iteration 1: set the visibility of `<section class="green-pepper">`
+  
+  const greenLocal = document.querySelectorAll('.green-pepper')
+
+  greenLocal.forEach((green) => {
+    if(state.greenPeppers) {
+      green.style.visibility = 'visible';
+    } else {
+      green.style.visibility = 'hidden';
+    }
+  })
 }
 
 function renderWhiteSauce() {
-  // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+
+  const sauceLocal=document.querySelector('.sauce')
+  
+  if (state.whiteSauce) {
+    sauceLocal.classList.add('sauce-white')
+  }
+  else {
+    sauceLocal.classList.remove('sauce-white')
+  }
 }
 
 function renderGlutenFreeCrust() {
-  // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+
+  const crustLocal=document.querySelector('.crust')
+  
+  if (state.glutenFreeCrust) {
+    crustLocal.classList.add('crust-gluten-free')
+  }
+  else {
+    crustLocal.classList.remove('crust-gluten-free')
+  }
 }
 
+
 function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+
+const btnPepperonni= document.querySelector('.btn.btn-pepperoni')
+const btnMushrooms = document.querySelector('.btn.btn-mushrooms')
+const btnGreenpeppers = document.querySelector('.btn.btn-green-peppers')
+const btnSauce = document.querySelector('.btn.btn-sauce')
+const btnGluten = document.querySelector('.btn.btn-crust')
+
+
+ if(state.pepperoni) {
+  btnPepperonni.classList.add('active')
+} 
+else {
+  btnPepperonni.classList.remove('active')
+}
+
+if(state.mushrooms){
+  btnMushrooms.classList.add('active')
+ } 
+ else {
+  btnMushrooms.classList.remove('active')
+ } 
+
+if(state.greenPeppers) {
+  btnGreenpeppers.classList.add('active')
+}else {
+  btnGreenpeppers.classList.remove('active')
+}
+
+if(state.whiteSauce) {
+  btnSauce.classList.add('active')
+}else {
+  btnSauce.classList.remove('active')
+}
+
+ if(state.glutenFreeCrust) {
+  btnGluten.classList.add('active')
+ } else {
+  btnGluten.classList.remove('active')
+}
+
 }
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
-}
+  
+  let elementsPizza = []
+
+  // new array with added elements of our pizza
+  for(let status in state) {
+    if(state[status] === true) {
+      elementsPizza.push(status)
+    }
+  }
+  
+//clean the html
+  var parent = document.querySelector('.panel.price ul')
+  
+  parent.innerHTML=''
+
+  // add elements
+
+  let totalPrice = 0
+
+  for(let element of elementsPizza) {
+
+    // where to put my new element
+    var child = document.createElement("li")
+
+    //content of my elemet
+
+    child.innerText = `$${ingredients[element].price} ${ingredients[element].name}`
+
+    parent.appendChild(child)
+
+    totalPrice += ingredients[element].price
+
+  }
+
+  const totalDisplay= totalPrice+10
+
+  document.querySelector('strong').innerText = `$${totalDisplay}`
+
+  }
 
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', function () {
   state.pepperoni = !state.pepperoni;
+  
   renderEverything();
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
 
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', function () {
+  state.mushrooms = !state.mushrooms;
+  
+  renderEverything()
+
+})
+
+
+
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+
+document.querySelector('.btn.btn-green-peppers').addEventListener('click', function () {
+  state.greenPeppers = !state.greenPeppers;
+  
+  renderEverything()
+})
+
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 
+document.querySelector('.btn.btn-sauce').addEventListener('click', function () {
+  state.whiteSauce = !state.whiteSauce;
+  
+  renderEverything()
+})
+
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+
+document.querySelector('.btn.btn-crust').addEventListener('click', function () {
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  
+  renderEverything()
+})
