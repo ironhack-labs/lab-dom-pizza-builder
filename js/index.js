@@ -67,7 +67,7 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  let whiteSaucePizza = document.querySelector('.sauce');
+  const whiteSaucePizza = document.querySelector('.sauce');
 
   if (state.whiteSauce){
     whiteSaucePizza.classList.add('sauce-white');
@@ -79,7 +79,7 @@ function renderWhiteSauce() {
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  let glutenFreePizza = document.querySelector('.crust');
+  const glutenFreePizza = document.querySelector('.crust');
 
   if (state.glutenFreeCrust){
     glutenFreePizza.classList.add('crust-gluten-free');
@@ -91,6 +91,21 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  const pepperoniBtn = document.querySelector('.btn.btn-pepperoni')
+  pepperoniBtn.classList.toggle("active", !state.pepperoni)
+
+  const mushroomBtn = document.querySelector('.btn.btn-mushrooms')
+  mushroomBtn.classList.toggle("active", !state.mushrooms)
+
+  const greenPeppersBtn = document.querySelector('.btn.btn-green-peppers')
+  greenPeppersBtn.classList.toggle("active", !state.greenPeppers)
+
+  const sauceBtn = document.querySelector('.btn.btn-sauce')
+  sauceBtn.classList.toggle("active", !state.whiteSauce)
+
+  const crustBtn = document.querySelector('.btn.btn-crust')
+  crustBtn.classList.toggle("active", !state.glutenFreeCrust)
+
 }
 
 function renderPrice() {
