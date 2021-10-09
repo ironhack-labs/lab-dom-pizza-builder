@@ -97,19 +97,32 @@ function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   const foods = Object.keys(state);
   let sum = basePrice;
+  document.querySelector('.price ul').innerHTML = '';
   for (let food of foods) {
-    if (!state[food]) {
-      document.querySelector(
-        `.price li[data-food-name=${food}]`
-      ).style.display = 'none';
-    } else {
-      document.querySelector(
-        `.price li[data-food-name=${food}]`
-      ).style.display = 'block';
+    if (state[food]) {
+      const newTopping = document.createElement('li');
+      newTopping.innerHTML = `$${ingredients[food].price} ${ingredients[
+        food
+      ].name.toLowerCase()}}`;
+      document.querySelector('.price ul').append(newTopping);
       sum += ingredients[food].price;
     }
-    document.querySelector(`aside .sum`).textContent = `Total: $${sum}`;
   }
+  document.querySelector(`aside .sum`).textContent = sum;
+
+  // for (let food of foods) {
+  //   if (!state[food]) {
+  //     document.querySelector(
+  //       `.price li[data-food-name=${food}]`
+  //     ).style.display = 'none';
+  //   } else {
+  //     document.querySelector(
+  //       `.price li[data-food-name=${food}]`
+  //     ).style.display = 'block';
+  //     sum += ingredients[food].price;
+  //   }
+  //   document.querySelector(`aside .sum`).textContent = sum;
+  // }
   // console.log(foods);
 }
 
