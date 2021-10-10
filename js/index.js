@@ -108,6 +108,29 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  //calculate price
+  const elementPrice = document.querySelector(".price strong")
+  let totalPrice = 10
+  if (state.pepperoni) totalPrice+=1
+  if (state.mushrooms) totalPrice+=1
+  if (state.greenPeppers) totalPrice+=1
+  if (state.whiteSauce) totalPrice+=3
+  if (state.glutenFreeCrust) totalPrice+=5
+  elementPrice.textContent = totalPrice
+
+  // removes and Adds rice list of toppings
+  const priceList = document.querySelector(".price ul")
+  // removes all PriceListItems
+  priceList.innerHTML = ""
+  //creates new ListItems
+  const newPriceListItem = document.createElement("li")
+  
+  if (state.pepperoni) newPriceListItem.innerHTML += "$1 pepperoni"
+  // // if (state.mushrooms) totalPrice+=1
+  // // if (state.greenPeppers) totalPrice+=1
+  // // if (state.whiteSauce) totalPrice+=3
+  // // if (state.glutenFreeCrust) totalPrice+=5
+  priceList.appendChild(newPriceListItem)
 }
 
 renderEverything();
