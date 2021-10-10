@@ -111,6 +111,18 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  const withPepperoni = state.pepperoni ? 1 : 0;
+  const withMushrooms = state.mushrooms ? 1 : 0;
+  const withPeppers = state.greenPeppers ? 1 : 0;
+  const withWhiteSauce = state.whiteSauce ? 3 : 0;
+  const withGlutenFreeCrust = state.glutenFreeCrust ? 5 : 0;
+  const sumAll =
+    withPepperoni +
+    withMushrooms +
+    withPeppers +
+    withWhiteSauce +
+    withGlutenFreeCrust;
+  document.querySelector('.panel strong').textContent = `$${10 + sumAll}`;
 }
 
 // renderEverything();
