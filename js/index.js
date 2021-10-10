@@ -123,14 +123,32 @@ function renderPrice() {
   // removes all PriceListItems
   priceList.innerHTML = ""
   //creates new ListItems
-  const newPriceListItem = document.createElement("li")
+  const pricePep = document.createElement("li")
+  const priceMush = document.createElement("li")
+  const priceGreenPep = document.createElement("li")
+  const priceSouce = document.createElement("li")
+  const priceCrust = document.createElement("li")
   
-  if (state.pepperoni) newPriceListItem.innerHTML += "$1 pepperoni"
-  // // if (state.mushrooms) totalPrice+=1
-  // // if (state.greenPeppers) totalPrice+=1
-  // // if (state.whiteSauce) totalPrice+=3
-  // // if (state.glutenFreeCrust) totalPrice+=5
-  priceList.appendChild(newPriceListItem)
+  if (state.pepperoni){
+    pricePep.textContent += "$1 pepperoni"
+    priceList.appendChild(pricePep)
+  } 
+  if (state.mushrooms) {
+    priceMush.textContent += "$1 mushrooms"
+    priceList.appendChild(priceMush)
+  } 
+  if (state.greenPeppers) {
+    priceGreenPep.textContent += "$1 green pepper"
+    priceList.appendChild(priceGreenPep)
+  }
+  if (state.whiteSauce) {
+    priceSouce.textContent += "$3 white souce"
+    priceList.appendChild(priceSouce)
+  }
+  if (state.glutenFreeCrust) {
+    priceCrust.textContent += "$5 gluten free crust"
+    priceList.appendChild(priceCrust)
+  }
 }
 
 renderEverything();
