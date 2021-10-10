@@ -66,24 +66,44 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  elementWhiteSouce = document.querySelector(".sauce")
-  if (state.whiteSauce)
-    elementWhiteSouce.classList.add("sauce-white")
-  else
-    elementWhiteSouce.classList.remove("sauce-white")
+  elementWhiteSouce = document.querySelector('.sauce');
+  if (state.whiteSauce) elementWhiteSouce.classList.add('sauce-white');
+  else elementWhiteSouce.classList.remove('sauce-white');
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  elementWhiteSouce = document.querySelector(".crust")
+  elementWhiteSouce = document.querySelector('.crust');
   if (state.glutenFreeCrust)
-    elementWhiteSouce.classList.add("crust-gluten-free")
-  else
-    elementWhiteSouce.classList.remove("crust-gluten-free")
+    elementWhiteSouce.classList.add('crust-gluten-free');
+  else elementWhiteSouce.classList.remove('crust-gluten-free');
 }
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  elementsButtons = document.querySelectorAll('.btn');
+  elementsButtons.forEach((button) => {
+    const isPepperoniBtn = button.classList.contains('btn-pepperoni');
+    const isMushroomBtn = button.classList.contains('btn-mushrooms');
+    const isPeppersBtn = button.classList.contains('btn-green-peppers');
+    const isSauceBtn = button.classList.contains('btn-sauce');
+    const isCrustBtn = button.classList.contains('btn-crust');
+
+    if (isPepperoniBtn && !state.pepperoni) button.classList.remove('active');
+    else if (isPepperoniBtn && state.pepperoni) button.classList.add('active');
+
+    if (isMushroomBtn && !state.mushrooms) button.classList.remove('active');
+    else if (isMushroomBtn && state.mushrooms) button.classList.add('active');
+
+    if (isPeppersBtn && !state.greenPeppers) button.classList.remove('active');
+    else if (isPeppersBtn && state.greenPeppers) button.classList.add('active');
+
+    if (isSauceBtn && !state.whiteSauce) button.classList.remove('active');
+    else if (isSauceBtn && state.whiteSauce) button.classList.add('active');
+
+    if (isCrustBtn && !state.glutenFreeCrust) button.classList.remove('active');
+    else if (isCrustBtn && state.glutenFreeCrust) button.classList.add('active');
+  });
 }
 
 function renderPrice() {
@@ -93,22 +113,28 @@ function renderPrice() {
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
-document.querySelector('.btn.btn-pepperoni').addEventListener('click', function () {
-  state.pepperoni = !state.pepperoni;
-  renderEverything();
-});
+document
+  .querySelector('.btn.btn-pepperoni')
+  .addEventListener('click', function () {
+    state.pepperoni = !state.pepperoni;
+    renderEverything();
+  });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
-document.querySelector('.btn.btn-mushrooms').addEventListener('click', function () {
-  state.mushrooms = !state.mushrooms;
-  renderEverything();
-});
+document
+  .querySelector('.btn.btn-mushrooms')
+  .addEventListener('click', function () {
+    state.mushrooms = !state.mushrooms;
+    renderEverything();
+  });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-document.querySelector('.btn.btn-green-peppers').addEventListener('click', function () {
-  state.greenPeppers = !state.greenPeppers;
-  renderEverything();
-});
+document
+  .querySelector('.btn.btn-green-peppers')
+  .addEventListener('click', function () {
+    state.greenPeppers = !state.greenPeppers;
+    renderEverything();
+  });
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 document.querySelector('.btn.btn-sauce').addEventListener('click', function () {
