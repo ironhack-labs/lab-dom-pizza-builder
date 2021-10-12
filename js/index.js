@@ -1,7 +1,7 @@
 // Write your Pizza Builder JavaScript in this file.
 
 // Constants
-var basePrice = 10;
+//var basePrice = 10;
 const ingredients = {
   pepperoni: { name: 'pepperoni', price: 1 },
   mushrooms: { name: 'Mushrooms', price: 1 },
@@ -10,7 +10,7 @@ const ingredients = {
   glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
 };
 // Initial value for the price Tag
-const totalPrice  = basePrice;
+//const totalPrice  = basePrice;
 
 // Initial value of the state (the state values can change over time)
 const state = {
@@ -92,18 +92,52 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  const btnPepperonni = document.querySelector('.btn.btn-pepperoni')
+  const btnMushrooms = document.querySelector('.btn.btn-mushrooms')
+  const btnPeppers = document.querySelector(".btn.btn-green-peppers")
+
+
+  if(state.pepperoni) {
+    btnPepperonni.classList.add('active')
+  } else {
+    btnPepperonni.classList.remove('active')
+  }
+
+
+  if(state.mushrooms) {
+    btnMushrooms.classList.add('active')
+  } else {
+    btnMushrooms.classList.remove('active')
+  }
+
+  if(state.greenPeppers) {
+    btnPeppers.classList.add('active')
+  } else {
+    btnPeppers.classList.remove('active')
+  }
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  if(state.pepperoni){
-    priceTag = basePrice + ingredients.pepperoni.price;
-    basePrice = priceTag;
-  }else{
-    priceTag = basePrice - ingredients.pepperoni.price;
-    basePrice = priceTag;
+  const totalPrice = document.querySelector("#priceTag")
+  let initalPrice = 10
+  if(state.pepperoni) {
+    initalPrice += 1
   }
-  document.querySelector('#priceTag').innerHTML = priceTag;
+  if(state.mushrooms) {
+    initalPrice += 1
+  }
+  if (state.greenPeppers) {
+    initalPrice += 1
+  }
+  if (state.whiteSauce) {
+    initalPrice += 3
+  }
+  if (state.glutenFreeCrust) {
+    initalPrice += 5
+  }
+  totalPrice.textContent = initalPrice
+
 }
 
 renderEverything();
