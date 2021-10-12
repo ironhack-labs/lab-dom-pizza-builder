@@ -1,6 +1,7 @@
 // Write your Pizza Builder JavaScript in this file.
 
 // Constants
+
 //var basePrice = 10;
 const ingredients = {
   pepperoni: { name: 'pepperoni', price: 1 },
@@ -38,8 +39,10 @@ function renderPepperoni() {
   document.querySelectorAll('.pep').forEach((onePep) => {
     if (state.pepperoni) {
       onePep.style.visibility = 'visible';
+      document.getElementById('pricePepp').hidden = false;
     } else {
       onePep.style.visibility = 'hidden';
+      document.getElementById('pricePepp').hidden = true;
     }
   });
 }
@@ -49,8 +52,10 @@ function renderMushrooms() {
   document.querySelectorAll('.mushroom').forEach((oneMush) => {
     if (state.mushrooms) {
       oneMush.style.visibility = 'visible';
+      document.getElementById('priceMush').hidden = false;
     } else {
       oneMush.style.visibility = 'hidden';
+      document.getElementById('priceMush').hidden = true;
     }
   });
 }
@@ -60,8 +65,10 @@ function renderGreenPeppers() {
   document.querySelectorAll('.green-pepper').forEach((Onepepper) => {
     if (state.greenPeppers) {
       Onepepper.style.visibility = 'visible';
+      document.getElementById('priceGreen').hidden = false;
     } else {
       Onepepper.style.visibility = 'hidden';
+      document.getElementById('priceGreen').hidden = true;
     }
   });
 }
@@ -71,8 +78,10 @@ function renderWhiteSauce() {
   document.querySelectorAll('.sauce-white').forEach((sauce) => {
     if (state.whiteSauce) {
       sauce.style.visibility = 'visible';
+      document.getElementById('priceWhite').hidden = false;
     } else {
       sauce.style.visibility = 'hidden';
+      document.getElementById('priceWhite').hidden = true;
     }
   });
 }
@@ -83,8 +92,10 @@ function renderGlutenFreeCrust() {
   document.querySelectorAll('.crust').forEach((crumb) => {
     if (state.glutenFreeCrust) {
       crumb.style.visibility = 'visible';
+      document.getElementById('priceGluten').hidden = false;
     } else {
       crumb.style.visibility = 'hidden';
+      document.getElementById('priceGluten').hidden = true;
     }
   });
 }
@@ -138,6 +149,7 @@ function renderPrice() {
   }
   totalPrice.textContent = initalPrice
 
+ 
 }
 
 renderEverything();
