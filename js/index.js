@@ -110,28 +110,28 @@ function renderButtons() {
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   // Total
-  const itemsPrice = document.querySelector('.price strong')
+  const total = document.querySelector('.price strong')
   // Base Price
-  let total = 10
+  let itemsPrice = 10
   // Sum of Ingredients
   if (state.pepperoni) {
-    total+=1 
+    itemsPrice+=1 
   } else 0
   if (state.mushrooms) {
-    total+=1
+    itemsPrice+=1
   } else 0    
   if (state.greenPeppers) {
-    total+=1
+    itemsPrice+=1
   } else 0    
   if (state.whiteSauce) {
-    total+=3
+    itemsPrice+=3
   } else 0    
   if (state.glutenFreeCrust) {
-    total+=5
+    itemsPrice+=5
   } else 0    
-  itemsPrice.textContent = total
-  //  itemsPrice.textContent = `$${total}` JEST RED
-  //  itemsPrice.textContent = '$',total JEST RED
+  total.textContent = itemsPrice
+  //  total.textContent = `$${itemsPrice}` JEST RED
+  //  total.textContent = '$',itemsPrice JEST RED
 
   // 
   const list = document.querySelector('.price ul')
