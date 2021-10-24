@@ -110,7 +110,7 @@ function renderButtons() {
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   // Total
-  const elementPrice = document.querySelector('.price strong')
+  const itemsPrice = document.querySelector('.price strong')
   // Base Price
   let total = 10
   // Sum of Ingredients
@@ -129,9 +129,9 @@ function renderPrice() {
   if (state.glutenFreeCrust) {
     total+=5
   } else 0    
-  elementPrice.textContent = total
-  //  elementPrice.textContent = `$${total}` JEST RED
-  //  elementPrice.textContent = '$',total JEST RED
+  itemsPrice.textContent = total
+  //  itemsPrice.textContent = `$${total}` JEST RED
+  //  itemsPrice.textContent = '$',total JEST RED
 
   // 
   const list = document.querySelector('.price ul')
