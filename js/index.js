@@ -19,6 +19,7 @@ const state = {
   glutenFreeCrust: false
 };
 
+
 // This function takes care of rendering the pizza based on the state
 // This function is triggered once at the beginning and every time the state is changed
 function renderEverything() {
