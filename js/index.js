@@ -113,43 +113,32 @@ function renderButtons() {
 
 /* Iteration 4: Ingredients and prices
 On the right side of the pizza builder, there is a price section.
-
 Write the function renderPrice() that:
-
 Displays the list of all items selected
 Displays the total price.
-
 function addToTheList() {
         var u = document.getElementById("input1").value;
         document.getElementById("list").innerHTML += ("<li>" + u + "</li>");
       }
-
 */
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  document.querySelectorAll('.btn').forEach((b) => {
-    if (state.pepperoni) {
-      //add 1 dolar to the total
-
+  //Total Cost begins with 10 cause of the pizza
+  let totalCost = basePrice;
+  //create a 2 dimensional array with the state ["pepperoni",true] 
+  const arr =  Object.entries(state)
+  let sistatiko
+  //console.log(arr)
+  for(let i = 0; i<arr.length; i++){
+    if(arr[i][1] === true){
+      sistatiko = ""
+      sistatiko+="$"+ingredients[arr[i][0]].price + " " + ingredients[arr[i][0]].name
+     // console.log(sistatiko)
+      totalCost = totalCost + ingredients[arr[i][0]].price
     }
-
-    if (state.mushrooms) {
-      //add another 1 dolar
-    }
-
-    if (state.greenPeppers) {
-      
-    }
-
-    if (state.whiteSauce) {
-      
-    }
-
-    if (state.glutenFreeCrust) {
-     
-    }
-  });
+  }
+  
 
 }
 
