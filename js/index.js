@@ -82,7 +82,36 @@ function renderGlutenFreeCrust() {
 }
 
 function renderButtons() {
-  document.querySelectorAll('.btn').forEach((button) => {
+  document.querySelectorAll('.btn').forEach((button)=>{
+    if(button.classList.contains('btn-pepperoni') && state.pepperoni === true){
+      button.classList.add('active')
+    }  else if (button.classList.contains('btn-pepperoni') && state.pepperoni === false){
+      button.classList.remove('active')
+    }
+    if (button.classList.contains('btn-mushrooms') && state.mushrooms === true){
+      button.classList.add('active')
+    }  else if (button.classList.contains('btn-mushrooms') && state.mushrooms === false){
+      button.classList.remove('active')
+    }
+
+    if (button.classList.contains('btn-green-peppers') && state.greenPeppers === true){
+      button.classList.add('active')
+    }  else if (button.classList.contains('btn-green-peppers') && state.greenPeppers === false){
+      button.classList.remove('active')
+    }
+
+    if (button.classList.contains('btn-sauce') && state.whiteSauce === true){
+      button.classList.add('active')
+    } else if (button.classList.contains('btn-sauce') && state.whiteSauce === false){
+      button.classList.remove('active')
+    }
+
+
+    if (button.classList.contains('glutenFree') && state.glutenFreeCrust === true){
+      button.classList.add('active')
+    } else if (button.classList.contains('glutenFree') && state.glutenFreeCrust === false){
+      button.classList.remove('active')
+    }
 
   })
     // Iteration 3: add/remove the class "active" of each `<button class="btn">`
