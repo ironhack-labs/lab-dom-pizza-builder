@@ -319,19 +319,19 @@ p.description {
   box-shadow: none;
 }
 
-.btn-crust {
+.glutenFree {
   background: #e0d5cf;
   box-shadow: 0 6px #957160;
   color: #555;
 }
 
-.btn-crust:hover {
+.glutenFree:hover {
   background: #d3c3bb;
   box-shadow: 0 5px #816253;
   color: #555;
 }
 
-.btn-crust.active {
+.glutenFree.active {
   top: 2px;
   box-shadow: 0 2px #957160;
 }

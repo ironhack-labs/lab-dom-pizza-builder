@@ -118,7 +118,13 @@ function renderButtons() {
 }
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+  const $allIngredientesElement = document.querySelector(".price ul")
+  const $ingredientsArr = document.querySelectorAll(".price ul li");
+  const $buttonsArr = document.querySelectorAll(".btn");
+  $buttonsArr.forEach((button)=>{
+    if(button.classList.contains('active') &)
+  })
+
 }
 
 renderEverything();
