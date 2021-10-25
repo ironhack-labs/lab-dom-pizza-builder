@@ -30,7 +30,8 @@ function renderEverything() {
 
   renderButtons();
   renderPrice();
-}
+};
+
 
 function renderPepperoni() {
   document.querySelectorAll('.pep').forEach((onePep) => {
@@ -44,19 +45,37 @@ function renderPepperoni() {
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
-}
+    document.querySelectorAll('.mushroom').forEach((oneMush) => {
+      if (state.mushrooms) {
+        oneMush.style.visibility = 'visible';
+      } else {
+        oneMush.style.visibility = 'hidden';
+      }
+    });
+  }
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll('.green-pepper').forEach((oneGreenpep) => {
+    if (state.greenPeppers) {
+      oneGreenpep.style.visibility = 'visible';
+    } else {
+      oneGreenpep.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+ 
 }
+   
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+
 }
+
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
