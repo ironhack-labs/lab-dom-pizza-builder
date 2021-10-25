@@ -113,11 +113,31 @@ function renderButtons() {
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   const prices = [
-    { name: 'pepperoni', costs: 1, state: state.pepperoni },
-    { name: 'mushrooms', costs: 1, state: state.mushrooms },
-    { name: 'green peppers', costs: 1, state: state.greenPeppers },
-    { name: 'white sauce', costs: 3, state: state.whiteSauce },
-    { name: 'gluten-free crust', costs: 5, state: state.glutenFreeCrust }
+    {
+      name: ingredients.pepperoni.name,
+      costs: ingredients.pepperoni.price,
+      state: state.pepperoni
+    },
+    {
+      name: ingredients.mushrooms.name,
+      costs: ingredients.mushrooms.price,
+      state: state.mushrooms
+    },
+    {
+      name: ingredients.greenPeppers.name,
+      costs: ingredients.greenPeppers.price,
+      state: state.greenPeppers
+    },
+    {
+      name: ingredients.whiteSauce.name,
+      costs: ingredients.whiteSauce.price,
+      state: state.whiteSauce
+    },
+    {
+      name: ingredients.glutenFreeCrust.name,
+      costs: ingredients.glutenFreeCrust.price,
+      state: state.glutenFreeCrust
+    }
   ];
   const list = document.querySelector('.panel.price ul');
   list.textContent = '';
@@ -134,7 +154,7 @@ function renderPrice() {
     .map((p) => p.costs)
     .reduce((a, c) => a + c, 0);
   document.querySelector('.panel.price strong').textContent = `$${
-    totalPrice + 10
+    totalPrice + basePrice
   }`;
   // console.log(totalPriceElem);
 }
