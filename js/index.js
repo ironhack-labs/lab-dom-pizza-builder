@@ -110,9 +110,34 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  
-let totalPrice = basePrice + ingredients.price
-return totalPrice
+  /*let input = document.getElementsByName("ingredients.status");
+  let total = 0;
+  for (let i = 0; i< input.length; i++){
+    if (input[i].checked) {
+      total += parseFloat(input[i].value)
+    }
+    document.getElementsById("total").value = "$" + total.toFixed(2)
+    document.querySelector()*/
+   //const basePrice = basePrice ? basePrice : 0;
+
+  let price = basePrice;
+  if (state.pepperoni){
+    price += 1
+  }
+  if (state.mushrooms){
+    price += 1
+  }
+  if (state.greenPeppers){
+    price += 1
+  }
+  if (state.whiteSauce){
+    price += 3
+  }
+  if (state.glutenFreeCrust){
+    price += 5
+  } 
+  let total= document.querySelector('strong')
+  return total.innerHTML = `${price}`
 }
 
 renderEverything();
