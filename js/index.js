@@ -93,6 +93,7 @@ else {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  //the click does not work for white sauce and gluten-free crust!! please adivise
   const buttonPep = document.querySelector('.btn-pepperoni')
   if(state.pepperoni) {
    buttonPep.classList.add('active')
@@ -128,12 +129,42 @@ function renderButtons() {
   else {
     buttonCrust.classList.remove('active')
   }
-
-}
+} 
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
-  
+  let totalPrice = basePrice;
+  if (state.pepperoni === true){
+    totalPrice += 1
+    document.querySelector('.panel.price li:nth-of-type(1)').innerText = '$1 Pepperoni'
+  } else {
+    document.querySelector('.panel.price li:nth-of-type(1)').innerText = ''
+  }
+  if (state.mushrooms === true){
+    totalPrice += 1
+    document.querySelector('.panel.price li:nth-of-type(2)').innerText = '$1 Mushrooms'
+  } else {
+    document.querySelector('.panel.price li:nth-of-type(2)').innerText = ''
+  }
+  if (state.greenPeppers === true){
+    totalPrice += 1
+    document.querySelector('.panel.price li:nth-of-type(3)').innerText = '$1 Green Peppers'
+  } else {
+    document.querySelector('.panel.price li:nth-of-type(3)').innerText = ''
+  }
+  if (state.whiteSauce === true){
+    totalPrice += 3
+    document.querySelector('.panel.price li:nth-of-type(4)').innerText = '$3 White Sauce'
+  } else {
+    document.querySelector('.panel.price li:nth-of-type(4)').innerText = ''
+  }
+  if (state.glutenFreeCrust === true){
+    totalPrice += 5
+    document.querySelector('.panel.price li:nth-of-type(5)').innerText = '$5 Gluten-free Crust'
+  } else {
+    document.querySelector('.panel.price li:nth-of-type(5)').innerText = ''
+  }
+  //console.log(totalPrice)
+  document.querySelector('.panel.price strong').innerText = `$${totalPrice}`
 }
 
 renderEverything();
