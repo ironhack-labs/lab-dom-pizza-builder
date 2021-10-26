@@ -123,7 +123,7 @@ function addToTheList() {
 */
 
 function renderPrice() {
-  document.getElementById("newList").innerHTML = "";
+  document.querySelector(".panel.price>ul").innerHTML = "";
   // Iteration 4: change the HTML of `<aside class="panel price">`
   //Total Cost begins with 10 cause of the pizza
   let totalCost = basePrice;
