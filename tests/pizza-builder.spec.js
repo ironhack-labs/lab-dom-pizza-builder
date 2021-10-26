@@ -7,7 +7,7 @@ const pascalCaseToDashSeparated = (value) =>
     .join('-')
     .toLowerCase();
 
-const extractAmountFromPrice = (price) => Number(price.replace(/\$ /g, ''));
+const extractAmountFromPrice = (price) => Number(price.replace(/\$/g, ''));
 
 const getPageState = async () => await page.evaluate(() => state);
 
