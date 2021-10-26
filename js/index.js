@@ -124,6 +124,7 @@ function addToTheList() {
 
 function renderPrice() {
   document.querySelector(".panel.price>ul").innerHTML = "";
+  document.querySelector(".panel.price>strong").innerHTML = "";
   // Iteration 4: change the HTML of `<aside class="panel price">`
   //Total Cost begins with 10 cause of the pizza
   let totalCost = basePrice;
@@ -142,7 +143,7 @@ function renderPrice() {
       node.appendChild(document.createTextNode(sistatiko));
  
       document.querySelector('.panel.price>ul').appendChild(node);
-      document.querySelector('.panel.price strong').totalCost;
+      document.querySelector(".panel.price>strong").innerHTML = totalCost;
     }
   }
   
