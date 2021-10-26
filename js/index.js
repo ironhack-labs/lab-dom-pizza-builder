@@ -19,6 +19,14 @@ const state = {
   glutenFreeCrust: false
 };
 
+const classFor = {
+  pepperoni: '.btn-pepperoni',
+  mushrooms: '.btn-mushrooms',
+  greenPeppers: '.btn-green-peppers',
+  whiteSauce: '.btn-sauce',
+  glutenFreeCrust: '.btn-crust'
+}
+
 // This function takes care of rendering the pizza based on the state
 // This function is triggered once at the beginning and every time the state is changed
 function renderEverything() {
@@ -84,23 +92,29 @@ function renderGlutenFreeCrust() {
   }
 }
 
-//FIX
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  const buttons = document.querySelectorAll('.controls .btn');
-  const foods = Object.keys(state)
-  for (let i = 0; i < buttons.length; i++) {
-    for (let j = 0; j < foods.length; j++) {
-      buttons[i].setAttribute('data-name', `${foods[j]}`);
-      console.log(buttons[i]);
-      const food = buttons[i].dataset.dateName;
-      console.log(food);
-      if (state[food]) {
-        btn.classList.add('active');
-      }
-      buttons[i].classList.remove('active');
+  for (let ingredient in state) {
+    const btn = document.querySelector(classFor[ingredient])
+    if (state[ingredient]) {
+      btn.classList.add('active')
+    } else {
+      btn.classList.remove('active')
     }
   }
+  // const buttons = document.querySelectorAll('.controls .btn');
+  // const foods = Object.keys(state)
+  // for (let i = 0; i < buttons.length; i++) {
+  //   for (let j = 0; j < foods.length; j++) {
+  //     buttons[i].setAttribute('data-name', `${foods[j]}`);
+  //     const food = buttons[i].dataset.dataName; //FIX
+  //     console.log(food); 
+  //     if (state[food]) {
+  //       buttons[i].classList.add('active');
+  //     }
+  //     buttons[i].classList.remove('active');
+  //   }
+  // }
 }
 
 function renderPrice() {
