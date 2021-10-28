@@ -120,26 +120,14 @@ function renderButtons() {
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   
-  let price = 10;
-  if (state.pepperoni) {
-    price+=1;
-    
+  let price = basePrice;
+  let list = '';
+  for (let ingredient in state) {
+    if (state[ingredient]) {
+      list = list + `<li>$ ${ingredients[ingredient].price} ${ingredients[ingredient].name} </li>`
+      price = price + ingredients[ingredient].price
+    }
   }
-  if (state.mushrooms) {
-    price+=1;
-  }
-  if (state.greenPeppers) {
-    price+=1;
-  }
-  if (state.whiteSauce) {
-    price+=3;
-  }
-  if (state.glutenFreeCrust){
-    price+=5;
-  }
-  let total = document.querySelector('strong')
-  total.innerHTML = `$${price}`
-}
 
 renderEverything();
 
