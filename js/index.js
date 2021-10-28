@@ -84,16 +84,44 @@ function renderGlutenFreeCrust() {
   }else {
     crust.classList.remove("crust-gluten-free")
   }
-}
+};
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-
-}
+document.querySelectorAll('.btn')
+const activate = document.querySelectorAll('.btn')
+if (state.btn){
+  btn.classList.add("active")
+} else {
+  btn.classList.remove("active")
+ }
+};
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-}
+  
+    const totalPrice= 10;
+  
+    if ($('.btn-pepperonni').hasClass('active')) {
+      totalPrice += 1;
+    }
+    if ($('.btn-mushrooms').hasClass('active')) {
+      totalPrice += 1;
+    }
+    if ($('.btn-green-peppers').hasClass('active')) {
+      totalPrice += 1;
+    }
+    if ($('.btn-sauce').hasClass('active')) {
+      totalPrice += 3;
+    }
+    if ($('.btn-crust').hasClass('active')) {
+      totalPrice += 5;
+    }
+  
+    $('#totalPrice').html(totalPrice);
+  }
+
+
 
 renderEverything();
 
@@ -113,11 +141,11 @@ document.querySelector('.btn.btn-mushrooms').addEventListener('click', function 
 document.querySelector('.btn.btn-green-peppers').addEventListener('click', function() {
   state.greenPeppers == !state.greenPeppers;
   renderEverything();
-});
+}); 
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
  document.querySelector('btn.btn-sauce').addEventListener('click', function () {
-  state.whiteSauce == !state.whiteSauce;
+ state.whiteSauce == !state.whiteSauce;
   renderEverything();
 })
  //Iteration 2: Add click event listener on `<button class="btn btn-crust">`
