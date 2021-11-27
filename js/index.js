@@ -106,10 +106,52 @@ function renderButtons() {
     document.querySelector(".btn.btn-pepperoni").classList.remove("active")
   }
 
+  if (state.mushrooms) {
+    document.querySelector(".btn.btn-mushrooms").classList.add("active")
+  } else {
+    document.querySelector(".btn.btn-mushrooms").classList.remove("active")
+  }
+
+  if (state.greenPeppers) {
+    document.querySelector(".btn.btn-green-peppers").classList.add("active")
+  } else {
+    document.querySelector(".btn.btn-green-peppers").classList.remove("active")
+  }
+
+  if (state.whiteSauce) {
+    document.querySelector(".btn.btn-sauce").classList.add("active")
+  } else {
+    document.querySelector(".btn.btn-sauce").classList.remove("active")
+  }
+
+  if (state.glutenFreeCrust) {
+    document.querySelector(".btn.btn-crust").classList.add("active")
+  } else {
+    document.querySelector(".btn.btn-crust").classList.remove("active")
+  }
+
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  const ingredientsList = document.querySelector(".panel.price ul")
+  const totalPrice = document.querySelector(".panel.price strong")
+  let priceValue = 0
+  ingredientsList.innerHTML = ''
+  totalPrice.innerHTML = '$'
+
+
+  console.log(ingredientsList)
+  for (const ing in state) {
+    console.log(state[ing])
+
+    if (state[ing]) { 
+      ingredientsList.innerHTML += `<li>$${ingredients[ing].price} ${ing}</li>`
+      
+      priceValue += ingredients[ing].price
+      totalPrice.innerHTML = `$${priceValue}`
+    }
+  }
 }
 
 renderEverything();
