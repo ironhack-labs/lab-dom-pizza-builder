@@ -68,9 +68,9 @@ function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
   document.querySelectorAll('.sauce').forEach( sauce => {
     if(state.whiteSauce) {
-      sauce.style.visibility = 'visible';
+      sauce.classList.add('sauce-white');
     }else{
-      sauce.style.visibility = 'hidden';
+      sauce.classList.remove('sauce-white');
     }
   })
 }
@@ -79,9 +79,9 @@ function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
   document.querySelectorAll('.crust').forEach( crust => {
     if(state.glutenFreeCrust) {
-      crust.style.visibility = 'visible';
+      crust.classList.add('crust-gluten-free');
     }else{
-      crust.style.visibility = 'hidden';
+      crust.classList.remove('crust-gluten-free');
     }
   })
 }
@@ -184,7 +184,7 @@ document.querySelectorAll('.btn').forEach(btn => {
 
 /*document.querySelector('.btn.btn-mushrooms').addEventListener('click' , () => {
   state.mushrooms = !state.mushrooms;
-  renderEver();
+  renderEverything();
 })*/
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
