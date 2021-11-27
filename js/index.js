@@ -91,30 +91,149 @@ function renderButtons() {
     document.querySelector('.btn-pepperoni').classList.add('active');
   }
 
-  if (state.mushrooms) {
-    document.querySelector('.btn-mushrooms').classList.add('active');
-  } else {
+  if (!state.mushrooms) {
     document.querySelector('.btn-mushrooms').classList.remove('active');
+  } else {
+    document.querySelector('.btn-mushrooms').classList.add('active');
   }
 
-  if (state.mushrooms) {
-    document.querySelector('.btn-mushrooms').classList.add('active');
+  if (!state.greenPeppers) {
+    document.querySelector('.btn-green-peppers').classList.remove('active');
   } else {
-    document.querySelector('.btn-mushrooms').classList.remove('active');
+    document.querySelector('.btn-green-peppers').classList.add('active');
   }
 
-  if (state.mushrooms) {
-    document.querySelector('.btn-mushrooms').classList.add('active');
+  if (state.whiteSauce) {
+    document.querySelector('.btn-sauce').classList.add('active');
   } else {
-    document.querySelector('.btn-mushrooms').classList.remove('active');
+    document.querySelector('.btn-sauce').classList.remove('active');
   }
-  // pepperoniBTN.classList.remove('active')
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+
+  if (state.glutenFreeCrust) {
+    document.querySelector('.btn-crust').classList.add('active');
+  } else {
+    document.querySelector('.btn-crust').classList.remove('active');
+  }
 }
 
 function renderPrice() {
+  // changing the element to hidden
+  // doesn't remove the space from the list.
+  // trying display none instead.
+
+  // switch visibility
+  state.pepperoni
+    ? (document.querySelector('.cart-pepperoni').style.display = 'block')
+    : (document.querySelector('.cart-pepperoni').style.display = 'none');
+  state.mushrooms
+    ? (document.querySelector('.cart-mushrooms').style.display = 'block')
+    : (document.querySelector('.cart-mushrooms').style.display = 'none');
+  state.greenPeppers
+    ? (document.querySelector('.cart-green-peppers').style.display = 'block')
+    : (document.querySelector('.cart-green-peppers').style.display = 'none');
+  state.whiteSauce
+    ? (document.querySelector('.cart-sauce').style.display = 'block')
+    : (document.querySelector('.cart-sauce').style.display = 'none');
+  state.glutenFreeCrust
+    ? (document.querySelector('.cart-crust').style.display = 'block')
+    : (document.querySelector('.cart-crust').style.display = 'none');
+
+  let list = document.querySelectorAll('#cart li');
+  let visibleCart = [];
+
+  // Put all the visible prices in array
+
+  list.forEach((el) => {
+    el.style.display === 'block' ? visibleCart.push(el.innerText[1]) : null;
+  });
+
+  // Sum the array
+
+  let price = visibleCart.reduce((acc, curr) => {
+    return acc + Number(curr);
+  }, 0);
+
+  return (document.querySelector('aside strong').innerText = `$${price + 10}`);
+
+  // switch (ingredient) {
+  //   case 'pepperoni':
+  //     let li = document.createElement('li');
+  //     li.appendChild(document.createTextNode('$1 pepperoni'));
+  //     li.classList = 'cart-pepperoni';
+
+  //     document.querySelector('.cart-pepperoni')
+  //       ? document.querySelector('.cart-pepperoni').remove()
+  //       : ingredientsUL.appendChild(li);
+  //     break;
+  //   case 'sauce':
+  //     // let li = document.createElement('li');
+  //     // li.appendChild(document.createTextNode('$3 white sauce'));
+  //     // li.classList = 'cart-sauce';
+
+  //     document.querySelector('.cart-sauce')
+  //       ? document.querySelector('.cart-sauce').remove()
+  //       : ingredientsUL.appendChild(li);
+  //     break;
+
+  //   default:
+  //     break;
+  // }
+
+  // true check
+  // let pepperoniOnList = document.querySelector('.ingredient-pepperoni');
+  // let mushroomsOnList = document.querySelector('.ingredient-mushrooms');
+  // let greenPepOnList = document.querySelector('.ingredient-greenPeppers');
+  // let sauceOnList = document.querySelector('.ingredient-whiteSauce');
+  // let crustOnList = document.querySelector('.ingredient-glutenFreeCrust');
+  //
+  // if (state.pepperoni && !pepperoniOnList) {
+  //   let li = document.createElement('li');
+  //   li.appendChild(document.createTextNode('$1 pepperoni'));
+  //   li.classList = 'ingredient-pepperoni';
+  //   ingredientsUL.appendChild(li);
+  // } else {
+  //   pepperoniOnList
+  //     ? document.querySelector('.ingredient-pepperoni').remove()
+  //     : null;
+  // }
+
+  // if (state.mushrooms && !mushroomsOnList) {
+  //   let li = document.createElement('li');
+  //   li.appendChild(document.createTextNode('$1 mushrooms'));
+  //   li.classList = 'ingredient-mushrooms';
+  //   ingredientsUL.appendChild(li);
+  // } else {
+  //   document.querySelector('.ingredient-mushrooms').remove();
+  // }
+
+  // if (state.greenPeppers && !greenPepOnList) {
+  //   let li = document.createElement('li');
+  //   li.appendChild(document.createTextNode('$1 green pepper'));
+  //   li.classList = 'ingredient-greenPeppers';
+  //   ingredientsUL.appendChild(li);
+  // } else {
+  //   document.querySelector('.ingredient-greenPeppers').remove();
+  // }
+
+  // if (state.whiteSauce && !sauceOnList) {
+  //   let li = document.createElement('li');
+  //   li.appendChild(document.createTextNode('$3 white sauce'));
+  //   li.classList = 'ingredient-whiteSauce';
+  //   ingredientsUL.appendChild(li);
+  // } else if (sauceOnList) {
+  //   document.querySelector('.ingredient-whiteSauce').remove();
+  // }
+
+  // if (state.glutenFreeCrust && !crustOnList) {
+  //   let li = document.createElement('li');
+  //   li.appendChild(document.createTextNode('$5 gluten-free crust'));
+  //   li.classList = 'ingredient-glutenFreeCrust';
+  //   ingredientsUL.appendChild(li);
+  // } else if (crustOnList) {
+  //   document.querySelector('.ingredient-glutenFreeCrust').remove();
+  // }
+
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  document.querySelectorAll;
 }
 
 renderEverything();
@@ -122,6 +241,7 @@ renderEverything();
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn-pepperoni').addEventListener('click', function () {
   state.pepperoni = !state.pepperoni;
+  renderPrice('pepperoni');
   renderEverything();
 });
 
