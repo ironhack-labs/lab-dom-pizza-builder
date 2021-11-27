@@ -92,7 +92,17 @@ function renderButtons() {
 }
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+  let pricePosition = document.querySelector("aside ul");
+  let buttonKeys = Object.keys(state);
+  let buttonVals = Object.values(state);
+  while (pricePosition.firstChild) {pricePosition.removeChild(pricePosition.firstChild)}
+ for (let i = 0; i < buttonVals.length; i++) {
+   if (buttonVals[i] === true) {
+     pricePosition.appendChild(document.createElement("li")).classList.add(`pricelist-${buttonKeys[i]}`);
+     document.querySelector(`.pricelist-${buttonKeys[i]}`).textContent = `$ ${ingredients[buttonKeys[i]].price} ${ingredients[buttonKeys[i]].name}`;
+     } 
+ }
+
 }
 
 renderEverything();
