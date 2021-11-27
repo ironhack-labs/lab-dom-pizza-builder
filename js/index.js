@@ -91,23 +91,23 @@ function renderButtons(buttonSelector) {
 function renderPrice() {
   // every time a button is clicked, delete all the "li"
   let a = document.querySelector(".ingredients");
+  let counter = 10;
   while (a.firstChild) {
     a.removeChild(a.firstChild);
   }
   // then for every btn clicked (state = true) print the info
   for (ing in state){
-    //console.log(ing, state[ing]);
-    //console.log(ingredients[ing].name);
-    //console.log(ingredients[ing].price);
     if (state[ing]){
       let li = document.createElement("li");
       li.innerText = `$ ${ingredients[ing].price} ${ingredients[ing].name} `;
       document.querySelector(".ingredients").appendChild(li);
+      counter += ingredients[ing].price;
     } 
   }  
 
   // update the price: 
-  
+  let strong = document.getElementById("total");
+  strong.innerHTML = `$ ${counter}`;
 }
 
 
