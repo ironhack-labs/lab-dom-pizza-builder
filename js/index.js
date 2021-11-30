@@ -85,10 +85,8 @@ function renderGlutenFreeCrust() {
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
   let buttons = document.getElementsByClassName('btn');
-  // console.log(button);
-  let btnVal = Object.values(state);
 
-  // console.log(btnKeys);
+  let btnVal = Object.values(state);
 
   for (let i = 0; i < buttons.length; i++) {
     if (btnVal[i] === true) {
@@ -101,6 +99,17 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let pricePanel = document.querySelectorAll('.panel.price > ul > li');
+
+  let priceVal = Object.values(state);
+
+  for (let i = 0; i < pricePanel.length; i++) {
+    if (priceVal[i] === true) {
+      pricePanel[i].style.visibility = 'visible';
+    } else {
+      pricePanel[i].style.visibility = 'hidden';
+    }
+  }
 }
 
 renderEverything();
