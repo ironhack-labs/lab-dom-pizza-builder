@@ -99,6 +99,8 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+
+  //Shows or hides HTML li Elements
   let pricePanel = document.querySelectorAll('.panel.price > ul > li');
 
   let priceVal = Object.values(state);
@@ -110,6 +112,27 @@ function renderPrice() {
       pricePanel[i].style.visibility = 'hidden';
     }
   }
+
+  //Pizza $ counter
+
+  let total = Number(
+    document.querySelector('.price strong').textContent.slice(1)
+  );
+
+  let pricesIng = [...document.querySelectorAll('.panel.price > ul > li')];
+
+  console.log(pricesIng[0]);
+
+  document.querySelector('.price strong').textContent = '$10';
+
+  for (let i = 0; i < pricesIng.length; i++) {
+    if (priceVal[i] === true) {
+      document.querySelector('.price strong').textContent = `$${
+        total + Number(pricesIng[i].textContent.slice(1, 2))
+      }`;
+    }
+  }
+  console.log(total);
 }
 
 renderEverything();
