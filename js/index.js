@@ -96,16 +96,49 @@ function renderButtons() {
 
 function renderPrice() {
   let listOfIngredients = document.getElementById('prices');
-  let listedIngredient = document.createElement("li");
-  let appendedIngredient = listOfIngredients.appendChild(listedIngredient);
   let total = 10;
+
+  listOfIngredients.innerHTML = '';
   
+  console.log(state);
   if(state.pepperoni){
-    appendedIngredient.innerHTML = '$1 pepperoni';
+    let listedIngredient = document.createElement("li");
+    let appendedIngredient = listOfIngredients.appendChild(listedIngredient);
+    appendedIngredient.innerHTML = `$${ingredients.pepperoni.price} ${ingredients.pepperoni.name}`;
     appendedIngredient.setAttribute('id', 'added-peperoni');
+    total += ingredients.pepperoni.price;
+  }
+  if(state.mushrooms){
+    let listedIngredient = document.createElement("li");
+    let appendedIngredient = listOfIngredients.appendChild(listedIngredient);
+    appendedIngredient.innerHTML = `$${ingredients.mushrooms.price} ${ingredients.mushrooms.name}`;
+    appendedIngredient.setAttribute('id', 'added-mushrooms');
+    total += ingredients.mushrooms.price;
+  }
+  if(state.greenPeppers){
+    let listedIngredient = document.createElement("li");
+    let appendedIngredient = listOfIngredients.appendChild(listedIngredient);
+    appendedIngredient.innerHTML = `$${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name}`;
+    appendedIngredient.setAttribute('id', 'added-green-peppers');
+    total += ingredients.greenPeppers.price;
+  }
+  if(state.whiteSauce){
+    let listedIngredient = document.createElement("li");
+    let appendedIngredient = listOfIngredients.appendChild(listedIngredient);
+    appendedIngredient.innerHTML = `$${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name}`;
+    appendedIngredient.setAttribute('id', 'added-sauce');
+    total += ingredients.whiteSauce.price;
+  }
+  if(state.glutenFreeCrust){
+    let listedIngredient = document.createElement("li");
+    let appendedIngredient = listOfIngredients.appendChild(listedIngredient);
+    appendedIngredient.innerHTML = `$${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name}`;
+    appendedIngredient.setAttribute('id', 'added-crust');
+    total += ingredients.glutenFreeCrust.price;
   }
 
-  
+  let totalElem = document.getElementById('total');
+  totalElem.innerHTML = `$${total}`;
 }
 
 renderEverything();
