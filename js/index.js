@@ -114,8 +114,34 @@ function renderButtons() {
 
 
 
+// Iteration 4: change the HTML of `<aside class="panel price">`
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+  const panel = document.querySelector('.panel.price ul');
+  const price = document.querySelector('.panel.price strong');
+  panel.innerHTML = '';
+  let basePrice = 10;
+  if (state.pepperoni){ 
+    panel.innerHTML += `<li>$1 pepperoni</li>`
+    basePrice += 1;
+  }
+  if (state.mushrooms){
+    panel.innerHTML += `<li>$1 mushrooms</li>`
+    basePrice += 1;
+  }
+  if (state.greenPeppers){
+    panel.innerHTML += `<li>$1 green peppers</li>`
+    basePrice += 1;
+  }
+  if (state.whiteSauce){
+    panel.innerHTML += `<li>$3 white sauce</li>`
+    basePrice += 3;
+  }
+  if (state.glutenFreeCrust){
+    panel.innerHTML += `<li>$5 gluten-free crust</li>`
+    basePrice += 5;
+  }
+  price.innerHTML = basePrice;
+      
 }
 
 renderEverything();
