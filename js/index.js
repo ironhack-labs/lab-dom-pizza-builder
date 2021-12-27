@@ -73,7 +73,6 @@ function renderWhiteSauce() {
 }
 
 // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-
 function renderGlutenFreeCrust() {
   const cGF = document.querySelector('.crust');
   if (state.glutenFreeCrust){
@@ -112,8 +111,6 @@ function renderButtons() {
   } 
 } 
 
-
-
 // Iteration 4: change the HTML of `<aside class="panel price">`
 function renderPrice() {
   const panel = document.querySelector('.panel.price ul');
@@ -147,6 +144,10 @@ function renderPrice() {
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
+// Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
+// Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+// Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
+// Iteration 2: Add click event listener on `<button class="btn btn-crust">`
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', function () {
   state.pepperoni = !state.pepperoni;
   renderEverything();
@@ -172,11 +173,3 @@ document.querySelector('.btn.btn-crust').addEventListener('click', function (){
   renderEverything();
 });
 
-
-// Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
-
-// Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-
-// Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
-
-// Iteration 2: Add click event listener on `<button class="btn btn-crust">`
