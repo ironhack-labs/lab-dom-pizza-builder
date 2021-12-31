@@ -104,6 +104,20 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  const prices = document.querySelectorAll('.price ul li');
+  const states = Object.keys(state); 
+  const ingredientsKeys = Object.keys(ingredients);
+  let sum = 10;
+  for (let i = 0; i<prices.length; i++){
+    if (state[states[i]]) {
+      prices[i].style.display = 'block';
+      sum += ingredients[ingredientsKeys[i]].price;
+    } else {
+      prices[i].style.display = 'none';
+    }
+  }
+  const total = document.querySelector('.price strong');
+  total.innerHTML=`$${sum}`;
 }
 
 renderEverything();
