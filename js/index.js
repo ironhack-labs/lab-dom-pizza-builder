@@ -100,14 +100,14 @@ function changeButtonStatus(isActive, button) {
 function renderPrice() {
   const priceListEl = document.querySelector('.panel.price ul');
   priceListEl.innerHTML = '';
-  let total = 0;
+  let total = basePrice;
   Object.entries(state).forEach(([ingredient, isActive]) => {
     if (isActive) {
       const price = ingredients[ingredient].price;
-      const newPriceEl = document.createElement('li');
-      newPriceEl.textContent = `$${price.toFixed(2)} ${ingredient}`;
-      priceListEl.appendChild(newPriceEl);
       total += price;
+      const newPriceEl = document.createElement('li');
+      newPriceEl.textContent = `$${price} ${ingredient}`;
+      priceListEl.appendChild(newPriceEl);
     }
   })
   const totalEl = document.querySelector('.panel.price strong');
