@@ -104,7 +104,20 @@ function renderButtons() {
 }
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+// Iteration 4: change the HTML of `<aside class="panel price">`
+let totalPrice=basePrice;
+  const ingredientsList = document.querySelector('.panel.price ul');
+  ingredientsList.innerHTML = '';
+  for (let oneIngredient in state) {
+    if (state[oneIngredient]) {
+      const unit = document.createElement('li');
+      unit.innerText = `${ingredients[oneIngredient].price} ${ingredients[oneIngredient].name}`;
+      ingredientsList.append(unit);
+      totalPrice += ingredients[oneIngredient].price;
+    }
+  }
+  const price = document.querySelector('.panel.price strong');
+  price.textContent = `$ ${totalPrice}`;
 }
 
 renderEverything();
