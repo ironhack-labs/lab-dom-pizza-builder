@@ -88,19 +88,19 @@ function renderButtons() {
   //targetting EACH button
   const pepBtn=document.querySelector('.btn-pepperoni');
   //changing the status of the button via boolean
-  pepBtn.classList.toggle('active', !state.pepperoni);
+  pepBtn.classList.toggle('active', state.pepperoni);
 
   const mushBtn=document.querySelector('.btn-mushrooms');
-  mushBtn.classList.toggle('active', !state.mushrooms);
+  mushBtn.classList.toggle('active', state.mushrooms);
 
   const greenBtn=document.querySelector('.btn-green-peppers');
-  greenBtn.classList.toggle('active', !state.greenPeppers);
+  greenBtn.classList.toggle('active', state.greenPeppers);
 
   const sauceBtn=document.querySelector('.btn-sauce');
-  sauceBtn.classList.toggle('active', !state.whiteSauce);
+  sauceBtn.classList.toggle('active', state.whiteSauce);
 
   const crustBtn=document.querySelector('.btn-crust');
-  crustBtn.classList.toggle('active', !state.glutenFreeCrust);
+  crustBtn.classList.toggle('active', state.glutenFreeCrust);
 }
 
 function renderPrice() {
