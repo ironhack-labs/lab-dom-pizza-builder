@@ -84,11 +84,92 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  if (state.pepperoni){
+    document.querySelector('.btn-pepperoni').classList.add('active')
+  } 
+  else {
+    document.querySelector('.btn-pepperoni').classList.remove('active')
+  }
+
+  if (state.mushrooms){
+    document.querySelector('.btn-mushrooms').classList.add('active')
+  } 
+  else {
+    document.querySelector('.btn-mushrooms').classList.remove('active')
+  }
+
+  if (state.greenPeppers){
+    document.querySelector('.btn-green-peppers').classList.add('active')
+  } 
+  else {
+    document.querySelector('.btn-green-peppers').classList.remove('active')
+  }
+
+  if (state.whiteSauce){
+    document.querySelector('.btn-sauce').classList.add('active')
+  } 
+  else {
+    document.querySelector('.btn-sauce').classList.remove('active')
+  }
+
+  if (state.glutenFreeCrust){
+    document.querySelector('.btn-crust').classList.add('active')
+  } 
+  else {
+    document.querySelector('.btn-crust').classList.remove('active')
+  }
+
 }
+
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  // if state active --> add to list
+  // else state not active remove from list
+  
+  let list = ""
+  let price = 10
+
+  if (state.pepperoni){
+   list += `<li>$${ingredients.pepperoni.price} ${ingredients.pepperoni.name}</li>`
+   price += ingredients.pepperoni.price
+  }
+  if (state.mushrooms){
+    list += `<li>$${ingredients.mushrooms.price} ${ingredients.mushrooms.name}</li>`
+    price += ingredients.mushrooms.price
+  }
+  if (state.greenPeppers){
+    list += `<li>$${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name}</li>`
+    price += ingredients.greenPeppers.price
+  }
+  if (state.whiteSauce){
+    list += `<li>$${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name}</li>`
+    price += ingredients.whiteSauce.price
+  }
+  if (state.glutenFreeCrust){
+    list += `<li>$${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name}</li>`
+    price += ingredients.glutenFreeCrust.price
+  }
+  document.querySelector('.panel.price > ul').innerHTML = list
+  document.querySelector('.panel.price > strong').innerHTML = price
 }
+
+// const ingredients = {
+//   pepperoni: { name: 'pepperoni', price: 1 },
+//   mushrooms: { name: 'Mushrooms', price: 1 },
+//   greenPeppers: { name: 'Green Peppers', price: 1 },
+//   whiteSauce: { name: 'White sauce', price: 3 },
+//   glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
+// };
+
+// // Initial value of the state (the state values can change over time)
+// const state = {
+//   pepperoni: true,
+//   mushrooms: true,
+//   greenPeppers: true,
+//   whiteSauce: false,
+//   glutenFreeCrust: false
+// };
 
 renderEverything();
 
