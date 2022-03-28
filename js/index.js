@@ -125,8 +125,37 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+
+  let priceString = ''
+  let priceNum = basePrice
+
+  if (state.pepperoni) {
+    priceString += '<li>$' + ingredients.pepperoni.price +' pepperoni</li>'
+    priceNum += ingredients.pepperoni.price
+   }
+  if (state.mushrooms) {
+    priceString += '<li>$' + ingredients.mushrooms.price + ' mushrooms</li>'
+    priceNum += ingredients.mushrooms.price
+  }
+  if (state.greenPeppers) {
+    priceString += '<li>$' + ingredients.greenPeppers.price + ' green peppers</li>'
+    priceNum += ingredients.greenPeppers.price
+  }
+  if (state.whiteSauce) {
+    priceString += '<li>$' + ingredients.whiteSauce.price + ' white sauce</li>'
+    priceNum += ingredients.whiteSauce.price
+  }
+  if (state.glutenFreeCrust) {
+    priceString += '<li>$' + ingredients.glutenFreeCrust.price + ' gluten-free crust</li>'
+    priceNum += ingredients.glutenFreeCrust.price
+  }
+
+  document.querySelector('aside ul').innerHTML = priceString
+  document.querySelector('aside strong').innerHTML = '$'+priceNum
+
   
 }
+
 
 renderEverything();
 
