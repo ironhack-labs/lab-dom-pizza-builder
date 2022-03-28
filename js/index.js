@@ -65,24 +65,67 @@ function renderGreenPeppers() {
 function renderWhiteSauce() {
     // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
   if (state.whiteSauce) {
-    document.querySelector('.sauce').classList.remove('.sauce-white');
-  }
-  else {
-    document.querySelector('.sauce').classList.add('.sauce-white');
+    document.querySelector('.sauce').classList.add('sauce-white');
+  } else {
+    document.querySelector('.sauce').classList.remove('sauce-white');
   } 
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  if (state.glutenFreeCrust) {
+    document.querySelector('.crust').classList.add('crust-gluten-free')
+  } else {
+    document.querySelector('.crust').classList.remove('crust-gluten-free')
+  }
 }
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
   // I can write a bunch of if/else statements, truth is still in the state object
+  document.querySelectorAll('.btn').forEach(function (oneButton) {
+    // find out, which button we are talking about
+    if (oneButton.classList.contains('btn-pepperoni')) {
+      if(state.pepperoni){
+        oneButton.classList.add('active')
+      } else {
+        oneButton.classList.remove('active')
+      }
+      }
+    if (oneButton.classList.contains('btn-mushrooms')) {
+      if(state.mushrooms) {
+        oneButton.classList.add('active')
+      } else {
+        oneButton.classList.remove('active')
+      }
+    }
+    if (oneButton.classList.contains('btn-green-peppers')) {
+      if(state.greenPeppers) {
+        oneButton.classList.add('active')
+      } else {
+        oneButton.classList.remove('active')
+      }
+    }
+    if (oneButton.classList.contains('btn-sauce')) {
+      if(state.whiteSauce) {
+        oneButton.classList.add('active')
+      } else {
+        oneButton.classList.remove('active')
+      }
+    }
+    if (oneButton.classList.contains('btn-crust')) {
+      if(state.glutenFreeCrust) {
+        oneButton.classList.add('active')
+      } else {
+        oneButton.classList.remove('active')
+      }
+    }
+  })
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  
 }
 
 renderEverything();
