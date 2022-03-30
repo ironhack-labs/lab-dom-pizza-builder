@@ -181,7 +181,7 @@ document.querySelector('.btn.btn-green-peppers').addEventListener('click', funct
 })
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
-document.querySelector('.btn.btn-sauce').addEventListener('cick', function() {
+document.querySelector('.btn.btn-sauce').addEventListener('click', function() {
   state.whiteSauce = !state.whiteSauce;
   console.log('click')
   renderEverything()
@@ -189,7 +189,7 @@ document.querySelector('.btn.btn-sauce').addEventListener('cick', function() {
 
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
-document.querySelector('.btn.btn-crust').addEventListener('cick', function() {
+document.querySelector('.btn.btn-crust').addEventListener('click', function() {
   state.glutenFreeCrust = !state.glutenFreeCrust;
   renderEverything()
 })
