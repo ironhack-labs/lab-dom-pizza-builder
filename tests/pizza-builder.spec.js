@@ -128,7 +128,7 @@ describe('Ironhack Pizza Builder', () => {
       const buttonSelectors = [
         '.btn-mushrooms',
         '.btn-green-peppers',
-        '.btn-sauce'
+        '.btn-white-sauce'
       ];
       const $buttons = await page.$$(buttonSelectors.join(', '));
       for (let $button of $buttons) await $button.click();
@@ -140,7 +140,7 @@ describe('Ironhack Pizza Builder', () => {
       const buttonSelectors = [
         '.btn-mushrooms',
         '.btn-green-peppers',
-        '.btn-sauce'
+        '.btn-white-sauce'
       ];
       const $buttons = await page.$$(buttonSelectors.join(', '));
       for (let $button of $buttons) await $button.click();

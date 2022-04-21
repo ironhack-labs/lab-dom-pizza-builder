@@ -292,56 +292,56 @@ p.description {
   box-shadow: none;
 }
 
-.btn-sauce {
+.btn-white-sauce {
   background: #fff4aa;
   box-shadow: 0 6px #998500;
   color: #555;
 }
 
-.btn-sauce:hover {
+.btn-white-sauce:hover {
   background: #fff088;
   box-shadow: 0 5px #776800;
   color: #555;
 }
 
-.btn-sauce.active {
+.btn-white-sauce.active {
   top: 2px;
   box-shadow: 0 2px #998500;
 }
 
-.btn-sauce.active:hover {
+.btn-white-sauce.active:hover {
   box-shadow: 0 2px #776800;
 }
 
-.btn-sauce:active,
-.btn-sauce.active:active {
+.btn-white-sauce:active,
+.btn-white-sauce.active:active {
   top: 5px;
   box-shadow: none;
 }
 
-.btn-crust {
+.btn-gluten-free-crust {
   background: #e0d5cf;
   box-shadow: 0 6px #957160;
   color: #555;
 }
 
-.btn-crust:hover {
+.btn-gluten-free-crust:hover {
   background: #d3c3bb;
   box-shadow: 0 5px #816253;
   color: #555;
 }
 
-.btn-crust.active {
+.btn-gluten-free-crust.active {
   top: 2px;
   box-shadow: 0 2px #957160;
 }
 
-.btn-crust.active:hover {
+.btn-gluten-free-crust.active:hover {
   box-shadow: 0 2px #816253;
 }
 
-.btn-crust:active,
-.btn-crust.active:active {
+.btn-gluten-free-crust:active,
+.btn-gluten-free-crust.active:active {
   top: 5px;
   box-shadow: none;
 }
