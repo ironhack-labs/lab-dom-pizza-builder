@@ -18,7 +18,6 @@ There is only one problem: our local pizzeria's pizza builder **is not working**
 
 - Fork this repo
 - Clone this repo
-- Visit the "actions" tab in your fork, and enable workflows
 
 ## Submission
 
