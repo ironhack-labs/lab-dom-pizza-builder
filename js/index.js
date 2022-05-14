@@ -80,6 +80,12 @@ function renderWhiteSauce() {
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  const crust = document.querySelector('.crust');
+  if (state.glutenFreeCrust) {
+    crust.classList.add('crust-gluten-free');
+  } else {
+    crust.classList.remove('crust-gluten-free');
+  }
 }
 
 function renderButtons() {
@@ -157,3 +163,7 @@ document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
 });
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector('.btn.btn-crust').addEventListener('click', () => {
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+});
