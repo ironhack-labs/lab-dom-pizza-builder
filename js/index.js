@@ -33,21 +33,28 @@ function renderEverything() {
 }
 
 function renderPepperoni() {
-  const pepButton = document.querySelector('.btn-pepperoni');
+  //const pepButton = document.querySelector('.btn-pepperoni');
 
   document.querySelectorAll('.pep').forEach((onePep) => {
     if (state.pepperoni) {
       onePep.style.visibility = 'visible';
-      pepButton.classList.add('active');
+      //pepButton.classList.add('active');
     } else {
       onePep.style.visibility = 'hidden';
-      pepButton.classList.remove('active');
+      //pepButton.classList.remove('active');
     }
   });
 }
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll('.mushroom').forEach(oneMushroom => {
+    if (state.mushrooms) {
+      oneMushroom.style.visibility = "visible";
+    } else {
+      oneMushroom.style.visibility = "hidden";
+    }
+  })
 }
 
 function renderGreenPeppers() {
@@ -71,7 +78,7 @@ function renderPrice() {
 }
 
 renderEverything();
-
+/*
 const priceHTML = [
   {
     state: state.pepperoni,
@@ -102,23 +109,27 @@ const priceHTML = [
 
 const panel = document.querySelector('.panel.price');
 const priceList = panel.childNodes[5];
-const totalPrice = panel.childNodes[7];
+const totalPrice = panel.childNodes[7]; */
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', function () {
   state.pepperoni = !state.pepperoni;
-  priceHTML[0].state = state.pepperoni;
+  /*priceHTML[0].state = state.pepperoni;
 
   const selectedIngredients = priceHTML.filter(item => item.state);
   priceList.innerHTML = selectedIngredients.map(price => `<li>${price.text}</li>`).join("");
 
   const totalIngredients = selectedIngredients.reduce((acc, cV) => acc + cV.price, 0);
-  totalPrice.innerText = `$${basePrice + totalIngredients}`;
+  totalPrice.innerText = `$${basePrice + totalIngredients}`; */
 
   renderEverything();
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', () => {
+  state.mushrooms = !state.mushrooms;
+  renderEverything();
+});
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
 
