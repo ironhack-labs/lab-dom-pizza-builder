@@ -33,15 +33,11 @@ function renderEverything() {
 }
 
 function renderPepperoni() {
-  //const pepButton = document.querySelector('.btn-pepperoni');
-
   document.querySelectorAll('.pep').forEach((onePep) => {
     if (state.pepperoni) {
       onePep.style.visibility = 'visible';
-      //pepButton.classList.add('active');
     } else {
       onePep.style.visibility = 'hidden';
-      //pepButton.classList.remove('active');
     }
   });
 }
@@ -90,6 +86,10 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  const states = [state.pepperoni, state.mushrooms, state.greenPeppers, state.whiteSauce, state.glutenFreeCrust];
+  const buttons = document.querySelectorAll('.btn');
+  const addOrRemove = (state, button) => {state ? button.classList.add('active') : button.classList.remove('active')};
+  for (let i = 0; i < states.length; i += 1) addOrRemove(states[i], buttons[i]);
 }
 
 function renderPrice() {
