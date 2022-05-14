@@ -94,53 +94,48 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  const prices = [
+    {
+      state: state.pepperoni,
+      price: ingredients.pepperoni.price,
+      text: `$${ingredients.pepperoni.price} ${ingredients.pepperoni.name}`
+    },
+    {
+      state: state.mushrooms,
+      price: ingredients.mushrooms.price,
+      text: `$${ingredients.mushrooms.price} ${ingredients.mushrooms.name.toLowerCase()}`
+    },
+    {
+      state: state.greenPeppers,
+      price: ingredients.greenPeppers.price,
+      text: `$${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name.toLowerCase()}`
+    },
+    {
+      state: state.whiteSauce,
+      price: ingredients.whiteSauce.price,
+      text: `$${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name.toLowerCase()}`
+    },
+    {
+      state: state.glutenFreeCrust,
+      price: ingredients.glutenFreeCrust.price,
+      text: `$${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name.toLowerCase()}`
+    }
+  ];
+  const selectedIngredients = prices.filter(item => item.state);
+
+  const panel = document.querySelector('.panel.price');
+  const priceList = panel.childNodes[5];
+  priceList.innerHTML = selectedIngredients.map(price => `<li>${price.text}</li>`).join("");
+
+  const totalPrice = panel.childNodes[7];
+  totalPrice.innerText = `$${selectedIngredients.reduce((acc, cV) => acc + cV.price, basePrice)}`;
 }
 
 renderEverything();
-/*
-const priceHTML = [
-  {
-    state: state.pepperoni,
-    price: ingredients.pepperoni.price,
-    text: `$${ingredients.pepperoni.price} ${ingredients.pepperoni.name}`
-  },
-  {
-    state: state.mushrooms,
-    price: ingredients.mushrooms.price,
-    text: `$${ingredients.mushrooms.price} ${ingredients.mushrooms.name.toLowerCase()}`
-  },
-  {
-    state: state.greenPeppers,
-    price: ingredients.greenPeppers.price,
-    text: `$${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name.toLowerCase()}`
-  },
-  {
-    state: state.whiteSauce,
-    price: ingredients.whiteSauce.price,
-    text: `$${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name.toLowerCase()}`
-  },
-  {
-    state: state.glutenFreeCrust,
-    price: ingredients.glutenFreeCrust.price,
-    text: `$${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name.toLowerCase()}`
-  }
-];
-
-const panel = document.querySelector('.panel.price');
-const priceList = panel.childNodes[5];
-const totalPrice = panel.childNodes[7]; */
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', function () {
   state.pepperoni = !state.pepperoni;
-  /*priceHTML[0].state = state.pepperoni;
-
-  const selectedIngredients = priceHTML.filter(item => item.state);
-  priceList.innerHTML = selectedIngredients.map(price => `<li>${price.text}</li>`).join("");
-
-  const totalIngredients = selectedIngredients.reduce((acc, cV) => acc + cV.price, 0);
-  totalPrice.innerText = `$${basePrice + totalIngredients}`; */
-
   renderEverything();
 });
 
