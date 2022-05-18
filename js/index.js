@@ -50,7 +50,9 @@ function renderPepperoni() {
 }
 
 
+
 // Iteration 1
+
 function renderMushrooms() {
   document.querySelectorAll('.mushroom').forEach((oneMush) => {
     if (state.mushrooms) {
@@ -71,7 +73,10 @@ function renderGreenPeppers() {
   });
 }
 
+
+
 // Iteration 2
+
 function renderWhiteSauce() {
   const sauceSection = document.querySelector('.sauce')
 
@@ -92,7 +97,9 @@ function renderGlutenFreeCrust() {
   }
 }
 
+
 // Iteration 3
+
 function renderButtons() {
   state.pepperoni ? peperroniButton.classList.remove('active') : peperroniButton.classList.add('active')
 
@@ -105,8 +112,37 @@ function renderButtons() {
   state.glutenFreeCrust ? crustButton.classList.remove('active') : crustButton.classList.add('active')
 }
 
-function renderPrice() {
+
+
   // Iteration 4: change the HTML of `<aside class="panel price">`
+
+  let foodList = document.querySelector('.panel.price ul')
+  foodList.innerHTML = ""
+  const priceField = document.querySelector('.panel.price strong')
+  
+
+function renderPrice() {
+  let totalPrice = basePrice
+
+  for (let i in ingredients) {
+    const ingredientPrice = ingredients[i].price
+    
+    if (state[i] === true) {
+      totalPrice += ingredientPrice
+      foodList.innerHTML += `<li>${ingredients[i].price}$ ${ingredients[i].name}</li>`
+    }
+
+    priceField.textContent = totalPrice + "$"
+  }
+
+
+
+
+
+
+
+
+
 }
 
 renderEverything();
