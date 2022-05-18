@@ -20,6 +20,7 @@ const state = {
 };
 
 // Buttons constants
+const peperroniButton = document.querySelector('.btn-pepperoni')
 const mushroomsButton = document.querySelector('.btn-mushrooms')
 const peppersButton = document.querySelector('.btn-green-peppers')
 const sauceButton = document.querySelector('.btn-sauce')
@@ -91,8 +92,17 @@ function renderGlutenFreeCrust() {
   }
 }
 
+// Iteration 3
 function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  state.pepperoni ? peperroniButton.classList.remove('active') : peperroniButton.classList.add('active')
+
+  state.mushrooms ? mushroomsButton.classList.remove('active') : mushroomsButton.classList.add('active')
+
+  state.greenPeppers ? peppersButton.classList.remove('active') : peppersButton.classList.add('active')
+
+  state.whiteSauce ? sauceButton.classList.remove('active') : sauceButton.classList.add('active')
+  
+  state.glutenFreeCrust ? crustButton.classList.remove('active') : crustButton.classList.add('active')
 }
 
 function renderPrice() {
