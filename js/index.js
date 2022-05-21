@@ -93,10 +93,17 @@ function renderButtons() {
 
 function renderPrice() {
   const list = Array.from(document.querySelectorAll('.panel.price ul li'));
+  for (let element of list) {
+    element.remove();
+  }
   const typeIngredients = Object.keys(ingredients);
   let lastPrice = 0;
-  for (let i = 0; i < list.length; i++) {
-    list[i].innerText = state[typeIngredients[i]] ? `$${ingredients[typeIngredients[i]].price} ${ingredients[typeIngredients[i]].name} ` : '';
+  for (let i = 0; i < typeIngredients.length; i++) {
+    if (state[typeIngredients[i]]) {
+      const itemList = document.createElement('li');
+      itemList.innerText = `$${ingredients[typeIngredients[i]].price} ${ingredients[typeIngredients[i]].name}`
+      document.querySelector('.panel.price ul').append(itemList);
+    }
     lastPrice += state[typeIngredients[i]] ? ingredients[typeIngredients[i]].price : 0;
   }
   document.querySelector('.panel.price strong').innerText = `$${lastPrice + 10}`;
