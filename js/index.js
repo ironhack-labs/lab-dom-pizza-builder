@@ -42,12 +42,26 @@ function renderPepperoni() {
   });
 }
 
-function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
+function renderMushrooms() {
+  document.querySelectorAll('.mushroom').forEach((oneMushroom) => {
+    if (state.mushrooms) {
+      oneMushroom.style.visibility = 'visible';
+    } else {
+      oneMushroom.style.visibility = 'hidden'
+    }
+  })
 }
 
-function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+function renderGreenPeppers() {
+  document.querySelectorAll('.green-pepper').forEach((onePepper) => {
+    if (state.greenPeppers) {
+      onePepper.style.visibility = 'visible';
+    } else {
+      onePepper.style.visibility = 'hidden';
+    }
+  })
 }
 
 function renderWhiteSauce() {
