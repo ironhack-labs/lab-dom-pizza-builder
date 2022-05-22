@@ -82,12 +82,42 @@ function renderGlutenFreeCrust() {
   }
 }
 
-function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+function renderButtons() {
+  if (!state.pepperoni) {
+    document.querySelector('.btn.btn-pepperoni').classList.remove('active');
+  } else { 
+    document.querySelector('.btn.btn-pepperoni').classList.add('active');
+  }
+
+  if (!state.mushrooms) {
+    document.querySelector('.btn.btn-mushrooms').classList.remove('active');
+  } else { 
+    document.querySelector('.btn.btn-mushrooms').classList.add('active');
+  }
+
+  if (!state.greenPeppers) {
+    document.querySelector('.btn.btn-green-peppers').classList.remove('active');
+  } else { 
+    document.querySelector('.btn.btn-green-peppers').classList.add('active');
+  }
+
+  if (!state.whiteSauce) {
+    document.querySelector('.btn.btn-sauce').classList.remove('active');
+  } else { 
+    document.querySelector('.btn.btn-sauce').classList.add('active');
+  }
+
+  if (!state.glutenFreeCrust) {
+    document.querySelector('.btn.btn-crust').classList.remove('active');
+  } else { 
+    document.querySelector('.btn.btn-crust').classList.add('active');
+  }
 }
 
-function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+function renderPrice() {
+  
 }
 
 renderEverything();
@@ -95,13 +125,21 @@ renderEverything();
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', function () {
   state.pepperoni = !state.pepperoni;
+  if (!state.pepperoni) {
+    document.querySelector('.btn.btn-pepperoni').classList.remove('active');
+  } else { 
+    document.querySelector('.btn.btn-pepperoni').classList.add('active');
+  }
   renderEverything();
+  renderButtons();
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
 document.querySelector('.btn.btn-mushrooms').addEventListener('click', function () {
   state.mushrooms = !state.mushrooms;
+
   renderEverything();
+  
 })
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
