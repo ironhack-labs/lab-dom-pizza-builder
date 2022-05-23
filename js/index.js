@@ -33,6 +33,8 @@ document.querySelector('.btn.btn-crust').addEventListener('click', (event) => {
   renderEverything(event);
 });
 
+renderEverything();
+
 });
 
 // Write your Pizza Builder JavaScript in this file.
@@ -129,12 +131,8 @@ function renderButtons() {
   const buttons =  document.querySelectorAll('.btn').forEach((button, index, buttons) => {
     button.onclick = function(){
       button.classList.toggle("active")
-      console.log(button)
     }
   })
-
-
-
 
 // function renderButtons() {
 //   const buttons =  document.querySelectorAll('.btn').forEach((button, index, buttons) => {
@@ -151,10 +149,6 @@ function renderButtons() {
 //       }
 //     });
 //   })
-
-
-
-
 
   // for (let i=0; i< buttons.length; i++) {
   //   buttons[i].addEventListener('click', (event) => {
@@ -203,7 +197,42 @@ for (let i=0; i< buttons.length; i++) {
 
 }
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+  const listOfPrices = document.querySelectorAll("li.price")
+  let valuePeperoni =   ingredients.pepperoni.price
+  let valueMushrooms =   ingredients.mushrooms.price
+  let valuePeppers = ingredients.greenPeppers.price
+  let valueSauce = ingredients.whiteSauce.price
+  let valueCrust =  ingredients.glutenFreeCrust.price
+
+  if (state.pepperoni){
+    listOfPrices[0].classList.add('sum-prices')
+  }  if (!state.pepperoni){
+    listOfPrices[0].classList.remove('sum-prices')
+    valuePeperoni = 0
+  }  if (state.mushrooms){
+    listOfPrices[1].classList.add('sum-prices')
+  }  if (!state.mushrooms){
+    listOfPrices[1].classList.remove('sum-prices')
+    valueMushrooms = 0
+  }  if (state.greenPeppers){
+    listOfPrices[2].classList.add('sum-prices')
+  }  if (!state.greenPeppers){
+    listOfPrices[2].classList.remove('sum-prices')
+    valuePeppers = 0
+  }  if (state.whiteSauce === true){
+    listOfPrices[3].classList.add('sum-prices')
+  }  if (state.whiteSauce === false){
+    listOfPrices[3].classList.remove('sum-prices')
+    valueSauce = 0
+  }  if (state.glutenFreeCrust === true){
+    listOfPrices[4].classList.add('sum-prices')
+  }  if (state.glutenFreeCrust === false){
+    listOfPrices[4].classList.remove('sum-prices')
+    valueCrust = 0
+  }   
+  const totalValue = basePrice + valuePeperoni + valueMushrooms + valuePeppers + valueSauce + valueCrust
+  const totalPizza = document.querySelector(".panel strong span")
+  totalPizza.innerText = String(totalValue) 
 }
 
 

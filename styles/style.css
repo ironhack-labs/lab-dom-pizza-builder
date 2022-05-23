@@ -383,6 +383,10 @@ p.description {
   margin-top: 6px;
 }
 
+.sum-prices{
+  font-weight: bold;
+}
+
 /*--- Crust & Sauce ---*/
 .crust {
   width: 700px;
