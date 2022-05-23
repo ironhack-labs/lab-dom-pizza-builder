@@ -66,24 +66,20 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  document.querySelectorAll('.sauce').forEach((oneSauce) => {
-    if (state.whiteSauce) {
-      oneSauce.style.visibility = 'visible';
+    if (!state.whiteSauce) {
+      document.querySelector('.sauce').classList.remove('sauce-white');
     } else {
-      oneSauce.style.visibility = 'hidden';
+      document.querySelector('.sauce').classList.add('sauce-white');
     }
-  });
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  document.querySelectorAll('.crust').forEach((oneCrust) => {
-    if (state.glutenFreeCrust) {
-      oneCrust.style.visibility = 'visible';
+    if (!state.glutenFreeCrust) {
+      document.querySelector('.crust').classList.remove('crust-gluten-free');
     } else {
-      oneCrust.style.visibility = 'hidden';
+      document.querySelector('.crust').classList.add('crust-gluten-free');
     }
-  });
 }
 
 function renderButtons() {
@@ -130,48 +126,48 @@ function renderPrice() {
   let pricePep, priceMush, priceGreenPep, priceSauce, priceCrust
 
   if (document.querySelector('.btn.btn-pepperoni').classList.contains('active')) { 
-    pricePep = 1
-    const pricePepLi = document.createElement('li');
-      pricePepLi.innerText = '$1 pepperoni'
+      pricePep = ingredients.pepperoni.price
+      const pricePepLi = document.createElement('li');
+      pricePepLi.innerText = `$${ingredients.pepperoni.price} ${ingredients.pepperoni.name}`
       document.querySelector('.panel.price ul').append(pricePepLi);
   } else { 
-    pricePep = 0
+      pricePep = 0
   }
   if (document.querySelector('.btn.btn-mushrooms').classList.contains('active')) { 
-    priceMush = 1
-    const priceMushLi = document.createElement('li');
-      priceMushLi.innerText = '$1 mushrooms'
+      priceMush = ingredients.mushrooms.price
+      const priceMushLi = document.createElement('li');
+      priceMushLi.innerText = `$${ingredients.mushrooms.price} ${ingredients.mushrooms.name}`
       document.querySelector('.panel.price ul').append(priceMushLi);
   } else { 
-    priceMush = 0
+      priceMush = 0
   }
   if (document.querySelector('.btn.btn-green-peppers').classList.contains('active')) { 
-    priceGreenPep = 1
-    const priceGreenPepLi = document.createElement('li');
-    priceGreenPepLi.innerText = '$1 green peppers'
+      priceGreenPep = ingredients.greenPeppers.price
+      const priceGreenPepLi = document.createElement('li');
+      priceGreenPepLi.innerText = `$${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name}`
       document.querySelector('.panel.price ul').append(priceGreenPepLi);
   } else { 
-    priceGreenPep = 0
+      priceGreenPep = 0
   }
   if (document.querySelector('.btn.btn-sauce').classList.contains('active')) { 
-    priceSauce = 3
-    const priceSauceLi = document.createElement('li');
-    priceSauceLi.innerText = '$3 white sauce'
+      priceSauce = ingredients.whiteSauce.price
+      const priceSauceLi = document.createElement('li');
+      priceSauceLi.innerText = `$${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name}`
       document.querySelector('.panel.price ul').append(priceSauceLi);
   } else { 
-    priceSauce = 0
+      priceSauce = 0
   }
   if (document.querySelector('.btn.btn-crust').classList.contains('active')) { 
-    priceCrust = 5
-    const priceCrustLi = document.createElement('li');
-    priceCrustLi.innerText = '$5 gluten-free crust'
+      priceCrust = ingredients.glutenFreeCrust.price
+      const priceCrustLi = document.createElement('li');
+      priceCrustLi.innerText = `$${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name}`
       document.querySelector('.panel.price ul').append(priceCrustLi);
   } else { 
-    priceCrust = 0
+      priceCrust = 0
   }
-  let priceCal = basePrice + pricePep + priceMush + priceGreenPep + priceSauce + priceCrust
-  priceTotal.innerText = '$' + priceCal
 
+  let priceCal = basePrice + pricePep + priceMush + priceGreenPep + priceSauce + priceCrust
+  priceTotal.innerText = `$${priceCal}`
 }
 
 renderEverything();
