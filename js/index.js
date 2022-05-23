@@ -116,7 +116,75 @@ function renderButtons() {
 }
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+  // Iteration 4: change the HTML of `<aside class="panel price">``
+  const priceIngredients = document.querySelector('aside.panel.price ul');
+  priceIngredients.innerHTML = '';
+
+  const priceTotal = document.querySelector('aside.panel.price strong');
+
+  let pricePep, priceMush, priceGreenPep, priceWhiteSauce, priceCrust;
+
+  if (
+    document.querySelector('.btn-pepperoni').classList.contains('active')
+  ) {
+    pricePep = ingredients.pepperoni.price;
+    const pricePepLi = document.createElement('li');
+    pricePepLi.innerText = `$${pricePep} pepperoni`;
+    document.querySelector('.panel.price ul').append(pricePepLi);
+  } else {
+    pricePep = 0;
+  }
+
+  if (
+    document.querySelector('.btn-mushrooms').classList.contains('active')
+  ) {
+    priceMush = ingredients.mushrooms.price;
+    const priceMushLi = document.createElement('li');
+    priceMushLi.innerText = `$${priceMush} mushrooms`;
+    document.querySelector('.panel.price ul').append(priceMushLi);
+  } else {
+    priceMush = 0;
+  }
+
+  if (
+    document
+      .querySelector('.btn-green-peppers')
+      .classList.contains('active')
+  ) {
+    priceGreenPep = ingredients.greenPeppers.price;
+    const priceGreenPepLi = document.createElement('li');
+    priceGreenPepLi.innerText = `$${priceGreenPep} green peppers`;
+    document.querySelector('.panel.price ul').append(priceGreenPepLi);
+  } else {
+    priceGreenPep = 0;
+  }
+
+  if (document.querySelector('.btn-sauce').classList.contains('active')) {
+    priceWhiteSauce = ingredients.whiteSauce.price;
+    const priceWhiteSauceLi = document.createElement('li');
+    priceWhiteSauceLi.innerText = `$${priceWhiteSauce} white sauce`;
+    document.querySelector('.panel.price ul').append(priceWhiteSauceLi);
+  } else {
+    priceWhiteSauce = 0;
+  };
+
+  if (document.querySelector('.btn-crust').classList.contains('active')) {
+    priceCrust = ingredients.glutenFreeCrust.price;
+    const priceCrustLi = document.createElement('li');
+    priceCrustLi.innerText = `$${priceCrust} gluten-free crust`;
+    document.querySelector('.panel.price ul').append(priceCrustLi);
+  } else {
+    priceCrust = 0;
+  }
+
+  let priceCal =
+    basePrice +
+    pricePep +
+    priceMush +
+    priceGreenPep +
+    priceWhiteSauce +
+    priceCrust;
+  priceTotal.innerText = '$' + priceCal;
 }
 
 renderEverything();
