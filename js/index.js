@@ -123,7 +123,7 @@ function renderButtons() {
 
 
 function renderPrice() {
-  document.querySelectorAll('.panel-price ul li') for 
+
 }
 
 renderEverything();
