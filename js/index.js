@@ -118,21 +118,24 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  Object.keys(ingredients).reduce((totalPrice, item) => {
-    if (ingredients[item].button.contains('active')) {
-      let text = `$${ingredients[item].price} ${ingredients[item].name}`;
 
-      const panel_Ul = document.querySelector('aside.panel.price ul');
+  const panel_Ul = document.querySelector('aside.panel.price ul');
+  const panel_Li = document.querySelectorAll('aside.panel.price ul li');
+  const price_El = document.querySelector('aside.panel.price strong');
+
+  let totalPrice = 0;
+
+  Array.from(panel_Li).forEach((li) => li.remove());
+
+  for (let item of Object.keys(ingredients)) {
+    if (state[item]) {
       const new_Li = document.createElement('li');
-      new_Li.innerText = text;
-      panel_Ul.appendChild(new_Li);
-
+      new_Li.innerText = `$${ingredients[item].price} ${ingredients[item].name}`;
+      panel_Ul.append(new_Li);
       totalPrice += ingredients[item].price;
     }
-
-    const price_El = document.querySelector('aside.panel.price strong');
-    price_El.innerText = `$${totalPrice}`;
-  }, 0);
+  }
+  price_El.innerText = `$${totalPrice + 10}`;
 }
 
 renderEverything();
