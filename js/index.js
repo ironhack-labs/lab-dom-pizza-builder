@@ -131,7 +131,6 @@ document
   .querySelector('.btn.btn-pepperoni')
   .addEventListener('click', function () {
     state.pepperoni = !state.pepperoni;
-
     renderEverything();
   });
 
