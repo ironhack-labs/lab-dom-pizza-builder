@@ -2,12 +2,21 @@
 
 // Constants
 const basePrice = 10;
+
+// Buttons
+const pepperoniButton = document.querySelector('.btn-pepperoni');
+const mushroomButton = document.querySelector('.btn-mushrooms');
+const greenPepperButton = document.querySelector('.btn-green-peppers');
+const sauceButton = document.querySelector('.btn-sauce');
+const crustButton = document.querySelector('.btn-crust');
+
+// Ingredients
 const ingredients = {
-  pepperoni: { name: 'pepperoni', price: 1 },
-  mushrooms: { name: 'Mushrooms', price: 1 },
-  greenPeppers: { name: 'Green Peppers', price: 1 },
-  whiteSauce: { name: 'White sauce', price: 3 },
-  glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
+  pepperoni: { name: 'pepperoni', price: 1, button: pepperoniButton },
+  mushrooms: { name: 'Mushrooms', price: 1, button: mushroomButton },
+  greenPeppers: { name: 'Green Peppers', price: 1, button: greenPepperButton },
+  whiteSauce: { name: 'White sauce', price: 3, button: sauceButton },
+  glutenFreeCrust: { name: 'Gluten-free crust', price: 5, button: crustButton }
 };
 
 // Initial value of the state (the state values can change over time)
@@ -76,13 +85,6 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  // All buttons
-  const pepperoniButton = document.querySelector('.btn-pepperoni');
-  const mushroomButton = document.querySelector('.btn-mushrooms');
-  const greenPepperButton = document.querySelector('.btn-green-peppers');
-  const sauceButton = document.querySelector('.btn-sauce');
-  const crustButton = document.querySelector('.btn-crust');
-
   if (!state.pepperoni) {
     pepperoniButton.classList.remove('active');
   } else {
@@ -116,6 +118,21 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  Object.keys(ingredients).reduce((totalPrice, item) => {
+    if (ingredients[item].button.contains('active')) {
+      let text = `$${ingredients[item].price} ${ingredients[item].name}`;
+
+      const panel_Ul = document.querySelector('aside.panel.price ul');
+      const new_Li = document.createElement('li');
+      new_Li.innerText = text;
+      panel_Ul.appendChild(new_Li);
+
+      totalPrice += ingredients[item].price;
+    }
+
+    const price_El = document.querySelector('aside.panel.price strong');
+    price_El.innerText = `$${totalPrice}`;
+  }, 0);
 }
 
 renderEverything();
