@@ -174,6 +174,8 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  // Get the price:
+  let totalPrice = 10;
   //
   // Get list:
   let list = document.querySelector('aside ul');
@@ -186,6 +188,7 @@ function renderPrice() {
   pepperoniLi.innerText = '$1 pepperoni';
   if (state.pepperoni) {
     list.appendChild(pepperoniLi);
+    totalPrice += 1;
   }
   //
   // Mushrooms
@@ -193,6 +196,7 @@ function renderPrice() {
   mushroomsLi.innerText = '$1 mushrooms';
   if (state.mushrooms) {
     list.appendChild(mushroomsLi);
+    totalPrice += 1;
   }
   //
   // Green Peppers
@@ -200,6 +204,7 @@ function renderPrice() {
   greenPeppersLi.innerText = '$1 green peppers';
   if (state.greenPeppers) {
     list.appendChild(greenPeppersLi);
+    totalPrice += 1;
   }
   //
   // White Sauce
@@ -207,6 +212,7 @@ function renderPrice() {
   whiteSauceLi.innerText = '$3 white sauce';
   if (state.whiteSauce) {
     list.appendChild(whiteSauceLi);
+    totalPrice += 3;
   }
   //
   // Crust
@@ -214,7 +220,11 @@ function renderPrice() {
   crustLi.innerText = '$5 gluten-free crust';
   if (state.glutenFreeCrust) {
     list.appendChild(crustLi);
+    totalPrice += 5;
   }
+  //
+  // Display total price:
+  document.querySelector('aside strong').innerText = `$${totalPrice}`;
 }
 
 renderEverything();
