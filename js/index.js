@@ -66,7 +66,7 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  if (document.querySelector('.sauce.sauce-white')) {
+  if (!state.whiteSauce) {
     document.querySelector('.sauce').classList.remove('sauce-white');
   } else {
     document.querySelector('.sauce').classList.add('sauce-white');
@@ -86,9 +86,8 @@ function renderWhiteSauce() {
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  const glutenFreeCrust = document.querySelector('.crust.crust-gluten-free');
   const crustClassList = document.querySelector('.crust').classList;
-  if (glutenFreeCrust) {
+  if (!state.glutenFreeCrust) {
     crustClassList.remove('crust-gluten-free');
   } else {
     crustClassList.add('crust-gluten-free');
@@ -97,51 +96,56 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  const allButtons = document.querySelectorAll('.btn');
-  allButtons.forEach((oneButton) => {
-    console.log(oneButton);
-    const textInButton = oneButton.innerText;
-    const textBtnLowerKeys = textInButton.toLowerCase();
-    const firstLetters = textBtnLowerKeys.slice(0, 4);
-    console.log(firstLetters);
-
-    if (!state.textInButton) {
-      oneButton.classList.remove('active');
-    } else {
-      if (!button.classList.contains('active')) {
-        oneButton.classList.add('active');
-      }
-    }
-  });
-
+  // const allButtons = document.querySelectorAll('.btn');
+  // allButtons.forEach(
+  //   (oneButton) => {
+  //     for (const ingredient in ingredients) {
+  //       if (ingredient.name === oneButton.innerText) {
+  //         if (!state.ingredient) {
+  //           if (oneButton.classList.contains('active')) {
+  //             oneButton.classList.remove('active');
+  //           }
+  //         } else {
+  //           if (!oneButton.classList.contains('active')) {
+  //             oneButton.classList.add('active');
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // const textInButton = oneButton.innerText;
+  // if (!state.textInButton) {
+  //   oneButton.classList.remove('active');
+  // } else {
+  //   if (!button.classList.contains('active')) {
+  //     oneButton.classList.add('active');
+  //   }
+  // }
+  // );
   // Solution by Tony:
   // const withPepperoni = document.querySelector('.btn-pepperoni');
   // const withMushRooms = document.querySelector('.btn-mushrooms');
   // const withGreenPeppers = document.querySelector('.btn-green-peppers');
   // const withSauce = document.querySelector('.btn-sauce');
   // // const withCrust = document.querySelector(".btn-crust")
-
   // // Pepperoni btn
   // if (state.pepperoni) {
   //   withPepperoni.classList.remove('active');
   // } else {
   //   withPepperoni.classList.add('active');
   // }
-
   // //  Mushroom btn
   // if (state.mushrooms) {
   //   withMushRooms.classList.remove('active');
   // } else {
   //   withMushRooms.classList.add('active');
   // }
-
   // // Green Peppers btn
   // if (state.greenPeppers) {
   //   withGreenPeppers.classList.remove('active');
   // } else {
   //   withGreenPeppers.classList.add('active');
   // }
-
   // // Sauce btn
   // if (state.whiteSauce) {
   //   withSauce.classList.remove('active');
