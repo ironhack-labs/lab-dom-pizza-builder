@@ -96,66 +96,114 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  // //
+  // //
+  // // Get all the buttons that need to be checked:
   // const allButtons = document.querySelectorAll('.btn');
-  // allButtons.forEach(
-  //   (oneButton) => {
-  //     for (const ingredient in ingredients) {
-  //       if (ingredient.name === oneButton.innerText) {
-  //         if (!state.ingredient) {
-  //           if (oneButton.classList.contains('active')) {
-  //             oneButton.classList.remove('active');
-  //           }
-  //         } else {
-  //           if (!oneButton.classList.contains('active')) {
-  //             oneButton.classList.add('active');
-  //           }
-  //         }
+  // //
+  // // loop over all the buttons:
+  // for (const oneButton of allButtons) {
+  //   const buttonText = oneButton.innerText.toLowerCase();
+  //   console.log('--- ' + buttonText.toUpperCase() + ' ---');
+  //   const buttonClassList = oneButton.classList;
+  //   //
+  //   // Check which ingredient applies to the current button:
+  //   for (const ingredient in ingredients) {
+  //     let index = 0;
+  //     const ingredientsKeys = Object.keys(ingredients);
+  //     const currentIngredient = ingredientsKeys[index];
+  //     const ingredientName = ingredients[ingredient].name;
+  //     const ingredientNameLC = ingredientName.toLowerCase();
+  //     // Get ingredient with same name as buttonText:
+  //     if (ingredientNameLC === buttonText) {
+  //       console.log(ingredientName + ' ' + ingredientNameLC);
+  //       console.log(
+  //         currentIngredient + ' is type of: ' + typeof currentIngredient
+  //       );
+  //       console.log('State: ' + state.currentIngredient);
+  //       // Check state of the ingredient:
+  //       if (state.currentIngredient) {
+  //         buttonClassList.add('active');
+  //       } else {
+  //         buttonClassList.remove('active');
   //       }
   //     }
-  //   }
-  // const textInButton = oneButton.innerText;
-  // if (!state.textInButton) {
-  //   oneButton.classList.remove('active');
-  // } else {
-  //   if (!button.classList.contains('active')) {
-  //     oneButton.classList.add('active');
+  //     index++;
+  //     console.log('...');
   //   }
   // }
-  // );
+
   // Solution by Tony:
-  // const withPepperoni = document.querySelector('.btn-pepperoni');
-  // const withMushRooms = document.querySelector('.btn-mushrooms');
-  // const withGreenPeppers = document.querySelector('.btn-green-peppers');
-  // const withSauce = document.querySelector('.btn-sauce');
-  // // const withCrust = document.querySelector(".btn-crust")
-  // // Pepperoni btn
-  // if (state.pepperoni) {
-  //   withPepperoni.classList.remove('active');
-  // } else {
-  //   withPepperoni.classList.add('active');
-  // }
-  // //  Mushroom btn
-  // if (state.mushrooms) {
-  //   withMushRooms.classList.remove('active');
-  // } else {
-  //   withMushRooms.classList.add('active');
-  // }
-  // // Green Peppers btn
-  // if (state.greenPeppers) {
-  //   withGreenPeppers.classList.remove('active');
-  // } else {
-  //   withGreenPeppers.classList.add('active');
-  // }
-  // // Sauce btn
-  // if (state.whiteSauce) {
-  //   withSauce.classList.remove('active');
-  // } else {
-  //   withSauce.classList.add('active');
-  // }
+  const withPepperoni = document.querySelector('.btn-pepperoni');
+  const withMushRooms = document.querySelector('.btn-mushrooms');
+  const withGreenPeppers = document.querySelector('.btn-green-peppers');
+  const withSauce = document.querySelector('.btn-sauce');
+  const withGfCrust = document.querySelector('.btn-crust');
+  // Pepperoni btn
+  if (!state.pepperoni) {
+    withPepperoni.classList.remove('active');
+  } else {
+    withPepperoni.classList.add('active');
+  }
+  //  Mushroom btn
+  if (!state.mushrooms) {
+    withMushRooms.classList.remove('active');
+  } else {
+    withMushRooms.classList.add('active');
+  }
+  // Green Peppers btn
+  if (!state.greenPeppers) {
+    withGreenPeppers.classList.remove('active');
+  } else {
+    withGreenPeppers.classList.add('active');
+  }
+  // Sauce btn
+  if (!state.whiteSauce) {
+    withSauce.classList.remove('active');
+  } else {
+    withSauce.classList.add('active');
+  }
+
+  // Crust btn
+  if (!state.glutenFreeCrust) {
+    withGfCrust.classList.remove('active');
+  } else {
+    withGfCrust.classList.add('active');
+  }
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  //
+  // Get all list items:
+  let list = document.querySelector('aside ul');
+  let listItems = document.querySelectorAll('aside ul li');
+  console.log(listItems);
+  //
+  // Function to check if ingridient is listed:
+  function checkListedElement(elementToCheck) {
+    for (const item of listItems) {
+      if (item.innerText === elementToCheck) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+  //
+  // Pepperoni
+  const pepperoniLi = document.createElement('li');
+  pepperoniLi.innerHTML = '$1 pepperoni';
+  //
+  if (state.pepperoni) {
+    if (!checkListedElement('$1 pepperoni')) {
+      list.appendChild(pepperoniLi);
+    }
+  } else {
+    if (checkListedElement('$1 pepperoni')) {
+      list.removeChild(pepperoniLi);
+    }
+  }
 }
 
 renderEverything();
