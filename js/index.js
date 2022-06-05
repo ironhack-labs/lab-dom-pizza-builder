@@ -175,34 +175,45 @@ function renderButtons() {
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   //
-  // Get all list items:
+  // Get list:
   let list = document.querySelector('aside ul');
-  let listItems = document.querySelectorAll('aside ul li');
-  console.log(listItems);
-  //
-  // Function to check if ingridient is listed:
-  function checkListedElement(elementToCheck) {
-    for (const item of listItems) {
-      if (item.innerText === elementToCheck) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-  }
-  //
+  // Clear list:
+  while (list.firstChild) list.removeChild(list.firstChild);
+
+  // Add listItem if State === true:
   // Pepperoni
   const pepperoniLi = document.createElement('li');
-  pepperoniLi.innerHTML = '$1 pepperoni';
-  //
+  pepperoniLi.innerText = '$1 pepperoni';
   if (state.pepperoni) {
-    if (!checkListedElement('$1 pepperoni')) {
-      list.appendChild(pepperoniLi);
-    }
-  } else {
-    if (checkListedElement('$1 pepperoni')) {
-      list.removeChild(pepperoniLi);
-    }
+    list.appendChild(pepperoniLi);
+  }
+  //
+  // Mushrooms
+  const mushroomsLi = document.createElement('li');
+  mushroomsLi.innerText = '$1 mushrooms';
+  if (state.mushrooms) {
+    list.appendChild(mushroomsLi);
+  }
+  //
+  // Green Peppers
+  const greenPeppersLi = document.createElement('Li');
+  greenPeppersLi.innerText = '$1 green peppers';
+  if (state.greenPeppers) {
+    list.appendChild(greenPeppersLi);
+  }
+  //
+  // White Sauce
+  const whiteSauceLi = document.createElement('Li');
+  whiteSauceLi.innerText = '$3 white sauce';
+  if (state.whiteSauce) {
+    list.appendChild(whiteSauceLi);
+  }
+  //
+  // Crust
+  const crustLi = document.createElement('Li');
+  crustLi.innerText = '$5 gluten-free crust';
+  if (state.glutenFreeCrust) {
+    list.appendChild(crustLi);
   }
 }
 
