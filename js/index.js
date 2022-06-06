@@ -124,37 +124,46 @@ function renderButtons() {
   }
 }
 
-/* // TEST 0.5b : portion with ForEach included
-  }) 
-  forEach(function (active) {
-    active.classList.toggle('active')
-  });
-}
-*/
-/* TEST 1.2b : toggles all buttons when one button is clicked (BEST RESULT SO FAR at 04-06 17:50 props to Guillermo)
-function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  document.querySelectorAll('.btn').forEach(function (active) {
-    active.classList.toggle('active')
-  });
-}
-
-TEST 2.3b : Trying to addEventListener before the code (just found out that the eventListener can be added after the forEach en StackOverflow... )
-https://stackoverflow.com/questions/68425366/toggle-active-class-to-buttons-when-clicked
-IMPORTANT: Got told that there is a way without EventListener!!! 
-
-function renderButtons() {
-  const theButton = document.querySelectorAll('btn')
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  theButton.addEventListener("click", function (event) {
-    event.classList.toggle('active')
-  })
-}
-
-*/
-
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+
+  const listUl = document.querySelector('aside ul');
+  const listItems = document.querySelectorAll('aside ul li');
+  let price = document.querySelector('aside strong');
+  let priceInNum = 10;
+
+  listItems.forEach((item) => {
+    item.style.visibility = 'hidden';
+  });
+
+  listItems.forEach((item) => {
+    if (item.innerHTML.includes('pepperoni') && state.pepperoni) {
+      item.style.visibility = 'visible';
+      let pricePepperoni = parseInt(item.innerHTML.slice(1));
+      priceInNum += pricePepperoni;
+    }
+    if (item.innerHTML.includes('mushroom') && state.mushrooms) {
+      item.style.visibility = 'visible';
+      let priceShroom = parseInt(item.innerHTML.slice(1));
+      priceInNum += priceShroom;
+    }
+    if (item.innerHTML.includes('peppers') && state.greenPeppers) {
+      item.style.visibility = 'visible';
+      let pricePeppers = parseInt(item.innerHTML.slice(1));
+      priceInNum += pricePeppers;
+    }
+    if (item.innerHTML.includes('sauce') && state.whiteSauce) {
+      item.style.visibility = 'visible';
+      let priceSusSauce = parseInt(item.innerHTML.slice(1));
+      priceInNum += priceSusSauce;
+    }
+    if (item.innerHTML.includes('crust') && state.glutenFreeCrust) {
+      item.style.visibility = 'visible';
+      let priceGluten = parseInt(item.innerHTML.slice(1));
+      priceInNum += priceGluten;
+    }
+  });
+  price.innerHTML = '$' + priceInNum;
 }
 
 renderEverything();
@@ -168,7 +177,6 @@ document
   });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
-// const mushroomButton = document.querySelector('.btn.btn-mushrooms')
 
 document
   .querySelector('.btn.btn-mushrooms')
