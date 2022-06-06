@@ -369,7 +369,7 @@ p.description {
 
 .price li {
   margin: 5px 20px 0;
-  color: #666;
+  color: rgb(0, 0, 0);
 }
 
 .price li:before {
