@@ -12,9 +12,9 @@ const ingredients = {
 
 // Initial value of the state (the state values can change over time)
 const state = {
-  pepperoni: true,
-  mushrooms: true,
-  greenPeppers: true,
+  pepperoni: false,
+  mushrooms: false,
+  greenPeppers: false,
   whiteSauce: false,
   glutenFreeCrust: false
 };
@@ -65,12 +65,24 @@ function renderGreenPeppers() {
 }
 
 function renderWhiteSauce() {
-  document.querySelector('.sauce').classList.toggle('sauce-white')
+  // document.querySelector('.sauce').classList.toggle('sauce-white')
+  const sauce = document.querySelector('.sauce')
+  if (state.whiteSauce) {
+    sauce.classList.add('sauce-white')
+  } else {
+    sauce.classList.remove('sauce-white')
+  }
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
 }
 
 function renderGlutenFreeCrust() {
-  document.querySelector('.crust').classList.toggle('crust-gluten-free');
+  const crust = document.querySelector('.crust')
+  console.log({ crust: state.glutenFreeCrust, contains: crust.classList.contains('crust-gluten-free') })
+  if (state.glutenFreeCrust) {
+    crust.classList.add('crust-gluten-free');
+  } else {
+    crust.classList.remove('crust-gluten-free');
+  }
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
 }
 
@@ -110,6 +122,7 @@ function renderButtons() {
   } else {
     crustButton.classList.add('active');
   }
+ 
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
 }
 
@@ -171,7 +184,6 @@ function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
 }
 
-renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', function () {
@@ -199,3 +211,6 @@ document.querySelector('.btn.btn-crust').addEventListener('click', function () {
   state.glutenFreeCrust = !state.glutenFreeCrust;
   renderEverything();
 });
+
+renderEverything();
+console.log({ st: state.glutenFreeCrust })
