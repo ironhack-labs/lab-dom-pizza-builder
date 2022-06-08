@@ -3,8 +3,8 @@
 // Constants
 const basePrice = 10;
 const ingredients = {
-  pepperoni: { name: 'pepperoni', price: 1 },
-  mushrooms: { name: 'Mushrooms', price: 1 },
+  pepperoni: { name: 'Pepperoni', price: 1 },
+  mushrooms: { name: 'Shrooms', price: 1 },
   greenPeppers: { name: 'Green Peppers', price: 1 },
   whiteSauce: { name: 'White sauce', price: 3 },
   glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
@@ -45,7 +45,7 @@ function renderPepperoni() {
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
   document.querySelectorAll('.mushroom').forEach(function (oneMush) {
-    if (state.mushroom) {
+    if (state.mushrooms) {
       oneMush.style.visibility = 'visible';
     } else {
       oneMush.style.visibility = 'hidden';
@@ -88,21 +88,65 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  document.querySelectorAll('.btn').forEach(function (active) {
-    // I think you need to add an event listener here
-    active.classList.toggle('active');
-  });
+  if (state.pepperoni) {
+    document.querySelector('.btn.btn-pepperoni').classList.add('active');
+  } else {
+    document.querySelector('.btn.btn-pepperoni').classList.remove('active');
+  }
+  if (state.mushrooms) {
+    document.querySelector('.btn.btn-mushrooms').classList.add('active');
+  } else {
+    document.querySelector('.btn.btn-mushrooms').classList.remove('active');
+  }
+  if (state.greenPeppers) {
+    document.querySelector('.btn.btn-green-peppers').classList.add('active');
+  } else {
+    document.querySelector('.btn.btn-green-peppers').classList.remove('active');
+  }
+  if (state.whiteSauce) {
+    document.querySelector('.btn.btn-sauce').classList.add('active');
+  } else {
+    document.querySelector('.btn.btn-sauce').classList.remove('active');
+  }
+  if (state.glutenFreeCrust) {
+    document.querySelector('.btn.btn-crust').classList.add('active');
+  } else {
+    document.querySelector('.btn.btn-crust').classList.remove('active');
+  }
 }
-
-// click.addEventListener("click",function(clicked){
-//   if(clicked)
-// })
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let totalPrice = basePrice; // Making the total price equal to the base price 10EUR
+  let priceList = document.querySelector('aside.panel.price ul'); //Selecting the query from the aside tag, panel and price classes specifically, uls
+  priceList.innerHTML = ''; //making these Uls empty so they change based on the state of the button of the ingredient
+  for (ingredientType in ingredients) {
+    //Inside the object, each ingredient, pep, green,shrooms,crust,sauce
+    if (state[ingredientType] == true) {
+      // if the state of the ingredient type equals to true
+      totalPrice += ingredients[ingredientType].price; // add to the total price from the ingredients object the total price of the ingredient type
+      priceList.innerHTML += `<li>$${ingredients[ingredientType].price} ${ingredients[ingredientType].name}</li>`; //adding the html price of the ingredients as list items
+    }
+  }
+  document.querySelector('aside.panel.price strong').innerText = // selection of the total price and directly replacing the total price with the new total price based on the change
+    '$' + totalPrice;
 }
 
 renderEverything();
+
+// function renderPrice() {
+//   // Iteration 4: change the HTML of `<aside class="panel price">`
+//   var totalPrice = basePrice
+//   var $list = document.querySelector('aside.panel.price ul')
+//   $list.innerHTML = ""
+
+//   for (var ingredientKey in ingredients) {
+//     if (state[ingredientKey]) {
+//       totalPrice += ingredients[ingredientKey].price
+//       $list.innerHTML += `<li>$${ingredients[ingredientKey].price} ${ingredients[ingredientKey].name.toLowerCase()}</li>`
+//     }
+//   }
+//   document.querySelector('aside.panel.price strong').innerHTML = "$" + totalPrice
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document
@@ -116,7 +160,7 @@ document
 document
   .querySelector('.btn.btn-mushrooms')
   .addEventListener('click', function () {
-    state.mushroom = !state.mushroom;
+    state.mushrooms = !state.mushrooms;
     renderEverything();
   });
 
