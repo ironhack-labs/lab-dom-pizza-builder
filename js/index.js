@@ -1,5 +1,9 @@
 // Write your Pizza Builder JavaScript in this file.
 
+let theCatDiv = document.getElementById('cat');
+ 
+console.log(theCatDiv); // <== what can you see in browser's console
+
 // Constants
 const basePrice = 10;
 const ingredients = {
@@ -44,26 +48,99 @@ function renderPepperoni() {
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll('.mushroom').forEach((oneMush) => {
+    if (state.mushrooms) {
+      oneMush.style.visibility = 'visible';
+    } else {
+      oneMush.style.visibility = 'hidden';
+    }
+
+  });
 }
+
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll('.green-pepper').forEach((onePepper) => {
+    if (state.greenPeppers) {
+      onePepper.style.visibility = 'visible';
+    } else {
+      onePepper.style.visibility = 'hidden';
+    }
+
+  });
 }
+
+console.log(document.querySelectorAll('.sauce-white'))
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+  const whiteSauces = document.querySelector('.sauce');
+  if (state.whiteSauce) {
+    whiteSauces.classList.add('sauce-white');
+  } else {
+    whiteSauces.classList.remove('sauce-white');
+  }
+
 }
 
 function renderGlutenFreeCrust() {
-  // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  const  = document.querySelector('.sauce');
+  if (state.whiteSauce) {
+    glutenFreeCrust.classList.add('glutenFreeCrust');
+  } else {
+    glutenFreeCrust.classList.remove('glutenFreeCrust');
+  }
+
 }
+
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  if (state.pepperoni) {
+    document.querySelector('.btn-pepperoni').classList.add('active');
+  } else {
+    document.querySelector('.btn-pepperoni').classList.remove('active');
+  }
+
+  if (state.greenPeppers) {
+    document.querySelector('.btn-green-peppers').classList.add('active');
+  } else {
+    document.querySelector('.btn-green-peppers').classList.remove('active');
+  }
+
+  if (state.mushrooms) {
+    document.querySelector('.btn-mushrooms').classList.add('active');
+  } else {
+    document.querySelector('.btn-mushrooms').classList.remove('active');
+  }
+
+  if (state.whiteSauce) {
+    document.querySelector('.btn-whiteSauce').classList.add('active');
+  } else {
+    document.querySelector('.btn-whiteSauce').classList.remove('active');
+  }
+
+  if (state.glutenFreeCrust) {
+    document.querySelector('.btn-crust').classList.add('active');
+  } else {
+    document.querySelector('.btn-crust').classList.remove('active');
+  }
+
 }
+
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+let list = ''
+let price = basePrice 
+
+for (let ingredients in state ) {
+  console.log('ingredients in loop:', ingredient);
+  console.log(ingredients[ingredient])
+}
+
+
 }
 
 renderEverything();
@@ -75,9 +152,27 @@ document.querySelector('.btn.btn-pepperoni').addEventListener('click', function 
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', function () {
+  state.mushrooms = !state.mushrooms;
+  renderEverything();
+});
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-
+document.querySelector('.btn.btn-green-peppers').addEventListener('click', function () {
+  state.greenPeppers = !state.greenPeppers;
+  renderEverything();
+});
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
+document.querySelector('.btn.btn-sauce').addEventListener('click',function () {
+state.whiteSauce = !state.whiteSauce; 
+renderEverything();
+
+});
+
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector('.btn.btn-crust').addEventListener('click',function () {
+  state.glutenFreeCrust = !state.glutenFreeCrust; 
+  renderEverything();
+
+});
