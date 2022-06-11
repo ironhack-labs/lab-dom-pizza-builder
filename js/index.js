@@ -16,7 +16,7 @@ const state = {
   mushrooms: true,
   greenPeppers: true,
   whiteSauce: false,
-  glutenFreeCrust: false
+  glutenFreeCrust: false,
 };
 
 // This function takes care of rendering the pizza based on the state
@@ -87,11 +87,13 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  const btnActive = document.getElementsByName('btn')
 
-  btnActive.addEventListener('click', function () {
-    btnActive.toggle('active')
+  const buttons = document.querySelectorAll('.btn')
+  
+  buttons.addEventListener('click', () => {
+    buttons.classList.toggle('active')
   });
+  
 
 }
 
