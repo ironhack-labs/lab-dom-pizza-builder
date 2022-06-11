@@ -87,12 +87,14 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-
-  const buttons = document.querySelectorAll('.btn')
   
-  buttons.addEventListener('click', () => {
-    buttons.classList.toggle('active')
-  });
+  const buttons = document.querySelectorAll('.btn')
+  for (const button of buttons) {
+    button.addEventListener('click', () => {
+      button.classList.toggle('active')
+      renderEverything();
+    });
+  }
   
 
 }
@@ -129,4 +131,4 @@ document.querySelector('.btn.btn-sauce').addEventListener('click', function () {
 document.querySelector('.btn.btn-crust').addEventListener('click', function () {
   state.glutenFreeCrust = !state.glutenFreeCrust;
   renderEverything();
-});
+})
