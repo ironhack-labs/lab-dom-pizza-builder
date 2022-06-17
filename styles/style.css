@@ -1097,3 +1097,22 @@ footer a:hover {
     margin: 70px 0 10px 0;
   }
 }
+
+/* @media screen and (max-width: 500px) {
+  #pizza {
+    height: 700px;
+    width: 700px;
+    transform: scale(0.6);
+    margin-left: -20%;
+  }
+  .panel {
+    width: 100px;
+    min-height: 250px;
+    font-size: 12px;
+    top: 25%;
+  }
+  .btn {
+    height: 38px;
+    line-height: 17px;
+  }
+} */
