@@ -81,23 +81,55 @@ function renderGlutenFreeCrust() {
     crustClasses.remove('crust-gluten-free')
 }
 
-function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  buttons = document.querySelectorAll('.btn')
-  let i = 0;
-  for (let ingredient in state){
-    if (state[ingredient] === true){
-      if (!buttons[i].classList.contains('active'))
-	buttons[i].classList.add('active');
+function camelToKebab(str){
+  let result = [... str].map((letter, index) => {
+    if (letter.toUpperCase() === letter){
+      if (index !== 0)
+	return ('-' + letter.toLowerCase());
+      else
+	return (letter.toLowerCase());
     }
     else
-      buttons[i].classList.remove('active');
-    i++;
+      return (letter);
+  })
+  return (result.join(''));
+}
+
+function renderButtons() {
+  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  for (let ingredient in state){
+    let button = document.querySelector(`.btn-${camelToKebab(ingredient)}`)
+    if (ingredient === 'whiteSauce')
+      button = document.querySelector('.btn-sauce')
+    else if (ingredient === 'glutenFreeCrust')
+      button = document.querySelector('.btn-crust')
+    if (state[ingredient] === true){
+      if (!button.classList.contains('active'))
+	button.classList.add('active');
+    }
+    else
+      button.classList.remove('active');
   }
+}
+
+function createPriceLi(ingredient){
+  const li = document.createElement('li')
+  li.textContent = `$${ingredients.ingredient.price} ${ingredients.ingredient.name}`
+  return (li)
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  // let total = 10
+  // let list = document.querySelector('.price ul')
+  // for (const ingredient in state){
+  //   if (state.ingredient === true){
+  //   ul.appendChild(createPriceLi(ingredient))
+  //   }
+  //   else
+  //     ul.remove(li)
+  //     }
+  // document.querySelector('.price strong').textContent = `$${total}`
 }
 
 renderEverything();
@@ -132,12 +164,3 @@ document.querySelector('.btn.btn-crust').addEventListener('click', () => {
   state.glutenFreeCrust = !state.glutenFreeCrust
   renderEverything()  
 })
-
-// Adding event listener on all buttons
-// document.querySelectorAll('.btn').forEach((btn) => btn.addEventListener('click', () => {
-//     if (btn.classList.contains('active'))
-//       btn.classList.remove('active');
-//     else
-//       btn.classList.add('active');
-//     renderEverything()
-// }))
