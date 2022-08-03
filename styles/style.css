@@ -244,6 +244,7 @@ p.description {
   color: #fff;
 }
 
+
 .btn-mushrooms:hover {
   background: #a78774;
   box-shadow: 0 5px #503d33;
@@ -1097,3 +1098,4 @@ footer a:hover {
     margin: 70px 0 10px 0;
   }
 }
+
