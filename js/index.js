@@ -44,6 +44,7 @@ function renderPepperoni() {
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
+  //test
 }
 
 function renderGreenPeppers() {
