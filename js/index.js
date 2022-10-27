@@ -68,29 +68,27 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  document.querySelectorAll('.btn').forEach(btn => {
-    let key = btn.classList.toString().split(' ')[1].slice(4);
-
-    switch(key) {
-      case 'green-peppers':
-        key = 'greenPeppers';
-        break;
-      case 'sauce':
-        key = 'whiteSauce';
-        break;
-      case 'crust':
-        key = 'glutenFreeCrust';
-        break;
-      default: // pepperoni & mushrooms
-        break;
-      }
-
-    btn.classList.toggle('active', state[key]);
+  let btns = document.querySelectorAll('.btn');
+  
+  ['pepperoni', 'mushrooms', 'greenPeppers', 'whiteSauce', 'glutenFreeCrust'].forEach((key, index) => {
+    btns[index].classList.toggle('active', state[key]);
   });
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let list = document.querySelector('.price ul');
+  let total = basePrice;
+
+  list.innerHTML = '';
+  ['pepperoni', 'mushrooms', 'greenPeppers', 'whiteSauce', 'glutenFreeCrust'].forEach((key, index) => {
+    if (state[key]) {
+      list.innerHTML += `<li>$${ingredients[key].price} ${ingredients[key].name}</li>`
+      total += ingredients[key].price;
+    }
+  });
+
+  document.querySelector('.price strong').innerHTML = `$${total}`;
 }
 
 renderEverything();
