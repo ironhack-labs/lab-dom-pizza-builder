@@ -77,14 +77,51 @@ function renderWhiteSauce() {
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+   const item  = document.querySelector('.crust')
+    if(state.glutenFreeCrust){
+      item.classList.add('crust-gluten-free');
+    }else {
+      item.classList.remove("crust-gluten-free");
+    }
+ 
 }
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  const buttons = document.getElementsByClassName('btn');
+  const buttonStates = Object.values(state);
+  
+  for (let index = 0; index < buttonStates.length; index++) {
+    if(buttonStates[index] === true){
+      buttons[index].classList.add('active');
+    } else {
+      buttons[index].classList.remove('active');
+    }
+  }
+
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let totalValue = basePrice;
+  let htmlContent = '';
+
+
+  const priceList  = document.querySelector('.panel.price ul');
+  const finalPrice = document.querySelector('.panel.price strong');
+
+ 
+  for (const key in state){
+    if(state[key]){
+      totalValue += ingredients[key].price;
+      htmlContent += `<li>$${ingredients[key].price} ${ingredients[key].name}</li>`
+    }
+  } 
+ 
+
+console.log(htmlContent);
+  finalPrice.innerHTML = `<strong>$${totalValue}</strong>`;
+  priceList.innerHTML = `<ul>${htmlContent}</ul>`;
 }
 
 renderEverything();
@@ -117,3 +154,9 @@ document.querySelector(".btn.btn-sauce").addEventListener('click',  () => {
 
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+
+document.querySelector(".btn.btn-crust").addEventListener('click',  () => {
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+});
+
