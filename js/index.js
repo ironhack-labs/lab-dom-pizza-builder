@@ -95,7 +95,7 @@ function renderPrice() {
 
   let total = 0;
 
-  for (ingredient of Object.keys(state)) {
+  for (const ingredient of Object.keys(state)) {
     if (state[ingredient]) {
       const ingElement = document.createElement('li')
       ingElement.innerHTML = `$${ingredients[ingredient].price} ${ingredients[ingredient].name}`
