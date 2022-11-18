@@ -14,7 +14,7 @@ const ingredients = {
 const state = {
   pepperoni: true,
   mushrooms: true,
-  greenPeppers: false,
+  greenPeppers: true,
   whiteSauce: false,
   glutenFreeCrust: false
 };
@@ -41,8 +41,8 @@ function renderPepperoni() {
     }
   });
 }
-console.log(document.getElementsByClassName("mushroom")) //htmlcollection, forEach won't work
-console.log(document.querySelectorAll('.mushroom')) // nodesList, forEach works
+//console.log(document.getElementsByClassName("mushroom")) //htmlcollection, forEach won't work
+//console.log(document.querySelectorAll('.mushroom')) // nodesList, forEach works
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
@@ -68,13 +68,9 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  document.querySelectorAll(".sauce-white").forEach((sauce) => {
-    if (state.whiteSauce) {
-      sauce.style.visibility = 'visible';
-    } else {
-      sauce.style.visibility = 'hidden';
-    }
-  });
+  const sauce = document.querySelector(".sauce-white")
+    if (state.whiteSauce) sauce.style.visibility = 'visible';
+    if (! state.whiteSauce) sauce.style.visibility = 'hidden';
 }
 
 function renderGlutenFreeCrust() {
@@ -105,12 +101,11 @@ document.addEventListener("click", clickListener)
 function clickListener(event){
   const classes = event.target.classList
   if (!classes.contains("btn")) console.log("not a button")
-  if(classes.contains("btn-pepperoni")) state.pepperoni = !state.pepperoni; //console.log("pepperoni:" + state.pepperoni)}
-  if(classes.contains("btn-mushrooms")) state.mushrooms = !state.mushrooms; //console.log("mushroom:" + state.mushrooms)}
-  if(classes.contains("btn-green-peppers")) state.greenPeppers = !state.greenPeppers; //console.log("green peppers:" + state.greenPeppers)}
-  if(classes.contains("btn-sauce")) state.whiteSauce = !state.whiteSauce; //console.log("white sauce:" + state.whiteSauce)}
-  if(classes.contains("btn-crust")) state.glutenFreeCrust = !state.glutenFreeCrust; //console.log("crust:" + state.glutenFreeCrust)}
-  renderEverything()
+  if(classes.contains("btn-pepperoni")) {state.pepperoni = !state.pepperoni;renderEverything()} //console.log("pepperoni:" + state.pepperoni)}
+  if(classes.contains("btn-mushrooms")) {state.mushrooms = !state.mushrooms;renderEverything()} //console.log("mushroom:" + state.mushrooms)}
+  if(classes.contains("btn-green-peppers")) {state.greenPeppers = !state.greenPeppers; renderEverything()}//console.log("green peppers:" + state.greenPeppers)}
+  if(classes.contains("btn-sauce")) {state.whiteSauce = !state.whiteSauce;renderEverything()} //console.log("white sauce:" + state.whiteSauce)}
+  if(classes.contains("btn-crust")) {state.glutenFreeCrust = !state.glutenFreeCrust;renderEverything()} //console.log("crust:" + state.glutenFreeCrust)}
 }
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
