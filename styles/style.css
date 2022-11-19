@@ -1065,6 +1065,10 @@ footer a:hover {
   -webkit-transition: all 0.3s linear;
 }
 
+.hidden {
+  display: none;
+}
+
 @media screen and (max-width: 720px) {
   body {
     padding: 25px 0;
