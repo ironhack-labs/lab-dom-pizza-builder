@@ -100,16 +100,31 @@ function renderButtons() {
 // Iteration 4: change the HTML of `<aside class="panel price">`
 
 function renderPrice() {
-  const listItems = document.querySelectorAll('.panel.price li');
-  //let pizzaPrice = 10;
-  //const finalPrice = document.querySelector('.panel.price strong');
+
+  //FORMA CARLOS -------------------------------------------------------------------
+  /*const listItems = document.querySelectorAll('.panel.price li');
 
   listItems.forEach((item) => {
     const display = state[item.dataset.id] ? 'block' : 'none';
     item.style.display = display;
   
     }
-  );
+  );*/
+//  ---------------------------------------------------------------------------------
+
+  let list = '';
+  let price = basePrice;
+
+  for (let ingredient in state) {
+    //console.log('ingredient in loop: ', ingredient);
+    //console.log(ingredients[ingredient]);
+    if (state[ingredient]) {
+      list += `<li>$ ${ingredients[ingredient].price} ${ingredients[ingredient].name}</li>`
+      price += ingredients[ingredient].price
+    } 
+  }
+  document.querySelector('.panel.price ul').innerHTML = list;
+  document.querySelector('.panel.price strong').innerText = '$ ' + price;
 }
 
 
