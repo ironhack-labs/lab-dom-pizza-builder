@@ -98,19 +98,26 @@ function renderButtons() {
 }
 
 function renderPrice(event) {
+  let totalPrice = basePrice
+  
+  for (let ingredient in ingredients) {
+    if (state[ingredient]) {
+      totalPrice += ingredients[ingredient].price
+    }
+  }
+  document.querySelector('aside.panel.price strong').innerHTML = "$" + totalPrice
+
   if(event) {
     const item = event.target.id
     const panel = document.querySelector('.panel.price')
     const priceNode = panel.querySelector(`#${item}`)
-
-
+  
     if(state[item]) {
       priceNode.classList.remove('hidden')
     } else {
       priceNode.classList.add('hidden')
     }
   }
-
   // Iteration 4: change the HTML of `<aside class="panel price">`
 }
 
