@@ -43,7 +43,15 @@ function renderPepperoni() {
 }
 
 function renderMushrooms() {
-  // Iteration 1: set the visibility of `<section class="mushroom">`
+  function renderPepperoni() {
+    document.querySelectorAll('.mushroom').forEach((onePep) => {
+      if (state.mushrooms) {
+        onePep.style.visibility = 'visible';
+      } else {
+        onePep.style.visibility = 'hidden';
+      }
+    });
+  }
 }
 
 function renderGreenPeppers() {
