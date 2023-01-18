@@ -41,11 +41,17 @@ function renderPepperoni() {
 }
 
 function renderMushrooms() {
-  // Iteration 1: set the visibility of `<section class="mushroom">`
+  'use strict';
+  document.querySelectorAll('.mushroom').forEach((mushroom) => {
+    mushroom.style.visibility = state.mushrooms ? 'visible' : 'hidden';
+  });
 }
 
 function renderGreenPeppers() {
-  // Iteration 1: set the visibility of `<section class="green-pepper">`
+  'use strict';
+  document.querySelectorAll('.green-pepper').forEach((pepper) => {
+    pepper.style.visibility = state.greenPeppers ? 'visible' : 'hidden';
+  });
 }
 
 function renderWhiteSauce() {
@@ -70,12 +76,25 @@ function renderPrice() {
 
 renderEverything();
 
-// Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
   'use strict';
   state.pepperoni = !state.pepperoni;
   renderEverything();
 });
+
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', () => {
+  'use strict';
+  state.mushrooms = !state.mushrooms;
+  renderEverything();
+});
+
+document
+  .querySelector('.btn.btn-green-peppers')
+  .addEventListener('click', () => {
+    'use strict';
+    state.greenPeppers = !state.greenPeppers;
+    renderEverything();
+  });
 
 document.querySelector('.btn.btn-crust').addEventListener('click', () => {
   'use strict';
