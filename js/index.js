@@ -22,6 +22,7 @@ const state = {
 // This function takes care of rendering the pizza based on the state
 // This function is triggered once at the beginning and every time the state is changed
 function renderEverything() {
+  'use strict';
   renderPepperoni();
   renderMushrooms();
   renderGreenPeppers();
@@ -33,12 +34,9 @@ function renderEverything() {
 }
 
 function renderPepperoni() {
+  'use strict';
   document.querySelectorAll('.pep').forEach((onePep) => {
-    if (state.pepperoni) {
-      onePep.style.visibility = 'visible';
-    } else {
-      onePep.style.visibility = 'hidden';
-    }
+    onePep.style.visibility = state.pepperoni ? 'visible' : 'hidden';
   });
 }
 
@@ -51,11 +49,15 @@ function renderGreenPeppers() {
 }
 
 function renderWhiteSauce() {
-  // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+  'use strict';
+  let stateWhiteSauce = state.whiteSauce ? 'visible' : 'hidden';
+  document.querySelector('.sauce').style.visibility = stateWhiteSauce;
 }
 
 function renderGlutenFreeCrust() {
-  // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  'use strict';
+  let stateGlutenFreeCrust = state.glutenFreeCrust ? 'visible' : 'hidden';
+  document.querySelector('.crust').style.visibility = stateGlutenFreeCrust;
 }
 
 function renderButtons() {
@@ -69,15 +71,20 @@ function renderPrice() {
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
-document.querySelector('.btn.btn-pepperoni').addEventListener('click', function () {
+document.querySelector('.btn.btn-pepperoni').addEventListener('click', () => {
+  'use strict';
   state.pepperoni = !state.pepperoni;
   renderEverything();
 });
 
-// Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
+document.querySelector('.btn.btn-crust').addEventListener('click', () => {
+  'use strict';
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+});
 
-// Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-
-// Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
-
-// Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
+  'use strict';
+  state.whiteSauce = !state.whiteSauce;
+  renderEverything();
+});
