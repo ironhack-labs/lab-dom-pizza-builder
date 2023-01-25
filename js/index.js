@@ -85,7 +85,7 @@ document
   .querySelector('.btn.btn-pepperoni')
   .addEventListener('click', function () {
     state.pepperoni = !state.pepperoni;
-    renderEverything();
+    renderPepperoni();
   });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
@@ -93,7 +93,7 @@ document
   .querySelector('.btn.btn-mushrooms')
   .addEventListener('click', function () {
     state.mushrooms = !state.mushrooms;
-    renderEverything();
+    renderMushrooms();
   });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
@@ -101,18 +101,18 @@ document
   .querySelector('.btn.btn-green-peppers')
   .addEventListener('click', function () {
     state.greenPeppers = !state.greenPeppers;
-    renderEverything();
+    renderGreenPeppers();
   });
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 document.querySelector('.btn.btn-sauce').addEventListener('click', function () {
   state.whiteSauce = !state.whiteSauce;
-  renderEverything();
+  renderWhiteSauce();
 });
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
 
 document.querySelector('.btn.btn-crust').addEventListener('click', function () {
   state.glutenFreeCrust = !state.glutenFreeCrust;
-  renderEverything();
+  renderGlutenFreeCrust();
 });
