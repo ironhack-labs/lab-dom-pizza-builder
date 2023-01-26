@@ -83,42 +83,53 @@ function renderGlutenFreeCrust() {
 }
 
 // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-const btnPep = document.querySelector('.btn.btn-pepperoni')
-const btnMush = document.querySelector('.btn.btn-mushrooms')
-const btnGreenPep = document.querySelector('.btn.btn-green-peppers')
-const btnSauce = document.querySelector('.btn.btn-sauce')
-const btnCrust = document.querySelector('.btn.btn-crust')
+// const btnPep = document.querySelector('.btn.btn-pepperoni')
+// const btnMush = document.querySelector('.btn.btn-mushrooms')
+// const btnGreenPep = document.querySelector('.btn.btn-green-peppers')
+// const btnSauce = document.querySelector('.btn.btn-sauce')
+// const btnCrust = document.querySelector('.btn.btn-crust')
 
+// function renderButtons() {
+//   if (!state.pepperoni) {
+//     btnPep.classList.remove('active')
+//   } else {
+//     return btnPep
+//   }
+
+//   if (state.mushrooms) {
+//     btnMush.classList.remove('active') 
+//   } else {
+//     return btnMush
+//   }
+
+//   if (state.greenPeppers) {
+//     btnGreenPep.classList.remove('active')
+//   } else {
+//     return btnGreenPep
+//   }
+
+//   if (state.whiteSauce) {
+//     btnSauce.classList.remove('active')
+//   } else {
+//     return btnSauce
+//   }
+
+//   if (state.glutenFreeCrust) {
+//     btnCrust.classList.remove('active')
+//   } else {
+//     return btnCrust
+//   }
+// }
+const btnAll = document.querySelectorAll('btn')
 function renderButtons() {
-  if (!state.pepperoni) {
-    btnPep.classList.remove('active')
-  } else {
-    return btnPep
-  }
-
-  if (state.mushrooms) {
-    btnMush.classList.remove('active') 
-  } else {
-    return btnMush
-  }
-
-  if (state.greenPeppers) {
-    btnGreenPep.classList.remove('active')
-  } else {
-    return btnGreenPep
-  }
-
-  if (state.whiteSauce) {
-    btnSauce.classList.remove('active')
-  } else {
-    return btnSauce
-  }
-
-  if (state.glutenFreeCrust) {
-    btnCrust.classList.remove('active')
-  } else {
-    return btnCrust
-  }
+  btnAll.forEach((elem) => {
+    if (!state.elem) {
+      elem.classList.remove('active')
+    }
+    else {
+      return elem
+    }
+  })
 }
 
 
@@ -133,18 +144,19 @@ function renderPrice() {
   const priceSauce = Number((document.querySelector('.panel > ul:nth-child[4]')).split(" ")[0])
   const priceCrust = Number((document.querySelector('.panel > ul:last-child')).split(" ")[0])
 
-  if (renderButtons(btnPep).includes('active')) {
-    totalPrice += pricePep
-  } else if (renderButtons(btnMush).includes('active')) {
-    totalPrice += priceMush
-  } else if (renderButtons(btnGreenPep).includes('active')) {
+  
+  if (renderButtons().includes('active')) {
+      totalPrice += pricePep
+    } else if (renderButtons(btnMush).includes('active')) {
+     totalPrice += priceMush
+    } else if (renderButtons(btnGreenPep).includes('active')) {
     totalPrice += priceGreenPep
-  } else if (renderButtons(btnSauce).includes('active')) {
-    totalPrice += priceSauce
-  } else if (renderButtons(btnCrust).includes('active')) {
-    totalPrice += priceCrust
-  }
-  return totalPrice
+    } else if (renderButtons(btnSauce).includes('active')) {
+     totalPrice += priceSauce
+     } else if (renderButtons(btnCrust).includes('active')) {
+     totalPrice += priceCrust
+     }
+     return totalPrice
 }
 
 renderEverything();
