@@ -83,40 +83,41 @@ function renderGlutenFreeCrust() {
 }
 
 // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+const btnPep = document.querySelector('.btn.btn-pepperoni')
+const btnMush = document.querySelector('.btn.btn-mushrooms')
+const btnGreenPep = document.querySelector('.btn.btn-green-peppers')
+const btnSauce = document.querySelector('.btn.btn-sauce')
+const btnCrust = document.querySelector('.btn.btn-crust')
+
 function renderButtons() {
-  const btnPep = document.querySelector('.btn.btn-pepperoni')
-  if (state.pepperoni) {
-    btnPep.classList.add('active')
-  } else {
+  if (!state.pepperoni) {
     btnPep.classList.remove('active')
+  } else {
+    return btnPep
   }
 
-  const btnMush = document.querySelector('.btn.btn-mushrooms')
   if (state.mushrooms) {
-    btnMush.classList.add('active') 
+    btnMush.classList.remove('active') 
   } else {
-    btnMush.classList.remove('active')
+    return btnMush
   }
 
-  const btnGreenPep = document.querySelector('.btn.btn-green-peppers')
   if (state.greenPeppers) {
-    btnGreenPep.classList.add('active')
-  } else {
     btnGreenPep.classList.remove('active')
+  } else {
+    return btnGreenPep
   }
 
-  const btnSauce = document.querySelector('.btn.btn-sauce')
   if (state.whiteSauce) {
-    btnSauce.classList.add('active')
-  } else {
     btnSauce.classList.remove('active')
+  } else {
+    return btnSauce
   }
 
-  const btnCrust = document.querySelector('.btn.btn-crust')
   if (state.glutenFreeCrust) {
-    btnCrust.classList.add('active')
-  } else {
     btnCrust.classList.remove('active')
+  } else {
+    return btnCrust
   }
 }
 
@@ -126,7 +127,24 @@ function renderButtons() {
 function renderPrice() {
   const totalPrice = basePrice
 
-  //I don't know how to solve....
+  const pricePep = Number((document.querySelector('.panel > ul:first-child')).split(" ")[0])
+  const priceMush = Number((document.querySelector('.panel > ul:nth-child(2)')).split(" ")[0])
+  const priceGreenPep = Number((document.querySelector('.panel > ul:nth-child[3]')).split(" ")[0])
+  const priceSauce = Number((document.querySelector('.panel > ul:nth-child[4]')).split(" ")[0])
+  const priceCrust = Number((document.querySelector('.panel > ul:last-child')).split(" ")[0])
+
+  if (renderButtons(btnPep).includes('active')) {
+    totalPrice += pricePep
+  } else if (renderButtons(btnMush).includes('active')) {
+    totalPrice += priceMush
+  } else if (renderButtons(btnGreenPep).includes('active')) {
+    totalPrice += priceGreenPep
+  } else if (renderButtons(btnSauce).includes('active')) {
+    totalPrice += priceSauce
+  } else if (renderButtons(btnCrust).includes('active')) {
+    totalPrice += priceCrust
+  }
+  return totalPrice
 }
 
 renderEverything();
