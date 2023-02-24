@@ -74,7 +74,12 @@ function renderWhiteSauce() {
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-    let crustGlutenFree = document.querySelector('.crust-gluten-free');
+    let crust = document.querySelector('.crust');
+    if(state.glutenFreeCrust){
+      crust.classList.add('crust-gluten-free');
+    }else{
+      crust.classList.remove('crust-gluten-free');
+    }
 }
 
 function renderButtons() {
