@@ -119,14 +119,29 @@ function renderButtons() {
   }else{
     crustBtn.classList.remove('active');
   }
-
-
-  // whiteSauce: false,
-  // glutenFreeCrust: false
 }
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+   const priceList = document.querySelector('.price ul');
+   const total = document.querySelector('.price strong');
+   if(state.pepperoni === false && state.mushrooms === false && state.greenPeppers === false && state.whiteSauce === false && state.glutenFreeCrust === false){
+     total.innerHTML = basePrice;
+     priceList.innerHTML = '';
+   }else{
+    totalPrice = 0;
+    totalPrice += basePrice;
+    const newList = document.createElement('ul');
+    for (const item in state) {
+      if(state[item] === true){
+        totalPrice += ingredients[item].price;
+        const newEl = `<li>$${ingredients[item].price} ${ingredients[item].name}</li>`
+        newList.innerHTML += newEl;
+      }else if(state[item] === false){
+      }
+    }
+    priceList.parentNode.replaceChild(newList, priceList);
+    total.innerHTML = totalPrice;
+   }
 }
 
 renderEverything();
