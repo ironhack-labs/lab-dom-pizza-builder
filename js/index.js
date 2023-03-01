@@ -110,6 +110,30 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  const price = document.querySelector('strong');
+  let count = 12;
+
+  if (state.pepperoni) {
+    count += 2;
+  }
+
+  if (state.mushrooms) {
+    count += 2;
+  }
+
+  if (state.greenPeppers) {
+    count += 2;
+  }
+
+  if (state.whiteSauce) {
+    count += 5;
+  }
+
+  if (state.glutenFreeCrust) {
+    count += 7;
+  }
+
+  price.textContent = `$${count}`;
 }
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
