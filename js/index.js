@@ -129,6 +129,16 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let price = 0
+  state.pepperoni ? price += ingredients.pepperoni.price : price 
+  state.mushrooms ? price += ingredients.mushrooms.price : price 
+  state.greenPeppers ? price += ingredients.greenPeppers.price : price 
+  state.whiteSauce ? price += ingredients.whiteSauce.price : price
+  state.glutenFreeCrust ? price += ingredients.glutenFreeCrust.price : price  
+
+  const totalpriceElement = document.querySelector(".panel.price > strong")
+  totalpriceElement.innerText = basePrice + price
+  return basePrice + ingredients
 }
 
 renderEverything();
