@@ -1,5 +1,3 @@
-// Write your Pizza Builder JavaScript in this file.
-
 // Constants
 const basePrice = 10;
 const ingredients = {
@@ -19,8 +17,6 @@ const state = {
   glutenFreeCrust: false
 };
 
-// This function takes care of rendering the pizza based on the state
-// This function is triggered once at the beginning and every time the state is changed
 function renderEverything() {
   renderPepperoni();
   renderMushrooms();
@@ -31,100 +27,36 @@ function renderEverything() {
   renderButtons();
   renderPrice();
 }
-
+function toggleVisibility(className, ingredientState){
+  document.querySelectorAll(className).forEach((ingredient) =>{
+    ingredientState ? ingredient.style.visibility = 'visible' : ingredient.style.visibility = 'hidden'
+  })
+}
 function renderPepperoni() {
-  document.querySelectorAll('.pep').forEach((onePep) => {
-    if (state.pepperoni) {
-      onePep.style.visibility = 'visible';
-    } else {
-      onePep.style.visibility = 'hidden';
-    }
-  });
+  toggleVisibility('.pep', state.pepperoni)
 }
-
 function renderMushrooms() {
-  document.querySelectorAll('.mushroom').forEach((mushroom) => {
-    if (state.mushrooms) {
-      mushroom.style.visibility = 'visible';
-    } else {
-      mushroom.style.visibility = 'hidden';
-    }
-  });
+  toggleVisibility('.mushroom', state.mushrooms)
 }
-
 function renderGreenPeppers() {
-  document.querySelectorAll('.green-pepper').forEach((pep) => {
-    if (state.greenPeppers) {
-      pep.style.visibility = 'visible';
-    } else {
-      pep.style.visibility = 'hidden';
-    }
-  });
+  toggleVisibility('.green-pepper', state.greenPeppers)
 }
-
 function renderWhiteSauce() {
-  // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  document.querySelectorAll('.sauce-white').forEach((sauce) => {
-    if (state.whiteSauce) {
-      sauce.style.visibility = 'visible';
-    } else {
-      sauce.style.visibility = 'hidden';
-    }
-  });
+  toggleVisibility('.sauce-white', state.whiteSauce)
 }
-
 function renderGlutenFreeCrust() {
-  // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  document.querySelectorAll('.crust-gluten-free').forEach((crust) => {
-    if (state.glutenFreeCrust) {
-      crust.style.visibility = 'visible';
-    } else {
-      crust.style.visibility = 'hidden';
-    }
-  });
+  toggleVisibility('.crust-gluten-free', state.glutenFreeCrust)
 }
-
+function toggleActiveButtons(buttonClass, ingredientState){
+  const button = document.querySelector(buttonClass)
+  ingredientState ? button.classList.add("active") : button.classList.remove("active")
+}
 function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  const pepperoniButton = document.querySelector(".btn-pepperoni")
-  if(state.pepperoni){
-    pepperoniButton.classList.add("active")
-  }
-  else{
-    pepperoniButton.classList.remove("active")
-  }
-  
-  const mushroomButton = document.querySelector(".btn-mushrooms")
-  if(state.mushrooms){
-    mushroomButton.classList.add("active")
-  }
-  else{
-    mushroomButton.classList.remove("active")
-  }
-
-  const greenPeppersButton = document.querySelector(".btn-green-peppers")
-  if(state.greenPeppers){
-    greenPeppersButton.classList.add("active")
-  }
-  else{
-    greenPeppersButton.classList.remove("active")
-  }
-
-  const whiteSauceButton = document.querySelector(".btn-sauce")
-  if(state.whiteSauce){
-    whiteSauceButton.classList.add("active")
-  }
-  else{
-    whiteSauceButton.classList.remove("active")
-  }
-
-  const crustButton = document.querySelector(".btn-crust")
-  if(state.glutenFreeCrust){
-    crustButton.classList.add("active")
-  }
-  else{
-    crustButton.classList.remove("active")
-  }
+  toggleActiveButtons(".btn-pepperoni", state.pepperoni)
+  toggleActiveButtons(".btn-mushrooms", state.mushrooms)
+  toggleActiveButtons(".btn-green-peppers", state.greenPeppers)
+  toggleActiveButtons(".btn-sauce", state.whiteSauce)
+  toggleActiveButtons(".btn-crust", state.glutenFreeCrust)
 }
 
 function renderPrice() {
