@@ -134,14 +134,14 @@ function renderPrice() {
 
   if (state.whiteSauce) {
     document.querySelector('.js-w-sauce').hidden = false;
-    price += 1;
+    price += 3;
   } else {
     document.querySelector('.js-w-sauce').hidden = true;
   }
 
   if (state.glutenFreeCrust) {
     document.querySelector('.js-gf-crust').hidden = false;
-    price += 1;
+    price += 5;
   } else {
     document.querySelector('.js-gf-crust').hidden = true;
   }
