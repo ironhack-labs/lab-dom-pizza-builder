@@ -45,44 +45,32 @@ function renderPepperoni() {
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
-  document.querySelectorAll('.mushroom').forEach((mush) => { 
-    if (state.mushrooms) {
-      mush.style.visibility = 'visible'
-    } else {
-      mush.style.visibility = 'hidden';
-    }
+  document.querySelectorAll('.mushroom').forEach((mush) => {
+    state.mushrooms ? mush.style.visibility = 'visible' : mush.style.visibility = 'hidden'
   })
 }
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
   document.querySelectorAll('.green-pepper').forEach((greenPep) => {
-    if (state.greenPeppers) {
-      greenPep.style.visibility = 'visible';
-    } else {
-      greenPep.style.visibility = 'hidden';
-    }
+    state.greenPeppers ?
+      greenPep.style.visibility = 'visible' : greenPep.style.visibility = 'hidden'
   })
 }
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
   const sauce = document.querySelector('.sauce')
-  if (state.whiteSauce === false) {
-    sauce?.setAttribute('class', 'sauce')
-  } else {
-    sauce?.setAttribute('class', 'sauce sauce-white')
-  }
+  state.whiteSauce === false ?
+    sauce?.setAttribute('class', 'sauce') : sauce?.setAttribute('class', 'sauce sauce-white')
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
   const crust = document.querySelector('.crust')
-  if (state.glutenFreeCrust === false) { 
-    crust?.setAttribute('class', 'crust')
-  } else {
-    crust?.setAttribute('class', 'crust crust-gluten-free');
-  } 
+  state.glutenFreeCrust === false
+    ? crust?.setAttribute('class', 'crust')
+    : crust?.setAttribute('class', 'crust crust-gluten-free');
 }
 
 function renderButtons() {
@@ -111,7 +99,6 @@ function renderPrice() {
   let sum = 10
 
   document.querySelectorAll('.panel.price li').forEach((item, i) => {
-    
     state[`${prop[i]}`] === true
       ? (item.style.display = '', sum += Number(item.innerHTML.slice(1, 2)))
       : item.style.display = 'none'
