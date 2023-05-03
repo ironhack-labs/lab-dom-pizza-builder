@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Write your Pizza Builder JavaScript in this file.
 
 // Constants
@@ -35,10 +36,8 @@ function renderEverything() {
 function renderPepperoni() {
   document.querySelectorAll('.pep').forEach((onePep) => {
     if (state.pepperoni) {
-      // @ts-ignore
       onePep.style.visibility = 'visible';
     } else {
-      // @ts-ignore
       onePep.style.visibility = 'hidden';
     }
   });
@@ -48,10 +47,8 @@ function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
   document.querySelectorAll('.mushroom').forEach((mush) => { 
     if (state.mushrooms) {
-      // @ts-ignore
       mush.style.visibility = 'visible'
     } else {
-      // @ts-ignore
       mush.style.visibility = 'hidden';
     }
   })
@@ -61,10 +58,8 @@ function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
   document.querySelectorAll('.green-pepper').forEach((greenPep) => {
     if (state.greenPeppers) {
-      // @ts-ignore
       greenPep.style.visibility = 'visible';
     } else {
-      // @ts-ignore
       greenPep.style.visibility = 'hidden';
     }
   })
@@ -104,40 +99,54 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+
+  const prop = [
+    'pepperoni',
+    'mushrooms',
+    'greenPeppers',
+    'whiteSauce',
+    'glutenFreeCrust'
+  ];
+
+  let sum = 10
+
+  document.querySelectorAll('.panel.price li').forEach((item, i) => {
+    
+    state[`${prop[i]}`] === true
+      ? (item.style.display = '', sum += Number(item.innerHTML.slice(1, 2)))
+      : item.style.display = 'none'
+  })
+
+  document.querySelector('.panel.price strong').innerHTML = `$${sum}`
 }
 
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
-// @ts-ignore
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', function () {
   state.pepperoni = !state.pepperoni;
   renderEverything();
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
-// @ts-ignore
 document.querySelector('.btn.btn-mushrooms').addEventListener('click', function () {
   state.mushrooms = !state.mushrooms
   renderEverything()
 })
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
-// @ts-ignore
 document.querySelector('.btn.btn-green-peppers').addEventListener('click', function () { 
   state.greenPeppers = !state.greenPeppers
   renderEverything()
 })
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
-// @ts-ignore
 document.querySelector('.btn.btn-sauce').addEventListener('click', function () {
   state.whiteSauce = !state.whiteSauce
   renderEverything()
 })
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
-// @ts-ignore
 document.querySelector('.btn.btn-crust').addEventListener('click', function () { 
   state.glutenFreeCrust = !state.glutenFreeCrust
   renderEverything()
