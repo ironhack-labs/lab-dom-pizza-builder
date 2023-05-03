@@ -91,7 +91,15 @@ function renderGlutenFreeCrust() {
 }
 
 function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  // Iteration 3: add/remove the class "active" of each `<button class="btn">
+  const ingredients = ['pepperoni', 'mushrooms', 'green-peppers', 'sauce', 'crust']
+  const stateClass = ['pepperoni', 'mushrooms', 'greenPeppers', 'whiteSauce', 'glutenFreeCrust']
+  
+  document.querySelectorAll('.btn').forEach((button, i) => {
+    state[`${stateClass[i]}`]
+      ? button.setAttribute('class', `btn btn-${ingredients[i]} active`)
+      : button.setAttribute('class', `btn btn-${ingredients[i]}`)
+  })
 }
 
 function renderPrice() {
