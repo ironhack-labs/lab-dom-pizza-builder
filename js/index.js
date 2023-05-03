@@ -96,7 +96,7 @@ function renderPrice() {
     'glutenFreeCrust'
   ];
 
-  let sum = 10
+  let sum = Number(document.querySelector('.panel.price b').innerHTML.slice(1,3))
 
   document.querySelectorAll('.panel.price li').forEach((item, i) => {
     state[`${prop[i]}`] === true
