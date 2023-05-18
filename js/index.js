@@ -112,6 +112,12 @@ function renderPrice() {
   console.log("price", price);
   let priceElement = document.querySelector("aside.price strong");
   priceElement.innerHTML = `${price}$`
+
+  document.querySelector("aside.price li:nth-of-type(1)").innerHTML = `$${ingredients.pepperoni.price * state.pepperoni} pepperoni`;
+  document.querySelector("aside.price li:nth-of-type(2)").innerHTML = `$${ingredients.mushrooms.price * state.mushrooms} mushrooms`;
+  document.querySelector("aside.price li:nth-of-type(3)").innerHTML = `$${ingredients.greenPeppers.price * state.greenPeppers} green peppers`;
+  document.querySelector("aside.price li:nth-of-type(4)").innerHTML = `$${ingredients.whiteSauce.price * state.whiteSauce} white sauce`;
+  document.querySelector("aside.price li:nth-of-type(5)").innerHTML = `$${ingredients.glutenFreeCrust.price * state.glutenFreeCrust} gluten-free crust`;
 }
 
 renderEverything();
