@@ -98,10 +98,30 @@ function renderButtons() {
       button.classList.remove("active");
     }
   })
+  
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+   const priceUl = document.querySelector('aside.price ul')
+  priceUl.innerHTML = '';
+
+  const activeIngredients = Object.keys(state).filter(( key ) => {
+    return state[key] === true;
+  })
+  let price = basePrice;
+  activeIngredients.forEach( (key) => {
+    const value = ingredients[key];
+    price += value.price;
+    const priceItem = document.createElement('li')
+    priceItem.textContent = `$${value.price} ${value.name}`
+    priceUl.appendChild(priceItem);
+  } )
+  const priceElement = document.querySelector('aside.price strong')
+  priceElement.textContent = `$${price}`;
+
+ 
+  
 }
 
 renderEverything();
