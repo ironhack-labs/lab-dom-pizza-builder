@@ -5,7 +5,7 @@ const basePrice = 10;
 const ingredients = {
   pepperoni: { name: 'pepperoni', price: 1 },
   mushrooms: { name: 'Mushrooms', price: 1 },
-  greenPeppers: { name: 'Green Peppers', price: 1 },
+  greenPeppers: { name: 'Green peppers', price: 1 },
   whiteSauce: { name: 'White sauce', price: 3 },
   glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
 };
@@ -43,27 +43,85 @@ function renderPepperoni() {
 }
 
 function renderMushrooms() {
-  // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll('.mushroom').forEach((oneMushroom) => {
+    if (state.mushrooms) {
+      oneMushroom.style.visibility = 'visible';
+    } else {
+      oneMushroom.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderGreenPeppers() {
-  // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll('.green-pepper').forEach((onePepper) => {
+    if (state.greenPeppers) {
+      onePepper.style.visibility = 'visible';
+    } else {
+      onePepper.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderWhiteSauce() {
-  // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+  document.querySelectorAll('.sauce-white').forEach((oneSauceWhite) => {
+    if (state.whiteSauce) {
+      oneSauceWhite.style.visibility = 'visible';
+    } else {
+      oneSauceWhite.style.visibility = 'hidden';
+    }
+  });
+
 }
 
 function renderGlutenFreeCrust() {
-  // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-}
+  const crustBase = document.querySelector('.crust')
+
+    if (state.glutenFreeCrust) {
+      crustBase.classList.add('crust-gluten-free')
+    }else {
+      crustBase.classList.remove('crust-gluten-free')
+    }
+  }
+
 
 function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  const allButtons = document.querySelectorAll(".btn");
+  Array.from(allButtons).forEach((button) => {
+    const buttonText = button.innerText;
+    const key = Object.keys(ingredients).find(key => {
+      return ingredients[key].name === buttonText;
+    })
+    const ingredientState = state[key];
+    if (ingredientState) {
+      button.classList.add("active");
+    } else {
+      button.classList.remove("active");
+    }
+  })
+  
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+   const priceUl = document.querySelector('aside.price ul')
+  priceUl.innerHTML = '';
+
+  const activeIngredients = Object.keys(state).filter(( key ) => {
+    return state[key] === true;
+  })
+  let price = basePrice;
+  activeIngredients.forEach( (key) => {
+    const value = ingredients[key];
+    price += value.price;
+    const priceItem = document.createElement('li')
+    priceItem.textContent = `$${value.price} ${value.name}`
+    priceUl.appendChild(priceItem);
+  } )
+  const priceElement = document.querySelector('aside.price strong')
+  priceElement.textContent = `$${price}`;
+
+ 
+  
 }
 
 renderEverything();
@@ -75,9 +133,25 @@ document.querySelector('.btn.btn-pepperoni').addEventListener('click', function 
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', function () {
+  state.mushrooms = !state.mushrooms;
+  renderEverything();
+});
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+document.querySelector('.btn.btn-green-peppers').addEventListener('click', function () {
+  state.greenPeppers = !state.greenPeppers;
+  renderEverything();
+});
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
+document.querySelector('.btn.btn-sauce').addEventListener('click', function () {
+  state.whiteSauce = !state.whiteSauce;
+  renderEverything();
+});
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector('.btn.btn-crust').addEventListener('click', function () {
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+});
