@@ -33,14 +33,6 @@ $ git push origin master
 
 <br>
 
-## Automated Tests
-
-This lab includes an automated testing suite. For DOM-related labs, our automated tests should be seen as a secondary tool, that helps you to programmatically understand whether your solution is correct and allows the educational team to track your progress.
-
-To run the automated tests, please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Now, you can run the `npm run test:watch` command to run automated tests in watch mode. Open the resulting `lab-solution.html` file with the "Live Server" VSCode extension to always see the most up-to-date test results.
-
-<br>
-
 ## Instructions
 
 We will only work with the `js/index.js` file. As you will see, the file contains some code. The file is built to have a [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) and make the code scalable. This architecture is very close to what you will use with React.
@@ -147,6 +139,10 @@ Currently, all buttons look the same, no matter if the option is activated or no
 ```html
 <button class="btn btn-pepperoni active">Pepperoni</button>
 ```
+
+Hint: use data-attributes that are located inside each HTML Element. 
+
+For more info, check out: https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
 
 **Write the logic for removing and adding the buttons' `active` class appropriately. Write the code in the function `renderButtons()`**.
 
