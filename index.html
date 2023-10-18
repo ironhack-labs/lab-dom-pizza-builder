@@ -17,19 +17,19 @@
     <div class="panel controls">
       <ul>
         <li>
-          <button class="btn btn-pepperoni active">pepperoni</button>
+          <button data-ingredient= "pepperoni" class="btn btn-pepperoni active">pepperoni</button>
         </li>
         <li>
-          <button class="btn btn-mushrooms active">Mushrooms</button>
+          <button data-ingredient= "mushrooms" class="btn btn-mushrooms active">Mushrooms</button>
         </li>
         <li>
-          <button class="btn btn-green-peppers active">Green peppers</button>
+          <button data-ingredient= "greenPeppers" class="btn btn-green-peppers active">Green peppers</button>
         </li>
         <li>
-          <button class="btn btn-sauce active">White sauce</button>
+          <button data-ingredient= "whiteSauce" class="btn btn-sauce active">White sauce</button>
         </li>
         <li>
-          <button class="btn btn-crust active">Gluten-free crust</button>
+          <button data-ingredient="glutenFreeCrust" class="btn btn-crust active">Gluten-free crust</button>
         </li>
       </ul>
     </div>
@@ -41,13 +41,13 @@
 
       <b>$10 cheese pizza</b>
       <ul>
-        <li>$1 pepperoni</li>
-        <li>$1 mushrooms</li>
-        <li>$1 green peppers</li>
-        <li>$3 white sauce</li>
-        <li>$5 gluten-free crust</li>
+        <li data-ingredient= "pepperoni" class="prc pepperoni">$1 pepperoni</li>
+        <li data-ingredient= "mushrooms" class="prc mushrooms">$1 mushrooms</li>
+        <li data-ingredient= "greenPeppers" class="prc greenPeppers">$1 green peppers</li>
+        <li data-ingredient= "whiteSauce" class="prc whiteSauce">$3 white sauce</li>
+        <li data-ingredient= "glutenFreeCrust" class="prc glutenFreeCrust">$5 gluten-free crust</li>
       </ul>
-      <strong>$21</strong>
+      <strong class = "finalPrice">$21</strong>
     </aside>
     <!-- End Price -->
 
