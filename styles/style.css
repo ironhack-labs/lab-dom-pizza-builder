@@ -370,6 +370,7 @@ p.description {
 .price li {
   margin: 5px 20px 0;
   color: #666;
+
 }
 
 .price li:before {
