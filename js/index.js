@@ -69,15 +69,41 @@ function renderPrice() {
 renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
-document.querySelector('.btn.btn-pepperoni').addEventListener('click', function () {
+const pepperoniButton = document.querySelector('.btn-pepperoni');
+pepperoniButton.addEventListener('click', function () {
+  pepperoniButton.classList.toggle('active');
   state.pepperoni = !state.pepperoni;
   renderEverything();
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
+const mushroomButton = document.querySelector('.btn-mushrooms');
+mushroomButton.addEventListener('click', (e) => {
+  mushroomButton.classList.toggle('active');
+  state.mushrooms = !state.mushrooms;
+  renderEverything();
+});
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+const greenPeppers = document.querySelector('.btn-green-peppers');
+greenPeppers.addEventListener('click', (e) => {
+  greenPeppers.classList.toggle('active');
+  state.greenPeppers = !state.greenPeppers;
+  renderEverything();
+});
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
+const sauceButton = document.querySelector('.btn-sauce');
+sauceButton.addEventListener('click', (e) => {
+  sauceButton.classList.toggle('active');
+  state.whiteSauce = !state.whiteSauce;
+  renderEverything();
+});
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+const crustButton = document.querySelector('.btn-crust');
+crustButton.addEventListener('click', (e) => {
+  crustButton.classList.toggle('active');
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+});
