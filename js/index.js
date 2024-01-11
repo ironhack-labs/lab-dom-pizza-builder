@@ -76,7 +76,7 @@ function renderWhiteSauce() {
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  const  crust =document.querySelector('.crust');
+  const  crust = document.querySelector('.crust');
   if (state.glutenFreeCrust) {
     crust.classList.add('crust-gluten-free');
   } else {
@@ -86,6 +86,17 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  const buttons = document.querySelectorAll('.btn')
+
+  buttons.forEach((button)=>{
+    const ingredient = button.dataset.ingredient
+    if(state[ingredient]){
+      button.classList.add('active')
+    }
+    else{
+      button.classList.remove('active')
+    }
+  })
 }
 
 function renderPrice() {
