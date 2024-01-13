@@ -94,8 +94,8 @@ function renderButtons() {
   });
 }
 
+// Iteration 4: change the HTML of `<aside class="panel price">`
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
   let finalPrice = 10;
   const panel = document.querySelector('.panel.price > ul');
   panel.innerHTML = '';
@@ -103,12 +103,16 @@ function renderPrice() {
   for (const i in state) {
     const ingredient = document.createElement('li');
     ingredient.innerHTML = `$${ingredients[i].price} ${ingredients[i].name}`;
+    
     if (state[i]) {
       panel.appendChild(ingredient);
       finalPrice += ingredients[i].price;
     }
+
   }
+
   document.querySelector('.panel.price > strong').innerHTML = `$${finalPrice}`;
+  
 }
 
 renderEverything();
