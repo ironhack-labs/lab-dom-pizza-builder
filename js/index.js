@@ -131,8 +131,8 @@ document.querySelector('.btn.btn-mushrooms').addEventListener('click', function 
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
 document.querySelector('.btn.btn-green-peppers').addEventListener('click', function () {
-  state.greenPeppers = !state.greenPeppers
-  renderEverything()
+  state.greenPeppers = !state.greenPeppers;
+  renderEverything();
 });
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
