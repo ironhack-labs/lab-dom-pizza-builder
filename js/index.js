@@ -124,7 +124,7 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  const priceList = document.querySelector('aside').querySelectorAll('li');
+  const priceList = document.querySelectorAll('.panel.price li');
 
   let totalPrice = 10;
 
@@ -163,8 +163,8 @@ function renderPrice() {
     priceList[4].style.display = 'none';
   }
 
-  const price = document.querySelector('aside').querySelector('strong');
-  price.innerHTML = '$' + totalPrice;
+  const price = document.querySelector('.panel.price strong');
+  price.innerText = '$' + totalPrice;
 }
 
 renderEverything();
