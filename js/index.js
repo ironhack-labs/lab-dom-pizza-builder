@@ -44,29 +44,83 @@ function renderPepperoni() {
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll('.mushroom').forEach((oneMush) => {
+    if (state.mushrooms) {
+      oneMush.style.visibility = 'visible';
+    } else {
+      oneMush.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll('.green-pepper').forEach((onegreenPepper) => {
+    if (state.greenPeppers) {
+      onegreenPepper.style.visibility = 'visible';
+    } else {
+      onegreenPepper.style.visibility = 'hidden';
+    }
+  });
 }
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-}
+// document.querySelector(".sauce.sauce-white")
+  const sauce = document.querySelector(".sauce.sauce-white")
+  if(state.whiteSauce){
+  sauce.style.visbility = ' visible'; 
+  }else {
+    sauce.style.visibilty = 'hidden';
+  }
+};
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  const freeGluten = document.querySelector(".crust.crust-gluten-free")
+  if(state.glutenFreeCrust){
+    freeGluten.style.visbility = ' visible'; 
+  }else {
+    freeGluten.style.visibilty = 'hidden';
+  }
 }
 
 function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  const buttons = document.querySelectorAll(".btn.active");
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            button.classList.remove('active');
+        });
+    });
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+    const pricePanel = document.querySelector(".panel.price");
+    const totalPrice = Object.values(state).reduce((total, isSelected, index) => {
+        if (isSelected) {
+            return total + ingredients[Object.keys(state)[index]].price;
+        } else {
+            return total;
+        }
+    }, basePrice);
+  
+    const selectedItems = Object.keys(state).filter(key => state[key]).map(key => ingredients[key].name);
+    const itemList = selectedItems.join(", ");
+  
+    pricePanel.innerHTML = `
+        <h2>Price</h2>
+        <ul>
+            <li>Base price: $${basePrice.toFixed(2)}</li>
+            <li>Selected items: ${itemList}</li>
+            <li>Total price: $${totalPrice.toFixed(2)}</li>
+        </ul>
+    `;
+  
+
 }
 
-renderEverything();
+
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', function () {
@@ -75,9 +129,26 @@ document.querySelector('.btn.btn-pepperoni').addEventListener('click', function 
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
-
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', function () {
+  state.mushrooms = !state.mushrooms;
+  renderEverything();
+});
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+document.querySelector('.btn.btn-green-peppers').addEventListener('click', function () {
+  state.greenPeppers = !state.greenPeppers;
+  renderEverything();
+});
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
+document.querySelector('.btn.btn-sauce').addEventListener('click', function () {
+  state.whiteSauce = !state.whiteSauce;
+  renderEverything();
+});
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector('.btn.btn-crust').addEventListener('click', function () {
+  state.glutenFreeCrust = !state.glutenFreeCrust;
+  renderEverything();
+});
+
+    
