@@ -122,6 +122,7 @@ function renderButtons() {
   }
 }
 
+/*
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
   const priceList = document.querySelectorAll('.panel.price li');
@@ -164,7 +165,26 @@ function renderPrice() {
   }
 
   const price = document.querySelector('.panel.price strong');
-  price.innerText = '$' + totalPrice;
+  //price.innerHTML = '$' + totalPrice;
+  price.innerHTML = `$${totalPrice}`;
+}*/
+
+function renderPrice() {
+  // Iteration 4: change the HTML of `<aside class="panel price">`
+  const panelPrice = document.querySelector('.panel.price');
+  panelPrice.querySelector('ul').innerHTML = '';
+  let basePrice = 10;
+
+  for (const ingredient in ingredients) {
+    if (state[ingredient]) {
+      const exampleListItem = document.createElement('li');
+      exampleListItem.innerHTML = `$${ingredients[ingredient].price} ${ingredients[ingredient].name}`;
+      panelPrice.querySelector('ul').appendChild(exampleListItem);
+      basePrice += ingredients[ingredient].price;
+    }
+  }
+
+  panelPrice.querySelector('strong').innerHTML = `$${basePrice}`;
 }
 
 renderEverything();
