@@ -114,9 +114,9 @@ Each individual topping has its own HTML element.
 
 In this iteration, your goal is to:
 
-- Add click event listener on `<button class="btn btn-sauce">` and change `state.whiteSauce`
+- Add click event listener on `<button class="btn btn-white-sauce">` and change `state.whiteSauce`
 - Write the function `renderWhiteSauce()`
-- Add click event listener on `<button class="btn btn-crust">` and change `state.glutenFreeCrust`
+- Add click event listener on `<button class="btn btn-gluten-free-crust">` and change `state.glutenFreeCrust`
 - Write the function `renderGlutenFreeCrust()`
 
 As you can see, the initial value for `state.whiteSauce` and `state.glutenFreeCrust` is false. The reason is that, by default, we want a pizza with pepperoni, mushrooms, green peppers but no white sauce nor gluten-free crust.
@@ -139,7 +139,6 @@ For now, **don't worry about updating the price**.
 
 <br>
 
-
 ### Iteration 3: Make the buttons active or not
 
 Currently, all buttons look the same, no matter if the option is activated or not. If you notice, all the buttons have an `active` class.
@@ -160,7 +159,6 @@ Write the function `renderPrice()` that:
 
 - Displays the list of all items selected
 - Displays the total price.
-
 
 <br>
 
