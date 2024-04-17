@@ -140,6 +140,7 @@ body {
   margin: 0 7px 11px 0;
   padding: 0 20px;
   text-align: center;
+  opacity: .6;
 
   /* Smoothing out hover using css3 transitions, if not, the pressed button effect looks a bit hard */
   transition: all 0.2s ease;
@@ -222,7 +223,10 @@ p.description {
   box-shadow: 0 5px #69071b;
   color: #fff;
 }
+.active {
+  opacity: 1;
 
+}
 .btn-pepperoni.active {
   top: 2px;
   box-shadow: 0 2px #890923;
