@@ -139,7 +139,6 @@ For now, **don't worry about updating the price**.
 
 <br>
 
-
 ### Iteration 3: Make the buttons active or not
 
 Currently, all buttons look the same, no matter if the option is activated or not. If you notice, all the buttons have an `active` class.
@@ -160,7 +159,6 @@ Write the function `renderPrice()` that:
 
 - Displays the list of all items selected
 - Displays the total price.
-
 
 <br>
 
