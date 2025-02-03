@@ -213,13 +213,13 @@ p.description {
 
 .btn-pepperoni {
   background: #e8103b;
-  box-shadow: 0 6px #890923;
+  box-shadow: 3px 6px #890923;
   color: #fff;
 }
 
 .btn-pepperoni:hover {
   background: #c80e33;
-  box-shadow: 0 5px #69071b;
+  box-shadow: 3px 6px #89092362;
   color: #fff;
 }
 
@@ -240,13 +240,13 @@ p.description {
 
 .btn-mushrooms {
   background: #b49989;
-  box-shadow: 0 6px #644d40;
+  box-shadow: 3px 6px #644d40;
   color: #fff;
 }
 
 .btn-mushrooms:hover {
   background: #a78774;
-  box-shadow: 0 5px #503d33;
+  box-shadow: 3px 6px #503d3374;
   color: #fff;
 }
 
@@ -267,13 +267,13 @@ p.description {
 
 .btn-green-peppers {
   background: #129306;
-  box-shadow: 0 6px #0a5203;
+  box-shadow: 3px 6px #0a5203;
   color: #fff;
 }
 
 .btn-green-peppers:hover {
   background: #0e7205;
-  box-shadow: 0 5px #063102;
+  box-shadow: 3px 6px #06310268;
   color: #fff;
 }
 
@@ -294,13 +294,13 @@ p.description {
 
 .btn-sauce {
   background: #fff4aa;
-  box-shadow: 0 6px #998500;
+  box-shadow: 3px 6px #998500;
   color: #555;
 }
 
 .btn-sauce:hover {
   background: #fff088;
-  box-shadow: 0 5px #776800;
+  box-shadow: 3px 6px #77670068;
   color: #555;
 }
 
@@ -321,13 +321,13 @@ p.description {
 
 .btn-crust {
   background: #e0d5cf;
-  box-shadow: 0 6px #957160;
+  box-shadow: 3px 6px #957160;
   color: #555;
 }
 
 .btn-crust:hover {
   background: #d3c3bb;
-  box-shadow: 0 5px #816253;
+  box-shadow: 3px 6px #81625371;
   color: #555;
 }
 
