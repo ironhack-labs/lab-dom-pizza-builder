@@ -75,7 +75,7 @@ function renderWhiteSauce() {
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
   let crustNode = document.querySelector('.crust')
-  if (state.whiteSauce) {
+  if (state.glutenFreeCrust) {
     crustNode.classList.add("crust-gluten-free")
   } else {
     crustNode.classList.remove("crust-gluten-free")
