@@ -53,7 +53,7 @@ function renderMushrooms() {
 }
 
 function renderGreenPeppers() {
-    document.querySelectorAll('.green-pepper').forEach((onePepper) => {
+  document.querySelectorAll('.green-pepper').forEach((onePepper) => {
     if (state.greenPeppers) {
       onePepper.style.visibility = 'visible'
     } else {
@@ -63,17 +63,17 @@ function renderGreenPeppers() {
 }
 
 function renderWhiteSauce() {
-    const whiteSauceSelect = document.querySelector('.sauce-white')
-    if (state.whiteSauce) {
-      whiteSauceSelect.style.visibility = 'visible'
-    } else {
-      whiteSauceSelect.style.visibility = 'hidden'
-    }
+  const whiteSauceSelect = document.querySelector('.sauce-white')
+  if (state.whiteSauce) {
+    whiteSauceSelect.style.visibility = 'visible'
+  } else {
+    whiteSauceSelect.style.visibility = 'hidden'
+  }
 }
 
 function renderGlutenFreeCrust() {
   const crustElement = document.querySelector('.crust')
-  if(state.glutenFreeCrust){
+  if (state.glutenFreeCrust) {
     crustElement.classList.add("crust-gluten-free")
   } else {
     crustElement.classList.remove("crust-gluten-free")
@@ -82,24 +82,42 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  const allBtns = document.querySelectorAll(".btn").forEach( (btn) => {
-    if (btn.classList.contains("btn-pepperoni")){
+  const allBtns = document.querySelectorAll(".btn").forEach((btn) => {
+    if (btn.classList.contains("btn-pepperoni")) {
       btn.classList.toggle("active", state.pepperoni)
-    } else if (btn.classList.contains('btn-mushrooms')){
+    } else if (btn.classList.contains('btn-mushrooms')) {
       btn.classList.toggle("active", state.mushrooms)
-    } else if (btn.classList.contains('btn-green-peppers')){
+    } else if (btn.classList.contains('btn-green-peppers')) {
       btn.classList.toggle("active", state.greenPeppers)
-    } else if (btn.classList.contains('btn-sauce')){
+    } else if (btn.classList.contains('btn-sauce')) {
       btn.classList.toggle("active", state.whiteSauce)
-    } else if (btn.classList.contains('btn-crust')){
+    } else if (btn.classList.contains('btn-crust')) {
       btn.classList.toggle("active", state.glutenFreeCrust)
     }
-    
+
   })
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  const panelPrice = document.querySelector('.price')
+  const totalPrice = basePrice + (state.pepperoni ? ingredients.pepperoni.price : 0)
+    + (state.mushrooms ? ingredients.mushrooms.price : 0)
+    + (state.greenPeppers ? ingredients.greenPeppers.price : 0)
+    + (state.whiteSauce ? ingredients.whiteSauce.price : 0)
+    + (state.glutenFreeCrust ? ingredients.glutenFreeCrust.price : 0)
+  panelPrice.innerHTML = `
+      <h2>Your pizza's price</h2>
+
+      <b>$10 cheese pizza</b>
+      <ul>
+        ${state.pepperoni ? `<li>$${ingredients.pepperoni.price} pepperoni</li>` : ''}
+        ${state.mushrooms ? `<li>$${ingredients.mushrooms.price} mushrooms</li>` : ''}
+        ${state.greenPeppers ? `<li>$${ingredients.greenPeppers.price} green peppers</li>` : ''}
+        ${state.whiteSauce ? `<li>$${ingredients.whiteSauce.price} white sauce</li>` : ''}
+        ${state.glutenFreeCrust ? `<li>$${ingredients.glutenFreeCrust.price} gluten-free crust</li>` : ''}
+      </ul>
+      <strong>$${totalPrice}</strong>`
 }
 
 renderEverything();
